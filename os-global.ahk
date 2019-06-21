@@ -6,14 +6,14 @@
 #NoTrayIcon
 
 ; Suspend2Ram
-~MButton & WheelUp::
+~RButton & WheelUp::
 {
     DllCall("PowrProf\SetSuspendState", "int", 0, "int", 0, "int", 0)
     return
 }
 
 ; Hibernate
-~MButton & WheelDown::
+~RButton & WheelDown::
 {
     DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 0)
     return
