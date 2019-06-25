@@ -35,6 +35,14 @@
     return
 }
 
+; Preview
+#IfWinActive ahk_exe qbittorrent.exe
+F3::
+{
+    Send, {AppsKey}{Down 12}{Enter}
+    return
+}
+
 ; Limit download rate shortcuts
 #IfWinActive ahk_exe qbittorrent.exe
 ^;::
