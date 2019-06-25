@@ -19,6 +19,9 @@
     return
 }
 
+; qBittorrent Section
+; -------------------
+
 #IfWinActive ahk_exe qbittorrent.exe
 ^BackSpace::
 {
@@ -29,6 +32,84 @@
     ; Assign to video category
     Send, {AppsKey}{Down 6}{Right}{Up 2}{Enter}
 
+    return
+}
+
+; Limit download rate shortcuts
+#IfWinActive ahk_exe qbittorrent.exe
+^;::
+{
+    Send, {AppsKey}{Down 9}{Enter}{Tab}0{Enter}
+    return
+}
+
+#IfWinActive ahk_exe qbittorrent.exe
+^+::
+{
+    Send, {AppsKey}{Down 9}{Enter}{Tab}1024{Enter}
+    return
+}
+
+#IfWinActive ahk_exe qbittorrent.exe
+^ì::
+{
+    Send, {AppsKey}{Down 9}{Enter}{Tab}2048{Enter}
+    return
+}
+
+#IfWinActive ahk_exe qbittorrent.exe
+^š::
+{
+    Send, {AppsKey}{Down 9}{Enter}{Tab}3072{Enter}
+    return
+}
+
+#IfWinActive ahk_exe qbittorrent.exe
+^è::
+{
+    Send, {AppsKey}{Down 9}{Enter}{Tab}4096{Enter}
+    return
+}
+
+#IfWinActive ahk_exe qbittorrent.exe
+^ø::
+{
+    Send, {AppsKey}{Down 9}{Enter}{Tab}5120{Enter}
+    return
+}
+
+#IfWinActive ahk_exe qbittorrent.exe
+^ž::
+{
+    Send, {AppsKey}{Down 9}{Enter}{Tab}6144{Enter}
+    return
+}
+
+#IfWinActive ahk_exe qbittorrent.exe
+^ý::
+{
+    Send, {AppsKey}{Down 9}{Enter}{Tab}7168{Enter}
+    return
+}
+
+#IfWinActive ahk_exe qbittorrent.exe
+^á::
+{
+    Send, {AppsKey}{Down 9}{Enter}{Tab}8192{Enter}
+    return
+}
+
+#IfWinActive ahk_exe qbittorrent.exe
+^í::
+{
+    Send, {AppsKey}{Down 9}{Enter}{Tab}9216{Enter}
+    return
+}
+
+#IfWinActive ahk_exe qbittorrent.exe
+^é::
+{
+    Send, {AppsKey}{Down 9}{Enter}{Tab}10240{Enter}
     return
 }
 
