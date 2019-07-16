@@ -54,70 +54,80 @@ F3::
 #IfWinActive ahk_exe qbittorrent.exe
 ^+::
 {
-    Send, {AppsKey}{Down 9}{Enter}{Tab}1024{Enter}
+;    Send, {AppsKey}{Down 9}{Enter}{Tab}1024{Enter}
+    Send, {AppsKey}{Down 9}{Enter}{Tab}102{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^ì::
 {
-    Send, {AppsKey}{Down 9}{Enter}{Tab}2048{Enter}
+;    Send, {AppsKey}{Down 9}{Enter}{Tab}2048{Enter}
+    Send, {AppsKey}{Down 9}{Enter}{Tab}204{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^š::
 {
-    Send, {AppsKey}{Down 9}{Enter}{Tab}3072{Enter}
+;    Send, {AppsKey}{Down 9}{Enter}{Tab}3072{Enter}
+    Send, {AppsKey}{Down 9}{Enter}{Tab}307{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^è::
 {
-    Send, {AppsKey}{Down 9}{Enter}{Tab}4096{Enter}
+;    Send, {AppsKey}{Down 9}{Enter}{Tab}4096{Enter}
+    Send, {AppsKey}{Down 9}{Enter}{Tab}409{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^ø::
 {
-    Send, {AppsKey}{Down 9}{Enter}{Tab}5120{Enter}
+;    Send, {AppsKey}{Down 9}{Enter}{Tab}5120{Enter}
+    Send, {AppsKey}{Down 9}{Enter}{Tab}512{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^ž::
 {
-    Send, {AppsKey}{Down 9}{Enter}{Tab}6144{Enter}
+;    Send, {AppsKey}{Down 9}{Enter}{Tab}6144{Enter}
+    Send, {AppsKey}{Down 9}{Enter}{Tab}614{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^ý::
 {
-    Send, {AppsKey}{Down 9}{Enter}{Tab}7168{Enter}
+;    Send, {AppsKey}{Down 9}{Enter}{Tab}7168{Enter}
+    Send, {AppsKey}{Down 9}{Enter}{Tab}716{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^á::
 {
-    Send, {AppsKey}{Down 9}{Enter}{Tab}8192{Enter}
+;    Send, {AppsKey}{Down 9}{Enter}{Tab}8192{Enter}
+    Send, {AppsKey}{Down 9}{Enter}{Tab}819{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^í::
 {
-    Send, {AppsKey}{Down 9}{Enter}{Tab}9216{Enter}
+;    Send, {AppsKey}{Down 9}{Enter}{Tab}9216{Enter}
+    Send, {AppsKey}{Down 9}{Enter}{Tab}921{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^é::
 {
-    Send, {AppsKey}{Down 9}{Enter}{Tab}10240{Enter}
+;    Send, {AppsKey}{Down 9}{Enter}{Tab}10240{Enter}
+    Send, {AppsKey}{Down 9}{Enter}{Tab}1024{Enter}
     return
 }
 
