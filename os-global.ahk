@@ -35,6 +35,16 @@
     return
 }
 
+; Assign to video category
+#IfWinActive ahk_exe qbittorrent.exe
+^+BackSpace::
+{
+    ; Assign to video category
+    Send, {AppsKey}{Down 7}{Right}{Up 2}{Enter}
+
+    return
+}
+
 ; Preview
 #IfWinActive ahk_exe qbittorrent.exe
 F3::
