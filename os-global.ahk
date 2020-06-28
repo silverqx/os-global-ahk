@@ -5,6 +5,10 @@
 #SingleInstance Force
 #NoTrayIcon
 
+
+; General Section
+; -------------------
+
 ; Suspend2Ram
 ~RButton & WheelUp::
 {
@@ -18,6 +22,7 @@
     DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 0)
     return
 }
+
 
 ; qBittorrent Section
 ; -------------------
@@ -144,3 +149,26 @@ F3::
 ; doesn't work
 ;#IfWinActive ahk_class Chrome_WidgetWin_1 ; targetting only Chrome browser
 ;F3::Send ^`   ; chrome debugger next step   map key F8      to chrome devtools F10
+
+
+; Dark Souls 1 Save Manager
+; -------------------
+
+; Save Hotkey
+; This hotkey will create a new save in the current run, and select it.
+#IfWinActive ahk_exe DATA.exe
+F6::
+{
+    ; Download first and last pieces first
+    PostMessage, 0x312, 1000, 0,, DarkSaves
+    return
+}
+
+; Load Hotkey
+; This hotkey loads the last save selected, or last save created - whichever is most recent.
+#IfWinActive ahk_exe DATA.exe
+F8::
+{
+    PostMessage, 0x312, 1001, 0,, DarkSaves
+    return
+}
