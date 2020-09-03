@@ -12,6 +12,8 @@
 ; Suspend2Ram
 ~RButton & WheelUp::
 {
+    ; Hopefully this prevents strange sleep bug
+    Sleep, 2000
     DllCall("PowrProf\SetSuspendState", "int", 0, "int", 0, "int", 0)
     return
 }
@@ -19,7 +21,15 @@
 ; Hibernate
 ~RButton & WheelDown::
 {
+    Sleep, 2000
     DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 0)
+    return
+}
+
+; Open Google Chrome
+<#n::
+{
+    Run, "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", , Maximize
     return
 }
 
