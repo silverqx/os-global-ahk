@@ -26,10 +26,17 @@
     return
 }
 
+; Open ComputerOff
+~LButton & WheelUp::
+{
+    Run, C:\optx64\computeroff\ComputerOff.exe
+    return
+}
+
 ; Open Google Chrome
 <#n::
 {
-    Run, "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe", , Maximize
+    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe, , Maximize
     return
 }
 
