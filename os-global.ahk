@@ -1,4 +1,4 @@
-; Silver Zachara <silver.zachara@gmail.com> 2018
+Ôªø; Silver Zachara <silver.zachara@gmail.com> 2018
 
 #Persistent
 #UseHook On
@@ -92,7 +92,7 @@ F3::
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
-^Ï::
+^ƒõ::
 {
     Send, {AppsKey}{Down 10}{Enter}{Tab}2048{Enter}
 ;    Send, {AppsKey}{Down 10}{Enter}{Tab}204{Enter}
@@ -100,7 +100,7 @@ F3::
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
-^ö::
+^≈°::
 {
     Send, {AppsKey}{Down 10}{Enter}{Tab}3072{Enter}
 ;    Send, {AppsKey}{Down 10}{Enter}{Tab}307{Enter}
@@ -108,7 +108,7 @@ F3::
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
-^Ë::
+^ƒç::
 {
     Send, {AppsKey}{Down 10}{Enter}{Tab}4096{Enter}
 ;    Send, {AppsKey}{Down 10}{Enter}{Tab}409{Enter}
@@ -116,7 +116,7 @@ F3::
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
-^¯::
+^≈ô::
 {
     Send, {AppsKey}{Down 10}{Enter}{Tab}5120{Enter}
 ;    Send, {AppsKey}{Down 10}{Enter}{Tab}512{Enter}
@@ -124,7 +124,7 @@ F3::
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
-^û::
+^≈æ::
 {
     Send, {AppsKey}{Down 10}{Enter}{Tab}6144{Enter}
 ;    Send, {AppsKey}{Down 10}{Enter}{Tab}614{Enter}
@@ -132,7 +132,7 @@ F3::
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
-^˝::
+^√Ω::
 {
     Send, {AppsKey}{Down 10}{Enter}{Tab}7168{Enter}
 ;    Send, {AppsKey}{Down 10}{Enter}{Tab}716{Enter}
@@ -140,7 +140,7 @@ F3::
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
-^·::
+^√°::
 {
     Send, {AppsKey}{Down 10}{Enter}{Tab}8192{Enter}
 ;    Send, {AppsKey}{Down 10}{Enter}{Tab}819{Enter}
@@ -148,7 +148,7 @@ F3::
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
-^Ì::
+^√≠::
 {
     Send, {AppsKey}{Down 10}{Enter}{Tab}9216{Enter}
 ;    Send, {AppsKey}{Down 10}{Enter}{Tab}921{Enter}
@@ -156,7 +156,7 @@ F3::
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
-^È::
+^√©::
 {
     Send, {AppsKey}{Down 10}{Enter}{Tab}10240{Enter}
 ;    Send, {AppsKey}{Down 10}{Enter}{Tab}1024{Enter}
