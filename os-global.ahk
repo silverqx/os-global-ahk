@@ -52,7 +52,7 @@
     ; Download in sequential order
     Send, {AppsKey}{Down 14}{Enter}
     ; Assign to video category
-    Send, {AppsKey}{Down 7}{Right}{Up 2}{Enter}
+    Send, {AppsKey}{Down 7}{Right}{Up 1}{Enter}
 
     return
 }
@@ -62,7 +62,7 @@
 ^+BackSpace::
 {
     ; Assign to video category
-    Send, {AppsKey}{Down 7}{Right}{Up 2}{Enter}
+    Send, {AppsKey}{Down 7}{Right}{Up 1}{Enter}
 
     return
 }
