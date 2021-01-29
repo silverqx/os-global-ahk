@@ -48,9 +48,9 @@
 ^BackSpace::
 {
     ; Download first and last pieces first
-    Send, {AppsKey}{Down 15}{Enter}
+    Send, {AppsKey}{Down 13}{Enter}
     ; Download in sequential order
-    Send, {AppsKey}{Down 14}{Enter}
+    Send, {AppsKey}{Down 12}{Enter}
     ; Assign to video category
     Send, {AppsKey}{Down 7}{Right}{Up 1}{Enter}
 
@@ -71,7 +71,15 @@
 #IfWinActive ahk_exe qbittorrent.exe
 F3::
 {
-    Send, {AppsKey}{Down 13}{Enter}
+    Send, {AppsKey}{Down 11}{Enter}
+    return
+}
+
+; Preview when seeding
+#IfWinActive ahk_exe qbittorrent.exe
+F4::
+{
+    Send, {AppsKey}{Down 12}{Enter}
     return
 }
 
@@ -79,87 +87,87 @@ F3::
 #IfWinActive ahk_exe qbittorrent.exe
 ^;::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Tab}0{Enter}
+    Send, {AppsKey}{Down 10}{Enter}{Up 1}0{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^+::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Tab}1024{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Tab}102{Enter}
+    Send, {AppsKey}{Down 10}{Enter}{Up 1}1024{Enter}
+;    Send, {AppsKey}{Down 10}{Enter}{Up 1}102{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^ě::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Tab}2048{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Tab}204{Enter}
+    Send, {AppsKey}{Down 10}{Enter}{Up 1}2048{Enter}
+;    Send, {AppsKey}{Down 10}{Enter}{Up 1}204{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^š::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Tab}3072{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Tab}307{Enter}
+    Send, {AppsKey}{Down 10}{Enter}{Up 1}3072{Enter}
+;    Send, {AppsKey}{Down 10}{Enter}{Up 1}307{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^č::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Tab}4096{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Tab}409{Enter}
+    Send, {AppsKey}{Down 10}{Enter}{Up 1}4096{Enter}
+;    Send, {AppsKey}{Down 10}{Enter}{Up 1}409{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^ř::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Tab}5120{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Tab}512{Enter}
+    Send, {AppsKey}{Down 10}{Enter}{Up 1}5120{Enter}
+;    Send, {AppsKey}{Down 10}{Enter}{Up 1}512{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^ž::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Tab}6144{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Tab}614{Enter}
+    Send, {AppsKey}{Down 10}{Enter}{Up 1}6144{Enter}
+;    Send, {AppsKey}{Down 10}{Enter}{Up 1}614{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^ý::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Tab}7168{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Tab}716{Enter}
+    Send, {AppsKey}{Down 10}{Enter}{Up 1}7168{Enter}
+;    Send, {AppsKey}{Down 10}{Enter}{Up 1}716{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^á::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Tab}8192{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Tab}819{Enter}
+    Send, {AppsKey}{Down 10}{Enter}{Up 1}8192{Enter}
+;    Send, {AppsKey}{Down 10}{Enter}{Up 1}819{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^í::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Tab}9216{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Tab}921{Enter}
+    Send, {AppsKey}{Down 10}{Enter}{Up 1}9216{Enter}
+;    Send, {AppsKey}{Down 10}{Enter}{Up 1}921{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^é::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Tab}10240{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Tab}1024{Enter}
+    Send, {AppsKey}{Down 10}{Enter}{Up 1}10240{Enter}
+;    Send, {AppsKey}{Down 10}{Enter}{Up 1}1024{Enter}
     return
 }
 
