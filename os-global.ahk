@@ -40,6 +40,16 @@
     return
 }
 
+; Center Window
+^+F8::
+{
+    ; Current Foreground window
+    WinActive("A")
+    WinMove,,, 8, 8, 1904, 1000
+
+    return
+}
+
 
 ; qBittorrent Section
 ; -------------------
