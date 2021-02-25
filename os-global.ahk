@@ -63,6 +63,8 @@
     Send, {AppsKey}{Down 12}{Enter}
     ; Assign to video category
     Send, {AppsKey}{Down 7}{Right}{Up 1}{Enter}
+    ; Assign seed tag
+    Send, {AppsKey}{Down 8}{Right}{Up 2}{Enter}
 
     return
 }
@@ -73,6 +75,8 @@
 {
     ; Assign to video category
     Send, {AppsKey}{Down 7}{Right}{Up 1}{Enter}
+    ; Assign seed tag
+    Send, {AppsKey}{Down 8}{Right}{Up 2}{Enter}
 
     return
 }
