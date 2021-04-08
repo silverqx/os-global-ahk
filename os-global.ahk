@@ -59,11 +59,10 @@ EnumerateAudioOutputs()
 }
 
 ; Toggle audio output Headphones / LG TV
-^!q::
+^;::
 {
     KeyWait, Control, T0.3
-    KeyWait, Alt, T0.3
-    KeyWait, q, T0.3
+    KeyWait, `;, T0.3
 
     ; ErrorLevel == 1 if KeyWait was successful
     if (ErrorLevel) {
@@ -76,7 +75,7 @@ EnumerateAudioOutputs()
             SetDefaultEndpoint(GetDeviceID(Devices, "Headphones (Xbox Controller)"))
     } else
         ; Send original key combination further that triggered this function
-        Send ^!{q}
+        Send ^{;}
 
     return
 }
