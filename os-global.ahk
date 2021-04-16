@@ -14,6 +14,13 @@ AudioOutputToggle := false
 EnumerateAudioOutputs()
 
 
+; Qt Creator OSD related
+; -------------------
+QtCreatorOSDText := ""
+
+StartQtCreatorOSD()
+
+
 ; General Section
 ; -------------------
 
@@ -307,4 +314,42 @@ EnumerateAudioOutputs()
     }
 
     ObjRelease(IMMDeviceCollection)
+}
+
+
+; Qt Creator OSD related
+; -------------------
+StartQtCreatorOSD()
+{
+    ; Can be any RGB color (it will be made transparent below)
+    CustomColor := "000000"
+    ; +ToolWindow avoids a taskbar button and an alt-tab menu item
+    Gui +LastFound +AlwaysOnTop -Caption +ToolWindow
+    Gui, Color, %CustomColor%
+    Gui, Font, s11 w400 q5, "Segoe UI"
+
+    Gui, Add, Text, vQtCreatorOSDText ceeeeee W140 R1
+
+    ; Make all pixels of this color transparent and make the text itself translucent (150)
+    WinSet, TransColor, %CustomColor% 150
+
+    ; Update every 200ms
+    SetTimer, UpdateOSD, 200
+    ; Make the first update immediate rather than waiting for the timer
+    UpdateOSD()
+    ; NoActivate avoids deactivating the currently active window
+    Gui, Show, x600 y-5 NoActivate
+    return
+}
+
+UpdateOSD()
+{
+    WinGetActiveTitle, Title
+
+    if (InStr(Title, " - TinyOrm - Qt Creator", true))
+        GuiControl,, QtCreatorOSDText, TinyORM
+    else if (InStr(Title, " - TinyOrmPlayground - Qt Creator", true))
+        GuiControl,, QtCreatorOSDText, TinyOrmPlayground
+    else
+        GuiControl,, QtCreatorOSDText,
 }
