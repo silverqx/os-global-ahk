@@ -346,9 +346,9 @@ UpdateOSD()
 {
     WinGetActiveTitle, Title
 
-    if (InStr(Title, " - TinyOrm - Qt Creator", true))
+    if (InStr(Title, "TinyOrm - Qt Creator", true))
         GuiControl,, QtCreatorOSDText, TinyORM
-    else if (InStr(Title, " - TinyOrmPlayground - Qt Creator", true))
+    else if (InStr(Title, "TinyOrmPlayground - Qt Creator", true))
         GuiControl,, QtCreatorOSDText, TinyOrmPlayground
     else
         GuiControl,, QtCreatorOSDText,
