@@ -8,6 +8,9 @@
 
 ; Toggle audio output related functions
 ; -------------------
+
+; Audio output devices
+OutputDevices := {}
 ; Toggle for switching two outputs
 AudioOutputToggle := false
 
@@ -16,9 +19,11 @@ EnumerateAudioOutputs()
 
 ; Qt Creator OSD related
 ; -------------------
+
+; OSD Text Control
 QtCreatorOSDText := ""
 
-StartQtCreatorOSD()
+CreateQtCreatorOSD()
 
 
 ; General Section
@@ -68,6 +73,8 @@ StartQtCreatorOSD()
 ; Toggle audio output Headphones / LG TV
 ^;::
 {
+    global AudioOutputToggle
+
     KeyWait, Control, T0.3
     KeyWait, `;, T0.3
 
@@ -77,12 +84,20 @@ StartQtCreatorOSD()
         AudioOutputToggle := !AudioOutputToggle
 
         if (AudioOutputToggle)
-            SetDefaultEndpoint(GetDeviceID(Devices, "LG TV (NVIDIA High Definition Audio)"))
+            SetDefaultEndpoint(GetDeviceID(OutputDevices, "LG TV (NVIDIA High Definition Audio)"))
         else
-            SetDefaultEndpoint(GetDeviceID(Devices, "Headphones (Xbox Controller)"))
+            SetDefaultEndpoint(GetDeviceID(OutputDevices, "Headphones (Xbox Controller)"))
     } else
         ; Send original key combination further that triggered this function
         Send ^{;}
+
+    return
+}
+
+; Trigger audio output devices enumeration
+^+;::
+{
+    EnumerateAudioOutputs()
 
     return
 }
@@ -253,6 +268,7 @@ F8::
 ; Toggle audio output related functions
 ; -------------------
 
+; Set the default audio device by device ID
 SetDefaultEndpoint(DeviceID)
 {
     IPolicyConfig := ComObjCreate("{870af99c-171d-4f9e-af0d-e63df40c2bc9}", "{F8679F50-850A-41CF-9C72-430F290290C8}")
@@ -262,6 +278,7 @@ SetDefaultEndpoint(DeviceID)
     ObjRelease(IPolicyConfig)
 }
 
+; Get an audio device ID by a device name
 GetDeviceID(Devices, Name)
 {
     for DeviceName, DeviceID in Devices
@@ -269,11 +286,14 @@ GetDeviceID(Devices, Name)
             return DeviceID
 }
 
+; Switch audio output TV / Headphones
+; http://www.daveamenta.com/2011-05/programmatically-or-command-line-change-the-default-sound-playback-device-in-windows-7/
 EnumerateAudioOutputs()
 {
-    ; Switch audio output TV / Headphones
-    ; http://www.daveamenta.com/2011-05/programmatically-or-command-line-change-the-default-sound-playback-device-in-windows-7/
-    global Devices := {}
+    global OutputDevices
+
+    OutputDevices := {}
+
     IMMDeviceEnumerator := ComObjCreate("{BCDE0395-E52F-467C-8E3D-C4579291692E}", "{A95664D2-9614-4F35-A746-DE8DB63617E6}")
 
     ; IMMDeviceEnumerator::EnumAudioEndpoints
@@ -310,7 +330,7 @@ EnumerateAudioOutputs()
         DllCall("Ole32.dll\CoTaskMemFree", "UPtr", NumGet(&PROPVARIANT + 8))    ; LPWSTR PROPVARIANT.pwszVal
         ObjRelease(IPropertyStore)
 
-        ObjRawSet(Devices, DeviceName, DeviceID)
+        ObjRawSet(OutputDevices, DeviceName, DeviceID)
     }
 
     ObjRelease(IMMDeviceCollection)
@@ -319,7 +339,9 @@ EnumerateAudioOutputs()
 
 ; Qt Creator OSD related
 ; -------------------
-StartQtCreatorOSD()
+
+; Create OSD window for the Qt Creator
+CreateQtCreatorOSD()
 {
     ; Can be any RGB color (it will be made transparent below)
     CustomColor := "000000"
@@ -342,6 +364,7 @@ StartQtCreatorOSD()
     return
 }
 
+; Update OSD on the base of currently active window
 UpdateOSD()
 {
     WinGetActiveTitle, Title
