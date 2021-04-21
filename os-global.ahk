@@ -350,7 +350,7 @@ CreateQtCreatorOSD()
     Gui, Color, %CustomColor%
     Gui, Font, s11 w400 q5, "Segoe UI"
 
-    Gui, Add, Text, vQtCreatorOSDText ceeeeee W140 R1
+    Gui, Add, Text, vQtCreatorOSDText ceeeeee W236 R1
 
     ; Make all pixels of this color transparent and make the text itself translucent (150)
     WinSet, TransColor, %CustomColor% 150
@@ -373,6 +373,8 @@ UpdateOSD()
         GuiControl,, QtCreatorOSDText, TinyORM
     else if (InStr(Title, "TinyOrmPlayground - Qt Creator", true))
         GuiControl,, QtCreatorOSDText, TinyOrmPlayground
+    else if (InStr(Title, "TinyOrmPlayground_RelationTypes", true))
+        GuiControl,, QtCreatorOSDText, TinyOrmPlayground_RelationTypes
     else
         GuiControl,, QtCreatorOSDText,
 }
