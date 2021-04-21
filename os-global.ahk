@@ -373,7 +373,7 @@ UpdateOSD()
         GuiControl,, QtCreatorOSDText, TinyORM
     else if (InStr(Title, "TinyOrmPlayground - Qt Creator", true))
         GuiControl,, QtCreatorOSDText, TinyOrmPlayground
-    else if (InStr(Title, "TinyOrmPlayground_RelationTypes", true))
+    else if (InStr(Title, "TinyOrmPlayground_RelationTypes - Qt Creator", true))
         GuiControl,, QtCreatorOSDText, TinyOrmPlayground_RelationTypes
     else
         GuiControl,, QtCreatorOSDText,
