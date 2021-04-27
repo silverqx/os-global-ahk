@@ -6,6 +6,12 @@
 #NoTrayIcon
 
 
+; Global
+--------
+
+SetTitleMatchMode, RegEx
+
+
 ; Toggle audio output related functions
 ; -------------------
 
@@ -49,7 +55,9 @@ CreateQtCreatorOSD()
 ; Open ComputerOff
 ~LButton & WheelUp::
 {
-    Run, C:\optx64\computeroff\ComputerOff.exe
+    Run, C:\optx64\computeroff\ComputerOff.exe,,, PID
+    WinWait, ahk_pid %PID%
+    WinActivate, ahk_pid %PID%
     return
 }
 
@@ -61,14 +69,9 @@ CreateQtCreatorOSD()
 }
 
 ; Center Window
-^+F8::
-{
-    ; Current Foreground window
-    WinActive("A")
-    WinMove,,, 8, 8, 1904, 1000
-
-    return
-}
+^+F7::CenterWindow()
+; Max. Tile Window
+^+F8::FullTileWindow()
 
 ; Toggle audio output Headphones / LG TV
 ^;::
@@ -98,6 +101,46 @@ CreateQtCreatorOSD()
 ^+;::
 {
     EnumerateAudioOutputs()
+
+    return
+}
+
+
+; Leader key ctrl-g shortcuts
+; ---------------------------
+
+^g::
+{
+    Input, userInput, T.8 L1 C, {enter}.{esc}{tab}, a,b,d,f,g,n,s,t,w,u,y
+
+    if (ErrorLevel = "Max" || ErrorLevel = "Timeout" || ErrorLevel = "NewInput")
+        return
+    ; Terminated by end key
+    if InStr(ErrorLevel, "EndKey:")
+        return
+
+    if (userInput = "a")
+        Sa()
+    else if (userInput = "b")
+        Sb()
+    else if (userInput = "d")
+        Sd()
+    else if (userInput = "f")
+        Sf()
+    else if (userInput = "g")
+        Sg()
+    else if (userInput = "n")
+        Sn()
+    else if (userInput = "s")
+        Ss()
+    else if (userInput = "t")
+        St()
+    else if (userInput = "u")
+        Su()
+    else if (userInput = "w")
+        Sw()
+    else if (userInput = "y")
+        Sy()
 
     return
 }
@@ -377,4 +420,131 @@ UpdateOSD()
         GuiControl,, QtCreatorOSDText, TinyOrmPlayground_RelationTypes
     else
         GuiControl,, QtCreatorOSDText,
+}
+
+
+; Window related
+; -------------------
+
+FullTileWindow()
+{
+    ; Current Foreground window
+    WinActive("A")
+    WinMove,,, 8, 8, 1904, 1000
+}
+
+CenterWindow()
+{
+    WinExist("A")
+    WinGetPos, initX, initY, width, height
+
+    ; Do nothing if the geometry is the same as in the FullTileWindow()
+    if (width == 1904 && height == 1000 && initX == 8 && initY == 8)
+        return
+
+    x := (A_ScreenWidth / 2) - (width / 2)
+    ; + 78 to take into account also the taskbar
+    y := (A_ScreenHeight / 2) - ((height + 78) / 2)
+
+    ; Prevent to overlay the taskbar
+    if (height > 1000)
+        y := 0
+    ; Move a little to the top, better for an eye
+    else if (y > 30)
+        y -= 14
+
+    WinMove, x < 0 ? 0 : x, y < 0 ? 0 : y
+}
+
+
+; Leader key ctrl-g related
+; -------------------------
+
+; access
+Sa()
+{
+    if WinExist("__prístupy - Google Sheets")
+        WinActivate
+    else
+        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\access.lnk
+}
+; bash_or_cmd_useful_commands
+Sb()
+{
+    if WinExist("bash_or_cmd_useful_commands")
+        WinActivate
+    else
+        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\bash_or_cmd_useful_commands.lnk
+}
+; Dolby Access
+Sd()
+{
+    if WinExist("Dolby Access")
+        WinActivate
+    else
+        Run, shell:AppsFolder\DolbyLaboratories.DolbyAccess_rz1tebttyb220!App
+}
+; Facebook
+Sf()
+{
+    if WinExist("Facebook")
+        WinActivate
+    else
+        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\Facebook.lnk
+}
+; Grammly
+Sg()
+{
+    if WinExist("Free Grammar Checker | Grammly")
+        WinActivate
+    else
+        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\Grammarly Checker.lnk
+}
+; Notepad++
+Sn()
+{
+    if WinExist(" - Notepad++")
+        WinActivate
+    else
+        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Notepad++.lnk
+}
+; SmartGit
+Ss()
+{
+    if WinExist("- SmartGit.*\(for non-commercial use only\)")
+        WinActivate
+    else
+        Run, c:\ProgramData\Microsoft\Windows\Start Menu\Programs\SmartGit\SmartGit.lnk
+}
+; Microsoft To Do
+St()
+{
+    if WinExist("Microsoft To Do")
+        WinActivate
+    else
+        Run, shell:AppsFolder\Microsoft.Todos_8wekyb3d8bbwe!App
+}
+; Control Panel - Sound Playback devices
+Su()
+{
+    if WinExist("^Sound$")
+        WinActivate
+    else {
+        Run, C:\Windows\System32\rundll32.exe shell32.dll`,Control_RunDLL mmsys.cpl`,`,playback,,, PID
+        WinWait, ahk_pid %PID%
+        CenterWindow()
+    }
+}
+; WinMerge
+Sw()
+{
+    if WinExist("WinMerge")
+        WinActivate
+    else
+        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\WinMerge\WinMerge.lnk
+}
+; Youtube
+Sy()
+{
+    Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\YouTube.lnk
 }
