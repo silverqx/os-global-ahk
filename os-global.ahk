@@ -111,7 +111,7 @@ CreateQtCreatorOSD()
 
 ^g::
 {
-    Input, userInput, T.8 L1 C, {enter}.{esc}{tab}, a,b,d,f,g,n,s,t,w,u,y
+    Input, userInput, T.8 L1 C, {enter}.{esc}{tab}, a,b,d,f,g,l,n,s,t,w,u,y
 
     if (ErrorLevel = "Max" || ErrorLevel = "Timeout" || ErrorLevel = "NewInput")
         return
@@ -129,6 +129,8 @@ CreateQtCreatorOSD()
         Sf()
     else if (userInput = "g")
         Sg()
+    else if (userInput = "l")
+        Sl()
     else if (userInput = "n")
         Sn()
     else if (userInput = "s")
@@ -499,6 +501,14 @@ Sg()
         WinActivate
     else
         Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\Grammarly Checker.lnk
+}
+; SQLiteStudio
+Sl()
+{
+    if WinExist("SQLiteStudio (.*)")
+        WinActivate
+    else
+        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Scoop Apps\SQLiteStudio.lnk
 }
 ; Notepad++
 Sn()
