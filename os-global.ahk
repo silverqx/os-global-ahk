@@ -542,6 +542,7 @@ Su()
     else {
         Run, C:\Windows\System32\rundll32.exe shell32.dll`,Control_RunDLL mmsys.cpl`,`,playback,,, PID
         WinWait, ahk_pid %PID%
+        WinActivate, ahk_pid %PID%
         CenterWindow()
     }
 }
