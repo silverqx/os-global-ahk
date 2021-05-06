@@ -105,6 +105,14 @@ CreateQtCreatorOSD()
     return
 }
 
+; Re-initialize OSD
+^!+::
+{
+    CreateQtCreatorOSD()
+
+    return
+}
+
 
 ; Leader key ctrl-g shortcuts
 ; ---------------------------
