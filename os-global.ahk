@@ -106,7 +106,7 @@ CreateQtCreatorOSD()
 }
 
 ; Re-initialize OSD
-^!+::
+^!F1::
 {
     CreateQtCreatorOSD()
 
