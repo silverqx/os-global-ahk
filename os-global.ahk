@@ -119,15 +119,22 @@ CreateQtCreatorOSD()
 
 ^g::
 {
-    Input, userInput, T.8 L1 C, {enter}.{esc}{tab}, a,b,d,f,g,l,m,n,s,t,w,u,y
+    Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, a,b,d,f,g,l,m,n,s,t,w,u,y
 
-    if (ErrorLevel = "Max" || ErrorLevel = "Timeout" || ErrorLevel = "NewInput")
+    if (ErrorLevel = "Timeout" || ErrorLevel = "NewInput")
         return
     ; Terminated by end key
     if InStr(ErrorLevel, "EndKey:")
         return
 
-    if (userInput = "a")
+    ; With the ctrl modifier, has to be first
+    ; Look appropriate number mappings at https://en.wikipedia.org/wiki/ASCII#Control_code_chart
+    if (userInput == Chr(19)) {
+        Scs()
+    }
+
+    ; Without modifiers
+    else if (userInput = "a")
         Sa()
     else if (userInput = "b")
         Sb()
@@ -472,6 +479,17 @@ CenterWindow()
 ; Leader key ctrl-g related
 ; -------------------------
 
+; With the ctrl modifier
+; SumatraPDF
+Scs()
+{
+    if WinExist("SumatraPDF")
+        WinActivate
+    else
+        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\SumatraPDF.lnk
+}
+
+; Without any modifier
 ; access
 Sa()
 {
