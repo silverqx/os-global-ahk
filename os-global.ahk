@@ -121,7 +121,13 @@ CreateQtCreatorOSD()
 {
     Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, a,b,d,f,g,l,m,n,s,t,w,u,y
 
-    if (ErrorLevel = "Timeout" || ErrorLevel = "NewInput")
+    ; Send original shortcut on timeout
+    if (ErrorLevel = "Timeout") {
+        Send, ^g
+        return
+    }
+
+    if (ErrorLevel = "NewInput")
         return
     ; Terminated by end key
     if InStr(ErrorLevel, "EndKey:")
