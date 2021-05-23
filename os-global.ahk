@@ -105,13 +105,8 @@ CreateQtCreatorOSD()
     return
 }
 
-; Re-initialize OSD
-^!F1::
-{
-    CreateQtCreatorOSD()
-
-    return
-}
+; Restart AhkOsGlobal scheduled task
+^!Backspace::Run, powershell.exe -WindowStyle Hidden -NoExit E:\autohotkey\os-global\recompile.ps1,, Hide
 
 
 ; Leader key ctrl-g shortcuts
@@ -119,7 +114,7 @@ CreateQtCreatorOSD()
 
 ^g::
 {
-    Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, a,b,d,f,g,l,m,n,s,t,w,u,y
+    Input, userInput, T.5 L1 M, {enter}.{esc}{tab}, a,b,d,f,g,l,m,n,s,t,w,u,y
 
     ; Send original shortcut on timeout
     if (ErrorLevel = "Timeout") {
@@ -436,6 +431,10 @@ CreateQtCreatorOSD()
 UpdateOSD()
 {
     WinGetActiveTitle, Title
+
+    ; Don't hide OSD if is displayed task switcher by alt+tab
+    if WinActive("ahk_class MultitaskingViewFrame")
+        return
 
     if (InStr(Title, "TinyOrm - Qt Creator", true))
         GuiControl,, QtCreatorOSDText, TinyORM
