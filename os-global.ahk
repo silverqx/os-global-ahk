@@ -11,6 +11,8 @@
 
 SetTitleMatchMode, RegEx
 
+SoundBeep, 8000, 70
+
 
 ; Toggle audio output related functions
 ; -------------------
@@ -106,7 +108,7 @@ CreateQtCreatorOSD()
 }
 
 ; Restart AhkOsGlobal scheduled task
-^!Backspace::Run, powershell.exe -WindowStyle Hidden -NoExit E:\autohotkey\os-global\recompile.ps1,, Hide
+^!Backspace::Run, powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\recompile.ps1,, Hide
 
 
 ; Leader key ctrl-g shortcuts
@@ -590,7 +592,7 @@ Su()
 ; WinMerge
 Sw()
 {
-    if WinExist("WinMerge")
+    if WinExist("^WinMerge")
         WinActivate
     else
         Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\WinMerge\WinMerge.lnk
