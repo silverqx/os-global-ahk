@@ -54,6 +54,22 @@ CreateQtCreatorOSD()
     return
 }
 
+; Hibernate
++Launch_App2::
+{
+    Sleep, 2000
+    DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 0)
+    return
+}
+
+; Monitor on/off
+!Launch_App2::
+{
+    Sleep, 500
+    Run, C:\Program Files (x86)\TC UP\MEDIA\Programs\Poweroff\poweroffcz.exe monitor_off,, Hide
+    return
+}
+
 ; Open ComputerOff
 ~LButton & WheelUp::
 {
@@ -66,7 +82,7 @@ CreateQtCreatorOSD()
 ; Open Google Chrome
 <#n::
 {
-    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe, , Maximize
+    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe,, Maximize
     return
 }
 
@@ -435,6 +451,12 @@ UpdateOSD()
     WinGetActiveTitle, Title
 
     ; Don't hide OSD if is displayed task switcher by alt+tab
+    if WinActive("ahk_class MultitaskingViewFrame")
+        return
+
+    ; Take also some delay into account
+    Sleep, 130
+
     if WinActive("ahk_class MultitaskingViewFrame")
         return
 
