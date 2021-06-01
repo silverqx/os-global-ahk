@@ -132,7 +132,7 @@ CreateQtCreatorOSD()
 
 ^g::
 {
-    Input, userInput, T.5 L1 M, {enter}.{esc}{tab}, a,b,d,f,g,l,m,n,s,t,w,u,y
+    Input, userInput, T.5 L1 M, {enter}.{esc}{tab}, a,b,d,f,g,l,m,n,p,s,t,w,u,y
 
     ; Send original shortcut on timeout
     if (ErrorLevel = "Timeout") {
@@ -169,6 +169,8 @@ CreateQtCreatorOSD()
         Sm()
     else if (userInput = "n")
         Sn()
+    else if (userInput = "p")
+        Sp()
     else if (userInput = "s")
         Ss()
     else if (userInput = "t")
@@ -582,6 +584,14 @@ Sn()
         WinActivate
     else
         Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Notepad++.lnk
+}
+; pgAdmin
+Sp()
+{
+    if WinExist("^pgAdmin 4$")
+        WinActivate
+    else
+        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PostgreSQL 13\pgAdmin 4.lnk
 }
 ; SmartGit
 Ss()
