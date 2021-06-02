@@ -91,12 +91,6 @@ CreateQtCreatorOSD()
 ; Max. Tile Window
 ^+F8::FullTileWindow()
 
-^+F10::
-{
-    Send, csfd{Tab}
-    return
-}
-
 ; Toggle audio output Headphones / LG TV
 ^;::
 {
