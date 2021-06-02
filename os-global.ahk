@@ -91,6 +91,12 @@ CreateQtCreatorOSD()
 ; Max. Tile Window
 ^+F8::FullTileWindow()
 
+^+F10::
+{
+    Send, csfd{Tab}
+    return
+}
+
 ; Toggle audio output Headphones / LG TV
 ^;::
 {
@@ -132,7 +138,7 @@ CreateQtCreatorOSD()
 
 ^g::
 {
-    Input, userInput, T.5 L1 M, {enter}.{esc}{tab}, a,b,d,f,g,l,m,n,p,s,t,w,u,y
+    Input, userInput, T.5 L1 M, {enter}.{esc}{tab}, a,b,č,d,f,g,l,m,n,p,s,t,w,u,y
 
     ; Send original shortcut on timeout
     if (ErrorLevel = "Timeout") {
@@ -157,6 +163,8 @@ CreateQtCreatorOSD()
         Sa()
     else if (userInput = "b")
         Sb()
+    else if (userInput = "č")
+        Sč()
     else if (userInput = "d")
         Sd()
     else if (userInput = "f")
@@ -536,6 +544,13 @@ Sb()
         WinActivate
     else
         Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\bash_or_cmd_useful_commands.lnk
+}
+; čsfd search in chrome
+Sč()
+{
+    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe,, Maximize
+    Sleep, 250
+    Send, csfd{Tab}
 }
 ; Dolby Access
 Sd()
