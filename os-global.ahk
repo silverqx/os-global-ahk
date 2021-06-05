@@ -148,9 +148,10 @@ CreateQtCreatorOSD()
 
     ; With the ctrl modifier, has to be first
     ; Look appropriate number mappings at https://en.wikipedia.org/wiki/ASCII#Control_code_chart
-    if (userInput == Chr(19)) {
+    if (userInput == Chr(19))
         Scs()
-    }
+    else if (userInput == Chr(20))
+        Sct()
 
     ; Without modifiers
     else if (userInput = "a")
@@ -520,6 +521,14 @@ Scs()
         WinActivate
     else
         Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\SumatraPDF.lnk
+}
+; Sk-CzTorrent
+Sct()
+{
+    if WinExist("^Sk-CzTorrent")
+        WinActivate
+    else
+        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\SkTorrent.lnk
 }
 
 ; Without any modifier
