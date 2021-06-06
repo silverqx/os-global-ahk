@@ -453,8 +453,6 @@ CreateQtCreatorOSD()
 ; Update OSD on the base of currently active window
 UpdateOSD()
 {
-    WinGetActiveTitle, Title
-
     ; Don't hide OSD if is displayed task switcher by alt+tab
     if WinActive("ahk_class MultitaskingViewFrame")
         return
@@ -465,14 +463,14 @@ UpdateOSD()
     if WinActive("ahk_class MultitaskingViewFrame")
         return
 
-    if (InStr(Title, "TinyOrm - Qt Creator", true))
-        GuiControl,, QtCreatorOSDText, TinyORM
-    else if (InStr(Title, "TinyOrmPlayground - Qt Creator", true))
-        GuiControl,, QtCreatorOSDText, TinyOrmPlayground
-    else if (InStr(Title, "TinyOrmPlayground_RelationTypes - Qt Creator", true))
-        GuiControl,, QtCreatorOSDText, TinyOrmPlayground_RelationTypes
-    else
+    WinGetActiveTitle, Title
+    result := RegExMatch(Title, "O)(?:.* [@-] )?(.*[^\)])(?:\)? - Qt Creator)$", Match)
+
+    ; If a title was not found then show nothing
+    if (result == 0 || Match.Count() != 1)
         GuiControl,, QtCreatorOSDText,
+    else
+        GuiControl,, QtCreatorOSDText, % Match[1]
 }
 
 
