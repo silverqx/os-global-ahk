@@ -152,6 +152,8 @@ CreateQtCreatorOSD()
         Scs()
     else if (userInput == Chr(20))
         Sct()
+    else if (userInput == Chr(22))
+        Scv()
 
     ; Without modifiers
     else if (userInput = "a")
@@ -203,6 +205,22 @@ CreateQtCreatorOSD()
     Send, {AppsKey}{Down 7}{Right}{Up 1}{Enter}
     ; Assign seed tag
     Send, {AppsKey}{Down 8}{Right}{Up 2}{Enter}
+
+    return
+}
+
+; When more torrents selected
+#IfWinActive ahk_exe qbittorrent.exe
+^+!BackSpace::
+{
+    ; Download first and last pieces first
+    Send, {AppsKey}{Up 6 }{Enter}
+    ; Download in sequential order
+    Send, {AppsKey}{Up 7}{Enter}
+    ; Assign to video category
+    Send, {AppsKey}{Down 6}{Right}{Up 1}{Enter}
+    ; Assign seed tag
+    Send, {AppsKey}{Down 7}{Right}{Up 2}{Enter}
 
     return
 }
@@ -527,6 +545,33 @@ Sct()
         WinActivate
     else
         Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\SkTorrent.lnk
+}
+; Gentoo vmware
+Scv()
+{
+    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, d,g,p,r,s
+
+    if (ErrorLevel = "NewInput")
+        return
+    ; Terminated by end key
+    if InStr(ErrorLevel, "EndKey:")
+        return
+
+    ; Without modifiers
+    if (userInput = "d")
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdg.ps1,, Hide
+    else if (userInput = "g") {
+        if WinExist("^gentoo - VMware KVM$")
+            WinActivate
+    }
+    else if (userInput = "p")
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpg.ps1,, Hide
+    else if (userInput = "r")
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrg.ps1,, Hide
+    else if (userInput = "s")
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsg.ps1,, Hide
+
+    return
 }
 
 ; Without any modifier
