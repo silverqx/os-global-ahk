@@ -13,6 +13,8 @@ SetTitleMatchMode, RegEx
 
 SoundBeep, 8000, 70
 
+CoordMode, ToolTip, Screen
+
 
 ; Toggle audio output related functions
 ; -------------------
@@ -549,7 +551,7 @@ Sct()
 ; Gentoo vmware
 Scv()
 {
-    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, d,g,p,r,s
+    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, c,d,g,p,r,s
 
     if (ErrorLevel = "NewInput")
         return
@@ -558,17 +560,21 @@ Scv()
         return
 
     ; Without modifiers
-    if (userInput = "d")
+    if (userInput = "c")
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmg.ps1,, Hide
+    else if (userInput = "d") {
+        MsgBox,, Gentoo, Detaching Gentoo KVM, 1
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdg.ps1,, Hide
-    else if (userInput = "g") {
+    } else if (userInput = "g") {
         if WinExist("^gentoo - VMware KVM$")
             WinActivate
     }
     else if (userInput = "p")
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpg.ps1,, Hide
-    else if (userInput = "r")
+    else if (userInput = "r") {
+        MsgBox,, Gentoo, Starting Gentoo KVM, 1
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrg.ps1,, Hide
-    else if (userInput = "s")
+    } else if (userInput = "s")
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsg.ps1,, Hide
 
     return
