@@ -543,7 +543,7 @@ Scs()
 ; Sk-CzTorrent
 Sct()
 {
-    if WinExist("^Sk-CzTorrent")
+    if WinExist("(?:^Sk-CzTorrent \||\| SkTorrent\.eu)")
         WinActivate
     else
         Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\SkTorrent.lnk
