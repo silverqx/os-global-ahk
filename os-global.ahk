@@ -134,7 +134,7 @@ CreateQtCreatorOSD()
 
 ^g::
 {
-    Input, userInput, T.5 L1 M, {enter}.{esc}{tab}, a,b,č,d,f,g,l,m,n,p,s,t,w,u,y
+    Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, a,b,c,č,d,f,g,l,m,n,p,s,t,w,u,y
 
     ; Send original shortcut on timeout
     if (ErrorLevel = "Timeout") {
@@ -162,6 +162,8 @@ CreateQtCreatorOSD()
         Sa()
     else if (userInput = "b")
         Sb()
+    else if (userInput = "c")
+        Sc()
     else if (userInput = "č")
         Sč()
     else if (userInput = "d")
@@ -597,7 +599,14 @@ Sb()
     else
         Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\bash_or_cmd_useful_commands.lnk
 }
-; čsfd search in chrome
+; open new čsfd.cz page in chrome
+Sc()
+{
+    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe,, Maximize
+    Sleep, 250
+    Send, csfd.cz{Enter}
+}
+; čsfd.cz search in chrome
 Sč()
 {
     Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe,, Maximize
