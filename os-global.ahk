@@ -571,13 +571,17 @@ Scv()
         if WinExist("^gentoo - VMware KVM$")
             WinActivate
     }
-    else if (userInput = "p")
+    else if (userInput = "p") {
+        MsgBox,, Gentoo, Preferences for Gentoo KVM, 1
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpg.ps1,, Hide
+    }
     else if (userInput = "r") {
         MsgBox,, Gentoo, Starting Gentoo KVM, 1
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrg.ps1,, Hide
-    } else if (userInput = "s")
+    } else if (userInput = "s") {
+        MsgBox,, Gentoo, Suspending Gentoo KVM, 1
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsg.ps1,, Hide
+    }
 
     return
 }
