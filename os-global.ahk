@@ -75,6 +75,12 @@ CreateQtCreatorOSD()
 ; Open ComputerOff
 ~LButton & WheelUp::
 {
+    ; If Options dialog is opened then activete it, instead of activate the Main window
+    if WinExist("^Options$ ahk_class TFormOptionsDialog") || WinExist("^ComputerOff$") {
+        WinActivate
+        return
+    }
+
     Run, C:\optx64\computeroff\ComputerOff.exe,,, PID
     WinWait, ahk_pid %PID%
     WinActivate, ahk_pid %PID%
