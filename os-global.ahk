@@ -156,7 +156,9 @@ CreateQtCreatorOSD()
 
     ; With the ctrl modifier, has to be first
     ; Look appropriate number mappings at https://en.wikipedia.org/wiki/ASCII#Control_code_chart
-    if (userInput == Chr(19))
+    if (userInput == Chr(2))
+        Scb()
+    else if (userInput == Chr(19))
         Scs()
     else if (userInput == Chr(20))
         Sct()
@@ -540,6 +542,41 @@ CenterWindow()
 ; -------------------------
 
 ; With the ctrl modifier
+; Manjaro vmware
+Scb()
+{
+    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, c,d,g,p,r,s
+
+    if (ErrorLevel = "NewInput")
+        return
+    ; Terminated by end key
+    if InStr(ErrorLevel, "EndKey:")
+        return
+
+    ; Without modifiers
+    if (userInput = "c")
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmb.ps1,, Hide
+    else if (userInput = "d") {
+        MsgBox,, Manjaro, Detaching Manjaro KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdb.ps1,, Hide
+    } else if (userInput = "g") {
+        if WinExist("^Manjaro - VMware KVM$")
+            WinActivate
+    }
+    else if (userInput = "p") {
+        MsgBox,, Manjaro, Preferences for Manjaro KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpb.ps1,, Hide
+    }
+    else if (userInput = "r") {
+        MsgBox,, Manjaro, Starting Manjaro KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrb.ps1,, Hide
+    } else if (userInput = "s") {
+        MsgBox,, Manjaro, Suspending Manjaro KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsb.ps1,, Hide
+    }
+
+    return
+}
 ; SumatraPDF
 Scs()
 {
