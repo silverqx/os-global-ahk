@@ -160,6 +160,8 @@ CreateQtCreatorOSD()
     ; Look appropriate number mappings at https://en.wikipedia.org/wiki/ASCII#Control_code_chart
     if (userInput == Chr(2))
         Scb()
+    else if (userInput == Chr(4))
+        Scd()
     else if (userInput == Chr(19))
         Scs()
     else if (userInput == Chr(20))
@@ -544,6 +546,28 @@ CenterWindow()
 ; -------------------------
 
 ; With the ctrl modifier
+; Ubuntu Docker Server vmware
+Scd()
+{
+    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, r,s
+
+    if (ErrorLevel = "NewInput")
+        return
+    ; Terminated by end key
+    if InStr(ErrorLevel, "EndKey:")
+        return
+
+    ; Without modifiers
+    if (userInput = "r") {
+        MsgBox,, Ubuntu Docker Server, Starting Ubuntu Docker KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrd.ps1,, Hide
+    } else if (userInput = "s") {
+        MsgBox,, Ubuntu Docker Server, Suspending Ubuntu Docker KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsd.ps1,, Hide
+    }
+
+    return
+}
 ; Manjaro vmware
 Scb()
 {
