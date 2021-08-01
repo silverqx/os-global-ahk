@@ -54,7 +54,7 @@ CreateQtCreatorOSD()
     return
 }
 
-; Hibernate
+; Hibernate (shift+calc)
 +Launch_App2::
 {
     Sleep, 2000
@@ -62,7 +62,7 @@ CreateQtCreatorOSD()
     return
 }
 
-; Monitor on/off
+; Monitor on/off (alt+calc)
 !Launch_App2::
 {
     Sleep, 500
