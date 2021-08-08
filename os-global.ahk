@@ -230,6 +230,8 @@ CreateQtCreatorOSD()
     Send, {AppsKey}{Down 7}{Right}{Up 1}{Enter}
     ; Assign seed tag
     Send, {AppsKey}{Down 8}{Right}{Up 2}{Enter}
+    ; Close context menu
+    Send, {Esc}{Esc}
 
     return
 }
@@ -246,6 +248,8 @@ CreateQtCreatorOSD()
     Send, {AppsKey}{Down 6}{Right}{Up 1}{Enter}
     ; Assign seed tag
     Send, {AppsKey}{Down 7}{Right}{Up 2}{Enter}
+    ; Close context menu
+    Send, {Esc}{Esc}
 
     return
 }
