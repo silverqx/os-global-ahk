@@ -92,6 +92,13 @@ CreateQtCreatorOSD()
     return
 }
 
+; Open Google Chrome - Incognito window
++<#n::
+{
+    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --incognito,, Maximize
+    return
+}
+
 ; Center Window
 ^+F7::CenterWindow()
 ; Max. Tile Window
@@ -168,6 +175,8 @@ CreateQtCreatorOSD()
         Sct()
     else if (userInput == Chr(22))
         Scv()
+    else if (userInput == Chr(23))
+        Scw()
 
     ; Without modifiers
     else if (userInput = "a")
@@ -650,6 +659,33 @@ Scv()
     } else if (userInput = "s") {
         MsgBox,, Gentoo, Suspending Gentoo KVM, 1
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsg.ps1,, Hide
+    }
+
+    return
+}
+; Windows vmware
+Scw()
+{
+    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, c,d,r,s
+
+    if (ErrorLevel = "NewInput")
+        return
+    ; Terminated by end key
+    if InStr(ErrorLevel, "EndKey:")
+        return
+
+    ; Without modifiers
+    if (userInput = "c")
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmw.ps1,, Hide
+    else if (userInput = "d") {
+        MsgBox,, Windows, Detaching Windows KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdw.ps1,, Hide
+    } else if (userInput = "r") {
+        MsgBox,, Windows, Starting Windows KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrw.ps1,, Hide
+    } else if (userInput = "s") {
+        MsgBox,, Windows, Suspending Windows KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsw.ps1,, Hide
     }
 
     return
