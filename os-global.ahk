@@ -149,7 +149,7 @@ CreateQtCreatorOSD()
 
 ^g::
 {
-    Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, a,b,c,č,d,f,g,l,m,n,p,s,t,w,u,y
+    Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, a,b,c,č,d,e,f,g,k,l,m,n,p,s,t,w,u,y
 
     ; Send original shortcut on timeout
     if (ErrorLevel = "Timeout") {
@@ -189,10 +189,14 @@ CreateQtCreatorOSD()
         Sč()
     else if (userInput = "d")
         Sd()
+    else if (userInput = "e")
+        Se()
     else if (userInput = "f")
         Sf()
     else if (userInput = "g")
         Sg()
+    else if (userInput = "k")
+        Sk()
     else if (userInput = "l")
         Sl()
     else if (userInput = "m")
@@ -734,6 +738,14 @@ Sd()
     else
         Run, shell:AppsFolder\DolbyLaboratories.DolbyAccess_rz1tebttyb220!App
 }
+; Environment Variables
+Se()
+{
+    if WinExist("^Environment Variables$")
+        WinActivate
+    else
+        Run, rundll32.exe sysdm.cpl`,EditEnvironmentVariables
+}
 ; Facebook
 Sf()
 {
@@ -749,6 +761,11 @@ Sg()
         WinActivate
     else
         Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\Grammarly Checker.lnk
+}
+; Skylink
+Sk()
+{
+    Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\Skylink.lnk
 }
 ; SQLiteStudio
 Sl()
