@@ -169,6 +169,8 @@ CreateQtCreatorOSD()
         Scb()
     else if (userInput == Chr(4))
         Scd()
+    else if (userInput == Chr(13))
+        Scm()
     else if (userInput == Chr(19))
         Scs()
     else if (userInput == Chr(20))
@@ -563,28 +565,6 @@ CenterWindow()
 ; -------------------------
 
 ; With the ctrl modifier
-; Ubuntu Docker Server vmware
-Scd()
-{
-    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, r,s
-
-    if (ErrorLevel = "NewInput")
-        return
-    ; Terminated by end key
-    if InStr(ErrorLevel, "EndKey:")
-        return
-
-    ; Without modifiers
-    if (userInput = "r") {
-        MsgBox,, Ubuntu Docker Server, Starting Ubuntu Docker KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrd.ps1,, Hide
-    } else if (userInput = "s") {
-        MsgBox,, Ubuntu Docker Server, Suspending Ubuntu Docker KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsd.ps1,, Hide
-    }
-
-    return
-}
 ; Manjaro vmware
 Scb()
 {
@@ -619,6 +599,33 @@ Scb()
     }
 
     return
+}
+; Ubuntu Docker Server vmware
+Scd()
+{
+    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, r,s
+
+    if (ErrorLevel = "NewInput")
+        return
+    ; Terminated by end key
+    if InStr(ErrorLevel, "EndKey:")
+        return
+
+    ; Without modifiers
+    if (userInput = "r") {
+        MsgBox,, Ubuntu Docker Server, Starting Ubuntu Docker KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrd.ps1,, Hide
+    } else if (userInput = "s") {
+        MsgBox,, Ubuntu Docker Server, Suspending Ubuntu Docker KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsd.ps1,, Hide
+    }
+
+    return
+}
+; TamperMonkey
+Scm()
+{
+    Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\TamperMonkey.lnk
 }
 ; SumatraPDF
 Scs()
@@ -833,7 +840,7 @@ Sw()
     if WinExist("^WinMerge")
         WinActivate
     else
-        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\WinMerge\WinMerge.lnk
+        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\WinMerge\WinMerge.lnk
 }
 ; Youtube
 Sy()
