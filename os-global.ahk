@@ -646,7 +646,7 @@ Sct()
 ; Gentoo vmware
 Scv()
 {
-    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, c,d,g,p,r,s
+    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, c,d,g,h,p,r,s
 
     if (ErrorLevel = "NewInput")
         return
@@ -663,6 +663,12 @@ Scv()
     } else if (userInput = "g") {
         if WinExist("^gentoo - VMware KVM$")
             WinActivate
+    }
+    else if (userInput = "h") {
+        if WinExist("^Gentoo KVM$")
+            WinActivate
+        else
+            Run, wt --title "Gentoo KVM" pwsh -NoLogo -nop -c ssh silverqx@merydeye-gentoo -t htop
     }
     else if (userInput = "p") {
         MsgBox,, Gentoo, Preferences for Gentoo KVM, 1
