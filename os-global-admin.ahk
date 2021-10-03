@@ -31,6 +31,33 @@ CoordMode, ToolTip, Screen
 }
 
 
+; Leader key ctrl-g shortcuts
+; ---------------------------
+
+^g::
+{
+    Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, e
+
+    ; Send original shortcut on timeout
+    if (ErrorLevel = "Timeout") {
+        Send, ^g
+        return
+    }
+
+    if (ErrorLevel = "NewInput")
+        return
+    ; Terminated by end key
+    if InStr(ErrorLevel, "EndKey:")
+        return
+
+    ; Without modifiers
+    if (userInput = "e")
+        Se()
+
+    return
+}
+
+
 ; Window related
 ; -------------------
 
@@ -62,4 +89,18 @@ CenterWindow()
         y -= 14
 
     WinMove, x < 0 ? 0 : x, y < 0 ? 0 : y
+}
+
+
+; Leader key ctrl-g related
+; -------------------------
+
+; Without any modifier
+; Environment Variables
+Se()
+{
+    if WinExist("^Environment Variables$")
+        WinActivate
+    else
+        Run, rundll32.exe sysdm.cpl`,EditEnvironmentVariables
 }
