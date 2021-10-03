@@ -1,9 +1,10 @@
 ﻿; Silver Zachara <silver.zachara@gmail.com> 2018
 
-#Persistent
-#UseHook On
-#SingleInstance Force
+#NoEnv
 #NoTrayIcon
+#Persistent
+#SingleInstance Force
+#UseHook On
 
 
 ; Global
@@ -137,7 +138,7 @@ CreateQtCreatorOSD()
 }
 
 ; Restart AhkOsGlobal scheduled task
-^!Backspace::
+^+´:
 {
     SoundBeep, 8000, 70
     Run, powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\recompile.ps1,, Hide
@@ -149,7 +150,7 @@ CreateQtCreatorOSD()
 
 ^g::
 {
-    Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, a,b,c,č,d,e,f,g,k,l,m,n,p,s,t,w,u,y
+    Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, a,b,c,č,d,e,f,g,k,l,m,n,p,r,s,t,w,u,y
 
     ; Send original shortcut on timeout
     if (ErrorLevel = "Timeout") {
@@ -207,6 +208,8 @@ CreateQtCreatorOSD()
         Sn()
     else if (userInput = "p")
         Sp()
+    else if (userInput = "r")
+        Sr()
     else if (userInput = "s")
         Ss()
     else if (userInput = "t")
@@ -811,6 +814,14 @@ Sp()
         WinActivate
     else
         Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PostgreSQL 13\pgAdmin 4.lnk
+}
+; Registry Editor
+Sr()
+{
+    if WinExist("i)^Registry Editor$")
+        WinActivate
+    else
+        Run, %A_WinDir%\regedit.exe
 }
 ; SmartGit
 Ss()
