@@ -31,16 +31,16 @@ CoordMode, ToolTip, Screen
 }
 
 
-; Leader key ctrl-g shortcuts
+; Leader key ctrl-j shortcuts
 ; ---------------------------
 
-^g::
+^j::
 {
     Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, e
 
     ; Send original shortcut on timeout
     if (ErrorLevel = "Timeout") {
-        Send, ^g
+        Send, ^j
         return
     }
 
