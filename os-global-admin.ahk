@@ -28,6 +28,7 @@ CoordMode, ToolTip, Screen
 {
     SoundBeep, 8000, 70
     Run, powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\recompile-admin.ps1,, Hide
+    return
 }
 
 
