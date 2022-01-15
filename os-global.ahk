@@ -230,16 +230,21 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 ^BackSpace::
 {
-    ; Download first and last pieces first
-    Send, {AppsKey}{Down 13}{Enter}
-    ; Download in sequential order
-    Send, {AppsKey}{Down 12}{Enter}
-    ; Assign to video category
-    Send, {AppsKey}{Down 7}{Right}{Up 1}{Enter}
     ; Assign seed tag
-    Send, {AppsKey}{Down 8}{Right}{Up 2}{Enter}
-    ; Close context menu
-    Send, {Esc}{Esc}
+    Send, {AppsKey}{Down 6}{Right}{Up 2}{Enter}
+    ; Close Tags sub-menu
+    Send, {Esc}
+    ; Open Torrent options modal
+    Send, {Down 1}{Enter}
+    Sleep, 20
+    ; Assign to video category
+    Send, {Tab}videos_H
+    ; Download first and last pieces first
+    Send, +{Tab 4}{Space}
+    ; Download in sequential order
+    Send, +{Tab}{Space}
+    ; Close Torrent options modal
+    Send, {Enter}
 
     return
 }
@@ -248,16 +253,21 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 ^+!BackSpace::
 {
-    ; Download first and last pieces first
-    Send, {AppsKey}{Up 6 }{Enter}
-    ; Download in sequential order
-    Send, {AppsKey}{Up 7}{Enter}
-    ; Assign to video category
-    Send, {AppsKey}{Down 6}{Right}{Up 1}{Enter}
     ; Assign seed tag
-    Send, {AppsKey}{Down 7}{Right}{Up 2}{Enter}
-    ; Close context menu
-    Send, {Esc}{Esc}
+    Send, {AppsKey}{Down 5}{Right}{Up 2}{Enter}
+    ; Close Tags sub-menu
+    Send, {Esc}
+    ; Open Torrent options modal
+    Send, {Down 1}{Enter}
+    Sleep, 20
+    ; Assign to video category
+    Send, {Tab}videos_H
+    ; Download first and last pieces first
+    Send, +{Tab 4}{Space}
+    ; Download in sequential order
+    Send, +{Tab}{Space}
+    ; Close Torrent options modal
+    Send, {Enter}
 
     return
 }
@@ -266,10 +276,17 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 ^+BackSpace::
 {
-    ; Assign to video category
-    Send, {AppsKey}{Down 7}{Right}{Up 1}{Enter}
     ; Assign seed tag
-    Send, {AppsKey}{Down 8}{Right}{Up 2}{Enter}
+    Send, {AppsKey}{Down 6}{Right}{Up 2}{Enter}
+    ; Close Tags sub-menu
+    Send, {Esc}
+    ; Open Torrent options modal
+    Send, {AppsKey}{Down 1}{Enter}
+    Sleep, 20
+    ; Assign to video category
+    Send, {Tab}videos_H
+    ; Close Torrent options modal
+    Send, {Enter}
 
     return
 }
@@ -278,7 +295,7 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 F3::
 {
-    Send, {AppsKey}{Down 11}{Enter}
+    Send, {AppsKey}{Up 6}{Enter}
     return
 }
 
@@ -286,7 +303,7 @@ F3::
 #IfWinActive ahk_exe qbittorrent.exe
 F4::
 {
-    Send, {AppsKey}{Down 12}{Enter}
+    Send, {AppsKey}{Up 5}{Enter}
     return
 }
 
@@ -294,87 +311,120 @@ F4::
 #IfWinActive ahk_exe qbittorrent.exe
 ^;::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Up 1}0{Enter}
+    ; Open Torrent options modal
+    Send, {AppsKey}{Down 7}{Enter}
+    Sleep, 20
+    Send, {Tab 2}0{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^+::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Up 1}1024{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Up 1}102{Enter}
+    ; Open Torrent options modal
+    Send, {AppsKey}{Down 7}{Enter}
+    Sleep, 20
+    Send, {Tab 2}1024{Enter}
+;    Send, {Tab 2}102{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^ě::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Up 1}2048{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Up 1}204{Enter}
+    ; Open Torrent options modal
+    Send, {AppsKey}{Down 7}{Enter}
+    Sleep, 20
+    Send, {Tab 2}2048{Enter}
+;    Send, {Tab 2}204{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^š::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Up 1}3072{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Up 1}307{Enter}
+    ; Open Torrent options modal
+    Send, {AppsKey}{Down 7}{Enter}
+    Sleep, 20
+    Send, {Tab 2}3072{Enter}
+;    Send, {Tab 2}307{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^č::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Up 1}4096{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Up 1}409{Enter}
+    ; Open Torrent options modal
+    Send, {AppsKey}{Down 7}{Enter}
+    Sleep, 20
+    Send, {Tab 2}4096{Enter}
+;    Send, {Tab 2}409{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^ř::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Up 1}5120{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Up 1}512{Enter}
+    ; Open Torrent options modal
+    Send, {AppsKey}{Down 7}{Enter}
+    Sleep, 20
+    Send, {Tab 2}5120{Enter}
+;    Send, {Tab 2}512{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^ž::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Up 1}6144{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Up 1}614{Enter}
+    ; Open Torrent options modal
+    Send, {AppsKey}{Down 7}{Enter}
+    Sleep, 20
+    Send, {Tab 2}6144{Enter}
+;    Send, {Tab 2}614{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^ý::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Up 1}7168{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Up 1}716{Enter}
+    ; Open Torrent options modal
+    Send, {AppsKey}{Down 7}{Enter}
+    Sleep, 20
+    Send, {Tab 2}7168{Enter}
+;    Send, {Tab 2}716{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^á::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Up 1}8192{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Up 1}819{Enter}
+    ; Open Torrent options modal
+    Send, {AppsKey}{Down 7}{Enter}
+    Sleep, 20
+    Send, {Tab 2}8192{Enter}
+;    Send, {Tab 2}819{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^í::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Up 1}9216{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Up 1}921{Enter}
+    ; Open Torrent options modal
+    Send, {AppsKey}{Down 7}{Enter}
+    Sleep, 20
+    Send, {Tab 2}9216{Enter}
+;    Send, {Tab 2}921{Enter}
     return
 }
 
 #IfWinActive ahk_exe qbittorrent.exe
 ^é::
 {
-    Send, {AppsKey}{Down 10}{Enter}{Up 1}10240{Enter}
-;    Send, {AppsKey}{Down 10}{Enter}{Up 1}1024{Enter}
+    ; Open Torrent options modal
+    Send, {AppsKey}{Down 7}{Enter}
+    Sleep, 20
+    Send, {Tab 2}10240{Enter}
+;    Send, {Tab 2}1024{Enter}
     return
 }
 
