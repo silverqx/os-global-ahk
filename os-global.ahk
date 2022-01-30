@@ -151,7 +151,7 @@ CreateQtCreatorOSD()
 
 ^g::
 {
-    Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, a,b,c,č,d,f,g,k,l,m,n,p,r,s,t,w,u,y
+    Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, a,b,c,č,d,f,g,k,l,m,n,p,q,r,s,t,w,u,y
 
     ; Send original shortcut on timeout
     if (ErrorLevel = "Timeout") {
@@ -207,6 +207,8 @@ CreateQtCreatorOSD()
         Sn()
     else if (userInput = "p")
         Sp()
+    else if (userInput = "q")
+        Sq()
     else if (userInput = "r")
         Sr()
     else if (userInput = "s")
@@ -227,6 +229,7 @@ CreateQtCreatorOSD()
 ; qBittorrent Section
 ; -------------------
 
+; Classic video
 #IfWinActive ahk_exe qbittorrent.exe
 ^BackSpace::
 {
@@ -236,13 +239,38 @@ CreateQtCreatorOSD()
     Send, {Esc}
     ; Open Torrent options modal
     Send, {Down 1}{Enter}
-    Sleep, 20
+    Sleep, 120
     ; Assign to video category
     Send, {Tab}videos_H
     ; Download first and last pieces first
     Send, +{Tab 4}{Space}
     ; Download in sequential order
     Send, +{Tab}{Space}
+    ; Close Torrent options modal
+    Send, {Enter}
+
+    return
+}
+
+; No-limit video
+#IfWinActive ahk_exe qbittorrent.exe
+^!BackSpace::
+{
+    ; Assign seed tag
+    Send, {AppsKey}{Down 6}{Right}{Up}{Enter}{Up}{Enter}
+    ; Close Tags sub-menu
+    Send, {Esc}
+    ; Open Torrent options modal
+    Send, {Down 1}{Enter}
+    Sleep, 120
+    ; Assign to video category
+    Send, {Tab}videos_H
+    ; Download first and last pieces first
+    Send, +{Tab 4}{Space}
+    ; Download in sequential order
+    Send, +{Tab}{Space}
+    ; Set no share limit
+    Send, +{Tab}{Down 2}{Up}{Space}
     ; Close Torrent options modal
     Send, {Enter}
 
@@ -259,13 +287,38 @@ CreateQtCreatorOSD()
     Send, {Esc}
     ; Open Torrent options modal
     Send, {Down 1}{Enter}
-    Sleep, 20
+    Sleep, 120
     ; Assign to video category
     Send, {Tab}videos_H
     ; Download first and last pieces first
     Send, +{Tab 4}{Space}
     ; Download in sequential order
     Send, +{Tab}{Space}
+    ; Close Torrent options modal
+    Send, {Enter}
+
+    return
+}
+
+; No-limit if more torrents selected
+#IfWinActive ahk_exe qbittorrent.exe
+^!F12::
+{
+    ; Assign seed tag
+    Send, {AppsKey}{Down 5}{Right}{Up}{Enter}{Up}{Enter}
+    ; Close Tags sub-menu
+    Send, {Esc}
+    ; Open Torrent options modal
+    Send, {Down 1}{Enter}
+    Sleep, 120
+    ; Assign to video category
+    Send, {Tab}videos_H
+    ; Download first and last pieces first
+    Send, +{Tab 4}{Space}
+    ; Download in sequential order
+    Send, +{Tab}{Space}
+    ; Set no share limit
+    Send, +{Tab}{Down 2}{Up}{Space}
     ; Close Torrent options modal
     Send, {Enter}
 
@@ -282,7 +335,7 @@ CreateQtCreatorOSD()
     Send, {Esc}
     ; Open Torrent options modal
     Send, {AppsKey}{Down 1}{Enter}
-    Sleep, 20
+    Sleep, 120
     ; Assign to video category
     Send, {Tab}videos_H
     ; Close Torrent options modal
@@ -313,7 +366,7 @@ F4::
 {
     ; Open Torrent options modal
     Send, {AppsKey}{Down 7}{Enter}
-    Sleep, 20
+    Sleep, 120
     Send, {Tab 2}0{Enter}
     return
 }
@@ -323,7 +376,7 @@ F4::
 {
     ; Open Torrent options modal
     Send, {AppsKey}{Down 7}{Enter}
-    Sleep, 20
+    Sleep, 120
     Send, {Tab 2}1024{Enter}
 ;    Send, {Tab 2}102{Enter}
     return
@@ -334,7 +387,7 @@ F4::
 {
     ; Open Torrent options modal
     Send, {AppsKey}{Down 7}{Enter}
-    Sleep, 20
+    Sleep, 120
     Send, {Tab 2}2048{Enter}
 ;    Send, {Tab 2}204{Enter}
     return
@@ -345,7 +398,7 @@ F4::
 {
     ; Open Torrent options modal
     Send, {AppsKey}{Down 7}{Enter}
-    Sleep, 20
+    Sleep, 120
     Send, {Tab 2}3072{Enter}
 ;    Send, {Tab 2}307{Enter}
     return
@@ -356,7 +409,7 @@ F4::
 {
     ; Open Torrent options modal
     Send, {AppsKey}{Down 7}{Enter}
-    Sleep, 20
+    Sleep, 120
     Send, {Tab 2}4096{Enter}
 ;    Send, {Tab 2}409{Enter}
     return
@@ -367,7 +420,7 @@ F4::
 {
     ; Open Torrent options modal
     Send, {AppsKey}{Down 7}{Enter}
-    Sleep, 20
+    Sleep, 120
     Send, {Tab 2}5120{Enter}
 ;    Send, {Tab 2}512{Enter}
     return
@@ -378,7 +431,7 @@ F4::
 {
     ; Open Torrent options modal
     Send, {AppsKey}{Down 7}{Enter}
-    Sleep, 20
+    Sleep, 120
     Send, {Tab 2}6144{Enter}
 ;    Send, {Tab 2}614{Enter}
     return
@@ -389,7 +442,7 @@ F4::
 {
     ; Open Torrent options modal
     Send, {AppsKey}{Down 7}{Enter}
-    Sleep, 20
+    Sleep, 120
     Send, {Tab 2}7168{Enter}
 ;    Send, {Tab 2}716{Enter}
     return
@@ -400,7 +453,7 @@ F4::
 {
     ; Open Torrent options modal
     Send, {AppsKey}{Down 7}{Enter}
-    Sleep, 20
+    Sleep, 120
     Send, {Tab 2}8192{Enter}
 ;    Send, {Tab 2}819{Enter}
     return
@@ -411,7 +464,7 @@ F4::
 {
     ; Open Torrent options modal
     Send, {AppsKey}{Down 7}{Enter}
-    Sleep, 20
+    Sleep, 120
     Send, {Tab 2}9216{Enter}
 ;    Send, {Tab 2}921{Enter}
     return
@@ -422,7 +475,7 @@ F4::
 {
     ; Open Torrent options modal
     Send, {AppsKey}{Down 7}{Enter}
-    Sleep, 20
+    Sleep, 120
     Send, {Tab 2}10240{Enter}
 ;    Send, {Tab 2}1024{Enter}
     return
@@ -855,6 +908,14 @@ Sp()
         WinActivate
     else
         Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PostgreSQL 13\pgAdmin 4.lnk
+}
+; qMedia
+Sq()
+{
+    if WinExist("i)^ *qMedia v\d+\.\d+\.\d+$")
+        WinActivate
+    else
+        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\__my__\qMedia.lnk
 }
 ; Registry Editor
 Sr()
