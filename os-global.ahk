@@ -145,6 +145,12 @@ CreateQtCreatorOSD()
     return
 }
 
+; Open Control Panel
+!#i::
+{
+    Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\System Tools\Control Panel.lnk
+}
+
 
 ; Leader key ctrl-g shortcuts
 ; ---------------------------
