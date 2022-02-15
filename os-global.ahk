@@ -18,6 +18,14 @@ CoordMode, ToolTip, Screen
 KeyDelayqBt := 25
 KeyDelayDefault := 10
 
+; mpc-hc
+MpcHcPip := false
+Zoom25Key := "!;"
+Zoom50Key := "!{+}"
+Zoom100Key := "!ě"
+; Default to 50%
+ZoomKey := Zoom50Key
+
 
 ; Toggle audio output related functions
 ; -------------------
@@ -231,6 +239,60 @@ CreateQtCreatorOSD()
         Sw()
     else if (userInput = "y")
         Sy()
+
+    return
+}
+
+
+; mpc-hc PIP mode
+; -------------------
+
+; Manually toogle MpcHcPip
+#IfWinActive ahk_exe mpc-hc64.exe
+^F8::
+{
+    MpcHcPip := !MpcHcPip
+    return
+}
+
+; Enable 25% zoom
+#IfWinActive ahk_exe mpc-hc64.exe
+^F9::
+{
+    ZoomKey := Zoom25Key
+    return
+}
+
+; Enable 50% zoom
+#IfWinActive ahk_exe mpc-hc64.exe
+^F10::
+{
+    ZoomKey := Zoom50Key
+    return
+}
+
+; Enable 100% zoom
+#IfWinActive ahk_exe mpc-hc64.exe
+^F11::
+{
+    ZoomKey := Zoom100Key
+    return
+}
+
+; Disable PIP mode
+#IfWinActive ahk_exe mpc-hc64.exe
+^Enter::
+{
+    global MpcHcPip
+
+    if (MpcHcPip) {
+        DisableMpcHcPip()
+        MpcHcPip := false
+        return
+    }
+
+    EnableMpcHcPip()
+    MpcHcPip := true
 
     return
 }
@@ -995,4 +1057,41 @@ Sw()
 Sy()
 {
     Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\YouTube.lnk
+}
+
+
+; mpc-hc PIP mode
+; -------------------
+
+EnableMpcHcPip()
+{
+    global ZoomKey
+    global KeyDelayqBt, KeyDelayDefault
+
+    SetKeyDelay % KeyDelayqBt
+
+    ; Enable StayOnTop and Hide Playlist
+    Send ^a^!a
+    ; Compact mode
+    Send {+}
+    ; Zoom by ZoomKey variable
+    Send % ZoomKey
+
+    SetKeyDelay % KeyDelayDefault
+}
+
+DisableMpcHcPip()
+{
+    global KeyDelayqBt, KeyDelayDefault
+
+    SetKeyDelay % KeyDelayqBt
+
+    ; Disable StayOnTop and Fullscreen
+    Send ^a!{Enter}
+    ; Normal mode
+    Send š
+    ; Show playlist
+    Send ^!a
+
+    SetKeyDelay % KeyDelayDefault
 }
