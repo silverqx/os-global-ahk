@@ -14,6 +14,10 @@ SetTitleMatchMode, RegEx
 
 CoordMode, ToolTip, Screen
 
+; Higher value for SetKeyDelay
+KeyDelayqBt := 25
+KeyDelayDefault := 10
+
 
 ; Toggle audio output related functions
 ; -------------------
@@ -239,6 +243,9 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 ^BackSpace::
 {
+    global KeyDelayqBt, KeyDelayDefault
+
+    SetKeyDelay % KeyDelayqBt
     ; Assign seed tag
     Send, {AppsKey}{Down 6}{Right}{Up 2}{Enter}
     ; Close Tags sub-menu
@@ -254,6 +261,7 @@ CreateQtCreatorOSD()
     Send, +{Tab}{Space}
     ; Close Torrent options modal
     Send, {Enter}
+    SetKeyDelay % KeyDelayDefault
 
     return
 }
@@ -262,6 +270,9 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 ^!BackSpace::
 {
+    global KeyDelayqBt, KeyDelayDefault
+
+    SetKeyDelay % KeyDelayqBt
     ; Assign seed tag
     Send, {AppsKey}{Down 6}{Right}{Up}{Enter}{Up}{Enter}
     ; Close Tags sub-menu
@@ -279,6 +290,7 @@ CreateQtCreatorOSD()
     Send, +{Tab}{Down 2}{Up}{Space}
     ; Close Torrent options modal
     Send, {Enter}
+    SetKeyDelay % KeyDelayDefault
 
     return
 }
@@ -287,6 +299,9 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 ^+!BackSpace::
 {
+    global KeyDelayqBt, KeyDelayDefault
+
+    SetKeyDelay % KeyDelayqBt
     ; Assign seed tag
     Send, {AppsKey}{Down 5}{Right}{Up 2}{Enter}
     ; Close Tags sub-menu
@@ -302,6 +317,7 @@ CreateQtCreatorOSD()
     Send, +{Tab}{Space}
     ; Close Torrent options modal
     Send, {Enter}
+    SetKeyDelay % KeyDelayDefault
 
     return
 }
@@ -310,6 +326,9 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 ^!F12::
 {
+    global KeyDelayqBt, KeyDelayDefault
+
+    SetKeyDelay % KeyDelayqBt
     ; Assign seed tag
     Send, {AppsKey}{Down 5}{Right}{Up}{Enter}{Up}{Enter}
     ; Close Tags sub-menu
@@ -327,6 +346,7 @@ CreateQtCreatorOSD()
     Send, +{Tab}{Down 2}{Up}{Space}
     ; Close Torrent options modal
     Send, {Enter}
+    SetKeyDelay % KeyDelayDefault
 
     return
 }
@@ -335,6 +355,9 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 ^+BackSpace::
 {
+    global KeyDelayqBt, KeyDelayDefault
+
+    SetKeyDelay % KeyDelayqBt
     ; Assign seed tag
     Send, {AppsKey}{Down 6}{Right}{Up 2}{Enter}
     ; Close Tags sub-menu
@@ -346,6 +369,7 @@ CreateQtCreatorOSD()
     Send, {Tab}videos_H
     ; Close Torrent options modal
     Send, {Enter}
+    SetKeyDelay % KeyDelayDefault
 
     return
 }
