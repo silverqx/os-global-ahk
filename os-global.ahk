@@ -252,6 +252,10 @@ CreateQtCreatorOSD()
 ^F8::
 {
     MpcHcPip := !MpcHcPip
+
+    value := MpcHcPip ? "enabled" : "disabled"
+    MsgBox,, Toogle MpcHcPip flag, PIP mode : %value%, 1
+
     return
 }
 
@@ -285,7 +289,11 @@ CreateQtCreatorOSD()
 {
     global MpcHcPip
 
-    if (MpcHcPip) {
+    if (isWindowFullScreen("A") && MpcHcPip) {
+        Send !{Enter}
+        return
+    }
+    else if (MpcHcPip) {
         DisableMpcHcPip()
         MpcHcPip := false
         return
@@ -755,6 +763,23 @@ CenterWindow()
         y -= 14
 
     WinMove, x < 0 ? 0 : x, y < 0 ? 0 : y
+}
+
+; Checks if the specified window is in the fullscreen mode
+IsWindowFullScreen(winTitle) 
+{
+    winId := WinExist(winTitle)
+
+	if (!winId)
+		return false
+
+	WinGet style, Style, ahk_id %winId%
+	WinGetPos x, y, width, height, ahk_id %winId%
+
+	; 0x800000 is WS_BORDER.
+	; 0x20000000 is WS_MINIMIZE.
+	; no border and not minimized
+	return !(style & 0x20800000 || x > 0 || y > 0 || width < A_ScreenWidth || height < A_ScreenHeight)
 }
 
 
