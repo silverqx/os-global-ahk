@@ -28,8 +28,6 @@ MpcHcZoomKey := MpcHcZoom25Key
 ; Custom position
 MpcHcPipX := ""
 MpcHcPipY := ""
-; Snap position - TopLeft, TopRight, BottomLeft, BottomRight
-MpcHcSnapPosition := "TopRight"
 
 
 ; Toggle audio output related functions
@@ -1204,7 +1202,7 @@ MpcHcEnablePip()
 
     ; Restore x and y positions for pip mode
 	if (WinExist("A"))
-        ; Top right corner
+        ; Top right corner - default position
         if (MpcHcPipX == "" && MpcHcPipY == "") {
             Sleep 60
             WinGetPos,,, width
@@ -1229,6 +1227,7 @@ MpcHcDisablePip()
     ; Store x and y positions in pip mode only if the pip window has been moved
 	if (WinExist("A")) {
         WinGetPos x, y, width
+
         if (x != (A_ScreenWidth - width - 20) || y != 20) {
             MpcHcPipX := x
             MpcHcPipY := y
@@ -1258,116 +1257,126 @@ MpcHcResetPipPositions()
 
 MpcHcMoveLeft()
 {
-    global MpcHcSnapPosition
-
-    ; Already left
-    if (MpcHcSnapPosition ~= "(TopLeft|BottomLeft)")
+    if (!WinExist("A"))
         return
 
-    result := RegExMatch(MpcHcSnapPosition, "O)([TLBR][a-z]+)(?:[TLBR][a-z]+)", Match)
+    WinGetPos x, y, width, height
 
-    if (Match[1] == "Top") {
-        y := 20
+    snapPosition := MpcHcInferPreSnapPosition(x, y, width, height)
 
-        MpcHcSnapPosition := "TopLeft"
-    }
-    else if (Match[1] == "Bottom") {
-    	if (!WinExist("A"))
-            return
+    ; Match[1] will store position (top, bottom) of pip window
+    result := RegExMatch(snapPosition, "O)([TLBR][a-z]+)(?:[TLBR][a-z]+)", Match)
 
-        WinGetPos,,,, height
+    moveToX := 20
 
-        y := A_ScreenHeight - height - 20
+    if (Match[1] == "Top")
+        moveToY := 20
 
-        MpcHcSnapPosition := "BottomLeft"
-    }
+    else if (Match[1] == "Bottom")
+        moveToY := A_ScreenHeight - height - 20
 
-    WinMove % 20, y
+    ; Already on position
+    if (x == moveToX && y == moveToY)
+        return
+
+    WinMove % moveToX, moveToY
 }
 
 MpcHcMoveRight()
 {
-    global MpcHcSnapPosition
-
-    ; Already right
-    if (MpcHcSnapPosition ~= "(TopRight|BottomRight)")
-        return
-
     if (!WinExist("A"))
         return
 
-    WinGetPos,,, width, height
+    WinGetPos x, y, width, height
 
-    result := RegExMatch(MpcHcSnapPosition, "O)([TLBR][a-z]+)(?:[TLBR][a-z]+)", Match)
+    snapPosition := MpcHcInferPreSnapPosition(x, y, width, height)
 
-    if (Match[1] == "Top") {
-        y := 20
+    ; Match[1] will store position (top, bottom) of pip window
+    result := RegExMatch(snapPosition, "O)([TLBR][a-z]+)(?:[TLBR][a-z]+)", Match)
 
-        MpcHcSnapPosition := "TopRight"
-    }
-    else if (Match[1] == "Bottom") {
-        y := A_ScreenHeight - height - 20
+    moveToX := A_ScreenWidth - width - 20
 
-        MpcHcSnapPosition := "BottomRight"
-    }
+    if (Match[1] == "Top")
+        moveToY := 20
 
-    WinMove % A_ScreenWidth - width - 20, y
+    else if (Match[1] == "Bottom")
+        moveToY := A_ScreenHeight - height - 20
+
+    ; Already on position
+    if (x == moveToX && y == moveToY)
+        return
+
+    WinMove % moveToX, moveToY
 }
 
 MpcHcMoveTop()
 {
-    global MpcHcSnapPosition
-
-    ; Already top
-    if (MpcHcSnapPosition ~= "(TopLeft|TopRight)")
+    if (!WinExist("A"))
         return
 
-    result := RegExMatch(MpcHcSnapPosition, "O)(?:[TLBR][a-z]+)([TLBR][a-z]+)", Match)
+    WinGetPos x, y, width, height
 
-    if (Match[1] == "Left") {
-        x := 20
+    snapPosition := MpcHcInferPreSnapPosition(x, y, width, height)
 
-        MpcHcSnapPosition := "TopLeft"
-    }
-    else if (Match[1] == "Right") {
-        if (!WinExist("A"))
-            return
+    ; Match[1] will store position (left, right) of pip window
+    result := RegExMatch(snapPosition, "O)(?:[TLBR][a-z]+)([TLBR][a-z]+)", Match)
 
-        WinGetPos,,, width
+    moveToY := 20
 
-        x := A_ScreenWidth - width - 20
+    if (Match[1] == "Left")
+        moveToX := 20
 
-        MpcHcSnapPosition := "TopRight"
-    }
+    else if (Match[1] == "Right")
+        moveToX := A_ScreenWidth - width - 20
 
-    WinMove % x, 20
+    ; Already on position
+    if (x == moveToX && y == moveToY)
+        return
+
+    WinMove % moveToX, moveToY
 }
 
 MpcHcMoveBottom()
 {
-    global MpcHcSnapPosition
-
-    ; Already bottom
-    if (MpcHcSnapPosition ~= "(BottomLeft|BottomRight)")
-        return
-
     if (!WinExist("A"))
         return
 
-    WinGetPos,,, width, height
+    WinGetPos x, y, width, height
 
-    result := RegExMatch(MpcHcSnapPosition, "O)(?:[TLBR][a-z]+)([TLBR][a-z]+)", Match)
+    snapPosition := MpcHcInferPreSnapPosition(x, y, width, height)
 
-    if (Match[1] == "Left") {
-        x := 20
+    ; Match[1] will store position (left, right) of pip window
+    result := RegExMatch(snapPosition, "O)(?:[TLBR][a-z]+)([TLBR][a-z]+)", Match)
 
-        MpcHcSnapPosition := "BottomLeft"
-    }
-    else if (Match[1] == "Right") {
-        x := A_ScreenWidth - width - 20
+    moveToY := A_ScreenHeight - height - 20
 
-        MpcHcSnapPosition := "BottomRight"
-    }
+    if (Match[1] == "Left")
+        moveToX := 20
 
-    WinMove % x, A_ScreenHeight - height - 20
+    else if (Match[1] == "Right")
+        moveToX := A_ScreenWidth - width - 20
+
+    ; Already on position
+    if (x == moveToX && y == moveToY)
+        return
+
+    WinMove % moveToX, moveToY
+}
+
+; Infer current pip window position
+MpcHcInferPreSnapPosition(x, y, width, height)
+{
+    result := ""
+
+    if (y + height / 2 < A_ScreenHeight / 2)
+        result .= "Top"
+    else
+        result .= "Bottom"
+
+    if (x + width / 2 < A_ScreenWidth / 2)
+        result .= "Left"
+    else
+        result .= "Right"
+
+    return result
 }
