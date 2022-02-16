@@ -396,11 +396,11 @@ CreateQtCreatorOSD()
 
     SetKeyDelay % KeyDelayqBt
     ; Assign seed tag
-    Send, {AppsKey}{Down 6}{Right}{Up 2}{Enter}
+    Send, {AppsKey}{Down 8}{Right}{Up 2}{Enter}
     ; Close Tags sub-menu
     Send, {Esc}
     ; Open Torrent options modal
-    Send, {Down 1}{Enter}
+    Send, {Down 2}{Enter}
     Sleep, 120
     ; Assign to video category
     Send, {Tab}videos_H
@@ -425,11 +425,11 @@ CreateQtCreatorOSD()
     ; Force resume
     Send, {AppsKey}{Down 2}{Enter}
     ; Assign seed and seed forced tags
-    Send, {AppsKey}{Down 6}{Right}{Up}{Enter}{Up}{Enter}
+    Send, {AppsKey}{Down 8}{Right}{Up}{Enter}{Up}{Enter}
     ; Close Tags sub-menu
     Send, {Esc}
     ; Open Torrent options modal
-    Send, {Down 1}{Enter}
+    Send, {Down 2}{Enter}
     Sleep, 120
     ; Assign to video category
     Send, {Tab}videos_H
@@ -454,11 +454,11 @@ CreateQtCreatorOSD()
 
     SetKeyDelay % KeyDelayqBt
     ; Assign seed tag
-    Send, {AppsKey}{Down 5}{Right}{Up 2}{Enter}
+    Send, {AppsKey}{Down 7}{Right}{Up 2}{Enter}
     ; Close Tags sub-menu
     Send, {Esc}
     ; Open Torrent options modal
-    Send, {Down 1}{Enter}
+    Send, {Down 2}{Enter}
     Sleep, 120
     ; Assign to video category
     Send, {Tab}videos_H
@@ -483,11 +483,11 @@ CreateQtCreatorOSD()
     ; Force resume
     Send, {AppsKey}{Down 2}{Enter}
     ; Assign seed and seed forced tags
-    Send, {AppsKey}{Down 5}{Right}{Up}{Enter}{Up}{Enter}
+    Send, {AppsKey}{Down 7}{Right}{Up}{Enter}{Up}{Enter}
     ; Close Tags sub-menu
     Send, {Esc}
     ; Open Torrent options modal
-    Send, {Down 1}{Enter}
+    Send, {Down 2}{Enter}
     Sleep, 120
     ; Assign to video category
     Send, {Tab}videos_H
@@ -512,11 +512,11 @@ CreateQtCreatorOSD()
 
     SetKeyDelay % KeyDelayqBt
     ; Assign seed tag
-    Send, {AppsKey}{Down 6}{Right}{Up 2}{Enter}
+    Send, {AppsKey}{Down 8}{Right}{Up 2}{Enter}
     ; Close Tags sub-menu
     Send, {Esc}
     ; Open Torrent options modal
-    Send, {AppsKey}{Down 1}{Enter}
+    Send, {AppsKey}{Down 2}{Enter}
     Sleep, 120
     ; Assign to video category
     Send, {Tab}videos_H
@@ -531,7 +531,7 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 F3::
 {
-    Send, {AppsKey}{Up 6}{Enter}
+    Send, {AppsKey}{Up 8}{Enter}
     return
 }
 
@@ -548,7 +548,7 @@ F4::
 ^;::
 {
     ; Open Torrent options modal
-    Send, {AppsKey}{Down 7}{Enter}
+    Send, {AppsKey}{Down 10}{Enter}
     Sleep, 120
     Send, {Tab 2}0{Enter}
     return
@@ -558,7 +558,7 @@ F4::
 ^+::
 {
     ; Open Torrent options modal
-    Send, {AppsKey}{Down 7}{Enter}
+    Send, {AppsKey}{Down 10}{Enter}
     Sleep, 120
     Send, {Tab 2}1024{Enter}
 ;    Send, {Tab 2}102{Enter}
@@ -569,7 +569,7 @@ F4::
 ^ě::
 {
     ; Open Torrent options modal
-    Send, {AppsKey}{Down 7}{Enter}
+    Send, {AppsKey}{Down 10}{Enter}
     Sleep, 120
     Send, {Tab 2}2048{Enter}
 ;    Send, {Tab 2}204{Enter}
@@ -580,7 +580,7 @@ F4::
 ^š::
 {
     ; Open Torrent options modal
-    Send, {AppsKey}{Down 7}{Enter}
+    Send, {AppsKey}{Down 10}{Enter}
     Sleep, 120
     Send, {Tab 2}3072{Enter}
 ;    Send, {Tab 2}307{Enter}
@@ -591,7 +591,7 @@ F4::
 ^č::
 {
     ; Open Torrent options modal
-    Send, {AppsKey}{Down 7}{Enter}
+    Send, {AppsKey}{Down 10}{Enter}
     Sleep, 120
     Send, {Tab 2}4096{Enter}
 ;    Send, {Tab 2}409{Enter}
@@ -602,7 +602,7 @@ F4::
 ^ř::
 {
     ; Open Torrent options modal
-    Send, {AppsKey}{Down 7}{Enter}
+    Send, {AppsKey}{Down 10}{Enter}
     Sleep, 120
     Send, {Tab 2}5120{Enter}
 ;    Send, {Tab 2}512{Enter}
@@ -613,7 +613,7 @@ F4::
 ^ž::
 {
     ; Open Torrent options modal
-    Send, {AppsKey}{Down 7}{Enter}
+    Send, {AppsKey}{Down 10}{Enter}
     Sleep, 120
     Send, {Tab 2}6144{Enter}
 ;    Send, {Tab 2}614{Enter}
@@ -624,7 +624,7 @@ F4::
 ^ý::
 {
     ; Open Torrent options modal
-    Send, {AppsKey}{Down 7}{Enter}
+    Send, {AppsKey}{Down 10}{Enter}
     Sleep, 120
     Send, {Tab 2}7168{Enter}
 ;    Send, {Tab 2}716{Enter}
@@ -635,7 +635,7 @@ F4::
 ^á::
 {
     ; Open Torrent options modal
-    Send, {AppsKey}{Down 7}{Enter}
+    Send, {AppsKey}{Down 10}{Enter}
     Sleep, 120
     Send, {Tab 2}8192{Enter}
 ;    Send, {Tab 2}819{Enter}
@@ -646,7 +646,7 @@ F4::
 ^í::
 {
     ; Open Torrent options modal
-    Send, {AppsKey}{Down 7}{Enter}
+    Send, {AppsKey}{Down 10}{Enter}
     Sleep, 120
     Send, {Tab 2}9216{Enter}
 ;    Send, {Tab 2}921{Enter}
@@ -657,7 +657,7 @@ F4::
 ^é::
 {
     ; Open Torrent options modal
-    Send, {AppsKey}{Down 7}{Enter}
+    Send, {AppsKey}{Down 10}{Enter}
     Sleep, 120
     Send, {Tab 2}10240{Enter}
 ;    Send, {Tab 2}1024{Enter}
