@@ -343,7 +343,9 @@ CreateQtCreatorOSD()
     global KeyDelayqBt, KeyDelayDefault
 
     SetKeyDelay % KeyDelayqBt
-    ; Assign seed tag
+    ; Force resume
+    Send, {AppsKey}{Down 2}{Enter}
+    ; Assign seed and seed forced tags
     Send, {AppsKey}{Down 6}{Right}{Up}{Enter}{Up}{Enter}
     ; Close Tags sub-menu
     Send, {Esc}
@@ -399,7 +401,9 @@ CreateQtCreatorOSD()
     global KeyDelayqBt, KeyDelayDefault
 
     SetKeyDelay % KeyDelayqBt
-    ; Assign seed tag
+    ; Force resume
+    Send, {AppsKey}{Down 2}{Enter}
+    ; Assign seed and seed forced tags
     Send, {AppsKey}{Down 5}{Right}{Up}{Enter}{Up}{Enter}
     ; Close Tags sub-menu
     Send, {Esc}
