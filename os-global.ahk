@@ -20,11 +20,16 @@ KeyDelayDefault := 10
 
 ; mpc-hc
 MpcHcPip := false
-Zoom25Key := "!;"
-Zoom50Key := "!{+}"
-Zoom100Key := "!ě"
+MpcHcZoom25Key := "!;"
+MpcHcZoom50Key := "!{+}"
+MpcHcZoom100Key := "!ě"
 ; Default to 50%
-ZoomKey := Zoom50Key
+MpcHcZoomKey := MpcHcZoom25Key
+; Custom position
+MpcHcPipX := ""
+MpcHcPipY := ""
+; Snap position - TopLeft, TopRight, BottomLeft, BottomRight
+MpcHcSnapPosition := "TopRight"
 
 
 ; Toggle audio output related functions
@@ -249,8 +254,10 @@ CreateQtCreatorOSD()
 
 ; Manually toogle MpcHcPip
 #IfWinActive ahk_exe mpc-hc64.exe
-^F8::
+^F7::
 {
+    global MpcHcPip
+
     MpcHcPip := !MpcHcPip
 
     value := MpcHcPip ? "enabled" : "disabled"
@@ -259,11 +266,22 @@ CreateQtCreatorOSD()
     return
 }
 
+; Reset x, y restore positions for pip mode
+#IfWinActive ahk_exe mpc-hc64.exe
+^F8::
+{
+    MpcHcResetPipPositions()
+
+    MsgBox,, Reset PIP mode positions, Reset x`, y restore positions, 1
+
+    return
+}
+
 ; Enable 25% zoom
 #IfWinActive ahk_exe mpc-hc64.exe
 ^F9::
 {
-    ZoomKey := Zoom25Key
+    MpcHcZoomKey := MpcHcZoom25Key
     return
 }
 
@@ -271,7 +289,7 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe mpc-hc64.exe
 ^F10::
 {
-    ZoomKey := Zoom50Key
+    MpcHcZoomKey := MpcHcZoom50Key
     return
 }
 
@@ -279,7 +297,7 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe mpc-hc64.exe
 ^F11::
 {
-    ZoomKey := Zoom100Key
+    MpcHcZoomKey := MpcHcZoom100Key
     return
 }
 
@@ -293,14 +311,75 @@ CreateQtCreatorOSD()
         Send !{Enter}
         return
     }
+    ; ahk script was restarted so MpcHcPip := false and mpc-hc is still in pip mode
+    else if (!isWindowFullScreen("A") && isNoBorderWindow("A") && !MpcHcPip) {
+        MpcHcDisablePip()
+        return
+    }
     else if (MpcHcPip) {
-        DisableMpcHcPip()
+        MpcHcDisablePip()
         MpcHcPip := false
         return
     }
 
-    EnableMpcHcPip()
+    MpcHcEnablePip()
     MpcHcPip := true
+
+    return
+}
+
+#IfWinActive ahk_exe mpc-hc64.exe
+^!Left::
+{
+    ; pip mode disabled OR ahk script was restarted so MpcHcPip := false and mpc-hc is still in pip mode
+    if (!MpcHcPip && !(!isWindowFullScreen("A") && isNoBorderWindow("A") && !MpcHcPip))
+        return
+
+    MpcHcResetPipPositions()
+
+    MpcHcMoveLeft()
+
+    return
+}
+
+#IfWinActive ahk_exe mpc-hc64.exe
+^!Right::
+{
+    ; pip mode disabled OR ahk script was restarted so MpcHcPip := false and mpc-hc is still in pip mode
+    if (!MpcHcPip && !(!isWindowFullScreen("A") && isNoBorderWindow("A") && !MpcHcPip))
+        return
+
+    MpcHcResetPipPositions()
+
+    MpcHcMoveRight()
+
+    return
+}
+
+#IfWinActive ahk_exe mpc-hc64.exe
+^!Up::
+{
+    ; pip mode disabled OR ahk script was restarted so MpcHcPip := false and mpc-hc is still in pip mode
+    if (!MpcHcPip && !(!isWindowFullScreen("A") && isNoBorderWindow("A") && !MpcHcPip))
+        return
+
+    MpcHcResetPipPositions()
+
+    MpcHcMoveTop()
+
+    return
+}
+
+#IfWinActive ahk_exe mpc-hc64.exe
+^!Down::
+{
+    ; pip mode disabled OR ahk script was restarted so MpcHcPip := false and mpc-hc is still in pip mode
+    if (!MpcHcPip && !(!isWindowFullScreen("A") && isNoBorderWindow("A") && !MpcHcPip))
+        return
+
+    MpcHcResetPipPositions()
+
+    MpcHcMoveBottom()
 
     return
 }
@@ -770,7 +849,7 @@ CenterWindow()
 }
 
 ; Checks if the specified window is in the fullscreen mode
-IsWindowFullScreen(winTitle) 
+IsWindowFullScreen(winTitle)
 {
     winId := WinExist(winTitle)
 
@@ -784,6 +863,22 @@ IsWindowFullScreen(winTitle)
 	; 0x20000000 is WS_MINIMIZE.
 	; no border and not minimized
 	return !(style & 0x20800000 || x > 0 || y > 0 || width < A_ScreenWidth || height < A_ScreenHeight)
+}
+
+; Checks if the specified window has no borders
+IsNoBorderWindow(winTitle)
+{
+    winId := WinExist(winTitle)
+
+	if (!winId)
+		return false
+
+	WinGet style, Style, ahk_id %winId%
+
+	; 0x800000 is WS_BORDER.
+	; 0x20000000 is WS_MINIMIZE.
+	; no border and not minimized
+	return !(style & 0x20800000)
 }
 
 
@@ -1092,10 +1187,11 @@ Sy()
 ; mpc-hc PIP mode
 ; -------------------
 
-EnableMpcHcPip()
+MpcHcEnablePip()
 {
-    global ZoomKey
+    global MpcHcZoomKey
     global KeyDelayqBt, KeyDelayDefault
+    global MpcHcPipX, MpcHcPipY
 
     SetKeyDelay % KeyDelayqBt
 
@@ -1103,18 +1199,45 @@ EnableMpcHcPip()
     Send ^a^!a
     ; Compact mode
     Send {+}
-    ; Zoom by ZoomKey variable
-    Send % ZoomKey
+    ; Zoom by MpcHcZoomKey variable
+    Send % MpcHcZoomKey
+
+    ; Restore x and y positions for pip mode
+	if (WinExist("A"))
+        ; Top right corner
+        if (MpcHcPipX == "" && MpcHcPipY == "") {
+            Sleep 60
+            WinGetPos,,, width
+            WinMove % A_ScreenWidth - width - 20, 20
+        }
+        ; Restore custom position
+        else
+            WinMove MpcHcPipX, MpcHcPipY
+
 
     SetKeyDelay % KeyDelayDefault
 }
 
-DisableMpcHcPip()
+MpcHcDisablePip()
 {
     global KeyDelayqBt, KeyDelayDefault
+    global MpcHcZoom100Key
+    global MpcHcPipX, MpcHcPipY
 
     SetKeyDelay % KeyDelayqBt
 
+    ; Store x and y positions in pip mode only if the pip window has been moved
+	if (WinExist("A")) {
+        WinGetPos x, y, width
+        if (x != (A_ScreenWidth - width - 20) || y != 20) {
+            MpcHcPipX := x
+            MpcHcPipY := y
+        }
+    }
+
+    CenterWindow()
+    ; Restore zoom to 100%
+    Send % MpcHcZoom100Key
     ; Disable StayOnTop and Fullscreen
     Send ^a!{Enter}
     ; Normal mode
@@ -1123,4 +1246,128 @@ DisableMpcHcPip()
     Send ^!a
 
     SetKeyDelay % KeyDelayDefault
+}
+
+MpcHcResetPipPositions()
+{
+    global MpcHcPipX, MpcHcPipY
+
+    MpcHcPipX := ""
+    MpcHcPipY := ""
+}
+
+MpcHcMoveLeft()
+{
+    global MpcHcSnapPosition
+
+    ; Already left
+    if (MpcHcSnapPosition ~= "(TopLeft|BottomLeft)")
+        return
+
+    result := RegExMatch(MpcHcSnapPosition, "O)([TLBR][a-z]+)(?:[TLBR][a-z]+)", Match)
+
+    if (Match[1] == "Top") {
+        y := 20
+
+        MpcHcSnapPosition := "TopLeft"
+    }
+    else if (Match[1] == "Bottom") {
+    	if (!WinExist("A"))
+            return
+
+        WinGetPos,,,, height
+
+        y := A_ScreenHeight - height - 20
+
+        MpcHcSnapPosition := "BottomLeft"
+    }
+
+    WinMove % 20, y
+}
+
+MpcHcMoveRight()
+{
+    global MpcHcSnapPosition
+
+    ; Already right
+    if (MpcHcSnapPosition ~= "(TopRight|BottomRight)")
+        return
+
+    if (!WinExist("A"))
+        return
+
+    WinGetPos,,, width, height
+
+    result := RegExMatch(MpcHcSnapPosition, "O)([TLBR][a-z]+)(?:[TLBR][a-z]+)", Match)
+
+    if (Match[1] == "Top") {
+        y := 20
+
+        MpcHcSnapPosition := "TopRight"
+    }
+    else if (Match[1] == "Bottom") {
+        y := A_ScreenHeight - height - 20
+
+        MpcHcSnapPosition := "BottomRight"
+    }
+
+    WinMove % A_ScreenWidth - width - 20, y
+}
+
+MpcHcMoveTop()
+{
+    global MpcHcSnapPosition
+
+    ; Already top
+    if (MpcHcSnapPosition ~= "(TopLeft|TopRight)")
+        return
+
+    result := RegExMatch(MpcHcSnapPosition, "O)(?:[TLBR][a-z]+)([TLBR][a-z]+)", Match)
+
+    if (Match[1] == "Left") {
+        x := 20
+
+        MpcHcSnapPosition := "TopLeft"
+    }
+    else if (Match[1] == "Right") {
+        if (!WinExist("A"))
+            return
+
+        WinGetPos,,, width
+
+        x := A_ScreenWidth - width - 20
+
+        MpcHcSnapPosition := "TopRight"
+    }
+
+    WinMove % x, 20
+}
+
+MpcHcMoveBottom()
+{
+    global MpcHcSnapPosition
+
+    ; Already bottom
+    if (MpcHcSnapPosition ~= "(BottomLeft|BottomRight)")
+        return
+
+    if (!WinExist("A"))
+        return
+
+    WinGetPos,,, width, height
+
+    result := RegExMatch(MpcHcSnapPosition, "O)(?:[TLBR][a-z]+)([TLBR][a-z]+)", Match)
+
+    if (Match[1] == "Left") {
+        x := 20
+
+        MpcHcSnapPosition := "BottomLeft"
+    }
+    else if (Match[1] == "Right") {
+        x := A_ScreenWidth - width - 20
+
+        MpcHcSnapPosition := "BottomRight"
+    }
+
+    WinMove % x, A_ScreenHeight - height - 20
 }
