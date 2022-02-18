@@ -23,8 +23,10 @@ MpcHcPip := false
 MpcHcZoom25Key := "!;"
 MpcHcZoom50Key := "!{+}"
 MpcHcZoom100Key := "!ě"
-; Default to 50%
+; Default to 25%
 MpcHcZoomKey := MpcHcZoom25Key
+; Default pip mode width
+MpcHcPipWidth := 420
 ; Custom position
 MpcHcPipX := ""
 MpcHcPipY := ""
@@ -1187,9 +1189,12 @@ Sy()
 
 MpcHcEnablePip()
 {
-    global MpcHcZoomKey
+    global MpcHcZoomKey, MpcHcPipWidth
     global KeyDelayqBt, KeyDelayDefault
     global MpcHcPipX, MpcHcPipY
+
+	if (!WinExist("A"))
+        return
 
     SetKeyDelay % KeyDelayqBt
 
@@ -1200,18 +1205,18 @@ MpcHcEnablePip()
     ; Zoom by MpcHcZoomKey variable
     Send % MpcHcZoomKey
 
-    ; Restore x and y positions for pip mode
-	if (WinExist("A"))
-        ; Top right corner - default position
-        if (MpcHcPipX == "" && MpcHcPipY == "") {
-            Sleep 60
-            WinGetPos,,, width
-            WinMove % A_ScreenWidth - width - 20, 20
-        }
-        ; Restore custom position
-        else
-            WinMove MpcHcPipX, MpcHcPipY
+    ; Compute width and height, mpc-hc sets correct aspect ratio so use it to compute correct height
+    Sleep 60
+    WinGetPos,,, width, height
+    newWidth := MpcHcPipWidth
+    newHeight := MpcHcPipWidth / (width / height)
 
+    ; Top right corner - default position
+    if (MpcHcPipX == "" && MpcHcPipY == "")
+        WinMove % ahk_id,, A_ScreenWidth - MpcHcPipWidth - 20, 20, newWidth, newHeight
+    ; Restore custom position
+    else
+        WinMove % ahk_id,, MpcHcPipX, MpcHcPipY, newWidth, newHeight
 
     SetKeyDelay % KeyDelayDefault
 }
