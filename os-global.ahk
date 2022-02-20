@@ -25,6 +25,8 @@ MpcHcZoom50Key := "!{+}"
 MpcHcZoom100Key := "!ě"
 ; Default to 25%
 MpcHcZoomKey := MpcHcZoom25Key
+; Default width in normal mode
+MpcHcNormalWidth := 1240
 ; Default pip mode width
 MpcHcPipWidth := 420
 ; Custom position
@@ -1224,30 +1226,43 @@ MpcHcEnablePip()
 MpcHcDisablePip()
 {
     global KeyDelayqBt, KeyDelayDefault
-    global MpcHcZoom100Key
+    global MpcHcZoomKey, MpcHcNormalWidth
     global MpcHcPipX, MpcHcPipY
+
+	if (!WinExist("A"))
+        return
 
     SetKeyDelay % KeyDelayqBt
 
     ; Store x and y positions in pip mode only if the pip window has been moved
-	if (WinExist("A")) {
-        WinGetPos x, y, width
+    WinGetPos x, y, width
 
-        if (x != (A_ScreenWidth - width - 20) || y != 20) {
-            MpcHcPipX := x
-            MpcHcPipY := y
-        }
+    if (x != (A_ScreenWidth - width - 20) || y != 20) {
+        MpcHcPipX := x
+        MpcHcPipY := y
     }
 
     CenterWindow()
-    ; Restore zoom to 100%
-    Send % MpcHcZoom100Key
-    ; Disable StayOnTop and Fullscreen
-    Send ^a!{Enter}
+    ; Disable StayOnTop
+    Send ^a
     ; Normal mode
     Send š
+    ; Zoom by MpcHcZoomKey variable
+    Send % MpcHcZoomKey
     ; Show playlist
     Send ^!a
+
+    ; Compute width and height, mpc-hc sets correct aspect ratio so use it to compute correct height
+    Sleep 60
+    WinGetPos,,, width, height
+    newWidth := MpcHcNormalWidth
+    newHeight := MpcHcNormalWidth / (width / height)
+
+    ; Default position I want to
+    WinMove % ahk_id,, 60, 40, newWidth, newHeight
+
+    ; Fullscreen
+    Send !{Enter}
 
     SetKeyDelay % KeyDelayDefault
 }
