@@ -26,12 +26,14 @@ MpcHcZoom100Key := "!ě"
 ; Default to 25%
 MpcHcZoomKey := MpcHcZoom25Key
 ; Default width in normal mode
-MpcHcNormalWidth := 1240
+MpcHcDefaultNormalWidth := 1240
 ; Default pip mode width
-MpcHcPipWidth := 420
-; Custom position
+MpcHcDefaultPipWidth := 420
+; Custom position and size
 MpcHcPipX := ""
 MpcHcPipY := ""
+MpcHcPipWidth := ""
+MpcHcPipHeight := ""
 
 
 ; Toggle audio output related functions
@@ -268,38 +270,14 @@ CreateQtCreatorOSD()
     return
 }
 
-; Reset x, y restore positions for pip mode
+; Reset x, y restore positions and sizes for pip mode
 #IfWinActive ahk_exe mpc-hc64.exe
 ^F8::
 {
     MpcHcResetPipPositions()
 
-    MsgBox,, Reset PIP mode positions, Reset x`, y restore positions, 1
+    MsgBox,, Reset PIP mode positions, Reset x`, y restore positions and sizes, 1
 
-    return
-}
-
-; Enable 25% zoom
-#IfWinActive ahk_exe mpc-hc64.exe
-^F9::
-{
-    MpcHcZoomKey := MpcHcZoom25Key
-    return
-}
-
-; Enable 50% zoom
-#IfWinActive ahk_exe mpc-hc64.exe
-^F10::
-{
-    MpcHcZoomKey := MpcHcZoom50Key
-    return
-}
-
-; Enable 100% zoom
-#IfWinActive ahk_exe mpc-hc64.exe
-^F11::
-{
-    MpcHcZoomKey := MpcHcZoom100Key
     return
 }
 
@@ -1191,9 +1169,10 @@ Sy()
 
 MpcHcEnablePip()
 {
-    global MpcHcZoomKey, MpcHcPipWidth
+    global MpcHcZoomKey, MpcHcDefaultPipWidth
     global KeyDelayqBt, KeyDelayDefault
     global MpcHcPipX, MpcHcPipY
+    global MpcHcPipWidth, MpcHcPipHeight
 
 	if (!WinExist("A"))
         return
@@ -1204,21 +1183,27 @@ MpcHcEnablePip()
     Send ^a^!a
     ; Compact mode
     Send {+}
-    ; Zoom by MpcHcZoomKey variable
-    Send % MpcHcZoomKey
-
-    ; Compute width and height, mpc-hc sets correct aspect ratio so use it to compute correct height
-    Sleep 60
-    WinGetPos,,, width, height
-    newWidth := MpcHcPipWidth
-    newHeight := MpcHcPipWidth / (width / height)
 
     ; Top right corner - default position
-    if (MpcHcPipX == "" && MpcHcPipY == "")
-        WinMove % ahk_id,, A_ScreenWidth - MpcHcPipWidth - 20, 20, newWidth, newHeight
-    ; Restore custom position
-    else
-        WinMove % ahk_id,, MpcHcPipX, MpcHcPipY, newWidth, newHeight
+    if (MpcHcPipX == "" && MpcHcPipY == "") {
+        ; Zoom by MpcHcZoomKey variable
+        Send % MpcHcZoomKey
+        Sleep 60
+
+        ; Compute width and height, mpc-hc sets correct aspect ratio so use it to compute correct height
+        WinGetPos,,, width, height
+        newWidth := MpcHcDefaultPipWidth
+        newHeight := MpcHcDefaultPipWidth / (width / height)
+
+        WinMove % ahk_id,, A_ScreenWidth - MpcHcDefaultPipWidth - 20, 20, newWidth, newHeight
+    }
+    ; Restore custom position and size
+    else {
+        ; Disable Fullscreen
+        Send !{Enter}
+
+        WinMove % ahk_id,, MpcHcPipX, MpcHcPipY, MpcHcPipWidth, MpcHcPipHeight
+    }
 
     SetKeyDelay % KeyDelayDefault
 }
@@ -1226,20 +1211,23 @@ MpcHcEnablePip()
 MpcHcDisablePip()
 {
     global KeyDelayqBt, KeyDelayDefault
-    global MpcHcZoomKey, MpcHcNormalWidth
+    global MpcHcZoomKey, MpcHcDefaultNormalWidth
     global MpcHcPipX, MpcHcPipY
+    global MpcHcPipWidth, MpcHcPipHeight
 
 	if (!WinExist("A"))
         return
 
     SetKeyDelay % KeyDelayqBt
 
-    ; Store x and y positions in pip mode only if the pip window has been moved
-    WinGetPos x, y, width
+    ; Store x and y positions and sizes in pip mode only if the pip window has been moved or resized
+    WinGetPos x, y, width, height
 
-    if (x != (A_ScreenWidth - width - 20) || y != 20) {
+    if (x != (A_ScreenWidth - width - 20) || y != 20 || MpcHcPipWidth != width || MpcHcPipHeight != height) {
         MpcHcPipX := x
         MpcHcPipY := y
+        MpcHcPipWidth := width
+        MpcHcPipHeight := height
     }
 
     CenterWindow()
@@ -1255,8 +1243,8 @@ MpcHcDisablePip()
     ; Compute width and height, mpc-hc sets correct aspect ratio so use it to compute correct height
     Sleep 60
     WinGetPos,,, width, height
-    newWidth := MpcHcNormalWidth
-    newHeight := MpcHcNormalWidth / (width / height)
+    newWidth := MpcHcDefaultNormalWidth
+    newHeight := MpcHcDefaultNormalWidth / (width / height)
 
     ; Default position I want to
     WinMove % ahk_id,, 60, 40, newWidth, newHeight
@@ -1270,9 +1258,12 @@ MpcHcDisablePip()
 MpcHcResetPipPositions()
 {
     global MpcHcPipX, MpcHcPipY
+    global MpcHcPipWidth, MpcHcPipHeight
 
     MpcHcPipX := ""
     MpcHcPipY := ""
+    MpcHcPipWidth := ""
+    MpcHcPipHeight := ""
 }
 
 MpcHcMoveLeft()
