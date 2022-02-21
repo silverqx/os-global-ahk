@@ -1230,7 +1230,8 @@ MpcHcDisablePip()
         MpcHcPipHeight := height
     }
 
-    CenterWindow()
+    ; Dummy shortcut to fix W11 alt bug
+    Send !-
     ; Disable StayOnTop
     Send ^a
     ; Normal mode
