@@ -385,9 +385,9 @@ CreateQtCreatorOSD()
     ; Assign to video category
     Send, {Tab}videos_H
     ; Download first and last pieces first
-    Send, +{Tab 4}{Space}
+    Send, +{Tab 5}{Space}
     ; Download in sequential order
-    Send, +{Tab}{Space}
+    Send, +{Tab 2}{Space}
     ; Close Torrent options modal
     Send, {Enter}
     SetKeyDelay % KeyDelayDefault
@@ -414,9 +414,9 @@ CreateQtCreatorOSD()
     ; Assign to video category
     Send, {Tab}videos_H
     ; Download first and last pieces first
-    Send, +{Tab 4}{Space}
+    Send, +{Tab 5}{Space}
     ; Download in sequential order
-    Send, +{Tab}{Space}
+    Send, +{Tab 2}{Space}
     ; Set no share limit
     Send, +{Tab}{Down 2}{Up}{Space}
     ; Close Torrent options modal
@@ -443,9 +443,9 @@ CreateQtCreatorOSD()
     ; Assign to video category
     Send, {Tab}videos_H
     ; Download first and last pieces first
-    Send, +{Tab 4}{Space}
+    Send, +{Tab 5}{Space}
     ; Download in sequential order
-    Send, +{Tab}{Space}
+    Send, +{Tab 2}{Space}
     ; Close Torrent options modal
     Send, {Enter}
     SetKeyDelay % KeyDelayDefault
@@ -472,9 +472,9 @@ CreateQtCreatorOSD()
     ; Assign to video category
     Send, {Tab}videos_H
     ; Download first and last pieces first
-    Send, +{Tab 4}{Space}
+    Send, +{Tab 5}{Space}
     ; Download in sequential order
-    Send, +{Tab}{Space}
+    Send, +{Tab 2}{Space}
     ; Set no share limit
     Send, +{Tab}{Down 2}{Up}{Space}
     ; Close Torrent options modal
