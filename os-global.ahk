@@ -108,14 +108,14 @@ CreateQtCreatorOSD()
 }
 
 ; Open Google Chrome
-<#n::
+<#m::
 {
     Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe,, Maximize
     return
 }
 
 ; Open Google Chrome - Incognito window
-+<#n::
++<#m::
 {
     Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --incognito,, Maximize
     return
