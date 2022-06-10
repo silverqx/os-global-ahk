@@ -107,6 +107,9 @@ CreateQtCreatorOSD()
     return
 }
 
+; Show Windows Start Menu
+~LButton & WheelDown::Send {LWin}
+
 ; Open Google Chrome
 <#m::
 {
@@ -200,6 +203,8 @@ CreateQtCreatorOSD()
         Scd()
     else if (userInput == Chr(13))
         Scm()
+    else if (userInput == Chr(16))
+        Scp()
     else if (userInput == Chr(19))
         Scs()
     else if (userInput == Chr(20))
@@ -372,25 +377,16 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 ^BackSpace::
 {
-    global KeyDelayqBt, KeyDelayDefault
-
-    SetKeyDelay % KeyDelayqBt
+    ; Assign to video category
+    Send, {AppsKey}{Down 7}{Right}{Up}{Enter}
     ; Assign seed tag
     Send, {AppsKey}{Down 8}{Right}{Up 2}{Enter}
     ; Close Tags sub-menu
     Send, {Esc}
-    ; Open Torrent options modal
-    Send, {Down 2}{Enter}
-    Sleep, 120
-    ; Assign to video category
-    Send, {Tab}videos_H
-    ; Download first and last pieces first
-    Send, +{Tab 5}{Space}
     ; Download in sequential order
-    Send, +{Tab 2}{Space}
-    ; Close Torrent options modal
-    Send, {Enter}
-    SetKeyDelay % KeyDelayDefault
+    Send, {Down 4}{Enter}
+    ; Download first and last pieces first
+    Send, {AppsKey}{Up 6}{Enter}
 
     return
 }
@@ -399,26 +395,25 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 ^!BackSpace::
 {
-    global KeyDelayqBt, KeyDelayDefault
-
-    SetKeyDelay % KeyDelayqBt
     ; Force resume
     Send, {AppsKey}{Down 2}{Enter}
-    ; Assign seed and seed forced tags
+    ; Assign to video category
+    Send, {AppsKey}{Down 7}{Right}{Up}{Enter}
+    ; Assign seed tag
     Send, {AppsKey}{Down 8}{Right}{Up}{Enter}{Up}{Enter}
     ; Close Tags sub-menu
     Send, {Esc}
-    ; Open Torrent options modal
-    Send, {Down 2}{Enter}
-    Sleep, 120
-    ; Assign to video category
-    Send, {Tab}videos_H
-    ; Download first and last pieces first
-    Send, +{Tab 5}{Space}
     ; Download in sequential order
-    Send, +{Tab 2}{Space}
+    Send, {Down 4}{Enter}
+    ; Download first and last pieces first
+    Send, {AppsKey}{Up 6}{Enter}
+
+    ; Open Torrent options modal
+    Send, {AppsKey}{Up 9}{Enter}
+    SetKeyDelay % KeyDelayqBt
+    Sleep, 120
     ; Set no share limit
-    Send, +{Tab}{Down 2}{Up}{Space}
+    Send, {Tab 6}{Down 2}{Up}{Space}
     ; Close Torrent options modal
     Send, {Enter}
     SetKeyDelay % KeyDelayDefault
@@ -430,25 +425,16 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 ^+!BackSpace::
 {
-    global KeyDelayqBt, KeyDelayDefault
-
-    SetKeyDelay % KeyDelayqBt
+    ; Assign to video category
+    Send, {AppsKey}{Down 6}{Right}{Up}{Enter}
     ; Assign seed tag
     Send, {AppsKey}{Down 7}{Right}{Up 2}{Enter}
     ; Close Tags sub-menu
     Send, {Esc}
-    ; Open Torrent options modal
-    Send, {Down 2}{Enter}
-    Sleep, 120
-    ; Assign to video category
-    Send, {Tab}videos_H
-    ; Download first and last pieces first
-    Send, +{Tab 5}{Space}
     ; Download in sequential order
-    Send, +{Tab 2}{Space}
-    ; Close Torrent options modal
-    Send, {Enter}
-    SetKeyDelay % KeyDelayDefault
+    Send, {Down 4}{Enter}
+    ; Download first and last pieces first
+    Send, {AppsKey}{Up 6}{Enter}
 
     return
 }
@@ -457,26 +443,25 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 ^!F12::
 {
-    global KeyDelayqBt, KeyDelayDefault
-
-    SetKeyDelay % KeyDelayqBt
     ; Force resume
     Send, {AppsKey}{Down 2}{Enter}
-    ; Assign seed and seed forced tags
+    ; Assign to video category
+    Send, {AppsKey}{Down 6}{Right}{Up}{Enter}
+    ; Assign seed tag
     Send, {AppsKey}{Down 7}{Right}{Up}{Enter}{Up}{Enter}
     ; Close Tags sub-menu
     Send, {Esc}
-    ; Open Torrent options modal
-    Send, {Down 2}{Enter}
-    Sleep, 120
-    ; Assign to video category
-    Send, {Tab}videos_H
-    ; Download first and last pieces first
-    Send, +{Tab 5}{Space}
     ; Download in sequential order
-    Send, +{Tab 2}{Space}
+    Send, {Down 4}{Enter}
+    ; Download first and last pieces first
+    Send, {AppsKey}{Up 6}{Enter}
+
+    ; Open Torrent options modal
+    Send, {AppsKey}{Up 9}{Enter}
+    SetKeyDelay % KeyDelayqBt
+    Sleep, 120
     ; Set no share limit
-    Send, +{Tab}{Down 2}{Up}{Space}
+    Send, {Tab 6}{Down 2}{Up}{Space}
     ; Close Torrent options modal
     Send, {Enter}
     SetKeyDelay % KeyDelayDefault
@@ -488,21 +473,12 @@ CreateQtCreatorOSD()
 #IfWinActive ahk_exe qbittorrent.exe
 ^+BackSpace::
 {
-    global KeyDelayqBt, KeyDelayDefault
-
-    SetKeyDelay % KeyDelayqBt
+    ; Assign to video category
+    Send, {AppsKey}{Down 7}{Right}{Up}{Enter}
     ; Assign seed tag
     Send, {AppsKey}{Down 8}{Right}{Up 2}{Enter}
-    ; Close Tags sub-menu
-    Send, {Esc}
-    ; Open Torrent options modal
-    Send, {AppsKey}{Down 2}{Enter}
-    Sleep, 120
-    ; Assign to video category
-    Send, {Tab}videos_H
-    ; Close Torrent options modal
-    Send, {Enter}
-    SetKeyDelay % KeyDelayDefault
+    ; Close Tags sub-menu and context menu
+    Send, {Esc}{Esc}
 
     return
 }
@@ -928,6 +904,14 @@ Scm()
 {
     Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\TamperMonkey.lnk
 }
+; pgAdmin
+Scp()
+{
+    if WinExist("^pgAdmin 4$")
+        WinActivate
+    else
+        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PostgreSQL 14\pgAdmin 4.lnk
+}
 ; SumatraPDF
 Scs()
 {
@@ -1087,7 +1071,7 @@ Sm()
     if WinExist("Messenger (.*)")
         WinActivate
     else
-        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Messenger.lnk
+        Run, shell:AppsFolder\FACEBOOK.317180B0BB486_8xx8rvfyw5nnt!App
 }
 ; Notepad++
 Sn()
@@ -1097,13 +1081,10 @@ Sn()
     else
         Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Notepad++.lnk
 }
-; pgAdmin
+; PhpStorm
 Sp()
 {
-    if WinExist("^pgAdmin 4$")
-        WinActivate
-    else
-        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PostgreSQL 13\pgAdmin 4.lnk
+    Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\JetBrains\PhpStorm 2021.2.1.lnk
 }
 ; qMedia
 Sq()
