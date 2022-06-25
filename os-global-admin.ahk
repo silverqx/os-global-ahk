@@ -18,6 +18,20 @@ CoordMode, ToolTip, Screen
 ; General Section
 ; -------------------
 
+; Open Google Chrome
+<#m::
+{
+    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe,, Maximize
+    return
+}
+
+; Open Google Chrome - Incognito window
++<#m::
+{
+    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --incognito,, Maximize
+    return
+}
+
 ; Center Window
 ^!F7::CenterWindow()
 ; Max. Tile Window
