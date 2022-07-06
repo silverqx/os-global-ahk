@@ -918,7 +918,7 @@ Scs()
     if WinExist("SumatraPDF")
         WinActivate
     else
-        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\SumatraPDF.lnk
+        Run, C:\ProgramData\Microsoft\Windows\Start Menu\SumatraPDF.lnk
 }
 ; Sk-CzTorrent
 Sct()
