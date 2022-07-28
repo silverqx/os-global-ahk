@@ -18,6 +18,8 @@ CoordMode, ToolTip, Screen
 ; General Section
 ; -------------------
 
+^+F1::Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\__my__\Process Explorer.lnk,, Maximize
+
 ; Open Google Chrome
 <#m::
 {
