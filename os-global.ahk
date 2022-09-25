@@ -55,6 +55,53 @@ QtCreatorOSDText := ""
 
 CreateQtCreatorOSD()
 
+; Testing
+; -------------------
+
+;^!+F9::
+;{
+;    ; Open Skylink even during wake up between 08-22 hours, eg. when I came from outside or whatever,
+;    ; but not at evening or midnight, eg. something can wake up PC and I don't want to open Skylink
+;    ; in these cases.
+;    if (A_Hour not between 8 and 22)
+;    ; I'm waking PC at 08:14, so open Skylink only at this time
+;    ;if (A_Hour != 8 || A_Min not between 11 and 17)
+;        MsgBox % "Yes"
+;    else
+;        MsgBox % "No"
+;
+;    return
+;}
+
+
+; Open the Skylink Prima ZOOM on wakeup from suspend
+; -------------------
+
+; Listen to the Windows power event WM_POWERBROADCAST (ID: 0x218)
+OnMessage(0x218, "OnWmPowerBroadcast")
+
+OnWmPowerBroadcast(wParam, lParam)
+{
+    ; PBT_APMRESUMESUSPEND 0x0007
+    ; https://learn.microsoft.com/en-us/windows/win32/power/wm-powerbroadcast
+    ; https://www.autohotkey.com/board/topic/19984-running-commands-on-standby-hibernation-and-resume-events/
+    if (wParam != 7)
+        return
+
+    ; Open Skylink even during wake up between 08-22 hours, eg. when I came from outside or whatever,
+    ; but not at evening or midnight, eg. something can wake up PC and I don't want to open Skylink
+    ; in these cases.
+    if (A_Hour not between 8 and 22)
+    ; I'm waking PC at 08:14, so open Skylink only at this time
+    ;if (A_Hour != 8 || A_Min not between 11 and 17)
+        return
+
+    Sleep, 7000
+    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe https://livetv.skylink.cz/?qaction=wakeup --new-window,, Maximize
+    Sleep, 23000
+    Send, {F11}
+ }
+
 
 ; General Section
 ; -------------------
