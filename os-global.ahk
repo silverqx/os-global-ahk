@@ -55,24 +55,6 @@ QtCreatorOSDText := ""
 
 CreateQtCreatorOSD()
 
-; Testing
-; -------------------
-
-;^!+F9::
-;{
-;    ; Open Skylink even during wake up between 08-22 hours, eg. when I came from outside or whatever,
-;    ; but not at evening or midnight, eg. something can wake up PC and I don't want to open Skylink
-;    ; in these cases.
-;    if (A_Hour not between 8 and 22)
-;    ; I'm waking PC at 08:14, so open Skylink only at this time
-;    ;if (A_Hour != 8 || A_Min not between 11 and 17)
-;        MsgBox % "Yes"
-;    else
-;        MsgBox % "No"
-;
-;    return
-;}
-
 
 ; Open the Skylink Prima ZOOM on wakeup from suspend
 ; -------------------
@@ -101,6 +83,28 @@ OnWmPowerBroadcast(wParam, lParam)
     Sleep, 23000
     Send, {F11}
  }
+
+
+; Testing
+; -------------------
+
+;^!+F9::
+;{
+;    Run, E:\autohotkey\os-global\SkylinkPause.ahk,, Hide
+;    WinGetTitle, title, A
+;
+;    if (InStr(title, "Skylink - ", true) != 1)
+;        return
+;
+;    Send ^!+p
+;
+;    if (A_Hour != 8 || A_Min not between 11 and 17)
+;        MsgBox % "Yes"
+;    else
+;        MsgBox % "No"
+;
+;    return
+;}
 
 
 ; General Section
