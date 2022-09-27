@@ -90,11 +90,18 @@ OnWmPowerBroadcast(wParam, lParam)
 
 ;^!+F9::
 ;{
-;    Run, E:\autohotkey\os-global\SkylinkPause.ahk,, Hide
+;    Run, E:\autohotkey\os-global\PauseVideoAtSuspend.ahk,, Hide
 ;    WinGetTitle, title, A
 ;
-;    if (InStr(title, "Skylink - ", true) != 1)
+;    MsgBox % InStr(title, " - YouTube - Google Chrome", true)
+;    MsgBox % InStr(title, "Skylink - ", true)
+;
+;    if (InStr(title, "Skylink - ", true) != 1 && InStr(title, " - YouTube - Google Chrome", true) = false) {
+;        MsgBox % "return"
 ;        return
+;    }
+;    else
+;        MsgBox % "sent"
 ;
 ;    Send ^!+p
 ;
