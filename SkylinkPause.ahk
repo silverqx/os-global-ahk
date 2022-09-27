@@ -4,11 +4,12 @@
 #NoTrayIcon
 #SingleInstance Force
 
-; Pause the Skylink if it's in the foreground, it sends the ctrl+alt+shift+p keyboard shortcut that is handled by the Tampermonkey
+; Pause the Skylink/YouTube video if it's in the foreground, it sends the ctrl+alt+shift+p
+; keyboard shortcut that is handled by the Tampermonkey.
 
 WinGetTitle, title, A
 
-if (InStr(title, "Skylink - ", true) != 1)
+if (InStr(title, "Skylink - ", true) != 1 || InStr(title, "YouTube - ", true) != 1)
     return
 
 Send ^!+p
