@@ -9,7 +9,8 @@
 
 WinGetTitle, title, A
 
-if (InStr(title, "Skylink - ", true) != 1 || InStr(title, "YouTube - ", true) != 1)
+; -1 - doesn't start; false or 0 - doesn't contain
+if (InStr(title, "Skylink - ", true) != 1 && InStr(title, " - YouTube - Google Chrome", true) = false)
     return
 
 Send ^!+p
