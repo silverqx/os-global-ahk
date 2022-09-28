@@ -79,6 +79,8 @@ OnWmPowerBroadcast(wParam, lParam)
         return
 
     Sleep, 7000
+    Run, C:\Program Files (x86)\TC UP\MEDIA\Programs\Poweroff\poweroffcz.exe monitor_on,, Hide
+    Sleep 1000
     Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe https://livetv.skylink.cz/?qaction=wakeup --new-window,, Maximize
     Sleep, 23000
     Send, {F11}
