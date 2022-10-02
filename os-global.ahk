@@ -83,7 +83,7 @@ OnWmPowerBroadcast(wParam, lParam)
     Sleep 1000
     Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe https://livetv.skylink.cz/?qaction=wakeup --new-window,, Maximize
     Sleep, 23000
-    Send, {F11}
+    Send, f
  }
 
 
