@@ -81,10 +81,15 @@ OnWmPowerBroadcast(wParam, lParam)
     Sleep, 7000
     Run, C:\Program Files (x86)\TC UP\MEDIA\Programs\Poweroff\poweroffcz.exe monitor_on,, Hide
     Sleep 1000
-    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe https://livetv.skylink.cz/?qaction=wakeup --new-window,, Maximize
+    openSkylinkPrimaZoom()
     Sleep, 23000
     Send, f
- }
+}
+
+openSkylinkPrimaZoom()
+{
+    Splus(false)
+}
 
 
 ; Testing
@@ -315,6 +320,8 @@ OnWmPowerBroadcast(wParam, lParam)
         Sw()
     else if (userInput = "y")
         Sy()
+    else if (userInput = "+")
+        Splus(true)
 
     return
 }
@@ -1204,6 +1211,17 @@ Sw()
 Sy()
 {
     Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\YouTube.lnk
+}
+; Open Skylink Prima ZOOM
+Splus(fullscreen := false)
+{
+    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe https://livetv.skylink.cz/?qaction=wakeup --new-window,, Maximize
+
+    if (!fullscreen)
+        return
+
+    Sleep, 15000
+    Send, f
 }
 
 
