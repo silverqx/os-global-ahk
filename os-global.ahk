@@ -35,6 +35,9 @@ MpcHcPipY := ""
 MpcHcPipWidth := ""
 MpcHcPipHeight := ""
 
+; The time when the PC got to sleep state, used by open Skylink
+suspendTime := ""
+
 
 ; Toggle audio output related functions
 ; -------------------
@@ -64,16 +67,32 @@ OnMessage(0x218, "OnWmPowerBroadcast")
 
 OnWmPowerBroadcast(wParam, lParam)
 {
-    ; PBT_APMRESUMESUSPEND 0x0007
+    global suspendTime
+
     ; https://learn.microsoft.com/en-us/windows/win32/power/wm-powerbroadcast
     ; https://www.autohotkey.com/board/topic/19984-running-commands-on-standby-hibernation-and-resume-events/
-    if (wParam != 7)
+
+    ; Nothing to do, I'm only checking the resume and suspend states
+    if (wParam != 4 && wParam != 7)
         return
 
-    ; Open Skylink even during wake up between 08-22 hours, eg. when I came from outside or whatever,
-    ; but not at evening or midnight, eg. something can wake up PC and I don't want to open Skylink
-    ; in these cases.
-    if (A_Hour not between 8 and 22)
+    ; PBT_APMSUSPEND 0x0004 section
+    ; Save a time when the PC got to the suspend state, used later for compare
+    if (wParam = 4) {
+        suspendTime := A_Now
+        return
+    }
+
+    ; PBT_APMRESUMESUSPEND 0x0007 section
+    ; Prepare the 15 minutes later time and during the day variables
+    later15Mins := suspendTime
+    later15Mins += 15, Minutes
+    isDuringDay := A_Hour between 8 and 22
+
+    ; Open Skylink even during wake up between 08-22 hours, but it must sleep longer than 15 minutes,
+    ; eg. when I come back from outside or whatever, but not at evening or midnight,
+    ; because something can wake up PC and I don't want to open Skylink in these cases.
+    if (!isDuringDay || (isDuringDay && A_Now < later15Mins))
     ; I'm waking PC at 08:14, so open Skylink only at this time
     ;if (A_Hour != 8 || A_Min not between 11 and 17)
         return
@@ -97,6 +116,13 @@ openSkylinkPrimaZoom()
 
 ;^!+F9::
 ;{
+;    MsgBox % xyz
+;
+;    return
+;}
+
+;    MsgBox % A_Now . "`n" . xyz . "`n" . later10Mins . "`n" . (A_Now > later10Mins)
+;
 ;    Run, E:\autohotkey\os-global\PauseVideoAtSuspend.ahk,, Hide
 ;    WinGetTitle, title, A
 ;
