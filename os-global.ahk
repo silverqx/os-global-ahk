@@ -97,11 +97,11 @@ OnWmPowerBroadcast(wParam, lParam)
     ;if (A_Hour != 8 || A_Min not between 11 and 17)
         return
 
-    Sleep, 7000
+    Sleep, 60000
     Run, C:\Program Files (x86)\TC UP\MEDIA\Programs\Poweroff\poweroffcz.exe monitor_on,, Hide
-    Sleep 1000
+    Sleep 10000
     openSkylinkPrimaZoom()
-    Sleep, 23000
+    Sleep, 60000
     Send, f
 }
 
