@@ -494,7 +494,7 @@ openSkylinkPrimaZoom()
     Send, {AppsKey}{Down 2}{Enter}
     ; Assign to video category
     Send, {AppsKey}{Down 7}{Right}{Up}{Enter}
-    ; Assign seed tag
+    ; Assign seed and force seed tags
     Send, {AppsKey}{Down 8}{Right}{Up}{Enter}{Up}{Enter}
     ; Close Tags sub-menu
     Send, {Esc}
@@ -542,7 +542,7 @@ openSkylinkPrimaZoom()
     Send, {AppsKey}{Down 2}{Enter}
     ; Assign to video category
     Send, {AppsKey}{Down 6}{Right}{Up}{Enter}
-    ; Assign seed tag
+    ; Assign seed and force seed tags
     Send, {AppsKey}{Down 7}{Right}{Up}{Enter}{Up}{Enter}
     ; Close Tags sub-menu
     Send, {Esc}
