@@ -1200,7 +1200,7 @@ Sr()
 ; SmartGit
 Ss()
 {
-    if WinExist("i)- SmartGit.*(?:for non-commercial use only|Evaluation until )")
+    if WinExist("i)- SmartGit .* Non-Commercial$")
         WinActivate
     else
         Run, c:\ProgramData\Microsoft\Windows\Start Menu\Programs\SmartGit\SmartGit.lnk
