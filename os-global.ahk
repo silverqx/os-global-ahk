@@ -470,7 +470,7 @@ openSkylinkPrimaZoom()
     ; Download in sequential order
     Send, {Down 4}{Enter}
     ; Download first and last pieces first
-    Send, {AppsKey}{Up 6}{Enter}
+    Send, {AppsKey}{Up 7}{Enter}
 
     return
 }
@@ -490,10 +490,10 @@ openSkylinkPrimaZoom()
     ; Download in sequential order
     Send, {Down 4}{Enter}
     ; Download first and last pieces first
-    Send, {AppsKey}{Up 6}{Enter}
+    Send, {AppsKey}{Up 7}{Enter}
 
     ; Open Torrent options modal
-    Send, {AppsKey}{Up 9}{Enter}
+    Send, {AppsKey}{Up 10}{Enter}
     SetKeyDelay % KeyDelayqBt
     Sleep, 120
     ; Set no share limit
@@ -518,7 +518,7 @@ openSkylinkPrimaZoom()
     ; Download in sequential order
     Send, {Down 4}{Enter}
     ; Download first and last pieces first
-    Send, {AppsKey}{Up 6}{Enter}
+    Send, {AppsKey}{Up 7}{Enter}
 
     return
 }
@@ -538,10 +538,10 @@ openSkylinkPrimaZoom()
     ; Download in sequential order
     Send, {Down 4}{Enter}
     ; Download first and last pieces first
-    Send, {AppsKey}{Up 6}{Enter}
+    Send, {AppsKey}{Up 7}{Enter}
 
     ; Open Torrent options modal
-    Send, {AppsKey}{Up 9}{Enter}
+    Send, {AppsKey}{Up 10}{Enter}
     SetKeyDelay % KeyDelayqBt
     Sleep, 120
     ; Set no share limit
@@ -571,7 +571,7 @@ openSkylinkPrimaZoom()
 #IfWinActive ahk_exe qbittorrent.exe
 F3::
 {
-    Send, {AppsKey}{Up 8}{Enter}
+    Send, {AppsKey}{Up 9}{Enter}
     return
 }
 
@@ -579,7 +579,7 @@ F3::
 #IfWinActive ahk_exe qbittorrent.exe
 F4::
 {
-    Send, {AppsKey}{Up 5}{Enter}
+    Send, {AppsKey}{Up 6}{Enter}
     return
 }
 
