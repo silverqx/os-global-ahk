@@ -254,7 +254,7 @@ openSkylinkPrimaZoom()
     return
 }
 
-; Restart AhkOsGlobal scheduled task
+; Restart the AhkOsGlobal scheduled task
 ^+´::
 {
     SoundBeep, 8000, 70

@@ -39,7 +39,7 @@ CoordMode, ToolTip, Screen
 ; Max. Tile Window
 ^!F8::FullTileWindow()
 
-; Restart AhkOsGlobal scheduled task
+; Restart the AhkOsGlobal scheduled task
 ^!´::
 {
     SoundBeep, 8000, 70
