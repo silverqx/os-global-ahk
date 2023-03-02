@@ -65,14 +65,14 @@ OnWmPowerBroadcast(wParam, lParam)
     if (wParam != 4 && wParam != 7)
         return
 
-    ; PBT_APMSUSPEND 0x0004 section
+    ; PBT_APMSUSPEND 0x0004
     ; Save a time when the PC got to the suspend state, used later for compare
     if (wParam = 4) {
         suspendTime := A_Now
         return
     }
 
-    ; PBT_APMRESUMESUSPEND 0x0007 section
+    ; PBT_APMRESUMESUSPEND 0x0007 or PBT_APMRESUMEAUTOMATIC 0x0012 (18) section
     ; Prepare the 15 minutes later time and during the day variables
     later15Mins := suspendTime
     later15Mins += 15, Minutes
