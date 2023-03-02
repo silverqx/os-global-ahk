@@ -58,18 +58,22 @@ OnWmPowerBroadcast(wParam, lParam)
 {
     global suspendTime
 
+    WriteLogSkylink("begin; wParam = " wParam "; lParam = " lParam)
+
     ; https://learn.microsoft.com/en-us/windows/win32/power/wm-powerbroadcast
     ; https://www.autohotkey.com/board/topic/19984-running-commands-on-standby-hibernation-and-resume-events/
-
     ; Nothing to do, I'm only checking the resume and suspend states
-    if (wParam != 4 && wParam != 7)
-        return
+    if (wParam != 4 && wParam != 7 && wParam != 18) {
+        WriteLogSkylink("wParam != 4 && wParam != 7 && wParam != 18; return")
+        return false
+    }
 
     ; PBT_APMSUSPEND 0x0004
     ; Save a time when the PC got to the suspend state, used later for compare
     if (wParam = 4) {
         suspendTime := A_Now
-        return
+        WriteLogSkylink("wParam = 4; suspendTime := " suspendTime "; return")
+        return false
     }
 
     ; PBT_APMRESUMESUSPEND 0x0007 or PBT_APMRESUMEAUTOMATIC 0x0012 (18) section
@@ -81,17 +85,28 @@ OnWmPowerBroadcast(wParam, lParam)
     ; Open Skylink even during wake up between 08-22 hours, but it must sleep longer than 15 minutes,
     ; eg. when I come back from outside or whatever, but not at evening or midnight,
     ; because something can wake up PC and I don't want to open Skylink in these cases.
-    if (!isDuringDay || (isDuringDay && A_Now < later15Mins))
+    if (!isDuringDay || (isDuringDay && A_Now < later15Mins)) {
     ; I'm waking PC at 08:14, so open Skylink only at this time
     ;if (A_Hour != 8 || A_Min not between 11 and 17)
-        return
+        WriteLogSkylink("!isDuringDay || (isDuringDay && A_Now < later15Mins); isDuringDay := " isDuringDay "; later15Mins := " later15Mins "; return")
+        return false
+    }
 
-    Sleep, 60000
+    WriteLogSkylink("openSkylink")
+
+    Sleep, 25000
     Run, C:\Program Files (x86)\TC UP\MEDIA\Programs\Poweroff\poweroffcz.exe monitor_on,, Hide
     Sleep 10000
     openSkylinkPrimaZoom()
     Sleep, 60000
     Send, f
+
+    return false
+}
+
+; Write to the Open Skylink log file
+WriteLogSkylink(text) {
+    WriteLog(text, "E:/tmp/openskylink.log")
 }
 
 openSkylinkPrimaZoom()
@@ -1416,4 +1431,13 @@ MpcHcInferPreSnapPosition(x, y, width, height)
         result .= "Right"
 
     return result
+}
+
+
+; Others
+; -------------------
+
+; Write to the given log file
+WriteLog(text, logFilepath) {
+	FileAppend, % A_NowUTC ": " text "`n", %logFilepath%
 }
