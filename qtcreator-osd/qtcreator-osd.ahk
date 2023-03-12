@@ -34,7 +34,7 @@ CreateQtCreatorOSD()
 ^!+´::
 {
     SoundBeep, 8000, 70
-    Run, powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\qt-creator\recompile.ps1,, Hide
+    Run, powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\qtcreator-osd\recompile.ps1,, Hide
     return
 }
 
