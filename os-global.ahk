@@ -35,6 +35,8 @@ MpcHcPipHeight := ""
 
 ; The time when the PC got to sleep state, used by open Skylink
 suspendTime := ""
+; Skylink open time, to avoid opening Skylink two times
+openTime := ""
 
 
 ; Toggle audio output related functions
@@ -56,7 +58,7 @@ OnMessage(0x218, "OnWmPowerBroadcast")
 
 OnWmPowerBroadcast(wParam, lParam)
 {
-    global suspendTime
+    global suspendTime, openTime
 
     WriteLogSkylink("begin; wParam = " wParam "; lParam = " lParam)
 
@@ -92,7 +94,25 @@ OnWmPowerBroadcast(wParam, lParam)
         return false
     }
 
+    ; Prepare 5 second interval to avoid opening Skylink two times.
+    ; Windows sends both 7 and 18 resume codes during resume WOL and timer resume, and
+    ; it sends only 7 resume code if resumed using the keyboard.
+    if (openTime != "") {
+        openLater5Secs := openTime
+        openLater5Secs += 5, Seconds
+        WriteLogSkylink("Checking openLater5Secs : " A_Now " < " openLater5Secs)
+
+        if (A_Now < openLater5Secs) {
+            WriteLogSkylink("A_Now < openLater5Secs; return")
+            return false
+        }
+    }
+    else
+        WriteLogSkylink("openTime = """"")
+
     WriteLogSkylink("openSkylink")
+
+    openTime := A_Now
 
     Sleep, 25000
     Run, C:\Program Files (x86)\TC UP\MEDIA\Programs\Poweroff\poweroffcz.exe monitor_on,, Hide
