@@ -369,6 +369,8 @@ openSkylinkPrimaZoom()
         St()
     else if (userInput = "u")
         Su()
+    else if (userInput = "v")
+        Sv()
     else if (userInput = "w")
         Sw()
     else if (userInput = "y")
@@ -1200,6 +1202,11 @@ Su()
         WinActivate, ahk_pid %PID%
         CenterWindow()
     }
+}
+; Settings - Volume Mixer
+Sv()
+{
+    Run, C:\Windows\explorer.exe ms-settings:apps-volume
 }
 ; WinMerge
 Sw()
