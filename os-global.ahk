@@ -295,6 +295,18 @@ openSkylinkPrimaZoom()
     Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\System Tools\Control Panel.lnk
 }
 
+; Disable printing emoji-s for alt-0-9 🙏
+
+!Numpad1::Send, !1
+!Numpad2::Send, !2
+!Numpad3::Send, !3
+!Numpad4::Send, !4
+!Numpad5::Send, !5
+!Numpad6::Send, !6
+!Numpad7::Send, !7
+!Numpad8::Send, !8
+!Numpad9::Send, !9
+
 
 ; Leader key ctrl-g shortcuts
 ; ---------------------------
