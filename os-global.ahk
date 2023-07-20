@@ -1079,13 +1079,14 @@ Sa()
     else
         Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\access.lnk
 }
-; bash_or_cmd_useful_commands
+; Google Sheets - bash_or_cmd_useful_commands
 Sb()
 {
     if WinExist("bash_or_cmd_useful_commands")
         WinActivate
     else
-        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\bash_or_cmd_useful_commands.lnk
+        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\Google Sheets.lnk
+;        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\bash_or_cmd_useful_commands.lnk
 }
 ; open new čsfd.cz page in chrome
 Sc()
