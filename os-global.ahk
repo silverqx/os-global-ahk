@@ -999,7 +999,10 @@ Scd()
 ; TamperMonkey
 Scm()
 {
-    Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\TamperMonkey.lnk
+    if WinExist("^TamperMonkey")
+        WinActivate
+    else
+        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\TamperMonkey.lnk
 }
 ; pgAdmin
 Scp()
