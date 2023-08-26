@@ -177,6 +177,18 @@ openSkylinkPrimaZoom()
 ; General Section
 ; -------------------
 
+; Mouse shortcut for ctrl+home/end
+~RButton & WheelRight::
+{
+    Send ^{Home}
+    return
+}
+~RButton & WheelLeft::
+{
+    Send ^{End}
+    return
+}
+
 ; Suspend2Ram
 ~RButton & WheelUp::
 {
