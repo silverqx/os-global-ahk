@@ -347,6 +347,8 @@ openSkylinkPrimaZoom()
         Scd()
     else if (userInput == Chr(13))
         Scm()
+    else if (userInput == Chr(15))
+        Sco()
     else if (userInput == Chr(16))
         Scp()
     else if (userInput == Chr(19))
@@ -1004,13 +1006,21 @@ Scm()
     else
         Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\TamperMonkey.lnk
 }
+; GitHub
+Sco()
+{
+    if WinExist("^GitHub")
+        WinActivate
+    else
+        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\GitHub.lnk
+}
 ; pgAdmin
 Scp()
 {
     if WinExist("^pgAdmin 4$")
         WinActivate
     else
-        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PostgreSQL 14\pgAdmin 4.lnk
+        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PostgreSQL 15\pgAdmin 4.lnk
 }
 ; SumatraPDF
 Scs()
