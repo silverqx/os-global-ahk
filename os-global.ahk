@@ -34,9 +34,9 @@ MpcHcPipWidth := ""
 MpcHcPipHeight := ""
 
 ; The time when the PC got to sleep state, used by open Skylink
-suspendTime := ""
+SuspendTime := ""
 ; Skylink open time, to avoid opening Skylink two times
-openTime := ""
+OpenTime := ""
 
 
 ; Toggle audio output related functions
@@ -58,7 +58,7 @@ OnMessage(0x218, "OnWmPowerBroadcast")
 
 OnWmPowerBroadcast(wParam, lParam)
 {
-    global suspendTime, openTime
+    global SuspendTime, OpenTime
 
     WriteLogSkylink("begin; wParam = " wParam "; lParam = " lParam)
 
@@ -73,14 +73,14 @@ OnWmPowerBroadcast(wParam, lParam)
     ; PBT_APMSUSPEND 0x0004
     ; Save a time when the PC got to the suspend state, used later for compare
     if (wParam = 4) {
-        suspendTime := A_Now
-        WriteLogSkylink("wParam = 4; suspendTime := " suspendTime "; return")
+        SuspendTime := A_Now
+        WriteLogSkylink("wParam = 4; SuspendTime := " SuspendTime "; return")
         return false
     }
 
     ; PBT_APMRESUMESUSPEND 0x0007 or PBT_APMRESUMEAUTOMATIC 0x0012 (18) section
     ; Prepare the 15 minutes later time and during the day variables
-    later15Mins := suspendTime
+    later15Mins := SuspendTime
     later15Mins += 15, Minutes
     isDuringDay := A_Hour between 8 and 22
 
@@ -97,11 +97,11 @@ OnWmPowerBroadcast(wParam, lParam)
     ; Prepare 5 second interval to avoid opening Skylink two times.
     ; Windows sends both 7 and 18 resume codes during resume WOL and timer resume, and
     ; it sends only 7 resume code if resumed using the keyboard.
-    if (openTime != "") {
+    if (OpenTime != "") {
         ; Now happend that it last 1m35s between 18 and 7 resume codes,
         ; resume code 7 was fired 1m35s later after the 18 code,
         ; so I'm increasing this interval to 3min.
-        openLaterInterval := openTime
+        openLaterInterval := OpenTime
         openLaterInterval += 3, Minutes
         WriteLogSkylink("Checking openLaterInterval : " A_Now " < " openLaterInterval)
 
@@ -111,11 +111,11 @@ OnWmPowerBroadcast(wParam, lParam)
         }
     }
     else
-        WriteLogSkylink("openTime = """"")
+        WriteLogSkylink("OpenTime = """"")
 
     WriteLogSkylink("openSkylink")
 
-    openTime := A_Now
+    OpenTime := A_Now
 
     Sleep, 25000
     Run, C:\Program Files (x86)\TC UP\MEDIA\Programs\Poweroff\poweroffcz.exe monitor_on,, Hide
