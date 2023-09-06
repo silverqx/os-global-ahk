@@ -990,7 +990,13 @@ Scd()
         return
 
     ; Without modifiers
-    if (userInput = "r") {
+    if (userInput = "c")
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdocker.ps1,, Hide
+    else if (userInput = "d") {
+        MsgBox,, Ubuntu Docker Server, Detaching Ubuntu Docker KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdd.ps1,, Hide
+    }
+    else if (userInput = "r") {
         MsgBox,, Ubuntu Docker Server, Starting Ubuntu Docker KVM, 1
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrd.ps1,, Hide
     } else if (userInput = "s") {
