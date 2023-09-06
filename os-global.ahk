@@ -958,7 +958,8 @@ Scb()
     else if (userInput = "d") {
         MsgBox,, Manjaro, Detaching Manjaro KVM, 1
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdb.ps1,, Hide
-    } else if (userInput = "g") {
+    }
+    else if (userInput = "g") {
         if WinExist("^Manjaro - VMware KVM$")
             WinActivate
     }
@@ -969,7 +970,8 @@ Scb()
     else if (userInput = "r") {
         MsgBox,, Manjaro, Starting Manjaro KVM, 1
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrb.ps1,, Hide
-    } else if (userInput = "s") {
+    }
+    else if (userInput = "s") {
         MsgBox,, Manjaro, Suspending Manjaro KVM, 1
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsb.ps1,, Hide
     }
@@ -1096,10 +1098,12 @@ Scw()
     else if (userInput = "d") {
         MsgBox,, Windows, Detaching Windows KVM, 1
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdw.ps1,, Hide
-    } else if (userInput = "r") {
+    }
+    else if (userInput = "r") {
         MsgBox,, Windows, Starting Windows KVM, 1
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrw.ps1,, Hide
-    } else if (userInput = "s") {
+    }
+    else if (userInput = "s") {
         MsgBox,, Windows, Suspending Windows KVM, 1
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsw.ps1,, Hide
     }
