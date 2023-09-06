@@ -178,12 +178,12 @@ openSkylinkPrimaZoom()
 ; -------------------
 
 ; Mouse shortcut for ctrl+home/end
-~RButton & WheelRight::
+~LButton & WheelRight::
 {
     Send ^{Home}
     return
 }
-~RButton & WheelLeft::
+~LButton & WheelLeft::
 {
     Send ^{End}
     return
