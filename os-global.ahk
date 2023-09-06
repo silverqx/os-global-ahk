@@ -38,6 +38,8 @@ SuspendTime := ""
 ; Skylink open time, to avoid opening Skylink two times
 OpenTime := ""
 
+; Pause/Unpause vmwrun.exe
+VmrunPauseToggle := false
 
 ; Toggle audio output related functions
 ; -------------------
@@ -944,6 +946,8 @@ IsNoBorderWindow(winTitle)
 ; Manjaro vmware
 Scb()
 {
+    global VmrunPauseToggle
+
     Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, c,d,g,p,r,s
 
     if (ErrorLevel = "NewInput")
@@ -953,7 +957,21 @@ Scb()
         return
 
     ; Without modifiers
-    if (userInput = "c")
+    ; Pause/Unpause
+    if (userInput = "a") {
+        ; Switch
+        VmrunPauseToggle := !VmrunPauseToggle
+
+        if (VmrunPauseToggle) {
+            MsgBox,, Manjaro, Paused Manjaro KVM, 1
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpab.ps1,, Hide
+        }
+        else {
+            MsgBox,, Manjaro, Unpaused Manjaro KVM, 1
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpab.ps1,, Hide
+        }
+    }
+    else if (userInput = "c")
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmb.ps1,, Hide
     else if (userInput = "d") {
         MsgBox,, Manjaro, Detaching Manjaro KVM, 1
@@ -981,6 +999,8 @@ Scb()
 ; Ubuntu Docker Server vmware
 Scd()
 {
+    global VmrunPauseToggle
+
     Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, r,s
 
     if (ErrorLevel = "NewInput")
@@ -990,7 +1010,21 @@ Scd()
         return
 
     ; Without modifiers
-    if (userInput = "c")
+    ; Pause/Unpause
+    if (userInput = "a") {
+        ; Switch
+        VmrunPauseToggle := !VmrunPauseToggle
+
+        if (VmrunPauseToggle) {
+            MsgBox,, Ubuntu Docker Server, Paused Ubuntu Docker KVM, 1
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpad.ps1,, Hide
+        }
+        else {
+            MsgBox,, Ubuntu Docker Server, Unpaused Ubuntu Docker KVM, 1
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpad.ps1,, Hide
+        }
+    }
+    else if (userInput = "c")
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdocker.ps1,, Hide
     else if (userInput = "d") {
         MsgBox,, Ubuntu Docker Server, Detaching Ubuntu Docker KVM, 1
@@ -1049,6 +1083,8 @@ Sct()
 ; Gentoo vmware
 Scv()
 {
+    global VmrunPauseToggle
+
     Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, c,d,g,h,p,r,s
 
     if (ErrorLevel = "NewInput")
@@ -1058,7 +1094,21 @@ Scv()
         return
 
     ; Without modifiers
-    if (userInput = "c")
+    ; Pause/Unpause
+    if (userInput = "a") {
+        ; Switch
+        VmrunPauseToggle := !VmrunPauseToggle
+
+        if (VmrunPauseToggle) {
+            MsgBox,, Gentoo, Paused Gentoo KVM, 1
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpag.ps1,, Hide
+        }
+        else {
+            MsgBox,, Gentoo, Unpaused Gentoo KVM, 1
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpag.ps1,, Hide
+        }
+    }
+    else if (userInput = "c")
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmg.ps1,, Hide
     else if (userInput = "d") {
         MsgBox,, Gentoo, Detaching Gentoo KVM, 1
@@ -1090,6 +1140,8 @@ Scv()
 ; Windows vmware
 Scw()
 {
+    global VmrunPauseToggle
+
     Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, c,d,r,s
 
     if (ErrorLevel = "NewInput")
@@ -1099,7 +1151,21 @@ Scw()
         return
 
     ; Without modifiers
-    if (userInput = "c")
+    ; Pause/Unpause
+    if (userInput = "a") {
+        ; Switch
+        VmrunPauseToggle := !VmrunPauseToggle
+
+        if (VmrunPauseToggle) {
+            MsgBox,, Windows, Paused Windows KVM, 1
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpaw.ps1,, Hide
+        }
+        else {
+            MsgBox,, Windows, Unpaused Windows KVM, 1
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpaw.ps1,, Hide
+        }
+    }
+    else if (userInput = "c")
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmw.ps1,, Hide
     else if (userInput = "d") {
         MsgBox,, Windows, Detaching Windows KVM, 1
