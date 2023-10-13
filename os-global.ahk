@@ -343,7 +343,9 @@ openSkylinkPrimaZoom()
 
     ; With the ctrl modifier, has to be first
     ; Look appropriate number mappings at https://en.wikipedia.org/wiki/ASCII#Control_code_chart
-    if (userInput == Chr(2))
+    if (userInput == Chr(1))
+        Sca()
+    else if (userInput == Chr(2))
         Scb()
     else if (userInput == Chr(4))
         Scd()
@@ -943,6 +945,72 @@ IsNoBorderWindow(winTitle)
 ; -------------------------
 
 ; With the ctrl modifier
+; TinyActions vmware
+Sca()
+{
+    global VmrunPauseToggle
+
+    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, a,c,d,g,h,p,r,s
+
+    if (ErrorLevel = "NewInput")
+        return
+    ; Terminated by end key
+    if InStr(ErrorLevel, "EndKey:")
+        return
+
+    ; Without modifiers
+    ; Pause/Unpause
+    if (userInput = "a") {
+        ; Switch
+        VmrunPauseToggle := !VmrunPauseToggle
+
+        if (VmrunPauseToggle) {
+            MsgBox,, TinyActions, Paused TinyActions KVM, 1
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-a.ps1,, Hide
+        }
+        else {
+            MsgBox,, TinyActions, Unpaused TinyActions KVM, 1
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-a.ps1,, Hide
+        }
+    }
+    ; Connect
+    else if (userInput = "c")
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-a.ps1,, Hide
+    ; Detach
+    else if (userInput = "d") {
+        MsgBox,, TinyActions, Detaching TinyActions KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-a.ps1,, Hide
+    }
+    ; WinActivate
+    else if (userInput = "g") {
+        if WinExist("^TinyORMGitHubActions - VMware KVM$")
+            WinActivate
+    }
+    ; htop
+    else if (userInput = "h") {
+        if WinExist("^TinyActions KVM$")
+            WinActivate
+        else
+            Run, wt --title "TinyActions KVM" pwsh -NoLogo -nop -c ssh silverqx@merydeye-tinyactions -t htop
+    }
+    ; Preferences
+    else if (userInput = "p") {
+        MsgBox,, TinyActions, Preferences for TinyActions KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-a.ps1,, Hide
+    }
+    ; Run
+    else if (userInput = "r") {
+        MsgBox,, TinyActions, Starting TinyActions KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-a.ps1,, Hide
+    }
+    ; Suspend
+    else if (userInput = "s") {
+        MsgBox,, TinyActions, Suspending TinyActions KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-a.ps1,, Hide
+    }
+
+    return
+}
 ; Manjaro vmware
 Scb()
 {
