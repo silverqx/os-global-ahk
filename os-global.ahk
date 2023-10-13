@@ -1016,7 +1016,7 @@ Scb()
 {
     global VmrunPauseToggle
 
-    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, c,d,g,p,r,s
+    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, a,c,d,g,p,r,s
 
     if (ErrorLevel = "NewInput")
         return
@@ -1032,20 +1032,20 @@ Scb()
 
         if (VmrunPauseToggle) {
             MsgBox,, Manjaro, Paused Manjaro KVM, 1
-            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpab.ps1,, Hide
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-b.ps1,, Hide
         }
         else {
             MsgBox,, Manjaro, Unpaused Manjaro KVM, 1
-            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpab.ps1,, Hide
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-b.ps1,, Hide
         }
     }
     ; Connect
     else if (userInput = "c")
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmb.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-b.ps1,, Hide
     ; Detach
     else if (userInput = "d") {
         MsgBox,, Manjaro, Detaching Manjaro KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdb.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-b.ps1,, Hide
     }
     ; WinActivate
     else if (userInput = "g") {
@@ -1055,17 +1055,17 @@ Scb()
     ; Preferences
     else if (userInput = "p") {
         MsgBox,, Manjaro, Preferences for Manjaro KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpb.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-b.ps1,, Hide
     }
     ; Run
     else if (userInput = "r") {
         MsgBox,, Manjaro, Starting Manjaro KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrb.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-b.ps1,, Hide
     }
     ; Suspend
     else if (userInput = "s") {
         MsgBox,, Manjaro, Suspending Manjaro KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsb.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-b.ps1,, Hide
     }
 
     return
@@ -1075,7 +1075,7 @@ Scd()
 {
     global VmrunPauseToggle
 
-    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, r,s
+    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, a,c,d,p,r,s
 
     if (ErrorLevel = "NewInput")
         return
@@ -1091,30 +1091,35 @@ Scd()
 
         if (VmrunPauseToggle) {
             MsgBox,, Ubuntu Docker Server, Paused Ubuntu Docker KVM, 1
-            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpad.ps1,, Hide
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-d.ps1,, Hide
         }
         else {
             MsgBox,, Ubuntu Docker Server, Unpaused Ubuntu Docker KVM, 1
-            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpad.ps1,, Hide
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-d.ps1,, Hide
         }
     }
     ; Connect
     else if (userInput = "c")
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdocker.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-d.ps1,, Hide
     ; Detach
     else if (userInput = "d") {
         MsgBox,, Ubuntu Docker Server, Detaching Ubuntu Docker KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdd.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-d.ps1,, Hide
+    }
+    ; Preferences
+    else if (userInput = "p") {
+        MsgBox,, Ubuntu Docker, Preferences for Ubuntu Docker KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-d.ps1,, Hide
     }
     ; Run
     else if (userInput = "r") {
         MsgBox,, Ubuntu Docker Server, Starting Ubuntu Docker KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrd.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-d.ps1,, Hide
     }
     ; Suspend
     else if (userInput = "s") {
         MsgBox,, Ubuntu Docker Server, Suspending Ubuntu Docker KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsd.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-d.ps1,, Hide
     }
 
     return
@@ -1164,7 +1169,7 @@ Scv()
 {
     global VmrunPauseToggle
 
-    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, c,d,g,h,p,r,s
+    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, a,c,d,g,h,p,r,s
 
     if (ErrorLevel = "NewInput")
         return
@@ -1180,20 +1185,20 @@ Scv()
 
         if (VmrunPauseToggle) {
             MsgBox,, Gentoo, Paused Gentoo KVM, 1
-            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpag.ps1,, Hide
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-g.ps1,, Hide
         }
         else {
             MsgBox,, Gentoo, Unpaused Gentoo KVM, 1
-            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpag.ps1,, Hide
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-g.ps1,, Hide
         }
     }
     ; Connect
     else if (userInput = "c")
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmg.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-g.ps1,, Hide
     ; Detach
     else if (userInput = "d") {
         MsgBox,, Gentoo, Detaching Gentoo KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdg.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-g.ps1,, Hide
     }
     ; WinActivate
     else if (userInput = "g") {
@@ -1210,17 +1215,17 @@ Scv()
     ; Preferences
     else if (userInput = "p") {
         MsgBox,, Gentoo, Preferences for Gentoo KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpg.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-g.ps1,, Hide
     }
     ; Run
     else if (userInput = "r") {
         MsgBox,, Gentoo, Starting Gentoo KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrg.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-g.ps1,, Hide
     }
     ; Suspend
     else if (userInput = "s") {
         MsgBox,, Gentoo, Suspending Gentoo KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsg.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-g.ps1,, Hide
     }
 
     return
@@ -1230,7 +1235,7 @@ Scw()
 {
     global VmrunPauseToggle
 
-    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, c,d,r,s
+    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, a,c,d,p,r,s
 
     if (ErrorLevel = "NewInput")
         return
@@ -1246,30 +1251,35 @@ Scw()
 
         if (VmrunPauseToggle) {
             MsgBox,, Windows, Paused Windows KVM, 1
-            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpaw.ps1,, Hide
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-w.ps1,, Hide
         }
         else {
             MsgBox,, Windows, Unpaused Windows KVM, 1
-            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpaw.ps1,, Hide
+            Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-w.ps1,, Hide
         }
     }
     ; Connect
     else if (userInput = "c")
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmw.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-w.ps1,, Hide
     ; Detach
     else if (userInput = "d") {
         MsgBox,, Windows, Detaching Windows KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmdw.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-w.ps1,, Hide
+    }
+    ; Preferences
+    else if (userInput = "p") {
+        MsgBox,, Windows, Preferences for Windows KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-w.ps1,, Hide
     }
     ; Run
     else if (userInput = "r") {
         MsgBox,, Windows, Starting Windows KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmrw.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-w.ps1,, Hide
     }
     ; Suspend
     else if (userInput = "s") {
         MsgBox,, Windows, Suspending Windows KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmsw.ps1,, Hide
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-w.ps1,, Hide
     }
 
     return
