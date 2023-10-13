@@ -56,7 +56,7 @@ EnumerateAudioOutputs()
 ; -------------------
 
 ; Listen to the Windows power event WM_POWERBROADCAST (ID: 0x218)
-OnMessage(0x218, "OnWmPowerBroadcast")
+;OnMessage(0x218, "OnWmPowerBroadcast")
 
 OnWmPowerBroadcast(wParam, lParam)
 {
