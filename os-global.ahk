@@ -1148,7 +1148,7 @@ Scp()
     if WinExist("^pgAdmin 4$")
         WinActivate
     else
-        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PostgreSQL 15\pgAdmin 4.lnk
+        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PostgreSQL 16\pgAdmin 4.lnk
 }
 ; SumatraPDF
 Scs()
