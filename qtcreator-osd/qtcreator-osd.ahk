@@ -62,7 +62,7 @@ CreateQtCreatorOSD()
     ; Make the first update immediate rather than waiting for the timer
     UpdateOSD()
     ; NoActivate avoids deactivating the currently active window
-    Gui, Show, x600 y-5 NoActivate
+    Gui, Show, x1690 y1041 NoActivate
 }
 
 ; Update OSD on the base of currently active window
