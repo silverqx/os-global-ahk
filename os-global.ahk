@@ -321,7 +321,7 @@ openSkylinkPrimaZoom()
 !Numpad8::Send, !8
 !Numpad9::Send, !9
 
-NumpadDot::.
+;NumpadDot::.
 
 
 ; Leader key ctrl-g shortcuts
