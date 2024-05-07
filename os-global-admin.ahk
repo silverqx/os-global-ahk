@@ -53,7 +53,7 @@ CoordMode, ToolTip, Screen
 
 ^j::
 {
-    Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, e
+    Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, e,v
 
     ; Send original shortcut on timeout
     if (ErrorLevel = "Timeout") {
@@ -70,6 +70,8 @@ CoordMode, ToolTip, Screen
     ; Without modifiers
     if (userInput = "e")
         Se()
+    else if (userInput = "v")
+        Sv()
 
     return
 }
@@ -109,7 +111,7 @@ CenterWindow()
 }
 
 
-; Leader key ctrl-g related
+; Leader key ctrl-j related
 ; -------------------------
 
 ; Without any modifier
@@ -120,4 +122,9 @@ Se()
         WinActivate
     else
         Run, rundll32.exe sysdm.cpl`,EditEnvironmentVariables
+}
+; Gentoo vmware
+Sv()
+{
+    Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-g.ps1,, Hide
 }
