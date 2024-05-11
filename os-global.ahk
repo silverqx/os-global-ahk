@@ -1393,13 +1393,13 @@ Sr()
     else
         Run, %A_WinDir%\regedit.exe
 }
-; SmartGit
+; qBittorrent
 Ss()
 {
-    if WinExist("i)- SmartGit .* Non-Commercial$")
+    if WinExist("i)( |^)qBittorrent v\d{1,2}\.\d{1,2}\.\d{1,3}$")
         WinActivate
     else
-        Run, c:\ProgramData\Microsoft\Windows\Start Menu\Programs\SmartGit\SmartGit.lnk
+        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\qBittorrent\qBittorrent.lnk
 }
 ; Microsoft To Do
 St()
