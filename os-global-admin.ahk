@@ -134,6 +134,11 @@ Scv()
     ; Connect
     if (userInput = "c")
         Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-g.ps1,, Hide
+    ; Detach
+    else if (userInput = "d") {
+        MsgBox,, Gentoo, Detaching Gentoo KVM, 1
+        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-g.ps1,, Hide
+    }
     ; Preferences
     else if (userInput = "p") {
         MsgBox,, Gentoo, Preferences for Gentoo KVM, 1
