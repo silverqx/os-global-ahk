@@ -1,4 +1,4 @@
-﻿; Silver Zachara <silver.zachara@gmail.com> 2021
+﻿; Silver Zachara <silver.zachara@gmail.com> 2021-2024
 
 #NoEnv
 #NoTrayIcon
