@@ -1,38 +1,39 @@
 ﻿; Silver Zachara <silver.zachara@gmail.com> 2021-2024
 
-#NoEnv
+#Requires AutoHotkey v2
+
+Persistent
 #NoTrayIcon
-#Persistent
 #SingleInstance Force
-#UseHook On
+#UseHook True
 
+;@Ahk2Exe-Base ../v2/AutoHotkey64.exe
+;@Ahk2Exe-SetMainIcon %A_ScriptName~-admin\.[^\.]+$~.ico%
+;@Ahk2Exe-SetCompanyName Crystal Studio
+;@Ahk2Exe-SetCopyright Copyright (©) 2024 Silver Zachara
+;@Ahk2Exe-SetDescription OS Global with Administrator rights (AutoHotkey)
+;@Ahk2Exe-SetFileVersion %A_AhkVersion%
+;@Ahk2Exe-SetName OS Global Admin
+;@Ahk2Exe-SetOrigFilename %A_ScriptName~\.[^\.]+$~.exe%
+;@Ahk2Exe-SetProductVersion 1.0.0.0
+;@Ahk2Exe-UseResourceLang 0x0409
 
-; Global
---------
+; Global variables
+; ----------------
 
-SetTitleMatchMode, RegEx
+SetTitleMatchMode('RegEx')
 
-CoordMode, ToolTip, Screen
-
+CoordMode('ToolTip', 'Screen')
 
 ; General Section
-; -------------------
+; ---------------
 
-^+F1::Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\__my__\Process Explorer.lnk,, Maximize
+^+F1::Run(A_Programs . '\__my__\Process Explorer.lnk',, 'Max')
 
 ; Open Google Chrome
-<#m::
-{
-    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe,, Maximize
-    return
-}
-
+<#m::Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe',, 'Max')
 ; Open Google Chrome - Incognito window
-+<#m::
-{
-    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --incognito,, Maximize
-    return
-}
++<#m::Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe --incognito',, 'Max')
 
 ; Center Window
 ^!F7::CenterWindow()
@@ -42,9 +43,8 @@ CoordMode, ToolTip, Screen
 ; Restart the AhkOsGlobal scheduled task
 ^!´::
 {
-    SoundBeep, 8000, 70
-    Run, powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\recompile-admin.ps1,, Hide
-    return
+    SoundBeep(8000, 70)
+    Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\recompile-admin.ps1',, 'Hide')
 }
 
 
@@ -53,19 +53,22 @@ CoordMode, ToolTip, Screen
 
 ^j::
 {
-    Input, userInput, T.8 L1 M, {enter}.{esc}{tab}, c,e,p,r
+    ih := InputHook('T.8 L1 M', '{enter}.{esc}{tab}', 'c,e,p,r')
+    ih.Start()
+    result := ih.Wait()
 
     ; Send original shortcut on timeout
-    if (ErrorLevel = "Timeout") {
-        Send, ^j
-        return
-    }
+    if (result = 'Timeout')
+        return Send('^j')
 
-    if (ErrorLevel = "NewInput")
-        return
+    ; TODO Ask on the forum how to do this in ahk v2 silverqx
+    ; if (result = 'NewInput')
+    ;     return
     ; Terminated by end key
-    if InStr(ErrorLevel, "EndKey:")
+    if (result == 'EndKey')
         return
+
+    userInput := ih.Input
 
     ; With the ctrl modifier, has to be first
     ; Look appropriate number mappings at https://en.wikipedia.org/wiki/ASCII#Control_code_chart
@@ -73,10 +76,8 @@ CoordMode, ToolTip, Screen
         Scv()
 
     ; Without modifiers
-    if (userInput = "e")
+    if (userInput = 'e')
         Se()
-
-    return
 }
 
 
@@ -86,14 +87,13 @@ CoordMode, ToolTip, Screen
 FullTileWindow()
 {
     ; Current Foreground window
-    WinActive("A")
-    WinMove,,, 8, 8, 1904, 1000
+    WinMove(8, 8, 1904, 1000, 'A')
 }
 
 CenterWindow()
 {
-    WinExist("A")
-    WinGetPos, initX, initY, width, height
+    WinExist('A')
+    WinGetPos(&initX, &initY, &width, &height)
 
     ; Do nothing if the geometry is the same as in the FullTileWindow()
     if (width == 1904 && height == 1000 && initX == 8 && initY == 8)
@@ -110,7 +110,7 @@ CenterWindow()
     else if (y > 30)
         y -= 14
 
-    WinMove, x < 0 ? 0 : x, y < 0 ? 0 : y
+    WinMove(x < 0 ? 0 : x, y < 0 ? 0 : y)
 }
 
 
@@ -120,45 +120,46 @@ CenterWindow()
 ; With the ctrl modifier
 Scv()
 {
-    global VmrunPauseToggle
+    ih := InputHook('T.9 L1 M', '{enter}.{esc}{tab}', 'a,c,d,g,h,p,r,s')
+    ih.Start()
+    result := ih.Wait()
 
-    Input, userInput, T.9 L1 M, {enter}.{esc}{tab}, a,c,d,g,h,p,r,s
-
-    if (ErrorLevel = "NewInput")
-        return
+    ; TODO Ask on the forum how to do this in ahk v2 silverqx
+    ; if (result = 'NewInput')
+    ;     return
     ; Terminated by end key
-    if InStr(ErrorLevel, "EndKey:")
+    if (result == 'EndKey')
         return
+
+    userInput := ih.Input
 
     ; Without modifiers
     ; Connect
-    if (userInput = "c")
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-g.ps1,, Hide
+    if (userInput = 'c')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-g.ps1',, 'Hide')
     ; Detach
-    else if (userInput = "d") {
-        MsgBox,, Gentoo, Detaching Gentoo KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-g.ps1,, Hide
+    else if (userInput = 'd') {
+        MsgBox('Detaching Gentoo KVM', 'Gentoo', 'T1')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-g.ps1',, 'Hide')
     }
     ; Preferences
-    else if (userInput = "p") {
-        MsgBox,, Gentoo, Preferences for Gentoo KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-g.ps1,, Hide
+    else if (userInput = 'p') {
+        MsgBox('Preferences for Gentoo KVM', 'Gentoo', 'T1')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-g.ps1',, 'Hide')
     }
     ; Run
-    else if (userInput = "r") {
-        MsgBox,, Gentoo, Starting Gentoo KVM, 1
-        Run, powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-g.ps1,, Hide
+    else if (userInput = 'r') {
+        MsgBox('Starting Gentoo KVM', 'Gentoo', 'T1')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-g.ps1',, 'Hide')
     }
-
-    return
 }
 
 ; Without any modifier
 ; Environment Variables
 Se()
 {
-    if WinExist("^Environment Variables$")
-        WinActivate
+    if (WinExist('^Environment Variables$'))
+        WinActivate()
     else
-        Run, rundll32.exe sysdm.cpl`,EditEnvironmentVariables
+        Run('rundll32.exe sysdm.cpl,EditEnvironmentVariables')
 }
