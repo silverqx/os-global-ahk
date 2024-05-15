@@ -781,7 +781,6 @@ F4::
 #IfWinActive ahk_exe DATA.exe
 F6::
 {
-    ; Download first and last pieces first
     PostMessage, 0x312, 1000, 0,, DarkSaves
     return
 }
