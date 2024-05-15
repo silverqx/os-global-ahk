@@ -8,27 +8,24 @@
 
 ; This code was originally in the os-global.ahk, but it caused problems, the OnWmPowerBroadcast() handler
 ; for the OnMessage(0x218, "OnWmPowerBroadcast") was called twice! I think it was because the CreateQtCreatorOSD()
-; creates a window behind the scene, so I got two windows and so it was called twice. Because of that I have made
-; standalone script for the CreateQtCreatorOSD().
-
+; creates a window behind the scene, so I got two windows and so it was called twice. Because of that I created
+; this standalone script for the CreateQtCreatorOSD() function.
 
 ; Global
---------
+; ------
 
 CoordMode, ToolTip, Screen
 
-
 ; Qt Creator OSD related
-; -------------------
+; ----------------------
 
 ; OSD Text Control
 QtCreatorOSDText := ""
 
 CreateQtCreatorOSD()
 
-
 ; General Section
-; -------------------
+; ---------------
 
 ; Restart the AhkQtCreatorOsd scheduled task
 ^!+´::
@@ -38,9 +35,8 @@ CreateQtCreatorOSD()
     return
 }
 
-
 ; Qt Creator OSD related
-; -------------------
+; ----------------------
 
 ; Create OSD window for the Qt Creator
 CreateQtCreatorOSD()

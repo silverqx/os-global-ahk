@@ -47,7 +47,6 @@ CoordMode('ToolTip', 'Screen')
     Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\recompile-admin.ps1',, 'Hide')
 }
 
-
 ; Leader key ctrl-j shortcuts
 ; ---------------------------
 
@@ -80,9 +79,8 @@ CoordMode('ToolTip', 'Screen')
         Se()
 }
 
-
 ; Window related
-; -------------------
+; --------------
 
 FullTileWindow()
 {
@@ -112,7 +110,6 @@ CenterWindow()
 
     WinMove(x < 0 ? 0 : x, y < 0 ? 0 : y)
 }
-
 
 ; Leader key ctrl-j related
 ; -------------------------

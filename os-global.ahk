@@ -6,7 +6,6 @@
 #SingleInstance Force
 #UseHook On
 
-
 ; Global
 --------
 
@@ -42,7 +41,7 @@ OpenTime := ""
 VmrunPauseToggle := false
 
 ; Toggle audio output related functions
-; -------------------
+; -------------------------------------
 
 ; Audio output devices
 OutputDevices := {}
@@ -51,9 +50,8 @@ AudioOutputToggle := false
 
 EnumerateAudioOutputs()
 
-
 ; Open the Skylink Prima ZOOM on wakeup from suspend
-; -------------------
+; --------------------------------------------------
 
 ; Listen to the Windows power event WM_POWERBROADCAST (ID: 0x218)
 ;OnMessage(0x218, "OnWmPowerBroadcast")
@@ -139,9 +137,8 @@ openSkylinkPrimaZoom()
     Splus(false)
 }
 
-
 ; Testing
-; -------------------
+; -------
 
 ;^!+F9::
 ;{
@@ -175,9 +172,8 @@ openSkylinkPrimaZoom()
 ;    return
 ;}
 
-
 ; General Section
-; -------------------
+; ---------------
 
 ; Mouse shortcut for ctrl+home/end
 ~LButton & WheelRight::
@@ -323,7 +319,6 @@ openSkylinkPrimaZoom()
 
 ;NumpadDot::.
 
-
 ; Leader key ctrl-g shortcuts
 ; ---------------------------
 
@@ -413,9 +408,8 @@ openSkylinkPrimaZoom()
     return
 }
 
-
 ; mpc-hc PIP mode
-; -------------------
+; ---------------
 
 ; Manually toogle MpcHcPip
 #IfWinActive ahk_exe mpc-hc64.exe
@@ -524,7 +518,6 @@ openSkylinkPrimaZoom()
 
     return
 }
-
 
 ; qBittorrent Section
 ; -------------------
@@ -780,9 +773,8 @@ F4::
 ;#IfWinActive ahk_class Chrome_WidgetWin_1 ; targetting only Chrome browser
 ;F3::Send ^`   ; chrome debugger next step   map key F8      to chrome devtools F10
 
-
 ; Dark Souls 1 Save Manager
-; -------------------
+; -------------------------
 
 ; Save Hotkey
 ; This hotkey will create a new save in the current run, and select it.
@@ -803,9 +795,8 @@ F8::
     return
 }
 
-
 ; Toggle audio output related functions
-; -------------------
+; -------------------------------------
 
 ; Set the default audio device by device ID
 SetDefaultEndpoint(DeviceID)
@@ -875,9 +866,8 @@ EnumerateAudioOutputs()
     ObjRelease(IMMDeviceCollection)
 }
 
-
 ; Window related
-; -------------------
+; --------------
 
 FullTileWindow()
 {
@@ -941,7 +931,6 @@ IsNoBorderWindow(winTitle)
 	; no border and not minimized
 	return !(style & 0x20800000)
 }
-
 
 ; Leader key ctrl-g related
 ; -------------------------
@@ -1451,9 +1440,8 @@ Splus(fullscreen := false)
     Send, f
 }
 
-
 ; mpc-hc PIP mode
-; -------------------
+; ---------------
 
 MpcHcEnablePip()
 {
@@ -1681,9 +1669,8 @@ MpcHcInferPreSnapPosition(x, y, width, height)
     return result
 }
 
-
 ; Others
-; -------------------
+; ------
 
 ; Write to the given log file
 WriteLog(text, logFilepath) {
