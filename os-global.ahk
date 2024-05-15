@@ -120,7 +120,7 @@ OnWmPowerBroadcast(wParam, lParam)
     OpenTime := A_Now
 
     Sleep, 25000
-    Run, C:\Program Files (x86)\TC UP\MEDIA\Programs\Poweroff\poweroffcz.exe monitor_on,, Hide
+    Run, %A_ProgramFiles% (x86)\TC UP\MEDIA\Programs\Poweroff\poweroffcz.exe monitor_on,, Hide
     Sleep 10000
     openSkylinkPrimaZoom()
     Sleep, 60000
@@ -220,7 +220,7 @@ openSkylinkPrimaZoom()
 !Launch_App2::
 {
     Sleep, 500
-    Run, C:\Program Files (x86)\TC UP\MEDIA\Programs\Poweroff\poweroffcz.exe monitor_off,, Hide
+    Run, %A_ProgramFiles% (x86)\TC UP\MEDIA\Programs\Poweroff\poweroffcz.exe monitor_off,, Hide
     return
 }
 
@@ -242,19 +242,19 @@ openSkylinkPrimaZoom()
 ; Show Windows Start Menu
 ~LButton & WheelDown::Send {LWin}
 
-^+F1::Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\__my__\Process Explorer.lnk,, Maximize
+^+F1::Run, %A_Programs%\__my__\Process Explorer.lnk,, Maximize
 
 ; Open Google Chrome
 <#m::
 {
-    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe,, Maximize
+    Run, %A_ProgramFiles% (x86)\Google\Chrome\Application\chrome.exe,, Maximize
     return
 }
 
 ; Open Google Chrome - Incognito window
 +<#m::
 {
-    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --incognito,, Maximize
+    Run, %A_ProgramFiles% (x86)\Google\Chrome\Application\chrome.exe --incognito,, Maximize
     return
 }
 
@@ -306,7 +306,7 @@ openSkylinkPrimaZoom()
 ; Open Control Panel
 !#i::
 {
-    Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\System Tools\Control Panel.lnk
+    Run, %A_Programs%\System Tools\Control Panel.lnk
 }
 
 ; Disable printing emoji-s for alt-0-9 🙏
@@ -1132,7 +1132,7 @@ Scm()
     if WinExist("^TamperMonkey")
         WinActivate
     else
-        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\TamperMonkey.lnk
+        Run, %A_Programs%\Chrome Apps\TamperMonkey.lnk
 }
 ; GitHub
 Sco()
@@ -1140,7 +1140,7 @@ Sco()
     if WinExist("^GitHub")
         WinActivate
     else
-        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\GitHub.lnk
+        Run, %A_Programs%\Chrome Apps\GitHub.lnk
 }
 ; pgAdmin
 Scp()
@@ -1148,7 +1148,7 @@ Scp()
     if WinExist("^pgAdmin 4$")
         WinActivate
     else
-        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PostgreSQL 16\pgAdmin 4.lnk
+        Run, %A_ProgramsCommon%\PostgreSQL 16\pgAdmin 4.lnk
 }
 ; SumatraPDF
 Scs()
@@ -1156,7 +1156,7 @@ Scs()
     if WinExist("SumatraPDF")
         WinActivate
     else
-        Run, C:\ProgramData\Microsoft\Windows\Start Menu\SumatraPDF.lnk
+        Run, %A_StartMenuCommon%\SumatraPDF.lnk
 }
 ; Sk-CzTorrent
 Sct()
@@ -1164,7 +1164,7 @@ Sct()
     if WinExist("(?:^Sk-CzTorrent \||\| SkTorrent\.eu)")
         WinActivate
     else
-        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\SkTorrent.lnk
+        Run, %A_Programs%\Chrome Apps\SkTorrent.lnk
 }
 ; Gentoo vmware
 Scv()
@@ -1294,7 +1294,7 @@ Sa()
     if WinExist("__prístupy - Google Sheets")
         WinActivate
     else
-        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\access.lnk
+        Run, %A_Programs%\Chrome Apps\access.lnk
 }
 ; Google Sheets - bash_or_cmd_useful_commands
 Sb()
@@ -1302,20 +1302,20 @@ Sb()
     if WinExist("bash_or_cmd_useful_commands")
         WinActivate
     else
-        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\Google Sheets.lnk
-;        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\bash_or_cmd_useful_commands.lnk
+        Run, %A_Programs%\Chrome Apps\Google Sheets.lnk
+;        Run, %A_Programs%\Chrome Apps\bash_or_cmd_useful_commands.lnk
 }
 ; open new čsfd.cz page in chrome
 Sc()
 {
-    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe,, Maximize
+    Run, %A_ProgramFiles% (x86)\Google\Chrome\Application\chrome.exe,, Maximize
     Sleep, 250
     Send, csfd.cz{Enter}
 }
 ; čsfd.cz search in chrome
 Sč()
 {
-    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe,, Maximize
+    Run, %A_ProgramFiles% (x86)\Google\Chrome\Application\chrome.exe,, Maximize
     Sleep, 250
     Send, csfd{Tab}
 }
@@ -1333,7 +1333,7 @@ Sf()
     if WinExist("Facebook")
         WinActivate
     else
-        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\Facebook.lnk
+        Run, %A_Programs%\Chrome Apps\Facebook.lnk
 }
 ; Grammly
 Sg()
@@ -1341,12 +1341,12 @@ Sg()
     if WinExist("Free Grammar Checker | Grammly")
         WinActivate
     else
-        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\Grammarly Checker.lnk
+        Run, %A_Programs%\Chrome Apps\Grammarly Checker.lnk
 }
 ; Skylink
 Sk()
 {
-    Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\Skylink.lnk
+    Run, %A_Programs%\Chrome Apps\Skylink.lnk
 }
 ; SQLiteStudio
 Sl()
@@ -1354,7 +1354,7 @@ Sl()
     if WinExist("SQLiteStudio (.*)")
         WinActivate
     else
-        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Scoop Apps\SQLiteStudio.lnk
+        Run, %A_Programs%\Scoop Apps\SQLiteStudio.lnk
 }
 ; Messenger
 Sm()
@@ -1370,12 +1370,12 @@ Sn()
     if WinExist(" - Notepad++")
         WinActivate
     else
-        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Notepad++.lnk
+        Run, %A_ProgramsCommon%\Notepad++.lnk
 }
 ; PhpStorm
 Sp()
 {
-    Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\JetBrains\PhpStorm 2021.2.1.lnk
+    Run, %A_ProgramsCommon%\JetBrains\PhpStorm 2021.2.1.lnk
 }
 ; qMedia
 Sq()
@@ -1383,7 +1383,7 @@ Sq()
     if WinExist("i)^ *qMedia v\d+\.\d+\.\d+$")
         WinActivate
     else
-        Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\__my__\qMedia.lnk
+        Run, %A_Programs%\__my__\qMedia.lnk
 }
 ; Registry Editor
 Sr()
@@ -1399,7 +1399,7 @@ Ss()
     if WinExist("i)( |^)qBittorrent v\d{1,2}\.\d{1,2}\.\d{1,3}$")
         WinActivate
     else
-        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\qBittorrent\qBittorrent.lnk
+        Run, %A_ProgramsCommon%\qBittorrent\qBittorrent.lnk
 }
 ; Microsoft To Do
 St()
@@ -1415,7 +1415,7 @@ Su()
     if WinExist("^Sound$")
         WinActivate
     else {
-        Run, C:\Windows\System32\rundll32.exe shell32.dll`,Control_RunDLL mmsys.cpl`,`,playback,,, PID
+        Run, %A_WinDir%\System32\rundll32.exe shell32.dll`,Control_RunDLL mmsys.cpl`,`,playback,,, PID
         WinWait, ahk_pid %PID%
         WinActivate, ahk_pid %PID%
         CenterWindow()
@@ -1424,7 +1424,7 @@ Su()
 ; Settings - Volume Mixer
 Sv()
 {
-    Run, C:\Windows\explorer.exe ms-settings:apps-volume
+    Run, %A_WinDir%\explorer.exe ms-settings:apps-volume
 }
 ; WinMerge
 Sw()
@@ -1432,17 +1432,17 @@ Sw()
     if WinExist("^WinMerge")
         WinActivate
     else
-        Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\WinMerge\WinMerge.lnk
+        Run, %A_ProgramsCommon%\WinMerge\WinMerge.lnk
 }
 ; Youtube
 Sy()
 {
-    Run, C:\Users\Silver Zachara\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Chrome Apps\YouTube.lnk
+    Run, %A_Programs%\Chrome Apps\YouTube.lnk
 }
 ; Open Skylink Prima ZOOM
 Splus(fullscreen := false)
 {
-    Run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe https://livetv.skylink.cz/?qaction=wakeup --new-window,, Maximize
+    Run, %A_ProgramFiles% (x86)\Google\Chrome\Application\chrome.exe https://livetv.skylink.cz/?qaction=wakeup --new-window,, Maximize
 
     if (!fullscreen)
         return
