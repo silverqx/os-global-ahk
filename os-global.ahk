@@ -593,16 +593,16 @@ IsWindowFullScreen(winTitle)
 {
     winId := WinExist(winTitle)
 
-	if (!winId)
-		return false
+    if (!winId)
+        return false
 
-	style := WinGetStyle('ahk_id ' . winId)
-	WinGetPos(&x, &y, &width, &height, 'ahk_id ' . winId)
+    style := WinGetStyle('ahk_id ' . winId)
+    WinGetPos(&x, &y, &width, &height, 'ahk_id ' . winId)
 
-	; 0x800000 is WS_BORDER.
-	; 0x20000000 is WS_MINIMIZE.
-	; No border and not minimized
-	return !(style & 0x20800000 || x > 0 || y > 0 || width < A_ScreenWidth || height < A_ScreenHeight)
+    ; 0x800000 is WS_BORDER.
+    ; 0x20000000 is WS_MINIMIZE.
+    ; No border and not minimized
+    return !(style & 0x20800000 || x > 0 || y > 0 || width < A_ScreenWidth || height < A_ScreenHeight)
 }
 
 ; Checks if the specified window has no borders
@@ -610,15 +610,15 @@ IsNoBorderWindow(winTitle)
 {
     winId := WinExist(winTitle)
 
-	if (!winId)
-		return false
+    if (!winId)
+        return false
 
-	style := WinGetStyle('ahk_id ' . winId)
+    style := WinGetStyle('ahk_id ' . winId)
 
-	; 0x800000 is WS_BORDER.
-	; 0x20000000 is WS_MINIMIZE.
-	; No border and not minimized
-	return !(style & 0x20800000)
+    ; 0x800000 is WS_BORDER.
+    ; 0x20000000 is WS_MINIMIZE.
+    ; No border and not minimized
+    return !(style & 0x20800000)
 }
 
 ; Leader key ctrl-g related
@@ -1166,7 +1166,7 @@ MpcHcEnablePip()
     global MpcHcPipX, MpcHcPipY
     global MpcHcPipWidth, MpcHcPipHeight
 
-	if (!WinExist('A'))
+    if (!WinExist('A'))
         return
 
     SetKeyDelay(KeyDelayqBt)
@@ -1207,7 +1207,7 @@ MpcHcDisablePip()
     global MpcHcPipX, MpcHcPipY
     global MpcHcPipWidth, MpcHcPipHeight
 
-	if (!WinExist('A'))
+    if (!WinExist('A'))
         return
 
     SetKeyDelay(KeyDelayqBt)
