@@ -136,7 +136,7 @@ VmrunPauseToggle := false
 
 ^g::
 {
-    ih := InputHook('T.8 L1 M', '{enter}.{esc}{tab}', 'a,b,c,č,d,f,g,k,l,m,n,p,q,r,s,t,w,u,y')
+    ih := InputHook('T.8 L1 M', '{enter}.{esc}{tab}', 'a,b,c,č,d,f,g,k,l,m,n,p,q,r,ř,s,š,t,w,u,y,ž')
     ih.Start()
     result := ih.Wait()
 
@@ -205,8 +205,12 @@ VmrunPauseToggle := false
         Sq()
     else if (userInput = 'r')
         Sr()
+    else if (userInput = 'ř')
+        Sř()
     else if (userInput = 's')
         Ss()
+    else if (userInput = 'š')
+        Sš()
     else if (userInput = 't')
         St()
     else if (userInput = 'u')
@@ -217,6 +221,8 @@ VmrunPauseToggle := false
         Sw()
     else if (userInput = 'y')
         Sy()
+    else if (userInput = 'ž')
+        Sž()
 }
 
 ; mpc-hc PIP mode
@@ -986,11 +992,10 @@ Sa()
 ; Google Sheets - bash_or_cmd_useful_commands
 Sb()
 {
-    if (WinExist('bash_or_cmd_useful_commands'))
+    if (WinExist('bash_or_cmd_useful_commands - Google Sheets'))
         WinActivate()
     else
-        Run(A_Programs . '\Chrome Apps\Google Sheets.lnk')
-;        Run(A_Programs . '\Chrome Apps\bash_or_cmd_useful_commands.lnk')
+        Run(A_Programs . '\__my__\bash_or_cmd_useful_commands.lnk')
 }
 ; open new čsfd.cz page in chrome
 Sc()
@@ -1080,6 +1085,14 @@ Sr()
     else
         Run(A_WinDir . '\regedit.exe')
 }
+; Google Sheets - Seriály
+Sř()
+{
+    if (WinExist('Seriály - Google Sheets'))
+        WinActivate()
+    else
+        Run(A_Programs . '\__my__\Seriály.lnk')
+}
 ; qBittorrent
 Ss()
 {
@@ -1087,6 +1100,14 @@ Ss()
         WinActivate()
     else
         Run(A_ProgramsCommon . '\qBittorrent\qBittorrent.lnk')
+}
+; Google Sheets
+Sš()
+{
+    if (WinExist('Sheets - Google Sheets'))
+        WinActivate()
+    else
+        Run(A_Programs . '\Chrome Apps\Sheets.lnk')
 }
 ; Microsoft To Do
 St()
@@ -1125,6 +1146,14 @@ Sw()
 Sy()
 {
     Run(A_Programs . '\Chrome Apps\YouTube.lnk')
+}
+; Google Drive
+Sž()
+{
+    if (WinExist('Google Drive - (?:.*) - Google Drive'))
+        WinActivate()
+    else
+        Run(A_Programs . '\Chrome Apps\Google Drive.lnk')
 }
 
 ; mpc-hc PIP mode
