@@ -54,7 +54,7 @@ VmrunPauseToggle := false
 
 ; ^!+F9::
 ; {
-;    MsgBox('xyz')
+;     MsgBox('xyz')
 ; }
 
 ; General Section
@@ -136,7 +136,8 @@ VmrunPauseToggle := false
 
 ^g::
 {
-    ih := InputHook('T.8 L1 M', '{enter}.{esc}{tab}', 'a,b,c,č,d,f,g,k,l,m,n,p,q,r,ř,s,š,t,w,u,y,ž')
+    ih := InputHook('T.8 L1 M', '{enter}.{esc}{tab}',
+                    'a,b,c,č,d,é,f,g,k,l,m,n,p,q,r,ř,s,š,t,w,u,y,ž')
     ih.Start()
     result := ih.Wait()
 
@@ -187,6 +188,8 @@ VmrunPauseToggle := false
         Sč()
     else if (userInput = 'd')
         Sd()
+    else if (userInput = 'é')
+        Sé()
     else if (userInput = 'f')
         Sf()
     else if (userInput = 'g')
@@ -1018,6 +1021,11 @@ Sd()
         WinActivate()
     else
         Run('shell:AppsFolder\DolbyLaboratories.DolbyAccess_rz1tebttyb220!App')
+}
+; List all registered hotkeys (w/o they descriptions 🥺)
+Sé()
+{
+    ListHotkeys
 }
 ; Facebook
 Sf()
