@@ -191,6 +191,8 @@ VmrunPauseToggle := false
         Sd() ; Dolby Access
     else if (userInput = 'é')
         Sé() ; List all registered hotkeys (w/o they descriptions 🥺)
+    else if (userInput = 'ý')
+        Sý() ; VMware Workstation
     else if (userInput = 'f')
         Sf() ; Facebook
     else if (userInput = 'g')
@@ -1027,6 +1029,14 @@ Sd()
 Sé()
 {
     ListHotkeys
+}
+; VMware Workstation
+Sý()
+{
+    if (WinExist('(?:^| - )VMware Workstation$'))
+        WinActivate()
+    else
+        Run(A_ProgramFiles . ' (x86)\VMware\VMware Workstation\vmware.exe')
 }
 ; Facebook
 Sf()
