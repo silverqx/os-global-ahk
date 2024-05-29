@@ -158,75 +158,75 @@ VmrunPauseToggle := false
     ; With the ctrl modifier, has to be first
     ; Look appropriate number mappings at https://en.wikipedia.org/wiki/ASCII#Control_code_chart
     if (userInput == Chr(1))
-        Sca()
+        Sca() ; TinyActions vmware
     else if (userInput == Chr(2))
-        Scb()
+        Scb() ; Manjaro vmware
     else if (userInput == Chr(4))
-        Scd()
+        Scd() ; Ubuntu Docker Server vmware
     else if (userInput == Chr(13))
-        Scm()
+        Scm() ; TamperMonkey
     else if (userInput == Chr(15))
-        Sco()
+        Sco() ; GitHub
     else if (userInput == Chr(16))
-        Scp()
+        Scp() ; pgAdmin
     else if (userInput == Chr(19))
-        Scs()
+        Scs() ; SumatraPDF
     else if (userInput == Chr(20))
-        Sct()
+        Sct() ; Sk-CzTorrent
     else if (userInput == Chr(22))
-        Scv()
+        Scv() ; Gentoo vmware
     else if (userInput == Chr(23))
-        Scw()
+        Scw() ; Windows vmware
 
     ; Without modifiers
     else if (userInput = 'a')
-        Sa()
+        Sa() ; access
     else if (userInput = 'b')
-        Sb()
+        Sb() ; Google Sheets - bash_or_cmd_useful_commands
     else if (userInput = 'c')
-        Sc()
+        Sc() ; open new čsfd.cz page in chrome
     else if (userInput = 'č')
-        Sč()
+        Sč() ; čsfd.cz search in chrome
     else if (userInput = 'd')
-        Sd()
+        Sd() ; Dolby Access
     else if (userInput = 'é')
-        Sé()
+        Sé() ; List all registered hotkeys (w/o they descriptions 🥺)
     else if (userInput = 'f')
-        Sf()
+        Sf() ; Facebook
     else if (userInput = 'g')
-        Sg()
+        Sg() ; Grammly
     else if (userInput = 'k')
-        Sk()
+        Sk() ; Skylink
     else if (userInput = 'l')
-        Sl()
+        Sl() ; SQLiteStudio
     else if (userInput = 'm')
-        Sm()
+        Sm() ; Messenger
     else if (userInput = 'n')
-        Sn()
+        Sn() ; Notepad++
     else if (userInput = 'p')
-        Sp()
+        Sp() ; PhpStorm
     else if (userInput = 'q')
-        Sq()
+        Sq() ; qMedia
     else if (userInput = 'r')
-        Sr()
+        Sr() ; Registry Editor
     else if (userInput = 'ř')
-        Sř()
+        Sř() ; Google Sheets - Seriály
     else if (userInput = 's')
-        Ss()
+        Ss() ; qBittorrent
     else if (userInput = 'š')
-        Sš()
+        Sš() ; Google Sheets
     else if (userInput = 't')
-        St()
+        St() ; Microsoft To Do
     else if (userInput = 'u')
-        Su()
+        Su() ; Control Panel - Sound Playback devices
     else if (userInput = 'v')
-        Sv()
+        Sv() ; Settings - Volume Mixer
     else if (userInput = 'w')
-        Sw()
+        Sw() ; WinMerge
     else if (userInput = 'y')
-        Sy()
+        Sy() ; Youtube
     else if (userInput = 'ž')
-        Sž()
+        Sž() ; Google Drive
 }
 
 ; mpc-hc PIP mode
