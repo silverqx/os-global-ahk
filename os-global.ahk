@@ -342,7 +342,7 @@ VmrunPauseToggle := false
     ; Close Tags sub-menu
     Send('{Esc}')
     ; Download in sequential order
-    Send('{Down 4}{Enter}')
+    Send('{AppsKey}{Up 8}{Enter}')
     ; Download first and last pieces first
     Send('{AppsKey}{Up 7}{Enter}')
 }
@@ -386,7 +386,7 @@ VmrunPauseToggle := false
     ; Close Tags sub-menu
     Send('{Esc}')
     ; Download in sequential order
-    Send('{Down 4}{Enter}')
+    Send('{AppsKey}{Up 8}{Enter}')
     ; Download first and last pieces first
     Send('{AppsKey}{Up 7}{Enter}')
 }
@@ -404,7 +404,7 @@ VmrunPauseToggle := false
     ; Close Tags sub-menu
     Send('{Esc}')
     ; Download in sequential order
-    Send('{Down 4}{Enter}')
+    Send('{AppsKey}{Up 8}{Enter}')
     ; Download first and last pieces first
     Send('{AppsKey}{Up 7}{Enter}')
 
