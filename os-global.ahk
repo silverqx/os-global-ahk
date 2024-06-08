@@ -132,6 +132,18 @@ VmrunPauseToggle := false
 ; Open Control Panel
 !#i::Run(A_Programs . '\System Tools\Control Panel.lnk')
 
+; Don't disable numlock if the shift is pressed
+; SC052::Numpad0
+; SC04F::Send('{Shift}{Numpad1}')11
+; SC050::+Numpad2
+; SC051::+Numpad3
+; SC04B::+Numpad4
+; SC04C::+Numpad5
+; SC04D::+Numpad6
+; SC047::+Numpad7
+; SC048::+Numpad8
+; SC049::+Numpad9
+
 ; Leader key ctrl-g shortcuts
 ; ---------------------------
 
