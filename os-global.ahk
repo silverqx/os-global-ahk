@@ -144,6 +144,15 @@ VmrunPauseToggle := false
 ; SC048::+Numpad8
 ; SC049::+Numpad9
 
+; Make the active window transparent
+ScrollLock::
+{
+	if (WinGetTransparent('A') = '')
+        WinSetTransparent(190, 'A')
+    else
+        WinSetTransparent('Off', 'A')
+}
+
 ; Leader key ctrl-g shortcuts
 ; ---------------------------
 
