@@ -825,6 +825,13 @@ Scd()
         MsgBox('Detaching Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-d.ps1',, 'Hide')
     }
+    ; htop
+    else if (userInput = 'h') {
+        if (WinExist('^Arch Docker Server KVM$'))
+            WinActivate()
+        else
+            Run('wt --title "Arch Docker Server KVM" pwsh -NoLogo -nop -c ssh root@merydeye-server -t htop')
+    }
     ; Preferences
     else if (userInput = 'p') {
         MsgBox('Preferences for Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
