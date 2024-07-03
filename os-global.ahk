@@ -183,7 +183,7 @@ ScrollLock::
     else if (userInput == Chr(2))
         Scb() ; Manjaro vmware
     else if (userInput == Chr(4))
-        Scd() ; Ubuntu Docker Server vmware
+        Scd() ; Arch Docker Server vmware
     else if (userInput == Chr(13))
         Scm() ; TamperMonkey
     else if (userInput == Chr(15))
@@ -783,7 +783,7 @@ Scb()
         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-b.ps1',, 'Hide')
     }
 }
-; Ubuntu Docker Server vmware
+; Arch Docker Server vmware
 Scd()
 {
     global VmrunPauseToggle
@@ -808,11 +808,11 @@ Scd()
         VmrunPauseToggle := !VmrunPauseToggle
 
         if (VmrunPauseToggle) {
-            MsgBox('Paused Ubuntu Docker KVM', 'Ubuntu Docker Server', 'T1')
+            MsgBox('Paused Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
             Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-d.ps1',, 'Hide')
         }
         else {
-            MsgBox('Unpaused Ubuntu Docker KVM', 'Ubuntu Docker Server', 'T1')
+            MsgBox('Unpaused Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
             Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-d.ps1',, 'Hide')
         }
     }
@@ -821,22 +821,22 @@ Scd()
         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-d.ps1',, 'Hide')
     ; Detach
     else if (userInput = 'd') {
-        MsgBox('Detaching Ubuntu Docker KVM', 'Ubuntu Docker Server', 'T1')
+        MsgBox('Detaching Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-d.ps1',, 'Hide')
     }
     ; Preferences
     else if (userInput = 'p') {
-        MsgBox('Preferences for Ubuntu Docker KVM', 'Ubuntu Docker Server', 'T1')
+        MsgBox('Preferences for Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-d.ps1',, 'Hide')
     }
     ; Run
     else if (userInput = 'r') {
-        MsgBox('Starting Ubuntu Docker KVM', 'Ubuntu Docker Server', 'T1')
+        MsgBox('Starting Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-d.ps1',, 'Hide')
     }
     ; Suspend
     else if (userInput = 's') {
-        MsgBox('Suspending Ubuntu Docker KVM', 'Ubuntu Docker Server', 'T1')
+        MsgBox('Suspending Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-d.ps1',, 'Hide')
     }
 }
