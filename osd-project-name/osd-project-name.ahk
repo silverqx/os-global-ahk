@@ -18,22 +18,24 @@ Persistent
 ;@Ahk2Exe-UseResourceLang 0x0409
 
 ; This code was originally in the os-global.ahk, but it caused problems, the OnWmPowerBroadcast() handler
-; for the OnMessage(0x218, 'OnWmPowerBroadcast') was called twice! I think it was because the CreateQtCreatorOSD()
-; creates a window behind the scene, so I got two windows and so it was called twice. Because of that I created
-; this standalone script for the CreateQtCreatorOSD() function.
+; for the OnMessage(0x218, 'OnWmPowerBroadcast') was called twice! I think it was because
+; the CreateCommonOSD() creates a window behind the scene, so I got two windows and so it was called twice.
+; Because of that I have created this standalone script for project name OSD-es.
 
 ; Global variables
 ; ----------------
 
 CoordMode('ToolTip', 'Screen')
 
-; Qt Creator OSD related
-; ----------------------
+; OSD variables
+; -------------
 
-; OSD Text Control
+; OSD Text Controls
 QtCreatorOSDText := ''
+VSCodeOSDText := ''
 
 CreateQtCreatorOSD()
+CreateVSCodeOSD()
 
 ; General Section
 ; ---------------
@@ -45,14 +47,12 @@ CreateQtCreatorOSD()
     Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\osd-project-name\recompile.ps1',, 'Hide')
 }
 
-; Qt Creator OSD related
+; Common OSD logic
 ; ----------------------
 
-; Create OSD window for the Qt Creator
-CreateQtCreatorOSD()
+; Create OSD window (common logic)
+CreateCommonOSD(osdTextName, &osdText, updateOSD)
 {
-    global QtCreatorOSDText
-
     ; Can be any RGB color (it will be made transparent below)
     CustomColor := '000000'
 
@@ -63,22 +63,21 @@ CreateQtCreatorOSD()
     ui.SetFont('s11 w500 q5')
 
     ; Text Label
-    QtCreatorOSDText := ui.Add('Text', 'vQtCreatorOSDText cEEEEEE w236 r1')
+    osdText := ui.Add('Text', Format('v{1} cEEEEEE w236 r1', osdTextName))
 
     ; Make all pixels of this color transparent and make the text itself translucent (150)
     WinSetTransColor(CustomColor . ' 150', ui)
 
     ; Make the first update immediate rather than waiting for the timer
-    UpdateOSD()
+    updateOSD.Call()
     ; Update every 200ms
-    SetTimer(UpdateOSD, 200)
+    SetTimer(updateOSD, 200)
 
-    ; NoActivate avoids deactivating the currently active window
-    ui.Show('x1690 y1041 NoActivate')
+    return ui
 }
 
-; Update OSD on the base of currently active window
-UpdateOSD()
+; Update OSD based on the currently active window (common logic)
+UpdateCommonOSD(titleRegEx, &osdText)
 {
     ; Don't hide the OSD if the task switcher is shown (Alt+Tab)
     if (WinActive('ahk_class MultitaskingViewFrame'))
@@ -94,11 +93,59 @@ UpdateOSD()
     if (!WinExist('A'))
         return
 
-    result := RegExMatch(WinGetTitle('A'), '(?:.* [@-] )?(.*[^\)])(?:\)? - Qt Creator)$', &Match)
+    result := RegExMatch(WinGetTitle('A'), titleRegEx, &Match)
 
     ; If a title was not found then show nothing
     if (result == 0 || Match.Count != 1)
-        QtCreatorOSDText.Value := ''
+        osdText.Value := ''
     else
-        QtCreatorOSDText.Value := Match[1]
+        osdText.Value := Match[1]
+}
+
+; Qt Creator OSD
+; --------------
+
+; Create OSD window for the Qt Creator
+CreateQtCreatorOSD()
+{
+    global QtCreatorOSDText
+
+    ui := CreateCommonOSD("QtCreatorOSDText", &QtCreatorOSDText, UpdateQtCreatorOSD)
+
+    ; NoActivate avoids deactivating the currently active window
+    ui.Show('x1690 y1041 NoActivate')
+}
+
+; Update OSD based on the currently active window for the Qt Creator
+UpdateQtCreatorOSD()
+{
+    global QtCreatorOSDText
+
+    UpdateCommonOSD('(?:.* [@-] )?(.*[^\)])(?:\)? - Qt Creator)$', &QtCreatorOSDText)
+}
+
+; Visual Studio Code OSD
+; ----------------------
+
+; Create OSD window for the Visual Studio Code
+CreateVSCodeOSD()
+{
+    global VSCodeOSDText
+
+    ui := CreateCommonOSD("VSCodeOSDText", &VSCodeOSDText, UpdateVSCodeOSD)
+
+    ; NoActivate avoids deactivating the currently active window
+    ui.Show('x1762 y46 NoActivate')
+}
+
+; Update OSD based on the currently active window for the Visual Studio Code
+UpdateVSCodeOSD()
+{
+    global VSCodeOSDText
+
+    ; (?<!^Welcome) - the reason for this is that the project can be called Welcome, in this case
+    ; the title would be: file.txt - Welcome - Visual Studio Code, but if it starts with Welcome
+    ; like: Welcome - Visual Studio Code, then it's clear that no project/folder is currently open
+    ; and only the Welcome screen is displayed. 🤔
+    UpdateCommonOSD('(?:.* - )?(.*)(?<!^Welcome)(?: - Visual Studio Code)$', &VSCodeOSDText)
 }
