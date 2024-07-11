@@ -50,7 +50,8 @@ CoordMode('ToolTip', 'Screen')
 ; Leader key ctrl-j shortcuts
 ; ---------------------------
 
-^j::
+; The ¨ is next to Enter key, it's key with |\ characters
+^¨::
 {
     ih := InputHook('T.8 L1 M', '{enter}.{esc}{tab}', 'c,e,p,r')
     ih.Start()
