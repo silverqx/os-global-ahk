@@ -73,12 +73,19 @@ VmrunPauseToggle := false
     DllCall('PowrProf\SetSuspendState', 'Int', 0, 'Int', 0, 'Int', 0)
 }
 
-; Hibernate
+; Black screensaver
 ~RButton & WheelDown::
 {
     Sleep(2000)
-    DllCall('PowrProf\SetSuspendState', 'Int', 1, 'Int', 0, 'Int', 0)
+    Run('scrnsave.scr /s',, 'Hide')
 }
+
+; Hibernate
+; ~RButton & WheelDown::
+; {
+;     Sleep(2000)
+;     DllCall('PowrProf\SetSuspendState', 'Int', 1, 'Int', 0, 'Int', 0)
+; }
 
 ; Hibernate (shift+calc)
 +Launch_App2::
@@ -112,6 +119,9 @@ VmrunPauseToggle := false
 ^!F1::Run(A_Programs . '\__my__\Process Explorer.lnk',, 'Max')
 ^!F2::Run(A_Programs . '\__my__\WindowSpy (ahk).lnk')
 ^!F3::Run(A_AppDataCommon . '\chocolatey\bin\Autoruns.exe',, 'Max')
+; Black screensaver
+^!F5::Run('scrnsave.scr /s',, 'Hide')
+^!F6::Run('code.cmd --new-window E:\autohotkey\os-global', 'E:\autohotkey\os-global', 'Hide')
 
 ; Open Google Chrome
 <#m::Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe',, 'Max')
