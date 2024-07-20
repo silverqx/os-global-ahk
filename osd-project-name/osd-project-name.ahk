@@ -135,7 +135,7 @@ CreateVSCodeOSD()
     ui := CreateCommonOSD("VSCodeOSDText", &VSCodeOSDText, UpdateVSCodeOSD)
 
     ; NoActivate avoids deactivating the currently active window
-    ui.Show('x1762 y46 NoActivate')
+    ui.Show('x1762 y50 NoActivate')
 }
 
 ; Update OSD based on the currently active window for the Visual Studio Code
