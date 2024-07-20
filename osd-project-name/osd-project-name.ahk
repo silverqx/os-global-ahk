@@ -40,7 +40,7 @@ CreateVSCodeOSD()
 ; General Section
 ; ---------------
 
-; Restart the AhkQtCreatorOsd scheduled task
+; Restart the AhkOSDProjectName scheduled task
 ^!+´::
 {
     SoundBeep(8000, 70)
