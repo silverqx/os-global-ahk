@@ -689,20 +689,20 @@ Sca()
 
         if (VmrunPauseToggle) {
             MsgBox('Paused TinyActions KVM', 'TinyActions', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-a.ps1',, 'Hide')
+            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-ta.ps1',, 'Hide')
         }
         else {
             MsgBox('Unpaused TinyActions KVM', 'TinyActions', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-a.ps1',, 'Hide')
+            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-ta.ps1',, 'Hide')
         }
     }
     ; Connect
     else if (userInput = 'c')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-a.ps1',, 'Hide')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-ta.ps1',, 'Hide')
     ; Detach
     else if (userInput = 'd') {
         MsgBox('Detaching TinyActions KVM', 'TinyActions', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-a.ps1',, 'Hide')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-ta.ps1',, 'Hide')
     }
     ; WinActivate()
     else if (userInput = 'g') {
@@ -719,17 +719,17 @@ Sca()
     ; Preferences
     else if (userInput = 'p') {
         MsgBox('Preferences for TinyActions KVM', 'TinyActions', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-a.ps1',, 'Hide')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-ta.ps1',, 'Hide')
     }
     ; Run
     else if (userInput = 'r') {
         MsgBox('Starting TinyActions KVM', 'TinyActions', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-a.ps1',, 'Hide')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-ta.ps1',, 'Hide')
     }
     ; Suspend
     else if (userInput = 's') {
         MsgBox('Suspending TinyActions KVM', 'TinyActions', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-a.ps1',, 'Hide')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-ta.ps1',, 'Hide')
     }
 }
 ; Manjaro vmware
