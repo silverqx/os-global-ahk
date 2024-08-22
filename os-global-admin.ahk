@@ -47,7 +47,7 @@ CoordMode('ToolTip', 'Screen')
     Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\recompile-admin.ps1',, 'Hide')
 }
 
-; Leader key ctrl-j shortcuts
+; Leader key ctrl-¨ shortcuts
 ; ---------------------------
 
 ; The ¨ is next to Enter key, it's key with |\ characters
@@ -59,7 +59,7 @@ CoordMode('ToolTip', 'Screen')
 
     ; Send original shortcut on timeout
     if (result = 'Timeout')
-        return Send('^j')
+        return Send('^¨')
 
     ; TODO Ask on the forum how to do this in ahk v2 silverqx
     ; if (result = 'NewInput')
@@ -112,7 +112,7 @@ CenterWindow()
     WinMove(x < 0 ? 0 : x, y < 0 ? 0 : y)
 }
 
-; Leader key ctrl-j related
+; Leader key ctrl-¨ related
 ; -------------------------
 
 ; With the ctrl modifier
