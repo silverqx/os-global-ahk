@@ -958,8 +958,8 @@ Scv()
     }
     ; Run
     else if (userInput = 'r') {
-        MsgBox('Starting Gentoo KVM', 'Gentoo', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-g.ps1',, 'Hide')
+        MsgBox("Starting Gentoo KVM without Administrator privileges doesn't work.`n" .
+            'Use ^<j>v r instead which has Administrator privileges.', 'Gentoo')
     }
     ; Suspend
     else if (userInput = 's') {
