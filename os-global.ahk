@@ -374,7 +374,7 @@ ScrollLock::
     ; Close Tags sub-menu
     Send('{Esc}')
     ; Download in sequential order
-    Send('{AppsKey}{Up 8}{Enter}')
+    Send('{Down 4}{Enter}')
     ; Download first and last pieces first
     Send('{AppsKey}{Up 7}{Enter}')
 }
@@ -418,7 +418,7 @@ ScrollLock::
     ; Close Tags sub-menu
     Send('{Esc}')
     ; Download in sequential order
-    Send('{AppsKey}{Up 8}{Enter}')
+    Send('{Down 4}{Enter}')
     ; Download first and last pieces first
     Send('{AppsKey}{Up 7}{Enter}')
 }
@@ -436,7 +436,7 @@ ScrollLock::
     ; Close Tags sub-menu
     Send('{Esc}')
     ; Download in sequential order
-    Send('{AppsKey}{Up 8}{Enter}')
+    Send('{Down 4}{Enter}')
     ; Download first and last pieces first
     Send('{AppsKey}{Up 7}{Enter}')
 
