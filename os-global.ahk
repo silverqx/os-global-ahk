@@ -209,6 +209,8 @@ ScrollLock::
         Scv() ; Gentoo vmware
     else if (userInput == Chr(23))
         Scw() ; Windows vmware
+    else if (userInput == Chr(25))
+        Scy() ; Youtube with WinExist()
 
     ; Without modifiers
     else if (userInput = 'a')
@@ -258,7 +260,7 @@ ScrollLock::
     else if (userInput = 'w')
         Sw() ; WinMerge
     else if (userInput = 'y')
-        Sy() ; Youtube
+        Sy() ; Youtube w/o WinExist()
     else if (userInput = 'ž')
         Sž() ; Google Drive
 }
@@ -1023,6 +1025,14 @@ Scw()
         MsgBox('Suspending Windows KVM', 'Windows', 'T1')
         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-w.ps1',, 'Hide')
     }
+}
+; Youtube
+Scy()
+{
+    if (WinExist('(?:\(\d+\) )?(?:.* - )?(?:YouTube(?: Studio)?)$'))
+        WinActivate()
+    else
+        Run(A_Programs . '\Chrome Apps\YouTube.lnk')
 }
 
 ; Without any modifier
