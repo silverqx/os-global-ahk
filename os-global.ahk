@@ -1463,9 +1463,10 @@ MpcHcInferPreSnapPosition(x, y, width, height)
     return result
 }
 
-; Set initial window properties
-; -----------------------------
+; Qt Maintenance Tool
+; -------------------
 
+; Set initial window properties
 WinEvent.Show(WEQtMaintenanceTool, 'Maintain Qt ahk_class Qt660QWindowIcon ahk_exe MaintenanceTool.exe')
 
 WEQtMaintenanceTool(hook, hWnd, *) {
