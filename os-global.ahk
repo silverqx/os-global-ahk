@@ -375,25 +375,26 @@ ScrollLock::!Tab
     ; Assign to video category
     Send('{AppsKey}{Down 7}{Right}{Up}{Enter}')
     ; Assign seed tag
-    Send('{AppsKey}{Down 8}{Right}{Up 2}{Enter}')
+    ; Send('{AppsKey}{Down 8}{Right}{Up 2}{Enter}')
     ; Close Tags sub-menu
-    Send('{Esc}')
+    ; Send('{Esc}')
     ; Download in sequential order
-    Send('{Down 4}{Enter}')
+    ; Send('{Down 4}{Enter}')
+    Send('{AppsKey}{Up 8}{Enter}')
     ; Download first and last pieces first
     Send('{AppsKey}{Up 7}{Enter}')
 }
 
 ; No-limit video
 #HotIf WinActive('ahk_exe qbittorrent.exe')
-^!BackSpace::
+^+BackSpace::
 {
     ; Force resume
     Send('{AppsKey}{Down 2}{Enter}')
     ; Assign to video category
     Send('{AppsKey}{Down 7}{Right}{Up}{Enter}')
-    ; Assign seed and force seed tags
-    Send('{AppsKey}{Down 8}{Right}{Up}{Enter}{Up}{Enter}')
+    ; Assign force seed tag
+    Send('{AppsKey}{Down 8}{Right}{Up}{Enter}')
     ; Close Tags sub-menu
     Send('{Esc}')
     ; Download in sequential order
@@ -406,7 +407,7 @@ ScrollLock::!Tab
     SetKeyDelay(KeyDelayqBt)
     Sleep(120)
     ; Set no share limit
-    Send('{Tab 6}{Down 2}{Up}{Space}')
+    Send('{Tab 8}{Down}{Enter}')
     ; Close Torrent options modal
     Send('{Enter}')
     SetKeyDelay(KeyDelayDefault)
@@ -457,16 +458,16 @@ ScrollLock::!Tab
 }
 
 ; Assign to video category
-#HotIf WinActive('ahk_exe qbittorrent.exe')
-^+BackSpace::
-{
-    ; Assign to video category
-    Send('{AppsKey}{Down 7}{Right}{Up}{Enter}')
-    ; Assign seed tag
-    Send('{AppsKey}{Down 8}{Right}{Up 2}{Enter}')
-    ; Close Tags sub-menu and context menu
-    Send('{Esc}{Esc}')
-}
+; #HotIf WinActive('ahk_exe qbittorrent.exe')
+; ^+BackSpace::
+; {
+;     ; Assign to video category
+;     Send('{AppsKey}{Down 7}{Right}{Up}{Enter}')
+;     ; Assign seed tag
+;     Send('{AppsKey}{Down 8}{Right}{Up 2}{Enter}')
+;     ; Close Tags sub-menu and context menu
+;     Send('{Esc}{Esc}')
+; }
 
 ; Preview
 #HotIf WinActive('ahk_exe qbittorrent.exe')
