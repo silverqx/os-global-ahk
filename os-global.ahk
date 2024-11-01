@@ -1473,3 +1473,14 @@ WinEvent.Show(WEQtMaintenanceTool, 'Maintain Qt ahk_class Qt660QWindowIcon ahk_e
 WEQtMaintenanceTool(hook, hWnd, *) {
     FullTileWindow('ahk_id ' . hWnd)
 }
+
+; SmartGit
+; --------
+
+; Focus the Graph view (send hotkey) after displaying the Log Window
+WinEvent.Show(WESmartGit, '(?:.*SmartGit .* )(?:\(Log\) Non-Commercial)$ ahk_class SWT_Window0 ahk_exe smartgit.exe')
+
+WESmartGit(hook, hWnd, *) {
+    WinWait('ahk_id ' . hWnd)
+    Send('^+5')
+}
