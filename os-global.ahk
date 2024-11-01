@@ -993,21 +993,22 @@ Scw()
 
     ; Without modifiers
     ; Pause/Unpause
-    if (userInput = 'a') {
-        ; Switch
-        VmrunPauseToggle := !VmrunPauseToggle
+    ; VM is encrypted, have to figure how to ask password somehow
+    ; if (userInput = 'a') {
+    ;     ; Switch
+    ;     VmrunPauseToggle := !VmrunPauseToggle
 
-        if (VmrunPauseToggle) {
-            MsgBox('Paused Windows KVM', 'Windows', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-w.ps1',, 'Hide')
-        }
-        else {
-            MsgBox('Unpaused Windows KVM', 'Windows', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-w.ps1',, 'Hide')
-        }
-    }
+    ;     if (VmrunPauseToggle) {
+    ;         MsgBox('Paused Windows KVM', 'Windows', 'T1')
+    ;         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-w.ps1',, 'Hide')
+    ;     }
+    ;     else {
+    ;         MsgBox('Unpaused Windows KVM', 'Windows', 'T1')
+    ;         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-w.ps1',, 'Hide')
+    ;     }
+    ; }
     ; Connect
-    else if (userInput = 'c')
+    if (userInput = 'c')
         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-w.ps1',, 'Hide')
     ; Detach
     else if (userInput = 'd') {
@@ -1020,14 +1021,15 @@ Scw()
         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-w.ps1',, 'Hide')
     }
     ; Run
-    else if (userInput = 'r') {
-        MsgBox('Starting Windows KVM', 'Windows', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-w.ps1',, 'Hide')
-    }
+    ; VM is encrypted, have to figure how to ask password somehow
+    ; else if (userInput = 'r') {
+    ;     MsgBox('Starting Windows KVM', 'Windows', 'T1')
+    ;     Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-w.ps1',, 'Hide')
+    ; }
     ; Suspend
     else if (userInput = 's') {
         MsgBox('Suspending Windows KVM', 'Windows', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-w.ps1',, 'Hide')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-w-kvm.ps1',, 'Hide')
     }
 }
 ; Youtube
