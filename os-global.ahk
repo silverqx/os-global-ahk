@@ -156,13 +156,16 @@ VmrunPauseToggle := false
 ; SC049::+Numpad9
 
 ; Make the active window transparent
-ScrollLock::
++ScrollLock::
 {
 	if (WinGetTransparent('A') = '')
         WinSetTransparent(190, 'A')
     else
         WinSetTransparent('Off', 'A')
 }
+
+; Switch to the previous window
+ScrollLock::!Tab
 
 ; Leader key ctrl-g shortcuts
 ; ---------------------------
