@@ -53,9 +53,10 @@ VmrunPauseToggle := false
 ; Testing
 ; -------
 
-; ^!+F9::
+; ^!+F10::
 ; {
-;     MsgBox('xyz')
+;     ; MsgBox('xyz')
+;     Send('^+ř')
 ; }
 
 ; General Section
