@@ -1466,8 +1466,8 @@ MpcHcInferPreSnapPosition(x, y, width, height)
 ; Set initial window properties
 ; -----------------------------
 
-WinEvent.Show(WIQtMaintenanceTool, 'Maintain Qt ahk_class Qt660QWindowIcon ahk_exe MaintenanceTool.exe')
+WinEvent.Show(WEQtMaintenanceTool, 'Maintain Qt ahk_class Qt660QWindowIcon ahk_exe MaintenanceTool.exe')
 
-WIQtMaintenanceTool(hook, hWnd, *) {
+WEQtMaintenanceTool(hook, hWnd, *) {
     FullTileWindow('ahk_id ' . hWnd)
 }
