@@ -117,8 +117,6 @@ VmrunPauseToggle := false
 ; Show Windows Start Menu
 ~LButton & WheelDown::Send('{LWin}')
 
-^!F1::Run(A_Programs . '\__my__\Process Explorer.lnk',, 'Max')
-^!F2::Run(A_Programs . '\__my__\WindowSpy (ahk).lnk')
 ^!F3::Run(A_AppDataCommon . '\chocolatey\bin\Autoruns.exe',, 'Max')
 ; Black screensaver
 ^!F5::Run('scrnsave.scr /s',, 'Hide')
@@ -128,11 +126,6 @@ VmrunPauseToggle := false
 <#m::Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe',, 'Max')
 ; Open Google Chrome - Incognito window
 +<#m::Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe --incognito',, 'Max')
-
-; Center Window
-^+F7::CenterWindow()
-; Max. Tile Window
-^+F8::FullTileWindow()
 
 ; Restart the AhkOsGlobal scheduled task
 ^+´::
@@ -155,18 +148,6 @@ VmrunPauseToggle := false
 ; SC047::+Numpad7
 ; SC048::+Numpad8
 ; SC049::+Numpad9
-
-; Make the active window transparent
-+ScrollLock::
-{
-	if (WinGetTransparent('A') = '')
-        WinSetTransparent(190, 'A')
-    else
-        WinSetTransparent('Off', 'A')
-}
-
-; Switch to the previous window
-ScrollLock::!Tab
 
 ; Leader key ctrl-g shortcuts
 ; ---------------------------
