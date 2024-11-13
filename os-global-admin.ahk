@@ -37,9 +37,9 @@ CoordMode('ToolTip', 'Screen')
 +<#m::Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe --incognito',, 'Max')
 
 ; Center Window
-^!F7::CenterWindow()
+^+F7::CenterWindow()
 ; Max. Tile Window
-^!F8::FullTileWindow()
+^+F8::FullTileWindow()
 ; Max. Tile Window
 ^!+F8::HalfTileWindow()
 
