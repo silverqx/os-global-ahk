@@ -40,6 +40,8 @@ CoordMode('ToolTip', 'Screen')
 ^!F7::CenterWindow()
 ; Max. Tile Window
 ^!F8::FullTileWindow()
+; Max. Tile Window
+^!+F8::HalfTileWindow()
 
 ; Make the active window transparent
 +ScrollLock::
@@ -100,6 +102,12 @@ FullTileWindow()
 {
     ; Current Foreground window
     WinMove(8, 8, 1904, 1000, 'A')
+}
+
+HalfTileWindow()
+{
+    ; Current Foreground window
+    WinMove(560, 8, 800, 1000, 'A')
 }
 
 CenterWindow()
