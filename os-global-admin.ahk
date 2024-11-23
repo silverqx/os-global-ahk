@@ -85,11 +85,6 @@ ScrollLock::!Tab
 
     userInput := ih.Input
 
-    ; With the ctrl modifier, has to be first
-    ; Look appropriate number mappings at https://en.wikipedia.org/wiki/ASCII#Control_code_chart
-    if (userInput == Chr(22))
-        Scv()
-
     ; Without modifiers
     if (userInput = 'e')
         Se()
@@ -135,43 +130,6 @@ CenterWindow()
 
 ; Leader key ctrl-¨ related
 ; -------------------------
-
-; With the ctrl modifier
-Scv()
-{
-    ih := InputHook('T.9 L1 M', '{enter}.{esc}{tab}', 'a,c,d,g,h,p,r,s')
-    ih.Start()
-    result := ih.Wait()
-
-    ; TODO Ask on the forum how to do this in ahk v2 silverqx
-    ; if (result = 'NewInput')
-    ;     return
-    ; Terminated by end key
-    if (result == 'EndKey')
-        return
-
-    userInput := ih.Input
-
-    ; Without modifiers
-    ; Connect
-    if (userInput = 'c')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-g.ps1',, 'Hide')
-    ; Detach
-    else if (userInput = 'd') {
-        MsgBox('Detaching Gentoo KVM', 'Gentoo', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-g.ps1',, 'Hide')
-    }
-    ; Preferences
-    else if (userInput = 'p') {
-        MsgBox('Preferences for Gentoo KVM', 'Gentoo', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-g.ps1',, 'Hide')
-    }
-    ; Run
-    else if (userInput = 'r') {
-        MsgBox('Starting Gentoo KVM', 'Gentoo', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-g.ps1',, 'Hide')
-    }
-}
 
 ; Without any modifier
 ; Environment Variables
