@@ -105,7 +105,7 @@ VmrunPauseToggle := false
 ; Open ComputerOff
 ~LButton & WheelUp::
 {
-    ; If Options dialog is opened then activete it, instead of activate the Main window
+    ; If Options dialog is opened then activate it, instead of activate the Main window
     if (WinExist('^Options$ ahk_class TFormOptionsDialog') || WinExist('^ComputerOff$'))
         return WinActivate()
 
@@ -255,7 +255,7 @@ VmrunPauseToggle := false
 ; PIP doesn't work well, doing whatever it wants, it behaves the same in ahk v1 as well so upgrade
 ; to ahk v2 isn't a problem.
 
-; Manually toogle MpcHcPip
+; Manually toggle MpcHcPip
 #HotIf WinActive('ahk_exe mpc-hc64.exe')
 ^F7::
 {
@@ -264,7 +264,7 @@ VmrunPauseToggle := false
     MpcHcPip := !MpcHcPip
 
     value := MpcHcPip ? 'enabled' : 'disabled'
-    MsgBox('PIP mode : ' . value, 'Toogle MpcHcPip flag', 'T1')
+    MsgBox('PIP mode : ' . value, 'Toggle MpcHcPip flag', 'T1')
 }
 
 ; Reset x, y restore positions and sizes for pip mode
