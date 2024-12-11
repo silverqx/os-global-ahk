@@ -56,7 +56,8 @@ VmrunPauseToggle := false
 ; ^!+F10::
 ; {
 ;     ; MsgBox('xyz')
-;     Send('^+ř')
+;     ; Send('^+ř')
+;     ; WinSetStyle('^0xC40000', 'A')
 ; }
 
 ; General Section
