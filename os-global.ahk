@@ -569,6 +569,19 @@ F4::Send('{AppsKey}{Up 6}{Enter}')
 ;    Send('{Tab 2}1024{Enter}')
 }
 
+; Fullscreen mode
+; -------------------------
+
+; Create a group to target more applications
+; GroupAdd('FullscreenGroup', 'ahk_exe PSPad.exe') ; Doesn't work
+GroupAdd('FullscreenGroup', 'ahk_exe qbittorrent.exe')
+GroupAdd('FullscreenGroup', 'ahk_class TTOTAL_CMD ahk_exe TOTALCMD.EXE')
+GroupAdd('FullscreenGroup', 'ahk_class TTOTAL_CMD ahk_exe TOTALCMD64.EXE')
+
+; Fullscreen
+#HotIf WinActive('ahk_group FullscreenGroup')
+F11::WinSetStyle('^0xC00000')
+
 ; Dark Souls 1 Save Manager
 ; -------------------------
 
