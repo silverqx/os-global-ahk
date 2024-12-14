@@ -583,6 +583,15 @@ GroupAdd('FullscreenGroup', 'ahk_class TTOTAL_CMD ahk_exe TOTALCMD64.EXE')
 #HotIf WinActive('ahk_group FullscreenGroup')
 F11::WinSetStyle('^0xC00000')
 
+; Visual Studio
+; -------------------------
+
+; Focus Navigation bar - Function Dropdown list
+; #HotIf WinActive('(?:Microsoft Visual Studio)$ ahk_class HwndWrapper[DefaultDomain;;dfb567c5-02ce-45b7-b0e0-97dbbcfe49b0] ahk_exe devenv.exe')
+; #HotIf WinActive('ahk_exe devenv.exe')
+#HotIf WinActive('(?:Microsoft Visual Studio)$ ahk_exe devenv.exe')
+^F2::Send('^{F2}{Tab 2}{Down}')
+
 ; Dark Souls 1 Save Manager
 ; -------------------------
 
@@ -1478,4 +1487,15 @@ WinEvent.Show(WESmartGit, '(?:.*SmartGit .* )(?:\(Log\) Non-Commercial)$ ahk_cla
 WESmartGit(hook, hWnd, *) {
     WinWait('ahk_id ' . hWnd)
     Send('^+5')
+}
+
+; Visual Studio
+; -------------
+
+; Options - Focus the Search Input
+WinEvent.Show(WEVisualStudioOptions, '^Options$ ahk_class #32770 ahk_exe devenv.exe')
+
+WEVisualStudioOptions(hook, hWnd, *) {
+    WinWait('ahk_id ' . hWnd)
+    Send('^e')
 }
