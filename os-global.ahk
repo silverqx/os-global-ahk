@@ -646,7 +646,7 @@ TivikoIncreaseZoomOnGridClick()
 
 ; Open Tiviko TV Program
 #HotIf
-RButton & XButton1::
+~LButton & XButton1::
 {
     if (WinExist('^TV Program Tiviko$'))
         WinActivate()
