@@ -1560,3 +1560,14 @@ WEVisualStudioOptions(hook, hWnd, *) {
     WinWait('ahk_id ' . hWnd)
     Send('^e')
 }
+
+; QtCreator
+; -------------
+
+; Preferences - Focus the Search Input
+WinEvent.Show(WEQtCreatorPreferences, '^Preferences - Qt Creator$ ahk_exe qtcreator.exe')
+
+WEQtCreatorPreferences(hook, hWnd, *) {
+    WinWait('ahk_id ' . hWnd)
+    Send('+{Tab}')
+}
