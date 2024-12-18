@@ -53,6 +53,7 @@ VmrunPauseToggle := false
 ; Testing
 ; -------
 
+; #HotIf WinActive('Xyz ahk_class Xyz ahk_exe xyz.exe')
 ; ^!+F10::
 ; {
 ;     ; MsgBox('xyz')
