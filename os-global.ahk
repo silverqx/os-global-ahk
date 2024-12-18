@@ -63,6 +63,7 @@ VmrunPauseToggle := false
 
 ; General Section
 ; ---------------
+; TODO check and try to somehow use Morse; see https://www.autohotkey.com/board/topic/15574-morse-find-hotkey-press-and-hold-patterns/ silverqx
 
 ; Mouse shortcut for ctrl+home/end
 ~LButton & WheelRight::Send('^{Home}')
