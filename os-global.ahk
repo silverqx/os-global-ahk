@@ -637,7 +637,7 @@ TivikoIncreaseZoomOnGridClick()
 #HotIf WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
 ~RButton::
 {
-    if (ThisHotkey == A_PriorHotkey && A_TimeSincePriorHotkey < 200)
+    if (ThisHotkey == A_PriorHotkey && A_TimeSincePriorHotkey < 300)
         TivikoIncreaseZoom()
 }
 
