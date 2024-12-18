@@ -597,6 +597,62 @@ F11::WinSetStyle('^0xC00000')
 #HotIf WinActive('(?:Microsoft Visual Studio)$ ahk_exe devenv.exe')
 ^+NumpadDiv::Send('^!{Down}^{NumpadMult}{Up}')
 
+; Tiviko TV Program
+; -------------------------
+
+; Zoom in the Grid page
+TivikoIncreaseZoom()
+{
+    MouseGetPos(&xOriginal, &yOriginal)
+    ; Mouse must be inside this area
+    MouseMove(40, 380, 0)
+    ; Increase zoom
+    Send('^{WheelUp 3}')
+    ; Restore original mouse position
+    MouseMove(xOriginal, yOriginal, 0)
+}
+
+; Zoom in the Grid page after clicking the Grid button
+TivikoIncreaseZoomOnGridClick()
+{
+    MouseGetPos(&xOriginal, &yOriginal)
+
+    ; Nothing to do, not inside the Grid button area
+    if(!((xOriginal >=  26 && yOriginal >= 280) &&
+         (xOriginal <= 208 && yOriginal <= 326))
+    )
+        return
+
+    ; Wait until the Grid view loads
+    Sleep(1200) ; ~1100ms is minimum
+
+    TivikoIncreaseZoom()
+}
+
+#HotIf WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
+^\::TivikoIncreaseZoom()
+
+; Zoom in the Grid page on double right mouse button click (anywhere)
+#HotIf WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
+~RButton::
+{
+    if (ThisHotkey == A_PriorHotkey && A_TimeSincePriorHotkey < 200)
+        TivikoIncreaseZoom()
+}
+
+#HotIf WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
+~LButton::TivikoIncreaseZoomOnGridClick()
+
+; Open Tiviko TV Program
+#HotIf
+RButton & XButton1::
+{
+    if (WinExist('^TV Program Tiviko$'))
+        WinActivate()
+    else
+        Run('shell:AppsFolder\0BB81222.TVProgramTiviko_hev1qd965vk4r!App')
+}
+
 ; Dark Souls 1 Save Manager
 ; -------------------------
 
