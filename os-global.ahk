@@ -91,6 +91,14 @@ VmrunPauseToggle := false
 ;     DllCall('PowrProf\SetSuspendState', 'Int', 1, 'Int', 0, 'Int', 0)
 ; }
 
+Browser_Home::
+{
+    if (WinExist('ahk_class MediaPlayerClassicW ahk_exe mpc-hc64.exe'))
+        WinActivate()
+    else
+        Run(A_StartMenuCommon . '\Programs\MPC-HC x64.lnk')
+}
+
 ; Hibernate (shift+calc)
 +Launch_App2::
 {
@@ -124,6 +132,7 @@ VmrunPauseToggle := false
 ; Black screensaver
 ^!F5::Run('scrnsave.scr /s',, 'Hide')
 ^!F6::Run('code.cmd --new-window E:\autohotkey\os-global', 'E:\autohotkey\os-global', 'Hide')
+^+F6::Run('code.cmd --new-window E:\dotfiles', 'E:\dotfiles', 'Hide')
 
 ; Open Google Chrome
 <#m::Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe',, 'Max')
