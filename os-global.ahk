@@ -620,7 +620,7 @@ TivikoIncreaseZoom()
     MouseMove(40, 380, 0)
     ; Increase zoom
     Send('^{WheelUp 3}')
-    ; Restore original mouse position
+    ; Restore the original mouse position
     MouseMove(xOriginal, yOriginal, 0)
 }
 
