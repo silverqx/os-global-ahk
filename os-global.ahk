@@ -111,7 +111,7 @@ Browser_Home::
     if (WinExist(WinTitleMpcHc))
         WinActivate()
     else
-        Run(A_StartMenuCommon . '\Programs\MPC-HC x64.lnk')
+        Run(A_StartMenuCommon . '\Programs\MPC-HC x64\MPC-HC x64.lnk')
 }
 
 ; Hibernate (shift+calc)
