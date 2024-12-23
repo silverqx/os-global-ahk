@@ -57,12 +57,12 @@ TCPanelListingToggle := false
 ; WinTitle-s
 WinTitleQBittorrent := 'ahk_exe qbittorrent.exe'
 WinTitleMpcHc := 'ahk_exe mpc-hc64.exe ahk_class MediaPlayerClassicW'
-WinTitleTC := 'ahk_class TTOTAL_CMD ahk_exe TOTALCMD.EXE'
+WinTitleTC := 'ahk_exe TOTALCMD.EXE ahk_class TTOTAL_CMD'
 
 ; Testing
 ; -------
 
-; #HotIf WinActive('Xyz ahk_class Xyz ahk_exe xyz.exe')
+; #HotIf WinActive('Xyz ahk_exe xyz.exe ahk_class Xyz')
 ; ^!+F10::
 ; {
 ;     ; MsgBox('xyz')
@@ -602,7 +602,7 @@ F4::Send('{AppsKey}{Up 6}{Enter}')
 ; GroupAdd('FullscreenGroup', 'ahk_exe PSPad.exe') ; Doesn't work
 GroupAdd('FullscreenGroup', WinTitleQBittorrent)
 GroupAdd('FullscreenGroup', WinTitleTC)
-GroupAdd('FullscreenGroup', 'ahk_class TTOTAL_CMD ahk_exe TOTALCMD64.EXE')
+GroupAdd('FullscreenGroup', 'ahk_exe TOTALCMD64.EXE ahk_class TTOTAL_CMD')
 
 ; Fullscreen
 #HotIf WinActive('ahk_group FullscreenGroup')
@@ -1651,7 +1651,7 @@ MpcHcInferPreSnapPosition(x, y, width, height)
 ; -------------------
 
 ; Set initial window properties
-WinEvent.Show(WEQtMaintenanceTool, 'Maintain Qt ahk_class Qt660QWindowIcon ahk_exe MaintenanceTool.exe')
+WinEvent.Show(WEQtMaintenanceTool, 'Maintain Qt ahk_exe MaintenanceTool.exe ahk_class Qt660QWindowIcon')
 
 WEQtMaintenanceTool(hook, hWnd, *) {
     FullTileWindow('ahk_id ' . hWnd)
@@ -1672,7 +1672,7 @@ WESmartGit(hook, hWnd, *) {
 ; -------------
 
 ; Options - Focus the Search Input
-WinEvent.Show(WEVisualStudioOptions, '^Options$ ahk_class #32770 ahk_exe devenv.exe')
+WinEvent.Show(WEVisualStudioOptions, '^Options$ ahk_exe devenv.exe ahk_class #32770')
 
 WEVisualStudioOptions(hook, hWnd, *) {
     WinWait('ahk_id ' . hWnd)
