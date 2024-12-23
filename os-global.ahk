@@ -54,6 +54,9 @@ VmrunPauseToggle := false
 ; Maximize the currently focused panel
 TCPanelListingToggle := false
 
+; WinTitle-s
+WinTitleMpcHc := 'ahk_exe mpc-hc64.exe ahk_class MediaPlayerClassicW'
+
 ; Testing
 ; -------
 
@@ -97,7 +100,7 @@ TCPanelListingToggle := false
 
 Browser_Home::
 {
-    if (WinExist('ahk_class MediaPlayerClassicW ahk_exe mpc-hc64.exe'))
+    if (WinExist(WinTitleMpcHc))
         WinActivate()
     else
         Run(A_StartMenuCommon . '\Programs\MPC-HC x64.lnk')
@@ -272,7 +275,7 @@ Browser_Home::
 ; to ahk v2 isn't a problem.
 
 ; Manually toggle MpcHcPip
-#HotIf WinActive('ahk_exe mpc-hc64.exe')
+#HotIf WinActive(WinTitleMpcHc)
 ^F7::
 {
     global MpcHcPip
@@ -284,7 +287,7 @@ Browser_Home::
 }
 
 ; Reset x, y restore positions and sizes for pip mode
-#HotIf WinActive('ahk_exe mpc-hc64.exe')
+#HotIf WinActive(WinTitleMpcHc)
 ^F8::
 {
     MpcHcResetPipPositions()
@@ -293,7 +296,7 @@ Browser_Home::
 }
 
 ; Disable PIP mode
-#HotIf WinActive('ahk_exe mpc-hc64.exe')
+#HotIf WinActive(WinTitleMpcHc)
 ^Enter::
 {
     global MpcHcPip
@@ -315,7 +318,7 @@ Browser_Home::
     MpcHcPip := true
 }
 
-#HotIf WinActive('ahk_exe mpc-hc64.exe')
+#HotIf WinActive(WinTitleMpcHc)
 ^!Left::
 {
     ; pip mode disabled OR ahk script was restarted so MpcHcPip := false and mpc-hc is still in pip mode
@@ -327,7 +330,7 @@ Browser_Home::
     MpcHcMoveLeft()
 }
 
-#HotIf WinActive('ahk_exe mpc-hc64.exe')
+#HotIf WinActive(WinTitleMpcHc)
 ^!Right::
 {
     ; pip mode disabled OR ahk script was restarted so MpcHcPip := false and mpc-hc is still in pip mode
@@ -339,7 +342,7 @@ Browser_Home::
     MpcHcMoveRight()
 }
 
-#HotIf WinActive('ahk_exe mpc-hc64.exe')
+#HotIf WinActive(WinTitleMpcHc)
 ^!Up::
 {
     ; pip mode disabled OR ahk script was restarted so MpcHcPip := false and mpc-hc is still in pip mode
@@ -351,7 +354,7 @@ Browser_Home::
     MpcHcMoveTop()
 }
 
-#HotIf WinActive('ahk_exe mpc-hc64.exe')
+#HotIf WinActive(WinTitleMpcHc)
 ^!Down::
 {
     ; pip mode disabled OR ahk script was restarted so MpcHcPip := false and mpc-hc is still in pip mode
@@ -738,7 +741,7 @@ TCMaximizePanelListing()
 ; mpc-hc
 ; ---------------
 
-#HotIf WinActive('ahk_exe mpc-hc64.exe ahk_class MediaPlayerClassicW')
+#HotIf WinActive(WinTitleMpcHc)
 MButton::
 {
     ; Only propagate the MButton when RButton is down/pressed because mpc-hc itself allows
