@@ -47,6 +47,8 @@ MpcHcPipY := ''
 MpcHcPipWidth := ''
 MpcHcPipHeight := ''
 
+; Touch Window from Outside/Inside
+MpcHcTouchOutsideFrameToggle := false
 ; Pause/Unpause vmwrun.exe
 VmrunPauseToggle := false
 ; Maximize the currently focused panel
@@ -731,6 +733,32 @@ TCMaximizePanelListing()
         TCMaximizePanelListing()
 
     TCPanelListingToggle := !TCPanelListingToggle
+}
+
+; mpc-hc
+; ---------------
+
+#HotIf WinActive('ahk_exe mpc-hc64.exe ahk_class MediaPlayerClassicW')
+MButton::
+{
+    ; Only propagate the MButton when RButton is down/pressed because mpc-hc itself allows
+    ; to define combined mouse hotkeys like RButton & MButton.
+    if (GetKeyState('RButton'))
+        return Send('{MButton}')
+
+    ; Nothing to do, VRWindow1 isn't under the cursor
+    MouseGetPos(,,, &mouseClassNN)
+    if (mouseClassNN != 'VRWindow1')
+        return
+
+    global MpcHcTouchOutsideFrameToggle
+
+    if (MpcHcTouchOutsideFrameToggle)
+        Send('{F9}')
+    else
+        Send('{F10}')
+
+    MpcHcTouchOutsideFrameToggle := !MpcHcTouchOutsideFrameToggle
 }
 
 ; Dark Souls 1 Save Manager
