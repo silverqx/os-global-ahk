@@ -1714,3 +1714,13 @@ WEFullscreenOnOpen(hook, hWnd, *) {
     WinWait('ahk_id ' . hWnd)
     WinSetStyle('^0xC00000')
 }
+
+; mpc-hc
+; -------------
+
+; WinEvent.Show(WEMpcHc, WinTitleMpcHc)
+
+; WEMpcHc(hook, hWnd, *) {
+;     global MpcHcTouchOutsideFrameToggle
+;     MpcHcTouchOutsideFrameToggle := false
+; }
