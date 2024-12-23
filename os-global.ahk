@@ -1659,6 +1659,9 @@ MpcHcInferPreSnapPosition(x, y, width, height)
     return result
 }
 
+; Windows Events
+; -------------------
+
 ; Qt Maintenance Tool
 ; -------------------
 
