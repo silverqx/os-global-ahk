@@ -76,7 +76,11 @@ WinTitleMpcHc := 'ahk_exe mpc-hc64.exe ahk_class MediaPlayerClassicW'
 ~LButton & WheelRight::Send('^{Home}')
 ~LButton & WheelLeft::Send('^{End}')
 
+; Exclude some applications from RButton related hotkeys
+; GroupAdd('RButtonGroup', WinTitleMpcHc)
+
 ; Suspend2Ram
+; #HotIf !WinActive('ahk_group RButtonGroup')
 ~RButton & WheelUp::
 {
     ; Hopefully this prevents strange sleep bug
@@ -85,6 +89,7 @@ WinTitleMpcHc := 'ahk_exe mpc-hc64.exe ahk_class MediaPlayerClassicW'
 }
 
 ; Black screensaver
+; #HotIf !WinActive('ahk_group RButtonGroup')
 ~RButton & WheelDown::
 {
     Sleep(2000)
