@@ -1701,3 +1701,13 @@ WEQtCreatorPreferences(hook, hWnd, *) {
     WinWait('ahk_id ' . hWnd)
     Send('+{Tab}')
 }
+
+; Fullscreen on Open
+; -------------
+
+WinEvent.Show(WEFullscreenOnOpen, 'ahk_group FullscreenGroup')
+
+WEFullscreenOnOpen(hook, hWnd, *) {
+    WinWait('ahk_id ' . hWnd)
+    WinSetStyle('^0xC00000')
+}
