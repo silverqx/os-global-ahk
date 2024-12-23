@@ -772,6 +772,17 @@ MButton::
     MpcHcTouchOutsideFrameToggle := !MpcHcTouchOutsideFrameToggle
 }
 
+; SmartGit
+; --------
+
+; Commits History button
+#HotIf WinActive(WinTitleSmartGit)
+^+h::
+{
+    SetControlDelay(-1)
+    ControlClick('SWT_Window090', 'A',,,, 'NA')
+}
+
 ; Dark Souls 1 Save Manager
 ; -------------------------
 
