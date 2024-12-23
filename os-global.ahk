@@ -55,7 +55,9 @@ VmrunPauseToggle := false
 TCPanelListingToggle := false
 
 ; WinTitle-s
+WinTitleQBittorrent := 'ahk_exe qbittorrent.exe'
 WinTitleMpcHc := 'ahk_exe mpc-hc64.exe ahk_class MediaPlayerClassicW'
+WinTitleTC := 'ahk_class TTOTAL_CMD ahk_exe TOTALCMD.EXE'
 
 ; Testing
 ; -------
@@ -375,7 +377,7 @@ Browser_Home::
 ; -------------------
 
 ; Classic video
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^BackSpace::
 {
     ; Assign to video category
@@ -392,7 +394,7 @@ Browser_Home::
 }
 
 ; No-limit video
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^+BackSpace::
 {
     ; Force resume
@@ -420,7 +422,7 @@ Browser_Home::
 }
 
 ; When more torrents selected
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^+!BackSpace::
 {
     ; Assign to video category
@@ -436,7 +438,7 @@ Browser_Home::
 }
 
 ; No-limit if more torrents selected
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^!F12::
 {
     ; Force resume
@@ -464,7 +466,7 @@ Browser_Home::
 }
 
 ; Assign to video category
-; #HotIf WinActive('ahk_exe qbittorrent.exe')
+; #HotIf WinActive(WinTitleQBittorrent)
 ; ^+BackSpace::
 ; {
 ;     ; Assign to video category
@@ -476,15 +478,15 @@ Browser_Home::
 ; }
 
 ; Preview
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 F3::Send('{AppsKey}{Up 9}{Enter}')
 
 ; Preview when seeding
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 F4::Send('{AppsKey}{Up 6}{Enter}')
 
 ; Limit download rate shortcuts
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^;::
 {
     ; Open Torrent options modal
@@ -493,7 +495,7 @@ F4::Send('{AppsKey}{Up 6}{Enter}')
     Send('{Tab 2}0{Enter}')
 }
 
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^+::
 {
     ; Open Torrent options modal
@@ -503,7 +505,7 @@ F4::Send('{AppsKey}{Up 6}{Enter}')
 ;    Send('{Tab 2}102{Enter}')
 }
 
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^ě::
 {
     ; Open Torrent options modal
@@ -513,7 +515,7 @@ F4::Send('{AppsKey}{Up 6}{Enter}')
 ;    Send('{Tab 2}204{Enter}')
 }
 
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^š::
 {
     ; Open Torrent options modal
@@ -523,7 +525,7 @@ F4::Send('{AppsKey}{Up 6}{Enter}')
 ;    Send('{Tab 2}307{Enter}')
 }
 
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^č::
 {
     ; Open Torrent options modal
@@ -533,7 +535,7 @@ F4::Send('{AppsKey}{Up 6}{Enter}')
 ;    Send('{Tab 2}409{Enter}')
 }
 
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^ř::
 {
     ; Open Torrent options modal
@@ -543,7 +545,7 @@ F4::Send('{AppsKey}{Up 6}{Enter}')
 ;    Send('{Tab 2}512{Enter}')
 }
 
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^ž::
 {
     ; Open Torrent options modal
@@ -553,7 +555,7 @@ F4::Send('{AppsKey}{Up 6}{Enter}')
 ;    Send('{Tab 2}614{Enter}')
 }
 
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^ý::
 {
     ; Open Torrent options modal
@@ -563,7 +565,7 @@ F4::Send('{AppsKey}{Up 6}{Enter}')
 ;    Send('{Tab 2}716{Enter}')
 }
 
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^á::
 {
     ; Open Torrent options modal
@@ -573,7 +575,7 @@ F4::Send('{AppsKey}{Up 6}{Enter}')
 ;    Send('{Tab 2}819{Enter}')
 }
 
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^í::
 {
     ; Open Torrent options modal
@@ -583,7 +585,7 @@ F4::Send('{AppsKey}{Up 6}{Enter}')
 ;    Send('{Tab 2}921{Enter}')
 }
 
-#HotIf WinActive('ahk_exe qbittorrent.exe')
+#HotIf WinActive(WinTitleQBittorrent)
 ^é::
 {
     ; Open Torrent options modal
@@ -598,8 +600,8 @@ F4::Send('{AppsKey}{Up 6}{Enter}')
 
 ; Create a group to target more applications
 ; GroupAdd('FullscreenGroup', 'ahk_exe PSPad.exe') ; Doesn't work
-GroupAdd('FullscreenGroup', 'ahk_exe qbittorrent.exe')
-GroupAdd('FullscreenGroup', 'ahk_class TTOTAL_CMD ahk_exe TOTALCMD.EXE')
+GroupAdd('FullscreenGroup', WinTitleQBittorrent)
+GroupAdd('FullscreenGroup', WinTitleTC)
 GroupAdd('FullscreenGroup', 'ahk_class TTOTAL_CMD ahk_exe TOTALCMD64.EXE')
 
 ; Fullscreen
@@ -731,7 +733,7 @@ TCMaximizePanelListing()
     MouseMove(xOriginal, yOriginal, 0)
 }
 
-#HotIf WinActive('ahk_class TTOTAL_CMD ahk_exe TOTALCMD.EXE')
+#HotIf WinActive(WinTitleTC)
 ^!t::{
     global TCPanelListingToggle
 
