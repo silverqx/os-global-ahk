@@ -27,7 +27,7 @@ Persistent
 SetTitleMatchMode('RegEx')
 
 ; Higher value for SetKeyDelay
-KeyDelayqBt := 25
+KeyDelay25 := 25
 KeyDelayDefault := 10
 
 ; mpc-hc
@@ -1432,14 +1432,14 @@ Sž()
 MpcHcEnablePip()
 {
     global MpcHcZoomKey, MpcHcDefaultPipWidth
-    global KeyDelayqBt, KeyDelayDefault
+    global KeyDelay25, KeyDelayDefault
     global MpcHcPipX, MpcHcPipY
     global MpcHcPipWidth, MpcHcPipHeight
 
     if (!WinExist('A'))
         return
 
-    SetKeyDelay(KeyDelayqBt)
+    SetKeyDelay(KeyDelay25)
 
     ; Enable StayOnTop and Hide Playlist
     Send('^a^!a')
@@ -1472,7 +1472,7 @@ MpcHcEnablePip()
 
 MpcHcDisablePip()
 {
-    global KeyDelayqBt, KeyDelayDefault
+    global KeyDelay25, KeyDelayDefault
     global MpcHcZoomKey, MpcHcDefaultNormalWidth
     global MpcHcPipX, MpcHcPipY
     global MpcHcPipWidth, MpcHcPipHeight
@@ -1480,7 +1480,7 @@ MpcHcDisablePip()
     if (!WinExist('A'))
         return
 
-    SetKeyDelay(KeyDelayqBt)
+    SetKeyDelay(KeyDelay25)
 
     ; Store x and y positions and sizes in pip mode only if the pip window has been moved or resized
     WinGetPos(&x, &y, &width, &height)
