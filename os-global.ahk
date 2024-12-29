@@ -155,7 +155,7 @@ Browser_Home::
 +<#m::Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe --incognito',, 'Max')
 
 ; Restart the AhkOsGlobal scheduled task
-^+BackSpace::
+^!BackSpace::
 {
     SoundBeep(8000, 70)
     Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\recompile.ps1',, 'Hide')
