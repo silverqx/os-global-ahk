@@ -527,11 +527,18 @@ F11::WinSetStyle('^0xC00000')
 ; Zoom in the Grid page
 TivikoIncreaseZoom()
 {
-    MouseGetPos(&xOriginal, &yOriginal)
     ; Mouse must be inside this area
     MouseMove(40, 380, 0)
     ; Increase zoom
     Send('^{WheelUp 3}')
+}
+
+; Zoom in the Grid page
+TivikoIncreaseZoomWithRestore()
+{
+    MouseGetPos(&xOriginal, &yOriginal)
+    ; Increase zoom
+    TivikoIncreaseZoom()
     ; Restore the original mouse position
     MouseMove(xOriginal, yOriginal, 0)
 }
@@ -550,18 +557,48 @@ TivikoIncreaseZoomOnGridClick()
     ; Wait until the Grid view loads
     Sleep(1200) ; ~1100ms is minimum
 
+    ; Increase zoom
     TivikoIncreaseZoom()
+    ; Restore the original mouse position
+    MouseMove(xOriginal, yOriginal, 0)
+}
+
+; Reload TV program and increase zoom
+TivikoReloadGrid()
+{
+    MouseGetPos(&xOriginal, &yOriginal)
+
+    ; Back
+    Send('{Browser_Back}')
+    Sleep(150)
+    ; Grid button
+    Click('100', '300')
+    MouseMove(xOriginal, yOriginal, 0)
+    Sleep(150)
+    ; Increase zoom
+    TivikoIncreaseZoom()
+
+    ; Restore the original mouse position
+    MouseMove(xOriginal, yOriginal, 0)
 }
 
 #HotIf WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
-^\::TivikoIncreaseZoom()
+^\::TivikoIncreaseZoomWithRestore()
 
 ; Zoom in the Grid page on double right mouse button click (anywhere)
 #HotIf WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
 ~RButton::
 {
     if (ThisHotkey == A_PriorHotkey && A_TimeSincePriorHotkey < 300)
-        TivikoIncreaseZoom()
+        TivikoReloadGrid()
+}
+
+; Zoom in the Grid page on double right mouse button click (anywhere)
+#HotIf WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
+~MButton::
+{
+    if (ThisHotkey == A_PriorHotkey && A_TimeSincePriorHotkey < 300)
+        TivikoIncreaseZoomWithRestore()
 }
 
 #HotIf WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
