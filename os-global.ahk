@@ -719,6 +719,13 @@ MButton::
     ControlClick('SWT_Window090', 'A',,,, 'NA')
 }
 
+; Google Chrome
+; --------
+
+; Show bookmarks bar
+#HotIf WinActive('ahk_exe chrome.exe ahk_class Chrome_WidgetWin_1')
+^\::Send('^+b')
+
 ; Dark Souls 1 Save Manager
 ; -------------------------
 
