@@ -377,224 +377,123 @@ Browser_Home::
 ; qBittorrent Section
 ; -------------------
 
+; Assign to video category and force/ seed tag
+QbtAssignVideoCategoryAndSeedTag(closeAction := 'SubMenu', assignForceSeed := false)
+{
+    ; Assign to video category
+    Send('{AppsKey}y{Up}{Enter}')
+    ; Assign seed tag
+    Send('{AppsKey}g{Up 2}{Enter}')
+
+    ; Assign force seed tag (for Trezzor Tracker)
+    if (assignForceSeed)
+        Send('{Down}{Enter}')
+
+    ; Close Tags sub-menu or context menu
+    switch closeAction {
+        case 'SubMenu': Send('{Esc}')
+        case 'AppMenu': Send('{Esc 2}')
+    }
+}
+
+; Download in sequential order and first/last pieces first
+QbtDownloadSequentialAndFirstLast()
+{
+    ; Download in sequential order
+    Send('{Down 4}{Enter}')
+    ; Download first and last pieces first
+    Send('{AppsKey}g{Esc}{Down 5}{Enter}')
+}
+
+; Open Torrent options modal dialog and wait for it
+QbtOpenTorrentOptionsModal()
+{
+    Send('{AppsKey}o')
+    WinWait('^(Torrent Options)$ ' . WinTitleQBittorrent)
+}
+
+; Limit download speed to the given value
+QbtSetDownloadSpeedLimit(value)
+{
+    ; Open Torrent options modal dialog and wait for it
+    QbtOpenTorrentOptionsModal()
+    Send(Format('{Tab 2}{:u}{Enter}', value))
+}
+
 ; Classic video
 #HotIf WinActive(WinTitleQBittorrent)
 ^BackSpace::
 {
-    ; Assign to video category
-    Send('{AppsKey}{Down 7}{Right}{Up}{Enter}')
-    ; Assign seed tag
-    ; Send('{AppsKey}{Down 8}{Right}{Up 2}{Enter}')
-    ; Close Tags sub-menu
-    ; Send('{Esc}')
-    ; Download in sequential order
-    ; Send('{Down 4}{Enter}')
-    Send('{AppsKey}{Up 8}{Enter}')
-    ; Download first and last pieces first
-    Send('{AppsKey}{Up 7}{Enter}')
+    ; Assign to video category and seed tag
+    QbtAssignVideoCategoryAndSeedTag()
+    ; Download in sequential order and first/last pieces first
+    QbtDownloadSequentialAndFirstLast()
 }
 
-; No-limit video
+; No-limit video (for Trezzor Tracker)
 #HotIf WinActive(WinTitleQBittorrent)
 ^+BackSpace::
 {
     ; Force resume
-    Send('{AppsKey}{Down 2}{Enter}')
-    ; Assign to video category
-    Send('{AppsKey}{Down 7}{Right}{Up}{Enter}')
-    ; Assign force seed tag
-    Send('{AppsKey}{Down 8}{Right}{Up}{Enter}')
-    ; Close Tags sub-menu
-    Send('{Esc}')
-    ; Download in sequential order
-    Send('{Down 4}{Enter}')
-    ; Download first and last pieces first
-    Send('{AppsKey}{Up 7}{Enter}')
+    Send('{AppsKey}t')
+    ; Assign to video category and force/ seed tag
+    QbtAssignVideoCategoryAndSeedTag('SubMenu', true)
+    ; Download in sequential order and first/last pieces first
+    QbtDownloadSequentialAndFirstLast()
 
-    ; Open Torrent options modal
-    Send('{AppsKey}{Up 10}{Enter}')
-    SetKeyDelay(KeyDelayqBt)
-    Sleep(120)
+    ; Open Torrent options modal and wait for it
+    QbtOpenTorrentOptionsModal()
     ; Set no share limit
-    Send('{Tab 8}{Down}{Enter}')
+    Send('+{Tab 9}{Down}{Enter}')
     ; Close Torrent options modal
     Send('{Enter}')
-    SetKeyDelay(KeyDelayDefault)
 }
 
-; When more torrents selected
+; Assign to video category and seed tag
 #HotIf WinActive(WinTitleQBittorrent)
-^+!BackSpace::
-{
-    ; Assign to video category
-    Send('{AppsKey}{Down 6}{Right}{Up}{Enter}')
-    ; Assign seed tag
-    Send('{AppsKey}{Down 7}{Right}{Up 2}{Enter}')
-    ; Close Tags sub-menu
-    Send('{Esc}')
-    ; Download in sequential order
-    Send('{Down 4}{Enter}')
-    ; Download first and last pieces first
-    Send('{AppsKey}{Up 7}{Enter}')
-}
+^F11::QbtAssignVideoCategoryAndSeedTag('AppMenu')
 
-; No-limit if more torrents selected
+; Assign to video category and force/ seed tag (for Trezzor Tracker)
 #HotIf WinActive(WinTitleQBittorrent)
-^!F12::
-{
-    ; Force resume
-    Send('{AppsKey}{Down 2}{Enter}')
-    ; Assign to video category
-    Send('{AppsKey}{Down 6}{Right}{Up}{Enter}')
-    ; Assign seed and force seed tags
-    Send('{AppsKey}{Down 7}{Right}{Up}{Enter}{Up}{Enter}')
-    ; Close Tags sub-menu
-    Send('{Esc}')
-    ; Download in sequential order
-    Send('{Down 4}{Enter}')
-    ; Download first and last pieces first
-    Send('{AppsKey}{Up 7}{Enter}')
-
-    ; Open Torrent options modal
-    Send('{AppsKey}{Up 10}{Enter}')
-    SetKeyDelay(KeyDelayqBt)
-    Sleep(120)
-    ; Set no share limit
-    Send('{Tab 6}{Down 2}{Up}{Space}')
-    ; Close Torrent options modal
-    Send('{Enter}')
-    SetKeyDelay(KeyDelayDefault)
-}
-
-; Assign to video category
-; #HotIf WinActive(WinTitleQBittorrent)
-; ^+BackSpace::
-; {
-;     ; Assign to video category
-;     Send('{AppsKey}{Down 7}{Right}{Up}{Enter}')
-;     ; Assign seed tag
-;     Send('{AppsKey}{Down 8}{Right}{Up 2}{Enter}')
-;     ; Close Tags sub-menu and context menu
-;     Send('{Esc}{Esc}')
-; }
+^+F11::QbtAssignVideoCategoryAndSeedTag('AppMenu', true)
 
 ; Preview
 #HotIf WinActive(WinTitleQBittorrent)
-F3::Send('{AppsKey}{Up 9}{Enter}')
-
-; Preview when seeding
-#HotIf WinActive(WinTitleQBittorrent)
-F4::Send('{AppsKey}{Up 6}{Enter}')
+F3::Send('{AppsKey}v')
 
 ; Limit download rate shortcuts
 #HotIf WinActive(WinTitleQBittorrent)
-^;::
-{
-    ; Open Torrent options modal
-    Send('{AppsKey}{Down 10}{Enter}')
-    Sleep(120)
-    Send('{Tab 2}0{Enter}')
-}
+^;::QbtSetDownloadSpeedLimit(0)
 
 #HotIf WinActive(WinTitleQBittorrent)
-^+::
-{
-    ; Open Torrent options modal
-    Send('{AppsKey}{Down 10}{Enter}')
-    Sleep(120)
-    Send('{Tab 2}1024{Enter}')
-;    Send('{Tab 2}102{Enter}')
-}
+^+::QbtSetDownloadSpeedLimit(1024)
 
 #HotIf WinActive(WinTitleQBittorrent)
-^ě::
-{
-    ; Open Torrent options modal
-    Send('{AppsKey}{Down 10}{Enter}')
-    Sleep(120)
-    Send('{Tab 2}2048{Enter}')
-;    Send('{Tab 2}204{Enter}')
-}
+^ě::QbtSetDownloadSpeedLimit(2048)
 
 #HotIf WinActive(WinTitleQBittorrent)
-^š::
-{
-    ; Open Torrent options modal
-    Send('{AppsKey}{Down 10}{Enter}')
-    Sleep(120)
-    Send('{Tab 2}3072{Enter}')
-;    Send('{Tab 2}307{Enter}')
-}
+^š::QbtSetDownloadSpeedLimit(3072)
 
 #HotIf WinActive(WinTitleQBittorrent)
-^č::
-{
-    ; Open Torrent options modal
-    Send('{AppsKey}{Down 10}{Enter}')
-    Sleep(120)
-    Send('{Tab 2}4096{Enter}')
-;    Send('{Tab 2}409{Enter}')
-}
+^č::QbtSetDownloadSpeedLimit(4096)
 
 #HotIf WinActive(WinTitleQBittorrent)
-^ř::
-{
-    ; Open Torrent options modal
-    Send('{AppsKey}{Down 10}{Enter}')
-    Sleep(120)
-    Send('{Tab 2}5120{Enter}')
-;    Send('{Tab 2}512{Enter}')
-}
+^ř::QbtSetDownloadSpeedLimit(5120)
 
 #HotIf WinActive(WinTitleQBittorrent)
-^ž::
-{
-    ; Open Torrent options modal
-    Send('{AppsKey}{Down 10}{Enter}')
-    Sleep(120)
-    Send('{Tab 2}6144{Enter}')
-;    Send('{Tab 2}614{Enter}')
-}
+^ž::QbtSetDownloadSpeedLimit(6144)
 
 #HotIf WinActive(WinTitleQBittorrent)
-^ý::
-{
-    ; Open Torrent options modal
-    Send('{AppsKey}{Down 10}{Enter}')
-    Sleep(120)
-    Send('{Tab 2}7168{Enter}')
-;    Send('{Tab 2}716{Enter}')
-}
+^ý::QbtSetDownloadSpeedLimit(7168)
 
 #HotIf WinActive(WinTitleQBittorrent)
-^á::
-{
-    ; Open Torrent options modal
-    Send('{AppsKey}{Down 10}{Enter}')
-    Sleep(120)
-    Send('{Tab 2}8192{Enter}')
-;    Send('{Tab 2}819{Enter}')
-}
+^á::QbtSetDownloadSpeedLimit(8192)
 
 #HotIf WinActive(WinTitleQBittorrent)
-^í::
-{
-    ; Open Torrent options modal
-    Send('{AppsKey}{Down 10}{Enter}')
-    Sleep(120)
-    Send('{Tab 2}9216{Enter}')
-;    Send('{Tab 2}921{Enter}')
-}
+^í::QbtSetDownloadSpeedLimit(9216)
 
 #HotIf WinActive(WinTitleQBittorrent)
-^é::
-{
-    ; Open Torrent options modal
-    Send('{AppsKey}{Down 10}{Enter}')
-    Sleep(120)
-    Send('{Tab 2}10240{Enter}')
-;    Send('{Tab 2}1024{Enter}')
-}
+^é::QbtSetDownloadSpeedLimit(10240)
 
 ; Fullscreen mode
 ; -------------------------
