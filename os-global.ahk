@@ -70,6 +70,7 @@ WinTitleTC := 'ahk_exe TOTALCMD.EXE ahk_class TTOTAL_CMD'
 ;     ; Send('^+ř')
 ;     ; WinSetStyle('^0xC40000', 'A')
 ; }
+; #HotIf ; WinActive('Xyz ahk_exe xyz.exe ahk_class Xyz')
 
 ; General Section
 ; ---------------
@@ -92,12 +93,12 @@ WinTitleTC := 'ahk_exe TOTALCMD.EXE ahk_class TTOTAL_CMD'
 }
 
 ; Black screensaver
-; #HotIf !WinActive('ahk_group RButtonGroup')
 ~RButton & WheelDown::
 {
     Sleep(2000)
     Run('scrnsave.scr /s',, 'Hide')
 }
+; #HotIf ; !WinActive('ahk_group RButtonGroup')
 
 ; Hibernate
 ; ~RButton & WheelDown::
@@ -314,7 +315,6 @@ Browser_Home::
 }
 
 ; Reset x, y restore positions and sizes for pip mode
-#HotIf WinActive(WinTitleMpcHc)
 ^F8::
 {
     MpcHcResetPipPositions()
@@ -323,7 +323,6 @@ Browser_Home::
 }
 
 ; Disable PIP mode
-#HotIf WinActive(WinTitleMpcHc)
 ^Enter::
 {
     global MpcHcPip
@@ -345,7 +344,6 @@ Browser_Home::
     MpcHcPip := true
 }
 
-#HotIf WinActive(WinTitleMpcHc)
 ^!Left::
 {
     ; pip mode disabled OR ahk script was restarted so MpcHcPip := false and mpc-hc is still in pip mode
@@ -357,7 +355,6 @@ Browser_Home::
     MpcHcMoveLeft()
 }
 
-#HotIf WinActive(WinTitleMpcHc)
 ^!Right::
 {
     ; pip mode disabled OR ahk script was restarted so MpcHcPip := false and mpc-hc is still in pip mode
@@ -369,7 +366,6 @@ Browser_Home::
     MpcHcMoveRight()
 }
 
-#HotIf WinActive(WinTitleMpcHc)
 ^!Up::
 {
     ; pip mode disabled OR ahk script was restarted so MpcHcPip := false and mpc-hc is still in pip mode
@@ -381,7 +377,6 @@ Browser_Home::
     MpcHcMoveTop()
 }
 
-#HotIf WinActive(WinTitleMpcHc)
 ^!Down::
 {
     ; pip mode disabled OR ahk script was restarted so MpcHcPip := false and mpc-hc is still in pip mode
@@ -392,6 +387,7 @@ Browser_Home::
 
     MpcHcMoveBottom()
 }
+#HotIf ; WinActive(WinTitleMpcHc)
 
 ; qBittorrent Section
 ; -------------------
@@ -450,7 +446,6 @@ QbtSetDownloadSpeedLimit(value)
 }
 
 ; No-limit video (for Trezzor Tracker)
-#HotIf WinActive(WinTitleQBittorrent)
 ^+BackSpace::
 {
     ; Force resume
@@ -469,50 +464,37 @@ QbtSetDownloadSpeedLimit(value)
 }
 
 ; Assign to video category and seed tag
-#HotIf WinActive(WinTitleQBittorrent)
 ^F11::QbtAssignVideoCategoryAndSeedTag('AppMenu')
 
 ; Assign to video category and force/ seed tag (for Trezzor Tracker)
-#HotIf WinActive(WinTitleQBittorrent)
 ^+F11::QbtAssignVideoCategoryAndSeedTag('AppMenu', true)
 
 ; Preview
-#HotIf WinActive(WinTitleQBittorrent)
 F3::Send('{AppsKey}v')
 
 ; Limit download rate shortcuts
-#HotIf WinActive(WinTitleQBittorrent)
 ^;::QbtSetDownloadSpeedLimit(0)
 
-#HotIf WinActive(WinTitleQBittorrent)
 ^+::QbtSetDownloadSpeedLimit(1024)
 
-#HotIf WinActive(WinTitleQBittorrent)
 ^ě::QbtSetDownloadSpeedLimit(2048)
 
-#HotIf WinActive(WinTitleQBittorrent)
 ^š::QbtSetDownloadSpeedLimit(3072)
 
-#HotIf WinActive(WinTitleQBittorrent)
 ^č::QbtSetDownloadSpeedLimit(4096)
 
-#HotIf WinActive(WinTitleQBittorrent)
 ^ř::QbtSetDownloadSpeedLimit(5120)
 
-#HotIf WinActive(WinTitleQBittorrent)
 ^ž::QbtSetDownloadSpeedLimit(6144)
 
-#HotIf WinActive(WinTitleQBittorrent)
 ^ý::QbtSetDownloadSpeedLimit(7168)
 
-#HotIf WinActive(WinTitleQBittorrent)
 ^á::QbtSetDownloadSpeedLimit(8192)
 
-#HotIf WinActive(WinTitleQBittorrent)
 ^í::QbtSetDownloadSpeedLimit(9216)
 
-#HotIf WinActive(WinTitleQBittorrent)
 ^é::QbtSetDownloadSpeedLimit(10240)
+#HotIf ; WinActive(WinTitleQBittorrent)
 
 ; Fullscreen mode
 ; -------------------------
@@ -526,6 +508,7 @@ GroupAdd('FullscreenGroup', 'ahk_exe TOTALCMD64.EXE ahk_class TTOTAL_CMD')
 ; Fullscreen
 #HotIf WinActive('ahk_group FullscreenGroup')
 F11::WinSetStyle('^0xC00000')
+#HotIf ; WinActive('ahk_group FullscreenGroup')
 
 ; Visual Studio
 ; -------------------------
@@ -535,10 +518,10 @@ F11::WinSetStyle('^0xC00000')
 ^F2::Send('^{F2}{Tab 2}{Down}')
 
 ; Duplicate Selection and Comment
-#HotIf WinActive('(?:Microsoft Visual Studio)$ ahk_exe devenv.exe')
 ^NumpadDiv::Send('^!{Down}^{NumpadMult}{Up}{Left 2}')
-#HotIf WinActive('(?:Microsoft Visual Studio)$ ahk_exe devenv.exe')
+
 ^+NumpadDiv::Send('^!{Down}^{NumpadMult}{Up}')
+#HotIf ; WinActive('(?:Microsoft Visual Studio)$ ahk_exe devenv.exe')
 
 ; Tiviko TV Program
 ; -------------------------
@@ -605,7 +588,6 @@ TivikoReloadGrid()
 ^\::TivikoIncreaseZoomWithRestore()
 
 ; Zoom in the Grid page on double right mouse button click (anywhere)
-#HotIf WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
 ~RButton::
 {
     if (ThisHotkey == A_PriorHotkey && A_TimeSincePriorHotkey < 300)
@@ -613,18 +595,16 @@ TivikoReloadGrid()
 }
 
 ; Zoom in the Grid page on double right mouse button click (anywhere)
-#HotIf WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
 ~MButton::
 {
     if (ThisHotkey == A_PriorHotkey && A_TimeSincePriorHotkey < 300)
         TivikoIncreaseZoomWithRestore()
 }
 
-#HotIf WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
 ~LButton::TivikoIncreaseZoomOnGridClick()
+#HotIf ; WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
 
 ; Open Tiviko TV Program
-#HotIf
 ; ~LButton & XButton1::
 ; {
 ;     if (WinExist('^TV Program Tiviko$'))
@@ -700,6 +680,7 @@ TCMaximizePanelListing()
 
     TCPanelListingToggle := !TCPanelListingToggle
 }
+#HotIf ; WinActive(WinTitleTC)
 
 ; mpc-hc
 ; ---------------
@@ -726,6 +707,7 @@ MButton::
 
     MpcHcTouchOutsideFrameToggle := !MpcHcTouchOutsideFrameToggle
 }
+#HotIf ; WinActive(WinTitleMpcHc)
 
 ; SmartGit
 ; --------
@@ -737,6 +719,7 @@ MButton::
     SetControlDelay(-1)
     ControlClick('SWT_Window090', 'A',,,, 'NA')
 }
+#HotIf ; WinActive(WinTitleSmartGit)
 
 ; Google Chrome
 ; --------
@@ -744,6 +727,7 @@ MButton::
 ; Show bookmarks bar
 #HotIf WinActive('ahk_exe chrome.exe ahk_class Chrome_WidgetWin_1')
 ^\::Send('^+b')
+#HotIf ; WinActive('ahk_exe chrome.exe ahk_class Chrome_WidgetWin_1')
 
 ; Dark Souls 1 Save Manager
 ; -------------------------
@@ -752,11 +736,13 @@ MButton::
 ; This hotkey will create a new save in the current run, and select it.
 #HotIf WinActive('ahk_exe DATA.exe')
 F6::PostMessage(0x312, 1000, 0,, 'DarkSaves')
+#HotIf ; WinActive('ahk_exe DATA.exe')
 
 ; Load Hotkey
 ; This hotkey loads the last save selected, or last save created - whichever is most recent.
 #HotIf WinActive('ahk_exe DATA.exe')
 F8::PostMessage(0x312, 1001, 0,, 'DarkSaves')
+#HotIf ; WinActive('ahk_exe DATA.exe')
 
 ; Window related
 ; --------------
