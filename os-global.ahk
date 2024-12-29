@@ -114,6 +114,25 @@ Browser_Home::
         Run(A_StartMenuCommon . '\Programs\MPC-HC x64\MPC-HC x64.lnk')
 }
 
+; Browser_Home::
+; {
+;     winTitle := '( - Google Chrome)$ ahk_exe chrome.exe'
+;     groupName := 'xyz'
+;     if (WinExist(winTitle)) {
+;         GroupAdd(groupName, winTitle)
+
+;         ; Check if a matching window is in already focus
+;         ; Switch to the next matching window
+;         if WinActive(winTitle)
+;             GroupActivate(groupName, 'R')
+;         ; If a window is currently open but not focused, activate it
+;         else
+;             WinActivate(winTitle)
+;     }
+;     else
+;         Run(A_StartMenuCommon . '\Programs\MPC-HC x64.lnk')
+; }
+
 ; Hibernate (shift+calc)
 +Launch_App2::
 {
@@ -606,13 +625,13 @@ TivikoReloadGrid()
 
 ; Open Tiviko TV Program
 #HotIf
-~LButton & XButton1::
-{
-    if (WinExist('^TV Program Tiviko$'))
-        WinActivate()
-    else
-        Run('shell:AppsFolder\0BB81222.TVProgramTiviko_hev1qd965vk4r!App')
-}
+; ~LButton & XButton1::
+; {
+;     if (WinExist('^TV Program Tiviko$'))
+;         WinActivate()
+;     else
+;         Run('shell:AppsFolder\0BB81222.TVProgramTiviko_hev1qd965vk4r!App')
+; }
 
 ; Total Commander
 ; -------------------------
@@ -1651,12 +1670,13 @@ WEQtCreatorPreferences(hook, hWnd, *) {
 ; Fullscreen on Open
 ; -------------
 
-WinEvent.Show(WEFullscreenOnOpen, 'ahk_group FullscreenGroup')
+; WinEvent.Show(WEFullscreenOnOpen, WinTitleQBittorrent)
+; WinEvent.Show(WEFullscreenOnOpen, WinTitleTC)
 
-WEFullscreenOnOpen(hook, hWnd, *) {
-    WinWait('ahk_id ' . hWnd)
-    WinSetStyle('^0xC00000')
-}
+; WEFullscreenOnOpen(hook, hWnd, *) {
+;     WinWait('ahk_id ' . hWnd)
+;     WinSetStyle('^0xC00000')
+; }
 
 ; mpc-hc
 ; -------------
