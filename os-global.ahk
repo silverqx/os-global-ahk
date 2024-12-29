@@ -181,7 +181,7 @@ Browser_Home::
 
 ^g::
 {
-    ih := InputHook('T.8 L1 M', '{enter}.{esc}{tab}',
+    ih := InputHook('T.8 L1 M', '{Enter}.{Esc}{Tab}',
                     'a,b,c,č,d,é,f,g,k,l,m,n,p,q,r,ř,s,š,t,w,u,y,ž')
     ih.Start()
     result := ih.Wait()
@@ -870,7 +870,7 @@ Sca()
 {
     global VmrunPauseToggle
 
-    ih := InputHook('T.9 L1 M', '{enter}.{esc}{tab}', 'a,c,d,g,h,p,r,s')
+    ih := InputHook('T.9 L1 M', '{Enter}.{Esc}{Tab}', 'a,c,d,g,h,p,r,s')
     ih.Start()
     result := ih.Wait()
 
@@ -939,7 +939,7 @@ Scb()
 {
     global VmrunPauseToggle
 
-    ih := InputHook('T.9 L1 M', '{enter}.{esc}{tab}', 'a,c,d,g,p,r,s')
+    ih := InputHook('T.9 L1 M', '{Enter}.{Esc}{Tab}', 'a,c,d,g,p,r,s')
     ih.Start()
     result := ih.Wait()
 
@@ -1001,7 +1001,7 @@ Scd()
 {
     global VmrunPauseToggle
 
-    ih := InputHook('T.9 L1 M', '{enter}.{esc}{tab}', 'a,c,d,p,r,s')
+    ih := InputHook('T.9 L1 M', '{Enter}.{Esc}{Tab}', 'a,c,d,p,r,s')
     ih.Start()
     result := ih.Wait()
 
@@ -1105,7 +1105,7 @@ Scv()
 {
     global VmrunPauseToggle
 
-    ih := InputHook('T.9 L1 M', '{enter}.{esc}{tab}', 'a,c,d,g,h,p,r,s')
+    ih := InputHook('T.9 L1 M', '{Enter}.{Esc}{Tab}', 'a,c,d,g,h,p,r,s')
     ih.Start()
     result := ih.Wait()
 
@@ -1174,7 +1174,7 @@ Scw()
 {
     global VmrunPauseToggle
 
-    ih := InputHook('T.9 L1 M', '{enter}.{esc}{tab}', 'a,c,d,p,r,s')
+    ih := InputHook('T.9 L1 M', '{Enter}.{Esc}{Tab}', 'a,c,d,p,r,s')
     ih.Start()
     result := ih.Wait()
 
