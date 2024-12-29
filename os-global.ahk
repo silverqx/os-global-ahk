@@ -465,7 +465,6 @@ QbtSetDownloadSpeedLimit(value)
 
 ; Assign to video category and seed tag
 ^F11::QbtAssignVideoCategoryAndSeedTag('AppMenu')
-
 ; Assign to video category and force/ seed tag (for Trezzor Tracker)
 ^+F11::QbtAssignVideoCategoryAndSeedTag('AppMenu', true)
 
@@ -474,25 +473,15 @@ F3::Send('{AppsKey}v')
 
 ; Limit download rate shortcuts
 ^;::QbtSetDownloadSpeedLimit(0)
-
 ^+::QbtSetDownloadSpeedLimit(1024)
-
 ^ě::QbtSetDownloadSpeedLimit(2048)
-
 ^š::QbtSetDownloadSpeedLimit(3072)
-
 ^č::QbtSetDownloadSpeedLimit(4096)
-
 ^ř::QbtSetDownloadSpeedLimit(5120)
-
 ^ž::QbtSetDownloadSpeedLimit(6144)
-
 ^ý::QbtSetDownloadSpeedLimit(7168)
-
 ^á::QbtSetDownloadSpeedLimit(8192)
-
 ^í::QbtSetDownloadSpeedLimit(9216)
-
 ^é::QbtSetDownloadSpeedLimit(10240)
 #HotIf ; WinActive(WinTitleQBittorrent)
 
@@ -519,7 +508,6 @@ F11::WinSetStyle('^0xC00000')
 
 ; Duplicate Selection and Comment
 ^NumpadDiv::Send('^!{Down}^{NumpadMult}{Up}{Left 2}')
-
 ^+NumpadDiv::Send('^!{Down}^{NumpadMult}{Up}')
 #HotIf ; WinActive('(?:Microsoft Visual Studio)$ ahk_exe devenv.exe')
 
