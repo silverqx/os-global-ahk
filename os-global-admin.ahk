@@ -54,7 +54,7 @@ CoordMode('ToolTip', 'Screen')
 
 ; Switch to the previous window
 ScrollLock::!Tab
-; ~LButton & XButton2::!Tab
+~MButton & XButton2::!Tab
 
 ; Restart the AhkOsGlobal scheduled task
 ^!´::
