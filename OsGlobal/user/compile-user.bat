@@ -1,1 +1,1 @@
-@"%ProgramFiles%\AutoHotkey\Compiler\Ahk2Exe.exe" /in os-global.ahk
+@"%ProgramFiles%\AutoHotkey\Compiler\Ahk2Exe.exe" /in OsGlobal.ahk
