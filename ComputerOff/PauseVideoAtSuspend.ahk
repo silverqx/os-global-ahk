@@ -7,6 +7,10 @@
 
 ; Pause the MPC-HC video player if it's in the foreground and video is playing.
 
+; WinGetTitle('A') fails without this with: Error: Target window not found.
+if (!WinExist('A'))
+    return
+
 if (WinGetProcessName('A') == 'mpc-hc64.exe') {
     Send('{Space}')
     return
