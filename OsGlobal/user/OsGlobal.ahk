@@ -8,7 +8,7 @@ Persistent()
 #UseHook True
 
 ;@Ahk2Exe-Base ../v2/AutoHotkey64.exe
-;@Ahk2Exe-SetMainIcon %A_ScriptName~\.[^\.]+$~.ico%
+;@Ahk2Exe-SetMainIcon ../../resources/%A_ScriptName~\.[^\.]+$~.ico%
 ;@Ahk2Exe-SetCompanyName Crystal Studio
 ;@Ahk2Exe-SetCopyright Copyright (©) 2024 Silver Zachara
 ;@Ahk2Exe-SetDescription OS Global (AutoHotkey)
@@ -178,7 +178,7 @@ Browser_Home::
 ^!BackSpace::
 {
     SoundBeep(8000, 70)
-    Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\recompile.ps1',, 'Hide')
+    Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\OsGlobal\User\Recompile-User.ps1',, 'Hide')
 }
 
 ; Open Control Panel

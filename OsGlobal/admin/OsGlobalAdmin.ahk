@@ -8,7 +8,7 @@ Persistent
 #UseHook True
 
 ;@Ahk2Exe-Base ../v2/AutoHotkey64.exe
-;@Ahk2Exe-SetMainIcon %A_ScriptName~-admin\.[^\.]+$~.ico%
+;@Ahk2Exe-SetMainIcon ../../resources/%A_ScriptName~Admin\.[^\.]+$~.ico%
 ;@Ahk2Exe-SetCompanyName Crystal Studio
 ;@Ahk2Exe-SetCopyright Copyright (©) 2024 Silver Zachara
 ;@Ahk2Exe-SetDescription OS Global with Administrator rights (AutoHotkey)
@@ -60,7 +60,7 @@ ScrollLock::!Tab
 ^!´::
 {
     SoundBeep(8000, 70)
-    Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\recompile-admin.ps1',, 'Hide')
+    Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\OsGlobal\Admin\Recompile-Admin.ps1',, 'Hide')
 }
 
 ; Leader key ctrl-¨ shortcuts

@@ -7,7 +7,7 @@ Persistent
 #SingleInstance Force
 
 ;@Ahk2Exe-Base ../v2/AutoHotkey64.exe
-;@Ahk2Exe-SetMainIcon ../os-global.ico
+;@Ahk2Exe-SetMainIcon ../resources/OsGlobal.ico
 ;@Ahk2Exe-SetCompanyName Crystal Studio
 ;@Ahk2Exe-SetCopyright Copyright (©) 2024 Silver Zachara
 ;@Ahk2Exe-SetDescription QtCreator OSD (AutoHotkey)
@@ -17,7 +17,7 @@ Persistent
 ;@Ahk2Exe-SetProductVersion 1.0.0.0
 ;@Ahk2Exe-UseResourceLang 0x0409
 
-; This code was originally in the os-global.ahk, but it caused problems, the OnWmPowerBroadcast() handler
+; This code was originally in the OsGlobal.ahk, but it caused problems, the OnWmPowerBroadcast() handler
 ; for the OnMessage(0x218, 'OnWmPowerBroadcast') was called twice! I think it was because
 ; the CreateCommonOSD() creates a window behind the scene, so I got two windows and so it was called twice.
 ; Because of that I have created this standalone script for project name OSD-es.
@@ -44,7 +44,7 @@ CreateVSCodeOSD()
 ^!+´::
 {
     SoundBeep(8000, 70)
-    Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\osd-project-name\recompile.ps1',, 'Hide')
+    Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\OsdProjectName\Recompile.ps1',, 'Hide')
 }
 
 ; Common OSD logic

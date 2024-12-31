@@ -1,1 +1,1 @@
-@"%ProgramFiles%\AutoHotkey\Compiler\Ahk2Exe.exe" /in osd-project-name.ahk
+@"%ProgramFiles%\AutoHotkey\Compiler\Ahk2Exe.exe" /in OsdProjectName.ahk
