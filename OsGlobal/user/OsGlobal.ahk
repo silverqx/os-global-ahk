@@ -178,7 +178,8 @@ Browser_Home::
 ^!BackSpace::
 {
     SoundBeep(8000, 70)
-    Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\OsGlobal\User\Recompile-User.ps1',, 'Hide')
+    Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\OsGlobal\User\Recompile-User.ps1',,
+        'Hide')
 }
 
 ; Open Control Panel

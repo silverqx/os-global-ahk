@@ -60,7 +60,8 @@ ScrollLock::!Tab
 ^!´::
 {
     SoundBeep(8000, 70)
-    Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\OsGlobal\Admin\Recompile-Admin.ps1',, 'Hide')
+    Run('powershell.exe -WindowStyle Hidden ' .
+        '-NoLogo E:\autohotkey\os-global\OsGlobal\Admin\Recompile-Admin.ps1',, 'Hide')
 }
 
 ; Leader key ctrl-¨ shortcuts

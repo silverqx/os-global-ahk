@@ -44,7 +44,8 @@ CreateVSCodeOSD()
 ^!+´::
 {
     SoundBeep(8000, 70)
-    Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\OsdProjectName\Recompile.ps1',, 'Hide')
+    Run('powershell.exe -WindowStyle Hidden -NoLogo E:\autohotkey\os-global\OsdProjectName\Recompile.ps1',,
+        'Hide')
 }
 
 ; Common OSD logic
