@@ -82,7 +82,7 @@ OnWmPowerBroadcast(wParam, lParam, *)
     ; Windows sends both 7 and 18 resume codes during resume WOL and timer resume, and
     ; it sends only 7 resume code if resumed using the keyboard.
     if (OpenTime != '') {
-        ; Now happend that it last 1m35s between 18 and 7 resume codes,
+        ; Now happened that it last 1m35s between 18 and 7 resume codes,
         ; resume code 7 was fired 1m35s later after the 18 code,
         ; so I'm increasing this interval to 3min.
         openLaterInterval := OpenTime

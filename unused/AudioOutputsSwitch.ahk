@@ -19,7 +19,7 @@ Persistent()
 OutputDevices := Map()
 ; Toggle for switching two outputs
 AudioOutputToggle := false
-; For a new code to allow switching more autio devices (unfinished)
+; For a new code to allow switching more audio devices (unfinished)
 ; AudioOutputs := ['LG TV (NVIDIA High Definition Audio)', 'Headphones (Xbox Controller)']
 
 EnumerateAudioOutputs()
