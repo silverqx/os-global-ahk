@@ -55,6 +55,7 @@ VmrunPauseToggle := false
 TCPanelListingToggle := false
 
 ; WinTitle-s
+WinTitleComputerOff := 'ahk_exe ComputerOff.exe ahk_class TMessageForm'
 WinTitleQBittorrent := 'ahk_exe qbittorrent.exe'
 WinTitleMpcHc := 'ahk_exe mpc-hc64.exe ahk_class MediaPlayerClassicW'
 WinTitleSmartGit := 'ahk_exe smartgit.exe ahk_class SWT_Window0'
@@ -1595,6 +1596,21 @@ MpcHcInferPreSnapPosition(x, y, width, height)
     return result
 }
 
+; Mouse related
+; -------------------
+
+; Center the mouse position on the given control
+ControlCenterMouse(control, winTitle := 'A')
+{
+    try
+        ControlGetPos(&x, &y, &width, &height, control, winTitle)
+    catch
+        return
+
+    CoordMode('Mouse', 'Client')
+    MouseMove((width / 2) + x, (height / 2) + y, 0)
+}
+
 ; Windows Events
 ; -------------------
 
@@ -1639,6 +1655,17 @@ WinEvent.Show(WEQtCreatorPreferences, '^Preferences - Qt Creator$ ahk_exe qtcrea
 WEQtCreatorPreferences(hook, hWnd, *) {
     WinWait('ahk_id ' . hWnd)
     Send('+{Tab}')
+}
+
+; ComputerOff
+; -------------------------
+
+; Confirm model - center mouse
+WinEvent.Show(WEComputerOffConfirmCenterMouse, '^Confirm$ ' . WinTitleComputerOff)
+
+WEComputerOffConfirmCenterMouse(hook, hWnd, *) {
+    WinWait('ahk_id ' . hWnd)
+    ControlCenterMouse('TButton2') ; Don't use the WinTitleComputerOff here (center mouse only if it's in the foreground)
 }
 
 ; Fullscreen on Open
