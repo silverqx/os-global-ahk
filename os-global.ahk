@@ -2,7 +2,7 @@
 
 #Requires AutoHotkey v2
 
-Persistent
+Persistent()
 #NoTrayIcon
 #SingleInstance Force
 #UseHook True
@@ -1215,7 +1215,7 @@ Sd()
 ; List all registered hotkeys (w/o they descriptions 🥺)
 Sé()
 {
-    ListHotkeys
+    ListHotkeys()
 }
 ; VMware Workstation
 Sý()
