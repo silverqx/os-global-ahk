@@ -18,8 +18,7 @@ Persistent()
 ;@Ahk2Exe-SetProductVersion 1.0.0.0
 ;@Ahk2Exe-UseResourceLang 0x0409
 
-; TODO revisit the ordering and how this works silverqx
-#Include ..\Lib\AHK-v2-libraries\Lib\WinEvent.ahk
+#Include <AHK-v2-libraries\Lib\WinEvent>
 
 ; Global variables
 ; ----------------
