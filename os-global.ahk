@@ -487,7 +487,7 @@ F3::Send('{AppsKey}v')
 #HotIf ; WinActive(WinTitleQBittorrent)
 
 ; Fullscreen mode
-; -------------------------
+; ---------------
 
 ; Create a group to target more applications
 ; GroupAdd('FullscreenGroup', 'ahk_exe PSPad.exe') ; Doesn't work
@@ -501,7 +501,7 @@ F11::WinSetStyle('^0xC00000')
 #HotIf ; WinActive('ahk_group FullscreenGroup')
 
 ; Visual Studio
-; -------------------------
+; -------------
 
 ; Focus Navigation bar - Function Dropdown list
 #HotIf WinActive('(?:Microsoft Visual Studio)$ ahk_exe devenv.exe')
@@ -513,7 +513,7 @@ F11::WinSetStyle('^0xC00000')
 #HotIf ; WinActive('(?:Microsoft Visual Studio)$ ahk_exe devenv.exe')
 
 ; Tiviko TV Program
-; -------------------------
+; -----------------
 
 ; Zoom in the Grid page
 TivikoIncreaseZoom()
@@ -603,7 +603,7 @@ TivikoReloadGrid()
 }
 
 ; Total Commander
-; -------------------------
+; ---------------
 
 ; Get the currently focused panel (with the default value handling)
 TCGetFocusedPanelClassNN()
@@ -672,7 +672,7 @@ TCMaximizePanelListing()
 #HotIf ; WinActive(WinTitleTC)
 
 ; mpc-hc
-; ---------------
+; ------
 
 #HotIf WinActive(WinTitleMpcHc)
 MButton::
@@ -711,7 +711,7 @@ MButton::
 #HotIf ; WinActive(WinTitleSmartGit)
 
 ; Google Chrome
-; --------
+; -------------
 
 ; Show bookmarks bar
 #HotIf WinActive('ahk_exe chrome.exe ahk_class Chrome_WidgetWin_1')
@@ -1597,7 +1597,7 @@ MpcHcInferPreSnapPosition(x, y, width, height)
 }
 
 ; Mouse related
-; -------------------
+; -------------
 
 ; Center the mouse position on the given control
 ControlCenterMouse(control, winTitle := 'A')
@@ -1612,7 +1612,7 @@ ControlCenterMouse(control, winTitle := 'A')
 }
 
 ; Windows Events
-; -------------------
+; --------------
 
 ; Qt Maintenance Tool
 ; -------------------
@@ -1647,7 +1647,7 @@ WEVisualStudioOptions(hook, hWnd, *) {
 }
 
 ; QtCreator
-; -------------
+; ---------
 
 ; Preferences - Focus the Search Input
 WinEvent.Show(WEQtCreatorPreferences, '^Preferences - Qt Creator$ ahk_exe qtcreator.exe')
@@ -1658,7 +1658,7 @@ WEQtCreatorPreferences(hook, hWnd, *) {
 }
 
 ; ComputerOff
-; -------------------------
+; -----------
 
 ; Confirm model - center mouse
 WinEvent.Show(WEComputerOffConfirmCenterMouse, '^Confirm$ ' . WinTitleComputerOff)
@@ -1669,7 +1669,7 @@ WEComputerOffConfirmCenterMouse(hook, hWnd, *) {
 }
 
 ; Fullscreen on Open
-; -------------
+; ------------------
 
 ; WinEvent.Show(WEFullscreenOnOpen, WinTitleQBittorrent)
 ; WinEvent.Show(WEFullscreenOnOpen, WinTitleTC)
@@ -1680,7 +1680,7 @@ WEComputerOffConfirmCenterMouse(hook, hWnd, *) {
 ; }
 
 ; mpc-hc
-; -------------
+; ------
 
 ; WinEvent.Show(WEMpcHc, WinTitleMpcHc)
 

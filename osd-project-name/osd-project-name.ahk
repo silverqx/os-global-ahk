@@ -48,7 +48,7 @@ CreateVSCodeOSD()
 }
 
 ; Common OSD logic
-; ----------------------
+; ----------------
 
 ; Create OSD window (common logic)
 CreateCommonOSD(osdTextName, &osdText, updateOSD)
