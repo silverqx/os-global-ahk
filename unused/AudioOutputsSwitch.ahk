@@ -5,7 +5,7 @@
 
 #Requires AutoHotkey v2
 
-Persistent
+Persistent()
 #NoTrayIcon
 #SingleInstance Force
 #UseHook True
