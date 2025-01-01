@@ -706,8 +706,7 @@ MButton::
 ^+h::
 {
     SetControlDelay(-1)
-    ; The ClassNN is changing (eg. SWT_Window090) so I must use the Position syntax
-    ControlClick('x1909 y688', 'A',,,, 'NA')
+    ControlClick('SWT_Window085', 'A',,,, 'NA')
 }
 #HotIf ; WinActive(WinTitleSmartGit)
 
