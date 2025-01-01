@@ -465,12 +465,14 @@ QbtSetDownloadSpeedLimit(value)
 }
 
 ; Assign to video category and seed tag
-^F11::QbtAssignVideoCategoryAndSeedTag('AppMenu')
+^F12::QbtAssignVideoCategoryAndSeedTag('AppMenu')
 ; Assign to video category and force/ seed tag (for Trezzor Tracker)
-^+F11::QbtAssignVideoCategoryAndSeedTag('AppMenu', true)
+^+F12::QbtAssignVideoCategoryAndSeedTag('AppMenu', true)
 
 ; Preview
 F3::Send('{AppsKey}v')
+; Open Options
+^!+s::Send('!o')
 
 ; Limit download rate shortcuts
 ^;::QbtSetDownloadSpeedLimit(0)
