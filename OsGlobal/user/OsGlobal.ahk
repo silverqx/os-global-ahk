@@ -767,37 +767,61 @@ CenterWindow(winTitle := 'A')
     WinMove(x < 0 ? 0 : x, y < 0 ? 0 : y)
 }
 
-; Checks if the specified window is in the fullscreen mode
-IsWindowFullScreen(winTitle)
+; Checks if the specified window is in the Fullscreen mode
+IsWindowFullScreen(winTitle, skipPositionCheck := false)
 {
-    winId := WinExist(winTitle)
+    winHwnd := WinExist(winTitle)
 
-    if (!winId)
+    if (!winHwnd)
         return false
 
-    style := WinGetStyle('ahk_id ' . winId)
-    WinGetPos(&x, &y, &width, &height, 'ahk_id ' . winId)
+    style := WinGetStyle('ahk_id ' . winHwnd)
+    WinGetPos(&x, &y, &width, &height, 'ahk_id ' . winHwnd)
 
-    ; 0x800000 is WS_BORDER.
-    ; 0x20000000 is WS_MINIMIZE.
-    ; No border and not minimized
-    return !(style & 0x20800000 || x > 0 || y > 0 || width < A_ScreenWidth || height < A_ScreenHeight)
+    ; No border, caption, sizing border (thick frame), not minimized, and it has (of course) removed
+    ; a border with a raised edge as it does not have the border.
+    ; The fullscreen window may or may not be maximized.
+    ; 0x00800000 is WS_BORDER
+    ; 0x00C00000 is WS_CAPTION (WS_BORDER + WS_DLGFRAME)
+    ; 0x20000000 is WS_MINIMIZE
+    ; 0x00040000 is WS_THICKFRAME
+    ; 0x00000100 is WS_EX_WINDOWEDGE
+    return (style & 0x20C40100) = 0 &&
+           (skipPositionCheck || (x = 0 && y = 0 && width = A_ScreenWidth && height = A_ScreenHeight))
 }
 
-; Checks if the specified window has no borders
-IsNoBorderWindow(winTitle)
+; Checks if the specified window is Maximized
+IsWindowMaximized(winTitle, skipPositionCheck := false)
 {
-    winId := WinExist(winTitle)
+    winHwnd := WinExist(winTitle)
 
-    if (!winId)
+    if (!winHwnd)
         return false
 
-    style := WinGetStyle('ahk_id ' . winId)
+    style := WinGetStyle('ahk_id ' . winHwnd)
+    WinGetPos(&x, &y, &width, &height, 'ahk_id ' . winHwnd)
 
-    ; 0x800000 is WS_BORDER.
-    ; 0x20000000 is WS_MINIMIZE.
+    ; Maximized and not minimized
+    ; 0x01000000 is WS_MAXIMIZE
+    ; 0x20000000 is WS_MINIMIZE
+    return (style & 0x1000000) = 0x1000000 && (style & 0x20000000) = 0 &&
+           (skipPositionCheck || (x < 0 && y < 0 && width > A_ScreenWidth && height > A_ScreenHeight))
+}
+
+; Checks if the specified window has No Borders
+IsNoBorderWindow(winTitle)
+{
+    winHwnd := WinExist(winTitle)
+
+    if (!winHwnd)
+        return false
+
+    style := WinGetStyle('ahk_id ' . winHwnd)
+
     ; No border and not minimized
-    return !(style & 0x20800000)
+    ; 0x00800000 is WS_BORDER
+    ; 0x20000000 is WS_MINIMIZE
+    return (style & 0x20800000) = 0
 }
 
 ; Leader key ctrl-g related
