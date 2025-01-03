@@ -1,11 +1,11 @@
-; Silver Zachara <silver.zachara@gmail.com> 2021-2024
+; Silver Zachara <silver.zachara@gmail.com> 2021-2025
 
 #Requires AutoHotkey v2
 
 ; All other unused code, this isn't self-contained and working ahk file, only code parts are here.
 
-; General Section
-; ---------------
+; Global Hotkeys
+; --------------
 
 ; Disable printing emoji-s for alt-0-9 🙏
 !Numpad1::Send('!1')

@@ -1,4 +1,4 @@
-; Silver Zachara <silver.zachara@gmail.com> 2018-2024
+; Silver Zachara <silver.zachara@gmail.com> 2018-2025
 
 ; I don't need to open Skylink Prima ZOOM so I extracted it to own file.
 ; I have refactored all code to ahk v2 but it was never tested (so unfinished).
@@ -9,18 +9,10 @@
 Persistent()
 #NoTrayIcon
 #SingleInstance Force
-#UseHook True
+#UseHook true
 
-; Global variables
+; Common functions
 ; ----------------
-
-; The time when the PC got to sleep state, used by open Skylink
-SuspendTime := ''
-; Skylink open time, to avoid opening Skylink two times
-OpenTime := ''
-
-; General Section
-; ---------------
 
 ; Open Skylink Prima ZOOM
 Splus(fullscreen := false)
@@ -42,7 +34,10 @@ OnMessage(0x218, OnWmPowerBroadcast)
 
 OnWmPowerBroadcast(wParam, lParam, *)
 {
-    global SuspendTime, OpenTime
+    ; The time when the PC got to sleep state, used by open Skylink
+    static SuspendTime := ''
+    ; Skylink open time, to avoid opening Skylink two times
+    static OpenTime := ''
 
     WriteLogSkylink('begin; wParam = ' wParam '; lParam = ' lParam)
 

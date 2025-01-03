@@ -1,4 +1,4 @@
-; Silver Zachara <silver.zachara@gmail.com> 2022-2024
+; Silver Zachara <silver.zachara@gmail.com> 2022-2025
 
 #Requires AutoHotkey v2
 

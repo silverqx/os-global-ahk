@@ -1,4 +1,4 @@
-; Silver Zachara <silver.zachara@gmail.com> 2018-2024
+; Silver Zachara <silver.zachara@gmail.com> 2018-2025
 
 ; I don't need switching audio outputs so I extracted it to own file.
 ; All commented code is old ahk v1 code, the EnumerateAudioOutputs() is refactored to ahk v2.
@@ -8,7 +8,7 @@
 Persistent()
 #NoTrayIcon
 #SingleInstance Force
-#UseHook True
+#UseHook true
 
 #Include <ahk2_lib\Audio\Audio>
 
@@ -17,20 +17,19 @@ Persistent()
 
 ; Audio output devices
 OutputDevices := Map()
-; Toggle for switching two outputs
-AudioOutputToggle := false
 ; For a new code to allow switching more audio devices (unfinished)
 ; AudioOutputs := ['LG TV (NVIDIA High Definition Audio)', 'Headphones (Xbox Controller)']
 
 EnumerateAudioOutputs()
 
-; General Section
-; ---------------
+; Global Hotkeys
+; --------------
 
 ; Toggle audio output Headphones / LG TV
 ; ^;::
 ; {
-;     global AudioOutputToggle
+;     ; Toggle for switching two outputs
+;     static AudioOutputToggle := false
 
 ;     KeyWait('Ctrl', 'T0.3')
 ;     KeyWait(';', 'T0.3')
