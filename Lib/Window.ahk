@@ -97,7 +97,8 @@ IsNoBorderWindow(winTitle)
 }
 
 ; Switch windows callback
-SwitchWindows(ThisHotkey, winTitle, groupName, runCallback)
+; Don't remove the thisHotkey to be able reuse this function as callback somewhere else.
+SwitchWindows(thisHotkey, winTitle, groupName, runCallback)
 {
     ; Nothing to switch, invoke the given target
     if (!WinExist(winTitle))
@@ -112,13 +113,23 @@ SwitchWindows(ThisHotkey, winTitle, groupName, runCallback)
     GroupActivate(groupName, 'R')
 }
 
+; TODO move into the fat arrow function since ahk v2.1 (not possible with v2.0) silverqx
+SwitchWindowsRunAsAdmin(runTarget)
+{
+    try Run('*RunAs ' . runTarget)
+}
+
 ; Create hotkeys for switching windows
 CreateSwitchWindowsHotkeys(keyName, options, winTitle, groupName, runTarget)
 {
     ; Switch between windows
-    Hotkey(keyName, (ThisHotkey) => SwitchWindows(ThisHotkey, winTitle, groupName, runTarget))
+    Hotkey(keyName, (thisHotkey) => SwitchWindows(thisHotkey, winTitle, groupName, runTarget))
 
     ; Run application (+keyName hotkey)
     if (InStr(options, 'N'))
         Hotkey(Format('+{:s}', keyName), (*) => Run(runTarget))
+
+    ; Run application as Administrator (^+keyName hotkey)
+    if (InStr(options, 'A'))
+        Hotkey(Format('^+{:s}', keyName), (*) => SwitchWindowsRunAsAdmin(runTarget))
 }
