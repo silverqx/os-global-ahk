@@ -50,11 +50,20 @@ CreateSwitchWindowsHotkeys('Launch_App2', 'N',
 ^!F6::Run('code.cmd --new-window E:\autohotkey\os-global', 'E:\autohotkey\os-global', 'Hide')
 ^+F6::Run('code.cmd --new-window E:\dotfiles', 'E:\dotfiles', 'Hide')
 
+; qBittorrent
+<#F8::
+{
+    if (WinExist('i)( |^)qBittorrent v\d{1,2}\.\d{1,2}\.\d{1,3}$'))
+        WinActivate()
+    else
+        Run(A_ProgramsCommon . '\qBittorrent\qBittorrent.lnk')
+}
+
 ; Alpha keys
 ; ---
 
 ; Open Control Panel
-!#i::Run(A_Programs . '\System Tools\Control Panel.lnk')
+!<#i::Run(A_Programs . '\System Tools\Control Panel.lnk')
 
 ; Open Google Chrome
 <#m::Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe',, 'Max')

@@ -84,8 +84,8 @@
         Sr() ; Registry Editor
     else if (userInput = 'ř')
         Sř() ; Google Sheets - Seriály
-    else if (userInput = 's')
-        Ss() ; qBittorrent
+    ; else if (userInput = 's')
+    ;     Ss() ; unused
     else if (userInput = 'š')
         Sš() ; Google Sheets
     else if (userInput = 't')

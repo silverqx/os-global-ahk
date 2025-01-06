@@ -146,15 +146,6 @@ Sř()
         Run(A_Programs . '\__my__\Seriály.lnk')
 }
 
-; qBittorrent
-Ss()
-{
-    if (WinExist('i)( |^)qBittorrent v\d{1,2}\.\d{1,2}\.\d{1,3}$'))
-        WinActivate()
-    else
-        Run(A_ProgramsCommon . '\qBittorrent\qBittorrent.lnk')
-}
-
 ; Google Sheets
 Sš()
 {
