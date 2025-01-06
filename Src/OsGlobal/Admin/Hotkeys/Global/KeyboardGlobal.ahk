@@ -11,6 +11,9 @@
         '-NoLogo E:\autohotkey\os-global\Src\OsGlobal\Admin\Recompile-Admin.ps1',, 'Hide')
 }
 
+; Fn keys
+; ---
+
 ^+F1::Run(A_Programs . '\__my__\Process Explorer.lnk',, 'Max')
 ^!F2::Run(A_Programs . '\__my__\WindowSpy (ahk).lnk')
 ^!+F2::Run('pwsh.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\spyxx.ps1',, 'Hide')
@@ -21,6 +24,9 @@
 ^+F8::TileWindowCenterFull()
 ; Max. Tile Window
 ^!+F8::TileWindowCenter800()
+
+; Special keys
+; ---
 
 ; Make the active window transparent
 +ScrollLock::
@@ -33,6 +39,9 @@
 
 ; Switch to the previous window
 ScrollLock::!Tab
+
+; Alpha keys
+; ---
 
 ; Open Google Chrome
 <#m::Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe',, 'Max')

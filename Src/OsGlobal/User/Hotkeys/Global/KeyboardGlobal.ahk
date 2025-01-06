@@ -14,6 +14,9 @@
         'E:\autohotkey\os-global\Src\OsGlobal\User\Recompile-User.ps1',, 'Hide')
 }
 
+; Multimedia keys
+; ---
+
 ; mpc-hc
 CreateSwitchWindowsHotkeys('Browser_Home', 'N',
     WinTitleMpcHc, 'MpcHcActivateGroup',
@@ -38,11 +41,17 @@ CreateSwitchWindowsHotkeys('Launch_App2', 'N',
     Run(A_ProgramFiles . ' (x86)\TC UP\MEDIA\Programs\Poweroff\poweroffcz.exe monitor_off',, 'Hide')
 }
 
+; Fn keys
+; ---
+
 ^!F3::Run(A_AppDataCommon . '\chocolatey\bin\Autoruns.exe',, 'Max')
 ; Black screensaver
 ^!F5::Run('scrnsave.scr /s',, 'Hide')
 ^!F6::Run('code.cmd --new-window E:\autohotkey\os-global', 'E:\autohotkey\os-global', 'Hide')
 ^+F6::Run('code.cmd --new-window E:\dotfiles', 'E:\dotfiles', 'Hide')
+
+; Alpha keys
+; ---
 
 ; Open Control Panel
 !#i::Run(A_Programs . '\System Tools\Control Panel.lnk')
@@ -51,6 +60,9 @@ CreateSwitchWindowsHotkeys('Launch_App2', 'N',
 <#m::Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe',, 'Max')
 ; Open Google Chrome - Incognito window
 +<#m::Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe --incognito',, 'Max')
+
+; Numpad keys
+; ---
 
 ; Don't disable numlock if the shift is pressed
 ; SC052::Numpad0
