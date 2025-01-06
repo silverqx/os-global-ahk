@@ -28,7 +28,7 @@ CreateSwitchWindowsHotkeys('Browser_Home', 'N',
 ; Windows Calculator
 CreateSwitchWindowsHotkeys('Launch_App2', 'N',
     'Calculator ahk_exe ApplicationFrameHost.exe ahk_class ApplicationFrameWindow',
-    'CalcActivateGroup', 'shell:AppsFolder\Microsoft.WindowsCalculator_8wekyb3d8bbwe!App')
+    'CalculatorActivateGroup', 'shell:AppsFolder\Microsoft.WindowsCalculator_8wekyb3d8bbwe!App')
 
 ; Hibernate (ctrl+calc)
 ^Launch_App2::
