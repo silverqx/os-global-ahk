@@ -98,11 +98,11 @@ IsNoBorderWindow(winTitle)
 
 ; Switch windows callback
 ; Don't remove the thisHotkey to be able reuse this function as callback somewhere else.
-SwitchWindows(thisHotkey, winTitle, groupName, runCallback)
+SwitchWindows(thisHotkey, winTitle, groupName, runTarget)
 {
     ; Nothing to switch, invoke the given target
     if (!WinExist(winTitle))
-        return runCallback()
+        return Run(runTarget)
 
     ; Activate if it exists but is not focused
     if (!WinActive())
