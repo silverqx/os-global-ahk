@@ -64,13 +64,16 @@ WEComputerOffConfirmCenterMouse(hook, hWnd, *) {
 ; Fullscreen on Open
 ; ------------------
 
-; WinEvent.Show(WEFullscreenOnOpen, WinTitleQBittorrent)
-; WinEvent.Show(WEFullscreenOnOpen, WinTitleTC)
+GroupAdd('FullscreenGroupOnOpen', ' qBittorrent v\d+\.\d+\.\d+$ ' . WinTitleQBittorrent,, '^qBittorrent$')
+GroupAdd('FullscreenGroupOnOpen', ' Lindquist$ ' . WinTitleTC)
+GroupAdd('FullscreenGroupOnOpen', ' - NOT REGISTERED$ ' . WinTitleTC64,, '^Total Commander$')
 
-; WEFullscreenOnOpen(hook, hWnd, *) {
-;     WinWait('ahk_id ' . hWnd)
-;     WinSetStyle('^0xC00000')
-; }
+WinEvent.Show(WEFullscreenOnOpen, 'ahk_group FullscreenGroupOnOpen')
+
+WEFullscreenOnOpen(hook, hWnd, *) {
+    WinWait('ahk_id ' . hWnd)
+    WinSetStyle('^0xC00000')
+}
 
 ; mpc-hc
 ; ------
