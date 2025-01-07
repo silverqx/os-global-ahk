@@ -6,7 +6,7 @@
 ; Create a group to target more applications
 ; Doesn't work: PSPad.exe
 GroupAdd('FullscreenGroup', WinTitleQBittorrent)
-GroupAdd('FullscreenGroup', WinTitleTC)
+GroupAdd('FullscreenGroup', WinTitleTCUP)
 GroupAdd('FullscreenGroup', 'ahk_exe TOTALCMD64.EXE ahk_class TTOTAL_CMD')
 
 ; Fullscreen

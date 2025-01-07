@@ -65,7 +65,7 @@ WEComputerOffConfirmCenterMouse(hook, hWnd, *) {
 ; ------------------
 
 GroupAdd('FullscreenGroupOnOpen', ' qBittorrent v\d+\.\d+\.\d+$ ' . WinTitleQBittorrent,, '^qBittorrent$')
-GroupAdd('FullscreenGroupOnOpen', ' Lindquist$ ' . WinTitleTC)
+GroupAdd('FullscreenGroupOnOpen', ' Lindquist$ ' . WinTitleTCUP)
 GroupAdd('FullscreenGroupOnOpen', ' - NOT REGISTERED$ ' . WinTitleTC64,, '^Total Commander$')
 
 WinEvent.Show(WEFullscreenOnOpen, 'ahk_group FullscreenGroupOnOpen')

@@ -5,7 +5,7 @@
 ; Total Commander
 ; ---------------
 
-#HotIf WinActive(WinTitleTC)
+#HotIf WinActive(WinTitleTCUP)
 ^!t::{
     ; Maximize the currently focused panel
     static TCPanelListingToggle := false
@@ -17,4 +17,4 @@
 
     TCPanelListingToggle := !TCPanelListingToggle
 }
-#HotIf ; WinActive(WinTitleTC)
+#HotIf ; WinActive(WinTitleTCUP)
