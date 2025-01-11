@@ -12,9 +12,8 @@
     )
         return WinActivate()
 
+    ; Minimize to tray is handled in the ComputerOff.exe
     Run('C:\optx64\ComputerOff\ComputerOff.exe',,, &PID)
-    WinWait('ahk_pid ' . PID)
-    WinActivate('ahk_pid ' . PID)
 }
 
 ; Mouse shortcut for ctrl+home/end (can't be LButton to avoid selecting entire)
