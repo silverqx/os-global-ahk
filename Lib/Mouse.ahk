@@ -2,9 +2,13 @@
 ; -------------
 
 ; Center the mouse position on the given control
-ControlCenterMouse(control, winTitle := 'A')
+ControlCenterMouse(control, winTitle)
 {
     try {
+        ; Nothing to do, the given window isn't in the foreground
+        if (winTitle !== 'A' && !WinActive(winTitle))
+            return
+
         ; Nothing to do, control is disabled
         if (!ControlGetEnabled(control, winTitle))
             return
