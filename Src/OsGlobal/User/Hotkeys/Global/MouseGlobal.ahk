@@ -8,7 +8,7 @@
 {
     ; If Options dialog is opened then activate it, instead of activate the Main window
     if (WinExist('^Options$ ahk_class TFormOptionsDialog ' . WinTitleComputerOff) ||
-        WinExist('^ComputerOff$ ahk_class TFormMainForm ' . WinTitleComputerOff)
+        WinExist(WinTitleComputerOffMain)
     )
         return WinActivate()
 

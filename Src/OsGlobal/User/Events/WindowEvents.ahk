@@ -54,19 +54,23 @@ WEQtCreatorPreferences(hook, hWnd, *) {
 ; -----------
 
 ; Confirm model - center mouse
-WinEvent.Show(WEComputerOffConfirmCenterMouse, '^Confirm$ ahk_class TMessageForm ' . WinTitleComputerOff)
+WinEvent.Show(WEComputerOffConfirmCenterMouse, WinTitleComputerOffOptions)
 
 WEComputerOffConfirmCenterMouse(hook, hWnd, *) {
     WinWait('ahk_id ' . hWnd)
-    ControlCenterMouse('TButton2') ; Don't use the WinTitleComputerOff here (center mouse only if it's in the foreground)
+    ControlCenterMouse(TButton2, WinTitleComputerOffOptions)
 }
 
 ; Stop button - center mouse
-WinEvent.Show(WEComputerOffStopCenterMouse, '^ComputerOff$ ahk_class TFormMainForm ' . WinTitleComputerOff)
+WinEvent.Show(WEComputerOffStopCenterMouse, WinTitleComputerOffMain)
 
 WEComputerOffStopCenterMouse(hook, hWnd, *) {
     WinWait('ahk_id ' . hWnd)
-    ControlCenterMouse('TButton4') ; Don't use the WinTitleComputerOff here (center mouse only if it's in the foreground)
+
+    if (ControlGetEnabled(TButton4, WinTitleComputerOffMain))
+        ControlCenterMouse(TButton4, WinTitleComputerOffMain)
+    else if (ControlGetEnabled(TButton3, WinTitleComputerOffMain))
+        ControlCenterMouse(TButton3, WinTitleComputerOffMain)
 }
 
 ; Fullscreen on Open
