@@ -61,6 +61,14 @@ WEComputerOffConfirmCenterMouse(hook, hWnd, *) {
     ControlCenterMouse('TButton2') ; Don't use the WinTitleComputerOff here (center mouse only if it's in the foreground)
 }
 
+; Stop button - center mouse
+WinEvent.Show(WEComputerOffStopCenterMouse, '^ComputerOff$ ahk_class TFormMainForm ' . WinTitleComputerOff)
+
+WEComputerOffStopCenterMouse(hook, hWnd, *) {
+    WinWait('ahk_id ' . hWnd)
+    ControlCenterMouse('TButton4') ; Don't use the WinTitleComputerOff here (center mouse only if it's in the foreground)
+}
+
 ; Fullscreen on Open
 ; ------------------
 
