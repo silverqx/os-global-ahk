@@ -1,3 +1,5 @@
+#Include <OsGlobal\GlobalVariables>
+
 ; Global Mouse hotkeys
 ; --------------------
 
@@ -5,7 +7,9 @@
 ~LButton & WheelUp::
 {
     ; If Options dialog is opened then activate it, instead of activate the Main window
-    if (WinExist('^Options$ ahk_class TFormOptionsDialog') || WinExist('^ComputerOff$'))
+    if (WinExist('^Options$ ahk_class TFormOptionsDialog ' . WinTitleComputerOff) ||
+        WinExist('^ComputerOff$ ahk_class TFormMainForm ' . WinTitleComputerOff)
+    )
         return WinActivate()
 
     Run('C:\optx64\ComputerOff\ComputerOff.exe',,, &PID)

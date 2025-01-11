@@ -54,7 +54,7 @@ WEQtCreatorPreferences(hook, hWnd, *) {
 ; -----------
 
 ; Confirm model - center mouse
-WinEvent.Show(WEComputerOffConfirmCenterMouse, '^Confirm$ ' . WinTitleComputerOff)
+WinEvent.Show(WEComputerOffConfirmCenterMouse, '^Confirm$ ahk_class TMessageForm ' . WinTitleComputerOff)
 
 WEComputerOffConfirmCenterMouse(hook, hWnd, *) {
     WinWait('ahk_id ' . hWnd)
