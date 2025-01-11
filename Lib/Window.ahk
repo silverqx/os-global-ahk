@@ -96,6 +96,21 @@ IsNoBorderWindow(winTitle)
     return (style & 0x20800000) = 0
 }
 
+; Checks if the specified window is visible
+IsWindowVisible(winTitle)
+{
+    DetectHiddenWindows(true)
+    winHwnd := WinExist(winTitle)
+
+    if (!winHwnd)
+        return false
+
+    result := DllCall('IsWindowVisible', 'Ptr', WinExist(winTitle))
+
+    DetectHiddenWindows(false)
+    return result
+}
+
 ; Switch windows callback
 ; Don't remove the thisHotkey to be able reuse this function as callback somewhere else.
 SwitchWindows(thisHotkey, winTitle, groupName, runTarget)
