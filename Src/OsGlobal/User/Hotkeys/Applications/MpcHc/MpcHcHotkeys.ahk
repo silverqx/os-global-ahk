@@ -32,6 +32,10 @@ MButton::
     MpcHcTouchOutsideFrameToggle := !MpcHcTouchOutsideFrameToggle
 }
 
+; Move subtitles up/down
+MButton & WheelLeft::Send('^+{NumpadAdd}')
+MButton & WheelRight::Send('^+{NumpadSub}')
+
 ; mpc-hc PIP mode
 ; ---------------
 ; PIP doesn't work well, doing whatever it wants, it behaves the same in ahk v1 as well so upgrade
