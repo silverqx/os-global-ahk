@@ -16,6 +16,8 @@
     Run('C:\optx64\ComputerOff\ComputerOff.exe',,, &PID)
 }
 
-; Mouse shortcut for ctrl+home/end (can't be LButton to avoid selecting entire)
+; Mouse shortcut for ctrl+home/end (can't be LButton to avoid selecting entire document)
+#HotIf !WinActive(WinTitleMpcHc)
 ~RButton & WheelRight::Send('^{Home}')
 ~RButton & WheelLeft::Send('^{End}')
+#HotIf
