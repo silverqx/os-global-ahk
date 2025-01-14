@@ -43,9 +43,15 @@ WEVisualStudioOptions(hook, hWnd, *) {
 ; ---------
 
 ; Preferences - Focus the Search Input
-WinEvent.Show(WEQtCreatorPreferences, '^Preferences - Qt Creator$ ahk_exe qtcreator.exe')
+WinEvent.Show(WEQtCreatorPreferences, '^Preferences - Qt Creator$ ' . WinTitleQtCreator)
 
 WEQtCreatorPreferences(hook, hWnd, *) {
+    global QtCreatorWESkipPreferences
+
+    ; Nothing to do, handled by another hotkey (eg. ^!+, - Preferences - Keyboard)
+    if (QtCreatorWESkipPreferences)
+        return
+
     WinWait('ahk_id ' . hWnd)
     Send('+{Tab}')
 }
