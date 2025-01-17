@@ -98,7 +98,7 @@ Sl()
 ; Messenger
 Sm()
 {
-    if (WinExist('Messenger (.*)'))
+    if (WinExist('^Messenger(?:$| - .*)'))
         WinActivate()
     else
         Run('shell:AppsFolder\FACEBOOK.317180B0BB486_8xx8rvfyw5nnt!App')
