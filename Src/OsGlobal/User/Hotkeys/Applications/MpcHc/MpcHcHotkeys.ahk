@@ -9,7 +9,7 @@ MpcHcPipToggle := false
 ; ------
 
 #HotIf WinActive(WinTitleMpcHc)
-MButton::
+*MButton::
 {
     ; Only propagate the MButton when RButton is down/pressed because mpc-hc itself allows
     ; to define combined mouse hotkeys like RButton & MButton.

@@ -62,6 +62,16 @@ CreateSwitchWindowsHotkeys('Launch_App2', 'N',
 ; Alpha keys
 ; ---
 
+; Bugfix/workaround for LButton stuck down during LButton Down - Ctrl Down
+; ~Control Up::
+; ~Alt Up::
+; ~Shift Up::
+; {
+;     for mouseButton in ['LButton', 'RButton', 'MButton', 'XButton1', 'XButton2']
+;         if (GetKeyState(mouseButton))
+;             Send(Format('{{:s} Up}', mouseButton))
+; }
+
 ; Open Control Panel
 !<#i::Run(A_Programs . '\System Tools\Control Panel.lnk')
 
