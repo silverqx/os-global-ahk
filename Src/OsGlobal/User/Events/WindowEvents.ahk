@@ -32,9 +32,15 @@ WESmartGit(hook, hWnd, *) {
 ; -------------
 
 ; Options - Focus the Search Input
-WinEvent.Show(WEVisualStudioOptions, '^Options$ ahk_exe devenv.exe ahk_class #32770')
+WinEvent.Show(WEVisualStudioOptions, WinTitleVisualStudioOptions)
 
 WEVisualStudioOptions(hook, hWnd, *) {
+    global VisualStudioWESkipOptions
+
+    ; Nothing to do, handled by another hotkey (eg. ^!+, - Options - Keyboard)
+    if (VisualStudioWESkipOptions)
+        return
+
     WinWait('ahk_id ' . hWnd)
     Send('^e')
 }

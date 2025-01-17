@@ -7,6 +7,8 @@ KeyDelayDefault := 10
 
 ; QtCreator skip the global WinEvent for the Preferences modal
 QtCreatorWESkipPreferences := false
+; Visual Studio skip the global WinEvent for the Options modal (Preferences)
+VisualStudioWESkipOptions := false
 
 ; WinTitle-s (used across all script files)
 WinTitleComputerOff        := 'ahk_exe ComputerOff.exe'
@@ -18,6 +20,8 @@ WinTitleQtCreator          := 'ahk_exe qtcreator.exe'
 WinTitleSmartGit           := 'ahk_class SWT_Window0 ahk_exe smartgit.exe'
 WinTitleTCUP               := 'ahk_class TTOTAL_CMD ahk_exe TOTALCMD.EXE'
 WinTitleTC64               := 'ahk_class TTOTAL_CMD ahk_exe TOTALCMD64.EXE'
+WinTitleVisualStudio       := 'ahk_exe devenv.exe'
+WinTitleVisualStudioOptions := '^Options$ ahk_class #32770 ' . WinTitleVisualStudio
 
 ; Common button names
 TButton2 := 'TButton2'
