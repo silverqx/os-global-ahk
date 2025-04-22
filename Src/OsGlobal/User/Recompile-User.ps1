@@ -7,3 +7,5 @@ Start-Process `
     -WorkingDirectory E:\autohotkey\os-global\Src\OsGlobal\User
 
 Start-ScheduledTask -TaskPath \Crystal\ -TaskName AhkOsGlobal
+
+[System.Console]::Beep(8000, 50)
