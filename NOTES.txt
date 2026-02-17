@@ -1,0 +1,23 @@
+Utils.ahk Testing:
+------------------
+
+HttpAllowedMethods := Map(
+    'GET', true,
+    'POST', true,
+    ; '', true,
+    'PATCH', true,
+    'HEAD', true,
+    ; 'HEAD', '',
+    'OPTIONS', true,
+)
+
+MsgBox(JoinMap(HttpAllowedMethods))
+MsgBox(JoinArray(GetMapKeys(HttpAllowedMethods)))
+MsgBox(JoinArray(GetMapValues(HttpAllowedMethods)))
+MsgBox(JoinArray(GetMapKeys(HttpAllowedMethods, false)))
+MsgBox(JoinArray(GetMapValues(HttpAllowedMethods, false)))
+MsgBox(JoinMapKeys(HttpAllowedMethods, ', '))
+MsgBox(JoinMapValues(HttpAllowedMethods, ', '))
+MsgBox(JoinMapKeys(HttpAllowedMethods, ', ', false))
+MsgBox(JoinMapValues(HttpAllowedMethods, ', ', false))
+
