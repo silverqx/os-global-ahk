@@ -17,7 +17,8 @@ Persistent()
 ; Open Skylink Prima ZOOM
 Splus(fullscreen := false)
 {
-    Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe https://livetv.skylink.cz/?qaction=wakeup --new-window',, 'Max')
+    Run(A_ProgramFiles . ' (x86)\Google\Chrome\Application\chrome.exe ' .
+        'https://livetv.skylink.cz/?qaction=wakeup --new-window',, 'Max')
 
     if (!fullscreen)
         return
@@ -69,7 +70,8 @@ OnWmPowerBroadcast(wParam, lParam, *)
     if (!isDuringDay || (isDuringDay && A_Now < later15Mins)) {
     ; I'm waking PC at 08:14, so open Skylink only at this time
     ;if (A_Hour != 8 || A_Min not between 11 and 17)
-        WriteLogSkylink('!isDuringDay || (isDuringDay && A_Now < later15Mins); isDuringDay := ' isDuringDay '; later15Mins := ' later15Mins '; return')
+        WriteLogSkylink('!isDuringDay || (isDuringDay && A_Now < later15Mins); ' .
+            'isDuringDay := ' isDuringDay '; later15Mins := ' later15Mins '; return')
         return false
     }
 
