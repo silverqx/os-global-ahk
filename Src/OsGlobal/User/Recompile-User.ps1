@@ -4,11 +4,15 @@ Set-StrictMode -Version 3.0
 
 Stop-ScheduledTask -TaskPath \Crystal\ -TaskName AhkOsGlobal
 
+$Script:OsGlobalUserDir = $null -eq $env:OsGlobalRoot `
+    ? $PSScriptRoot
+    : (Join-Path $env:OsGlobalRoot 'Src\OsGlobal\User')
+
 Start-Process `
     -FilePath "$env:ProgramFiles\AutoHotkey\Compiler\Ahk2Exe.exe" `
     -ArgumentList '/in OsGlobal.ahk' `
     -Wait -NoNewWindow `
-    -WorkingDirectory E:\autohotkey\os-global\Src\OsGlobal\User
+    -WorkingDirectory $Script:OsGlobalUserDir
 
 Start-ScheduledTask -TaskPath \Crystal\ -TaskName AhkOsGlobal
 

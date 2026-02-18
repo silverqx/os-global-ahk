@@ -1,3 +1,5 @@
+#Include <OsGlobal\GlobalVariables>
+
 ; Global Keyboard hotkeys
 ; -----------------------
 
@@ -5,6 +7,5 @@
 ^!+´::
 {
     SoundBeep(8000, 70)
-    Run('powershell.exe -WindowStyle Hidden -NoLogo ' .
-        'E:\autohotkey\os-global\Src\OsdProjectName\Recompile-Osd.ps1',, 'Hide')
+    Run(PwshHiddenFile . A_InitialWorkingDir . '\Recompile-Osd.ps1',, 'Hide')
 }

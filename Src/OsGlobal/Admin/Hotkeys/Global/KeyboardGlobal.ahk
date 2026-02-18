@@ -1,3 +1,4 @@
+#Include <OsGlobal\GlobalVariables>
 #Include <OsGlobal\Mouse>
 #Include <OsGlobal\Window>
 
@@ -10,8 +11,7 @@
 ^!´::
 {
     SoundBeep(8000, 70)
-    Run('powershell.exe -WindowStyle Hidden ' .
-        '-NoLogo E:\autohotkey\os-global\Src\OsGlobal\Admin\Recompile-Admin.ps1',, 'Hide')
+    Run(PwshHiddenFile . A_InitialWorkingDir . '\Recompile-Admin.ps1',, 'Hide')
 }
 
 ; Fn keys

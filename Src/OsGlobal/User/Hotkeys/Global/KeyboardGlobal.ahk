@@ -17,8 +17,7 @@
 ^!BackSpace::
 {
     SoundBeep(8000, 70)
-    Run('powershell.exe -WindowStyle Hidden -NoLogo ' .
-        'E:\autohotkey\os-global\Src\OsGlobal\User\Recompile-User.ps1',, 'Hide')
+    Run(PwshHiddenFile . A_InitialWorkingDir . '\Recompile-User.ps1',, 'Hide')
 }
 
 ; Multimedia keys
