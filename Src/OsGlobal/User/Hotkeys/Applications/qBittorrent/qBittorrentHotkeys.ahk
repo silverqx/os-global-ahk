@@ -2,13 +2,16 @@
 
 ; Classic video
 #HotIf WinActive(WinTitleQBittorrent)
-^BackSpace::
+QbtAssignCategoryAndDeqDownload()
 {
     ; Assign to video category and seed tag
     QbtAssignVideoCategoryAndSeedTag()
     ; Download in sequential order and first/last pieces first
     QbtDownloadSequentialAndFirstLast()
 }
+
+^BackSpace::QbtAssignCategoryAndDeqDownload()
+~LButton & RButton::QbtAssignCategoryAndDeqDownload()
 
 ; No-limit video (for Trezzor Tracker)
 ^+BackSpace::
@@ -34,6 +37,7 @@
 ^+F12::QbtAssignVideoCategoryAndSeedTag('AppMenu', true)
 
 ; Preview
+*~MButton::Send('{AppsKey}v')
 F3::Send('{AppsKey}v')
 ; Open Options
 ^!+s::Send('!o')
