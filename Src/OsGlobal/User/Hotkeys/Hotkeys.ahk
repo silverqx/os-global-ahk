@@ -12,6 +12,7 @@
 #Include Applications\GeminiHotkeys.ahk
 #Include Applications\GrokHotkeys.ahk
 #Include Applications\MicrosoftAutocorrector.ahk
+#Include Applications\NomiHotkeys.ahk
 #Include Applications\MpcHc\MpcHcHotkeys.ahk
 #Include Applications\OpenWebUI.ahk
 #Include Applications\QtCreator.ahk
