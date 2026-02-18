@@ -127,13 +127,14 @@ TlGoogleTranslate(
 }
 
 #HotIf WinActive('^(?:Microsoft Translator(?: - Translate from (?:.+))?)$ ' . WinTitleEdgeMain)
+#HotIf WinActive(WinTitleMsTranslatorPwaEdge)
 F9::TlAppRestore()
 F10::TlGoogleTranslate(false)
 !q::TlGoogleTranslate(false)
 !+q::TlAppRestore(true)
 #HotIf
 
-#HotIf WinActive('^(?:Google Translate)$ ' . WinTitleEdgeMain)
+#HotIf WinActive(WinTitleGoogleTranslatePwaEdge)
 F10::TlAppRestore()
 F9::TlMicrosoftTranslator(false)
 ; Paste to the target only
