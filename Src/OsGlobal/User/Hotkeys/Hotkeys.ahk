@@ -5,6 +5,7 @@
 
 #Include Applications\ChromeHotkeys.ahk
 #Include Applications\DarkSouls1Hotkeys.ahk
+#Include Applications\Delphi\Delphi.ahk
 #Include Applications\MpcHc\MpcHcHotkeys.ahk
 #Include Applications\QtCreator.ahk
 #Include Applications\SmartGitHotkeys.ahk
