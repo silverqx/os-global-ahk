@@ -23,7 +23,7 @@
 }
 
 *~LButton::TivikoIncreaseZoomOnGridClick()
-#HotIf ; WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
+#HotIf ; '^TV Program Tiviko$ ahk_class ApplicationFrameWindow'
 
 ; Open Tiviko TV Program
 ~MButton & XButton2::RunOrActivateIfExist('^TV Program Tiviko$',

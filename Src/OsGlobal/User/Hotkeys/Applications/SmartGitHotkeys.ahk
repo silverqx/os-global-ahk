@@ -10,4 +10,4 @@
     SetControlDelay(-1)
     ControlClick('SWT_Window085', 'A',,,, 'NA')
 }
-#HotIf ; WinActive(WinTitleSmartGit)
+#HotIf ; WinTitleSmartGit

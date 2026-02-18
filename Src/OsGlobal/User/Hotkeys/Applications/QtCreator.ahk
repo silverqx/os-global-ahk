@@ -19,4 +19,4 @@
     ; Restore
     QtCreatorWESkipPreferences := false
 }
-#HotIf ; WinActive('Qt Creator$ ' . WinTitleQtCreator)
+#HotIf ; 'Qt Creator$ ' . WinTitleQtCreator

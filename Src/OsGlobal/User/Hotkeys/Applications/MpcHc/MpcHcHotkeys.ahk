@@ -125,4 +125,4 @@ MButton & WheelRight::Send('^+{NumpadSub}')
 
     MpcHcMoveBottom()
 }
-#HotIf ; WinActive(WinTitleMpcHc)
+#HotIf ; WinTitleMpcHc

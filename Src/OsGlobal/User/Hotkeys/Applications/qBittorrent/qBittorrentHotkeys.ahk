@@ -50,4 +50,4 @@ F3::Send('{AppsKey}v')
 ^á::QbtSetDownloadSpeedLimit(8192)
 ^í::QbtSetDownloadSpeedLimit(9216)
 ^é::QbtSetDownloadSpeedLimit(10240)
-#HotIf ; WinActive(WinTitleQBittorrent)
+#HotIf ; WinTitleQBittorrent

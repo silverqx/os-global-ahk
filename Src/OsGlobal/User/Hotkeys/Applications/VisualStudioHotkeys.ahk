@@ -24,4 +24,4 @@
     ; Restore
     VisualStudioWESkipOptions := false
 }
-#HotIf ; WinActive('(?:Microsoft Visual Studio)$ ahk_exe devenv.exe')
+#HotIf ; '(?:Microsoft Visual Studio)$ ahk_exe devenv.exe'

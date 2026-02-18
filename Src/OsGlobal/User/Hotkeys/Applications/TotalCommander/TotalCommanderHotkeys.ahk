@@ -17,4 +17,4 @@
 
     TCPanelListingToggle := !TCPanelListingToggle
 }
-#HotIf ; WinActive(WinTitleTCUP)
+#HotIf ; WinTitleTCUP
