@@ -8,6 +8,9 @@ TivikoIncreaseZoom()
     MouseMove(40, 380, 0)
     ; Increase zoom
     Send('^{WheelUp 3}')
+    ; Fix to scroll back to the beginning of the Grid
+    Sleep(500)
+    Send('{WheelUp}')
 }
 
 ; Zoom in the Grid page
