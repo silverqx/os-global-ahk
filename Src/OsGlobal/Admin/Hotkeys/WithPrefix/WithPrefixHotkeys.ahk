@@ -4,7 +4,7 @@
 ; ---------------------------
 
 ; The ¨ is next to Enter key, it's key with |\ characters
-^¨::
+^!¨::
 {
     ih := InputHook('T.8 L1 M', '{Enter}.{Esc}{Tab}', 'c,e,p,r')
     ih.Start()
