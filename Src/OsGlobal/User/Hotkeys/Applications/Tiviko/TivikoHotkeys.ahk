@@ -1,3 +1,5 @@
+#Include <OsGlobal\Window>
+
 #Include Core.ahk
 
 ; Tiviko TV Program
@@ -24,10 +26,5 @@
 #HotIf ; WinActive('^TV Program Tiviko$ ahk_class ApplicationFrameWindow')
 
 ; Open Tiviko TV Program
-~MButton & XButton1::
-{
-    if (WinExist('^TV Program Tiviko$'))
-        WinActivate()
-    else
-        Run('shell:AppsFolder\0BB81222.TVProgramTiviko_hev1qd965vk4r!App')
-}
+~MButton & XButton2::RunOrActivateIfExist('^TV Program Tiviko$',
+    'shell:AppsFolder\0BB81222.TVProgramTiviko_hev1qd965vk4r!App')
