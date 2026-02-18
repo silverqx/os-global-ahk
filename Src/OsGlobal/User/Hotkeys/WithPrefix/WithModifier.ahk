@@ -1,5 +1,5 @@
-; Global variables
-; ----------------
+#Include <OsGlobal\GlobalVariables>
+#Include <OsGlobal\Window>
 
 ; With the ctrl modifier
 ; ----------------------
@@ -32,20 +32,20 @@ Sca()
 
         if (VmrunPauseToggle) {
             MsgBox('Paused TinyActions KVM', 'TinyActions', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-ta.ps1',, 'Hide')
+            Run(PwshHiddenFile . 'E:\dotfiles\bin\vmpa-ta.ps1',, 'Hide')
         }
         else {
             MsgBox('Unpaused TinyActions KVM', 'TinyActions', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-ta.ps1',, 'Hide')
+            Run(PwshHiddenFile . 'E:\dotfiles\bin\vmunpa-ta.ps1',, 'Hide')
         }
     }
     ; Connect
     else if (userInput = 'c')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-ta.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vm-ta.ps1',, 'Hide')
     ; Detach
     else if (userInput = 'd') {
         MsgBox('Detaching TinyActions KVM', 'TinyActions', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-ta.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vmd-ta.ps1',, 'Hide')
     }
     ; WinActivate()
     else if (userInput = 'g') {
@@ -62,17 +62,17 @@ Sca()
     ; Preferences
     else if (userInput = 'p') {
         MsgBox('Preferences for TinyActions KVM', 'TinyActions', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-ta.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vmp-ta.ps1',, 'Hide')
     }
     ; Run
     else if (userInput = 'r') {
         MsgBox('Starting TinyActions KVM', 'TinyActions', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-ta.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vmr-ta.ps1',, 'Hide')
     }
     ; Suspend
     else if (userInput = 's') {
         MsgBox('Suspending TinyActions KVM', 'TinyActions', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-ta.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vms-ta.ps1',, 'Hide')
     }
 }
 
@@ -103,20 +103,20 @@ Scb()
 
         if (VmrunPauseToggle) {
             MsgBox('Paused Manjaro KVM', 'Manjaro', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-b.ps1',, 'Hide')
+            Run(PwshHiddenFile . 'E:\dotfiles\bin\vmpa-b.ps1',, 'Hide')
         }
         else {
             MsgBox('Unpaused Manjaro KVM', 'Manjaro', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-b.ps1',, 'Hide')
+            Run(PwshHiddenFile . 'E:\dotfiles\bin\vmunpa-b.ps1',, 'Hide')
         }
     }
     ; Connect
     else if (userInput = 'c')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-b.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vm-b.ps1',, 'Hide')
     ; Detach
     else if (userInput = 'd') {
         MsgBox('Detaching Manjaro KVM', 'Manjaro', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-b.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vmd-b.ps1',, 'Hide')
     }
     ; WinActivate
     else if (userInput = 'g') {
@@ -126,17 +126,17 @@ Scb()
     ; Preferences
     else if (userInput = 'p') {
         MsgBox('Preferences for Manjaro KVM', 'Manjaro', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-b.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vmp-b.ps1',, 'Hide')
     }
     ; Run
     else if (userInput = 'r') {
         MsgBox('Starting Manjaro KVM', 'Manjaro', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-b.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vmr-b.ps1',, 'Hide')
     }
     ; Suspend
     else if (userInput = 's') {
         MsgBox('Suspending Manjaro KVM', 'Manjaro', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-b.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vms-b.ps1',, 'Hide')
     }
 }
 
@@ -196,20 +196,20 @@ Scs()
 
         if (VmrunPauseToggle) {
             MsgBox('Paused Arch Docker KVM', 'Arch Docker Server', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-s.ps1',, 'Hide')
+            Run(PwshHiddenFile . 'E:\dotfiles\bin\vmpa-s.ps1',, 'Hide')
         }
         else {
             MsgBox('Unpaused Arch Docker KVM', 'Arch Docker Server', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-s.ps1',, 'Hide')
+            Run(PwshHiddenFile . 'E:\dotfiles\bin\vmunpa-s.ps1',, 'Hide')
         }
     }
     ; Connect
     else if (userInput = 'c')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-s.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vm-s.ps1',, 'Hide')
     ; Detach
     else if (userInput = 'd') {
         MsgBox('Detaching Arch Docker KVM', 'Arch Docker Server', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-s.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vmd-s.ps1',, 'Hide')
     }
     ; htop
     else if (userInput = 'h') {
@@ -221,17 +221,17 @@ Scs()
     ; Preferences
     else if (userInput = 'p') {
         MsgBox('Preferences for Arch Docker KVM', 'Arch Docker Server', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-s.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vmp-s.ps1',, 'Hide')
     }
     ; Run
     else if (userInput = 'r') {
         MsgBox('Starting Arch Docker KVM', 'Arch Docker Server', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-s.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vmr-s.ps1',, 'Hide')
     }
     ; Suspend
     else if (userInput = 's') {
         MsgBox('Suspending Arch Docker KVM', 'Arch Docker Server', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-s.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vms-s.ps1',, 'Hide')
     }
 }
 
@@ -267,20 +267,20 @@ Scv()
 
         if (VmrunPauseToggle) {
             MsgBox('Paused Gentoo KVM', 'Gentoo', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-g.ps1',, 'Hide')
+            Run(PwshHiddenFile . 'E:\dotfiles\bin\vmpa-g.ps1',, 'Hide')
         }
         else {
             MsgBox('Unpaused Gentoo KVM', 'Gentoo', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-g.ps1',, 'Hide')
+            Run(PwshHiddenFile . 'E:\dotfiles\bin\vmunpa-g.ps1',, 'Hide')
         }
     }
     ; Connect
     else if (userInput = 'c')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-g.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vm-g.ps1',, 'Hide')
     ; Detach
     else if (userInput = 'd') {
         MsgBox('Detaching Gentoo KVM', 'Gentoo', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-g.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vmd-g.ps1',, 'Hide')
     }
     ; WinActivate
     else if (userInput = 'g') {
@@ -297,7 +297,7 @@ Scv()
     ; Preferences
     else if (userInput = 'p') {
         MsgBox('Preferences for Gentoo KVM', 'Gentoo', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-g.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vmp-g.ps1',, 'Hide')
     }
     ; Run
     else if (userInput = 'r') {
@@ -307,7 +307,7 @@ Scv()
     ; Suspend
     else if (userInput = 's') {
         MsgBox('Suspending Gentoo KVM', 'Gentoo', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-g.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vms-g.ps1',, 'Hide')
     }
 }
 
@@ -339,36 +339,36 @@ Scw()
 
         if (VmrunPauseToggle) {
             MsgBox('Paused Windows KVM', 'Windows', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-w.ps1',, 'Hide')
+            Run(PwshHiddenFile . 'E:\dotfiles\bin\vmpa-w.ps1',, 'Hide')
         }
         else {
             MsgBox('Unpaused Windows KVM', 'Windows', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-w.ps1',, 'Hide')
+            Run(PwshHiddenFile . 'E:\dotfiles\bin\vmunpa-w.ps1',, 'Hide')
         }
     }
     ; Connect
     else if (userInput = 'c')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-w.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vm-w.ps1',, 'Hide')
     ; Detach
     else if (userInput = 'd') {
         MsgBox('Detaching Windows KVM', 'Windows', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-w.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vmd-w.ps1',, 'Hide')
     }
     ; Preferences
     else if (userInput = 'p') {
         MsgBox('Preferences for Windows KVM', 'Windows', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-w.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vmp-w.ps1',, 'Hide')
     }
     ; Run
     ; VM is encrypted, have to figure how to ask password somehow
     ; else if (userInput = 'r') {
     ;     MsgBox('Starting Windows KVM', 'Windows', 'T1')
-    ;     Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-w.ps1',, 'Hide')
+    ;     Run(PwshHiddenFile . 'E:\dotfiles\bin\vmr-w.ps1',, 'Hide')
     ; }
     ; Suspend
     else if (userInput = 's') {
         MsgBox('Suspending Windows KVM', 'Windows', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-w-kvm.ps1',, 'Hide')
+        Run(PwshHiddenFile . 'E:\dotfiles\bin\vms-w-kvm.ps1',, 'Hide')
     }
 }
 
