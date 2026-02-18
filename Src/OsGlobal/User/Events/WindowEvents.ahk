@@ -88,7 +88,9 @@ WEComputerOffStopCenterMouse(hook, hWnd, *) {
 ; Fullscreen on Open
 ; ------------------
 
-GroupAdd('FullscreenGroupOnOpen', ' qBittorrent v\d+\.\d+\.\d+$ ' . WinTitleQBittorrent,, '^qBittorrent$')
+; This method applies the 0xC00000 style
+GroupAdd('FullscreenGroupOnOpen', ' qBittorrent v\d+\.\d+\.\d+$ ' . WinTitleQBittorrent,,
+         '^qBittorrent$')
 GroupAdd('FullscreenGroupOnOpen', ' Lindquist$ ' . WinTitleTCUP)
 GroupAdd('FullscreenGroupOnOpen', ' - NOT REGISTERED$ ' . WinTitleTC64,, '^Total Commander$')
 
