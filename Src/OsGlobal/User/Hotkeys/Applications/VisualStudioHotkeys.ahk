@@ -1,7 +1,7 @@
 ; Visual Studio
 ; -------------
 
-#HotIf WinActive('(?:Microsoft Visual Studio)$ ahk_exe devenv.exe')
+#HotIf WinActive('(?:Microsoft Visual Studio( Preview)?)$ ahk_exe devenv.exe')
 ; Focus Navigation bar - Function Dropdown list
 ^F12::Send('^{F12}{Tab 2}{Down}')
 
@@ -27,4 +27,4 @@
     ; Restore
     VisualStudioWESkipOptions := false
 }
-#HotIf ; '(?:Microsoft Visual Studio)$ ahk_exe devenv.exe'
+#HotIf ; '(?:Microsoft Visual Studio( Preview)?)$ ahk_exe devenv.exe'
