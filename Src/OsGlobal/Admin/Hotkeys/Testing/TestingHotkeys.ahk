@@ -78,6 +78,8 @@ ss := 'Snipping Tool Overlay ahk_class XamlWindow ahk_exe SnippingTool.exe'
     ; ControlFocus('TButtonedEdit1', 'A')
 }
 
+; TODO add hotkeys also for compiled versions silverqx
+#HotIf !A_IsCompiled
 ; Close this script's own process
 ^!+F10::
 {
@@ -85,3 +87,4 @@ ss := 'Snipping Tool Overlay ahk_class XamlWindow ahk_exe SnippingTool.exe'
     DetectHiddenWindows(true)
     ProcessClose(WinGetPID('ahk_id ' . A_ScriptHwnd))
 }
+#HotIf

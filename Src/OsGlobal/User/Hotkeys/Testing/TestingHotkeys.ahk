@@ -97,6 +97,7 @@ SetTitleMatchMode('RegEx')
     ; ControlFocus('TButtonedEdit1', 'A')
 }
 
+#HotIf !A_IsCompiled
 ; Close this script's own process
 ^!+F10::
 {
@@ -104,3 +105,4 @@ SetTitleMatchMode('RegEx')
     DetectHiddenWindows(true)
     ProcessClose(WinGetPID('ahk_id ' . A_ScriptHwnd))
 }
+#HotIf
