@@ -56,7 +56,8 @@
         Ss003()
 
     ; With the ctrl modifier, has to be first
-    ; Look appropriate number mappings at https://en.wikipedia.org/wiki/ASCII#Control_code_table
+    ; Look appropriate Decimal (Dec column) number mappings at:
+    ; https://en.wikipedia.org/wiki/ASCII#Control_code_table
     else if (userInput == Chr(1))
         Sca() ; TinyActions vmware (merydeye-tinyactions)
     else if (userInput == Chr(2))
