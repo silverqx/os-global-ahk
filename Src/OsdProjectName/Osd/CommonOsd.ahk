@@ -9,7 +9,7 @@ CreateCommonOSD(osdTextName, &osdText, updateOSD)
 
     ; +ToolWindow avoids a taskbar button and an Alt-Tab menu item
     ui := Gui()
-    ui.Opt('+LastFound +AlwaysOnTop -Caption +ToolWindow')
+    ui.Opt('+AlwaysOnTop +LastFound -Caption -SysMenu +ToolWindow')
     ui.BackColor := CustomColor
     ui.SetFont('s11 w500 q5')
 
