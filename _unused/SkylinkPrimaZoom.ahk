@@ -11,6 +11,8 @@ Persistent()
 #SingleInstance Force
 #UseHook true
 
+#Include <OsGlobal\Utils>
+
 ; Common functions
 ; ----------------
 
@@ -116,9 +118,4 @@ openSkylinkPrimaZoom()
 ; Write to the Open Skylink log file
 WriteLogSkylink(text) {
     WriteLog(text, 'E:/tmp/openskylink.log')
-}
-
-; Write to the given log file
-WriteLog(text, logFilepath) {
-	FileAppend(A_NowUTC ': ' text '`n', logFilepath)
 }
