@@ -28,5 +28,6 @@ SetTitleMatchMode('RegEx')
 
 #Include Events\Events.ahk
 #Include Hotkeys\Hotkeys.ahk
+#Include Servers\Servers.ahk
 
 ; TODO check and try to somehow use Morse; see https://www.autohotkey.com/board/topic/15574-morse-find-hotkey-press-and-hold-patterns/ silverqx
