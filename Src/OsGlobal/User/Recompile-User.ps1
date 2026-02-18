@@ -1,3 +1,7 @@
+#!/usr/bin/env pwsh
+
+Set-StrictMode -Version 3.0
+
 Stop-ScheduledTask -TaskPath \Crystal\ -TaskName AhkOsGlobal
 
 Start-Process `
