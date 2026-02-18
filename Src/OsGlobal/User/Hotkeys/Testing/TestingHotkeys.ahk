@@ -100,6 +100,7 @@ SetTitleMatchMode('RegEx')
 ; Close this script's own process
 ^!+F10::
 {
+    SoundBeep(7000, 70)
     DetectHiddenWindows(true)
     ProcessClose(WinGetPID('ahk_id ' . A_ScriptHwnd))
 }
