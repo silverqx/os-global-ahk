@@ -81,7 +81,7 @@ ss := 'Snipping Tool Overlay ahk_class XamlWindow ahk_exe SnippingTool.exe'
 ; Close this script's own process
 ^!+F10::
 {
-    SoundBeep(7000, 70)
+    SoundBeep(7300, 70)
     DetectHiddenWindows(true)
     ProcessClose(WinGetPID('ahk_id ' . A_ScriptHwnd))
 }

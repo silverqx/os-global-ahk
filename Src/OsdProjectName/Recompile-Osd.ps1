@@ -12,4 +12,4 @@ Start-Process `
 
 Start-ScheduledTask -TaskPath \Crystal\ -TaskName AhkOSDProjectName
 
-[System.Console]::Beep(8000, 50)
+[System.Console]::Beep(7300, 50)
