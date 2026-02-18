@@ -140,6 +140,10 @@ Scb()
     }
 }
 
+; GitHub
+Sch() =>
+    RunOrActivateIfExist('^GitHub', A_Programs . '\Chrome Apps\GitHub.lnk')
+
 ; TamperMonkey
 Scm()
 {
@@ -154,11 +158,6 @@ Scm()
     ; ; else
     ; ;     Run(A_Programs . '\Chrome Apps\TamperMonkey.lnk')
 }
-
-; GitHub
-Sco() =>
-    RunOrActivateIfExist('^GitHub', A_Programs . '\Chrome Apps\GitHub.lnk',,,
-        () => Send('{F11}'),, ChromeNewCallbackDelay)
 
 ; pgAdmin
 Scp() =>

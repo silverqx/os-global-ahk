@@ -64,10 +64,10 @@
         Scb() ; Manjaro vmware (merydeye-build)
     ; else if (userInput == Chr(4))
     ;     Scd()
+    else if (userInput == Chr(8))
+        Sch() ; GitHub
     else if (userInput == Chr(13))
         Scm() ; TamperMonkey
-    else if (userInput == Chr(15))
-        Sco() ; GitHub
     else if (userInput == Chr(16))
         Scp() ; pgAdmin
     else if (userInput == Chr(18))
