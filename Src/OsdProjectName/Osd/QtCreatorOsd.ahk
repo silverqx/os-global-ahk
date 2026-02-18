@@ -25,5 +25,5 @@ UpdateQtCreatorOSD()
 {
     global QtCreatorOSDText
 
-    UpdateCommonOSD('(?:.* [@-] )?(.*[^\)])(?:\)? - Qt Creator)$', &QtCreatorOSDText)
+    UpdateCommonOSD('(?:.* [@-] )?(.+?)(?:\)? (?:\[.+\] )?- Qt Creator)$', &QtCreatorOSDText)
 }
