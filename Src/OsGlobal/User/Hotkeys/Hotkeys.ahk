@@ -1,5 +1,3 @@
-#Include Testing\TestingHotkeys.ahk
-
 #Include Global\GlobalHotkeys.ahk
 #Include WithPrefix\WithPrefixHotkeys.ahk
 
@@ -21,3 +19,5 @@
 #Include Applications\TotalCommander\TotalCommanderHotkeys.ahk
 #Include Applications\VisualStudioHotkeys.ahk
 #Include Applications\qBittorrent\qBittorrentHotkeys.ahk
+
+; #Include Testing\TestingHotkeys.ahk
