@@ -11,5 +11,8 @@ GroupAdd('FullscreenGroup', 'ahk_exe TOTALCMD64.EXE ahk_class TTOTAL_CMD')
 
 ; Fullscreen
 #HotIf WinActive('ahk_group FullscreenGroup')
+; Without 'A', it finds the last window saved during the above WinActive()
 F11::WinSetStyle('^0xC00000')
 #HotIf ; 'ahk_group FullscreenGroup'
+
+^!+F11::WinSetStyle('^0xC00000', 'A')
