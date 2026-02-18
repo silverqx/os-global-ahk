@@ -14,7 +14,7 @@
     Send('^+,')
 
     WinWait('^Preferences - Qt Creator$ ' . WinTitleQtCreator)
-    Send('{Tab 7}')
+    Send('{Tab 7}^{Tab}^+{Tab}')
 
     ; Restore
     QtCreatorWESkipPreferences := false
