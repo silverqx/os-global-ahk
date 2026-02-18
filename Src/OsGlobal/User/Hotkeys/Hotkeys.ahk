@@ -17,6 +17,7 @@
 #Include Applications\SmartGitHotkeys.ahk
 #Include Applications\Tiviko\TivikoHotkeys.ahk
 #Include Applications\TotalCommander\TotalCommanderHotkeys.ahk
+#Include Applications\Translate.ahk
 #Include Applications\VisualStudioHotkeys.ahk
 #Include Applications\qBittorrent\qBittorrentHotkeys.ahk
 
