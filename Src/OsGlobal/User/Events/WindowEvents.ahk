@@ -13,7 +13,7 @@
 ; Set initial window properties
 WinEvent.Show(WEQtMaintenanceTool, 'Maintain Qt ahk_exe MaintenanceTool.exe ahk_class Qt660QWindowIcon')
 
-WEQtMaintenanceTool(hook, hWnd, *) {
+WEQtMaintenanceTool(hWnd, hook, *) {
     TileWindowCenterFull('ahk_id ' . hWnd)
 }
 
@@ -23,7 +23,7 @@ WEQtMaintenanceTool(hook, hWnd, *) {
 ; Focus the Graph view (send hotkey) after displaying the Log Window
 WinEvent.Show(WESmartGit, '(?:.*SmartGit .* )(?:\(Log\) Non-Commercial)$ ' . WinTitleSmartGit)
 
-WESmartGit(hook, hWnd, *) {
+WESmartGit(hWnd, hook, *) {
     WinWait('ahk_id ' . hWnd)
     Send('^+5')
 }
@@ -34,7 +34,7 @@ WESmartGit(hook, hWnd, *) {
 ; Options - Focus the Search Input
 WinEvent.Show(WEVisualStudioOptions, WinTitleVisualStudioOptions)
 
-WEVisualStudioOptions(hook, hWnd, *) {
+WEVisualStudioOptions(hWnd, hook, *) {
     global VisualStudioWESkipOptions
 
     ; Nothing to do, handled by another hotkey (eg. ^!+, - Options - Keyboard)
@@ -51,7 +51,7 @@ WEVisualStudioOptions(hook, hWnd, *) {
 ; Preferences - Focus the Search Input
 WinEvent.Show(WEQtCreatorPreferences, '^Preferences - Qt Creator$ ' . WinTitleQtCreator)
 
-WEQtCreatorPreferences(hook, hWnd, *) {
+WEQtCreatorPreferences(hWnd, hook, *) {
     global QtCreatorWESkipPreferences
 
     ; Nothing to do, handled by another hotkey (eg. ^!+, - Preferences - Keyboard)
@@ -94,6 +94,7 @@ GroupAdd('FullscreenGroupOnOpen', ' - NOT REGISTERED$ ' . WinTitleTC64,, '^Total
 
 WinEvent.Show(WEFullscreenOnOpen, 'ahk_group FullscreenGroupOnOpen')
 
+WEFullscreenOnOpen(hWnd, hook, *) {
 WEFullscreenOnOpen(hook, hWnd, *) {
     WinWait('ahk_id ' . hWnd)
     WinSetStyle('^0xC00000')
@@ -104,7 +105,7 @@ WEFullscreenOnOpen(hook, hWnd, *) {
 
 ; WinEvent.Show(WEMpcHc, WinTitleMpcHc)
 
-; WEMpcHc(hook, hWnd, *) {
+; WEMpcHc(hWnd, hook, *) {
 ;     global MpcHcTouchOutsideFrameToggle
 ;     MpcHcTouchOutsideFrameToggle := false
 ; }
