@@ -3,10 +3,16 @@
 #Include Global\GlobalHotkeys.ahk
 #Include WithPrefix\WithPrefixHotkeys.ahk
 
+#Include Applications\ChatGptHotkeys.ahk
 #Include Applications\ChromeHotkeys.ahk
+#Include Applications\ClaudeHotkeys.ahk
+#Include Applications\CopilotHotkeys.ahk
 #Include Applications\DarkSouls1Hotkeys.ahk
 #Include Applications\Delphi\Delphi.ahk
+#Include Applications\GeminiHotkeys.ahk
+#Include Applications\GrokHotkeys.ahk
 #Include Applications\MpcHc\MpcHcHotkeys.ahk
+#Include Applications\OpenWebUI.ahk
 #Include Applications\QtCreator.ahk
 #Include Applications\SmartGitHotkeys.ahk
 #Include Applications\Tiviko\TivikoHotkeys.ahk
