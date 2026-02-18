@@ -1,17 +1,15 @@
 ; Global variables
 ; ----------------
 
-; Pause/Unpause vmwrun.exe
-VmrunPauseToggle := false
-
 ; With the ctrl modifier
 ; ----------------------
 ; Leader key ctrl-g related
 
-; TinyActions vmware
+; TinyActions vmware (merydeye-tinyactions)
 Sca()
 {
-    global VmrunPauseToggle
+    ; Pause/Unpause vmwrun.exe
+    static VmrunPauseToggle := false
 
     ih := InputHook('T.9 L1 M', '{Enter}.{Esc}{Tab}', 'a,c,d,g,h,p,r,s')
     ih.Start()
@@ -78,10 +76,11 @@ Sca()
     }
 }
 
-; Manjaro vmware
+; Manjaro vmware (merydeye-build)
 Scb()
 {
-    global VmrunPauseToggle
+    ; Pause/Unpause vmwrun.exe
+    static VmrunPauseToggle := false
 
     ih := InputHook('T.9 L1 M', '{Enter}.{Esc}{Tab}', 'a,c,d,g,p,r,s')
     ih.Start()
@@ -141,10 +140,41 @@ Scb()
     }
 }
 
-; Arch Docker Server vmware
-Scd()
+; TamperMonkey
+Scm()
 {
-    global VmrunPauseToggle
+    ; RunOrActivateIfExist('^Installed Userscripts$',
+    ;     A_ProgramFiles . ' (x86)\Microsoft\Edge\Application\msedge.exe ' .
+    ;         '--app="chrome-extension://iikmkjmpaadaobahmlepeloendndfphd/options.html' .
+    ;             '#url=&nav=dashboard"',
+    ;     '', 'Max', () => Send('{F11}'))
+
+    ; ; if (WinExist('^TamperMonkey'))
+    ; ;     WinActivate()
+    ; ; else
+    ; ;     Run(A_Programs . '\Chrome Apps\TamperMonkey.lnk')
+}
+
+; GitHub
+Sco() =>
+    RunOrActivateIfExist('^GitHub', A_Programs . '\Chrome Apps\GitHub.lnk',,,
+        () => Send('{F11}'),, ChromeNewCallbackDelay)
+
+; pgAdmin
+Scp() =>
+    RunOrActivateIfExist('^pgAdmin 4$', A_ProgramsCommon . '\PostgreSQL 17\pgAdmin 4.lnk')
+
+;
+; RegEx101
+Scr() =>
+    RunOrActivateIfExist('^regex101: .+$ ' . WinTitleChromeMain,
+        A_Programs . '\Chrome Apps\regex101.lnk')
+
+; Arch Docker Server vmware (merydeye-server)
+Scs()
+{
+    ; Pause/Unpause vmwrun.exe
+    static VmrunPauseToggle := false
 
     ih := InputHook('T.9 L1 M', '{Enter}.{Esc}{Tab}', 'a,c,d,p,r,s')
     ih.Start()
@@ -166,21 +196,21 @@ Scd()
         VmrunPauseToggle := !VmrunPauseToggle
 
         if (VmrunPauseToggle) {
-            MsgBox('Paused Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-d.ps1',, 'Hide')
+            MsgBox('Paused Arch Docker KVM', 'Arch Docker Server', 'T1')
+            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-s.ps1',, 'Hide')
         }
         else {
-            MsgBox('Unpaused Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
-            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-d.ps1',, 'Hide')
+            MsgBox('Unpaused Arch Docker KVM', 'Arch Docker Server', 'T1')
+            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-s.ps1',, 'Hide')
         }
     }
     ; Connect
     else if (userInput = 'c')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-d.ps1',, 'Hide')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-s.ps1',, 'Hide')
     ; Detach
     else if (userInput = 'd') {
-        MsgBox('Detaching Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-d.ps1',, 'Hide')
+        MsgBox('Detaching Arch Docker KVM', 'Arch Docker Server', 'T1')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmd-s.ps1',, 'Hide')
     }
     ; htop
     else if (userInput = 'h') {
@@ -191,70 +221,31 @@ Scd()
     }
     ; Preferences
     else if (userInput = 'p') {
-        MsgBox('Preferences for Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-d.ps1',, 'Hide')
+        MsgBox('Preferences for Arch Docker KVM', 'Arch Docker Server', 'T1')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmp-s.ps1',, 'Hide')
     }
     ; Run
     else if (userInput = 'r') {
-        MsgBox('Starting Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-d.ps1',, 'Hide')
+        MsgBox('Starting Arch Docker KVM', 'Arch Docker Server', 'T1')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmr-s.ps1',, 'Hide')
     }
     ; Suspend
     else if (userInput = 's') {
-        MsgBox('Suspending Ubuntu Docker KVM', 'Arch Docker Server', 'T1')
-        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-d.ps1',, 'Hide')
+        MsgBox('Suspending Arch Docker KVM', 'Arch Docker Server', 'T1')
+        Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vms-s.ps1',, 'Hide')
     }
 }
 
-; TamperMonkey
-Scm()
-{
-    if (WinExist('^TamperMonkey'))
-        WinActivate()
-    else
-        Run(A_Programs . '\Chrome Apps\TamperMonkey.lnk')
-}
-
-; GitHub
-Sco()
-{
-    if (WinExist('^GitHub'))
-        WinActivate()
-    else
-        Run(A_Programs . '\Chrome Apps\GitHub.lnk')
-}
-
-; pgAdmin
-Scp()
-{
-    if (WinExist('^pgAdmin 4$'))
-        WinActivate()
-    else
-        Run(A_ProgramsCommon . '\PostgreSQL 16\pgAdmin 4.lnk')
-}
-
-; SumatraPDF
-Scs()
-{
-    if (WinExist('SumatraPDF'))
-        WinActivate()
-    else
-        Run(A_StartMenuCommon . '\SumatraPDF.lnk')
-}
-
 ; Sk-CzTorrent
-Sct()
-{
-    if (WinExist('(?:^Sk-CzTorrent \||\| SkTorrent\.eu)'))
-        WinActivate()
-    else
-        Run(A_Programs . '\Chrome Apps\SkTorrent.lnk')
-}
+Sct() =>
+    RunOrActivateIfExist('(?:^Sk-CzTorrent \||\| SkTorrent\.eu)',
+        A_Programs . '\Chrome Apps\SkTorrent.lnk')
 
-; Gentoo vmware
+; Gentoo vmware (merydeye-gentoo)
 Scv()
 {
-    global VmrunPauseToggle
+    ; Pause/Unpause vmwrun.exe
+    static VmrunPauseToggle := false
 
     ih := InputHook('T.9 L1 M', '{Enter}.{Esc}{Tab}', 'a,c,d,g,h,p,r,s')
     ih.Start()
@@ -321,10 +312,11 @@ Scv()
     }
 }
 
-; Windows vmware
+; Windows vmware (merydeye-win11-v)
 Scw()
 {
-    global VmrunPauseToggle
+    ; Pause/Unpause vmwrun.exe
+    static VmrunPauseToggle := false
 
     ih := InputHook('T.9 L1 M', '{Enter}.{Esc}{Tab}', 'a,c,d,p,r,s')
     ih.Start()
@@ -342,21 +334,21 @@ Scw()
     ; Without modifiers
     ; Pause/Unpause
     ; VM is encrypted, have to figure how to ask password somehow
-    ; if (userInput = 'a') {
-    ;     ; Switch
-    ;     VmrunPauseToggle := !VmrunPauseToggle
+    if (userInput = 'a') {
+        ; Switch
+        VmrunPauseToggle := !VmrunPauseToggle
 
-    ;     if (VmrunPauseToggle) {
-    ;         MsgBox('Paused Windows KVM', 'Windows', 'T1')
-    ;         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-w.ps1',, 'Hide')
-    ;     }
-    ;     else {
-    ;         MsgBox('Unpaused Windows KVM', 'Windows', 'T1')
-    ;         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-w.ps1',, 'Hide')
-    ;     }
-    ; }
+        if (VmrunPauseToggle) {
+            MsgBox('Paused Windows KVM', 'Windows', 'T1')
+            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmpa-w.ps1',, 'Hide')
+        }
+        else {
+            MsgBox('Unpaused Windows KVM', 'Windows', 'T1')
+            Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vmunpa-w.ps1',, 'Hide')
+        }
+    }
     ; Connect
-    if (userInput = 'c')
+    else if (userInput = 'c')
         Run('powershell.exe -WindowStyle Hidden -NoLogo E:\dotfiles\bin\vm-w.ps1',, 'Hide')
     ; Detach
     else if (userInput = 'd') {
@@ -381,11 +373,8 @@ Scw()
     }
 }
 
+; TODO unify YouTube titles silverqx
 ; Youtube
-Scy()
-{
-    if (WinExist('(?:\(\d+\) )?(?:.* - )?(?:YouTube(?: Studio)?)$'))
-        WinActivate()
-    else
-        Run(A_Programs . '\Chrome Apps\YouTube.lnk')
-}
+Scy() =>
+    RunOrActivateIfExist('(?:\(\d+\) )?(?:.* - )?(?:YouTube(?: Studio)?)$',
+        A_Programs . '\Chrome Apps\YouTube.lnk')

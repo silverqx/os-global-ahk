@@ -2,13 +2,30 @@
 #Include WithoutModifier.ahk
 #Include WithScanCode.ahk
 
+; Free to use
+; -----------
+;
+; Without modifiers
+; c, g, k, m, s
+;
+; With ctrl modifier
+; m
+
 ; Leader key ctrl-g shortcuts
 ; ---------------------------
 
 ^g::
 {
+    ; Function to map a key's virtual keycode to its scan code (vkXX to scXXX)
+    GetScanCode(char) {
+        vk := DllCall('VkKeyScan', 'Char', Ord(char), 'Int') & 0xFF ; Get Virtual Key from the character
+        scanCode := DllCall('MapVirtualKey', 'UInt', vk, 'UInt', 0, 'UInt')
+
+        return Format('sc{:03X}', scanCode) ; Format as scXXX
+    }
+
     ih := InputHook('T.8 L1 M', '{Enter}.{Esc}{Tab}',
-                    'a,b,c,č,d,é,f,g,k,l,m,n,p,q,r,ř,s,š,t,w,u,y,ž')
+                    '{sc002},a,b,c,č,d,é,f,g,k,l,m,n,p,q,r,ř,s,š,t,w,u,y,ž')
     ih.Start()
     result := ih.Wait()
 
@@ -39,27 +56,29 @@
         Ss003()
 
     ; With the ctrl modifier, has to be first
-    ; Look appropriate number mappings at https://en.wikipedia.org/wiki/ASCII#Control_code_chart
-    if (userInput == Chr(1))
-        Sca() ; TinyActions vmware
+    ; Look appropriate number mappings at https://en.wikipedia.org/wiki/ASCII#Control_code_table
+    else if (userInput == Chr(1))
+        Sca() ; TinyActions vmware (merydeye-tinyactions)
     else if (userInput == Chr(2))
-        Scb() ; Manjaro vmware
-    else if (userInput == Chr(4))
-        Scd() ; Arch Docker Server vmware
+        Scb() ; Manjaro vmware (merydeye-build)
+    ; else if (userInput == Chr(4))
+    ;     Scd()
     else if (userInput == Chr(13))
         Scm() ; TamperMonkey
     else if (userInput == Chr(15))
         Sco() ; GitHub
     else if (userInput == Chr(16))
         Scp() ; pgAdmin
+    else if (userInput == Chr(18))
+        Scr() ; regex101
     else if (userInput == Chr(19))
-        Scs() ; SumatraPDF
+        Scs() ; Arch Docker Server vmware (merydeye-server)
     else if (userInput == Chr(20))
         Sct() ; Sk-CzTorrent
     else if (userInput == Chr(22))
-        Scv() ; Gentoo vmware
+        Scv() ; Gentoo vmware (merydeye-gentoo)
     else if (userInput == Chr(23))
-        Scw() ; Windows vmware
+        Scw() ; Windows vmware (merydeye-win11-v)
     else if (userInput == Chr(25))
         Scy() ; Youtube with WinExist()
 
@@ -74,8 +93,8 @@
         Sč() ; čsfd.cz search in chrome
     else if (userInput = 'd')
         Sd() ; Dolby Access
-    else if (userInput = 'é')
-        Sé() ; List all registered hotkeys (w/o they descriptions 🥺)
+    ; else if (userInput = 'é')
+    ;     Sé() ; List all registered hotkeys (w/o they descriptions 🥺)
     else if (userInput = 'ý')
         Sý() ; VMware Workstation
     else if (userInput = 'f')
@@ -86,8 +105,8 @@
         Sk() ; Skylink
     else if (userInput = 'l')
         Sl() ; SQLiteStudio
-    else if (userInput = 'm')
-        Sm() ; Messenger
+    ; else if (userInput = 'm')
+    ;     Sm() ; Messenger
     else if (userInput = 'n')
         Sn() ; Notepad++
     else if (userInput = 'p')
@@ -98,8 +117,8 @@
         Sr() ; Registry Editor
     else if (userInput = 'ř')
         Sř() ; Google Sheets - Seriály
-    ; else if (userInput = 's')
-    ;     Ss() ; unused
+    else if (userInput = 's')
+        Ss() ; SumatraPDF
     else if (userInput = 'š')
         Sš() ; Google Sheets
     else if (userInput = 't')
