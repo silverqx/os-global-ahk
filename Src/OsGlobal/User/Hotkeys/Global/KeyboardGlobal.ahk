@@ -53,10 +53,9 @@ Launch_Mail::RunOrActivateIfExist(WinTitleSpotify,
     'Max')
 ; Spotify - Edge PWA (doesn't react to media keys properly, eg. Media_Play_Pause)
 ; Launch_Mail::RunOrActivateIfExist(WinTitleSpotifyEdge,
-    ; '"C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe" ' .
-    ;     '--profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf ' .
+    ; EdgeProxyExe . ' --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf ' .
     ;     '--app-url=https://open.spotify.com/',
-    ; 'C:\Program Files (x86)\Microsoft\Edge\Application', 'Max')
+    ; EdgeWd, 'Max')
 
 ; Discord
 ^Launch_Mail::RunOrActivateIfExist(WinTitleDiscordMain,
@@ -81,43 +80,39 @@ Launch_Mail::RunOrActivateIfExist(WinTitleSpotify,
 
 ; Claude - Firefox
 <#F2::RunOrActivateIfExist(WinTitleClaudePwaFirefox,
-    Format('"{:s}\Mozilla Firefox\firefox.exe" ', A_ProgramFiles) .
-        '-taskbar-tab 0b5a1bb4-e371-47d9-a8ed-b3d285900cdc -new-window https://claude.ai/ ' .
+    FirefoxExe . ' -taskbar-tab 0b5a1bb4-e371-47d9-a8ed-b3d285900cdc ' .
+        '-new-window https://claude.ai/ ' .
         Format('-profile "{:s}\Mozilla\Firefox\Profiles\{:s}" ', A_AppData, FirefoxProfileDefault) .
         '-container 0',
-    A_ProgramFiles . '\Mozilla Firefox', 'Max')
+    FirefoxWd, 'Max')
 ; Claude - Chrome
 ; #F2::RunOrActivateIfExist(WinTitleClaudePwaChrome,
-;     '"C:\Program Files (x86)\Google\Chrome\Application\chrome_proxy.exe" ' .
-;         '--profile-directory=Default --app-id=fmpnliohjhemenmnlpbfagaolkdacoja',
-;     'C:\Program Files (x86)\Google\Chrome\Application', 'Max')
+;     ChromeProxyExe . ' --profile-directory=Default --app-id=fmpnliohjhemenmnlpbfagaolkdacoja',
+;     ChromeWd, 'Max')
 ; Google Gemini - Firefox
 <#F3::RunOrActivateIfExist(WinTitleGeminiPwaFirefox,
-    Format('"{:s}\Mozilla Firefox\firefox.exe" ', A_ProgramFiles) .
-        '-taskbar-tab 359399e4-2db5-49fe-b8b9-ceeabf84cd97 -new-window https://gemini.google.com/ ' .
+    FirefoxExe . ' -taskbar-tab 359399e4-2db5-49fe-b8b9-ceeabf84cd97 ' .
+        '-new-window https://gemini.google.com/ ' .
         Format('-profile "{:s}\Mozilla\Firefox\Profiles\{:s}" ', A_AppData, FirefoxProfileDefault) .
         '-container 0',
-    A_ProgramFiles . '\Mozilla Firefox', 'Max')
+    FirefoxWd, 'Max')
 ; Google Gemini - Chrome
 ; <#F3::RunOrActivateIfExist(WinTitleGeminiPwaChrome,
-;     '"C:\Program Files (x86)\Google\Chrome\Application\chrome_proxy.exe" ' .
-;         '--profile-directory=Default --app-id=gdfaincndogidkdcdkhapmbffkckdkhn',
-;     'C:\Program Files (x86)\Google\Chrome\Application', 'Max')
+;     ChromeProxyExe . ' --profile-directory=Default --app-id=gdfaincndogidkdcdkhapmbffkckdkhn',
+;     ChromeWd, 'Max')
 ; Grok - Firefox
 <#F4::RunOrActivateIfExist(WinTitleGrokPwaFirefox,
-    Format('"{:s}\Mozilla Firefox\firefox.exe" ', A_ProgramFiles) .
-        '-taskbar-tab dd6d3ac1-2f9a-4971-9850-f86647b0284d -new-window https://grok.com/ ' .
+    FirefoxExe .
+        ' -taskbar-tab dd6d3ac1-2f9a-4971-9850-f86647b0284d -new-window https://grok.com/ ' .
         Format('-profile "{:s}\Mozilla\Firefox\Profiles\{:s}" ', A_AppData, FirefoxProfileDefault) .
         '-container 0',
-    A_ProgramFiles . '\Mozilla Firefox', 'Max')
+    FirefoxWd, 'Max')
 
 #+F4::RunOrActivateIfExist('^Services$',
     A_ProgramsCommon . '\Administrative Tools\Services.lnk')
 #+F6::RunOrActivateIfExist('^Google Password Manager$',
-    '"C:\Program Files (x86)\Google\Chrome\Application\chrome_proxy.exe" ' .
-        '--profile-directory=Default --app-id=kajebgjangihfbkjfejcanhanjmmbcfd',
-    'C:\Program Files (x86)\Google\Chrome\Application',
-    'Max', () => Send('{F11}'),, ChromeNewCallbackDelay)
+    ChromeProxyExe . ' --profile-directory=Default --app-id=kajebgjangihfbkjfejcanhanjmmbcfd',
+    ChromeWd, 'Max', () => Send('{F11}'),, ChromeNewCallbackDelay)
 ; Black screensaver
 ^!F5::Run('scrnsave.scr /s',, 'Hide')
 
@@ -182,8 +177,7 @@ NotAlt15HotIfGroup(*)
 CreateSwitchWindowsHotkeys('!sc029', 'N', NotAlt15HotIfGroup(),
      WinTitleEdgeSwitcherMain, 'MicrosoftEdgeActivateGroup',
      'shell:AppsFolder\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe!App',
-     'C:\Program Files (x86)\Microsoft\Edge\Application',
-     'Max', () => WinMaximize())
+     EdgeWd, 'Max', () => WinMaximize())
 
 ; Microsoft Edge DevTools - sc002 '1' (en) and '+' (cz) (is the 1 key)
 CreateSwitchWindowsHotkeys('!sc002', 'N', NotAlt15HotIfGroup(),
@@ -194,22 +188,18 @@ CreateSwitchWindowsHotkeys('!sc002', 'N', NotAlt15HotIfGroup(),
 ; Firefox - sc003 '2' (en) and 'ě' (cz) (is the 2 key)
 ; CreateSwitchWindowsHotkeys('!sc003', 'N', NotAlt15HotIfGroup(),
 ;      WinTitleFirefoxSwitcherMain, 'FirefoxActivateGroup',
-;      'C:\Program Files\Mozilla Firefox\firefox.exe',
-;      'C:\Program Files\Mozilla Firefox',
-;      'Max', () => WinMaximize())
+;      FirefoxExeRaw, FirefoxWd, 'Max', () => WinMaximize())
 
 ; X - sc003 '2' (en) and 'ě' (cz) (is the 2 key)
 CreateSwitchWindowsHotkeys('!sc003', 'N', NotAlt15HotIfGroup(),
     WinTitleXPwaChrome, 'XActivateGroup',
-    '"C:\Program Files (x86)\Google\Chrome\Application\chrome_proxy.exe" ' .
-        '--profile-directory=Default --app-id=lodlkdfmihgonocnmddehnfgiljnadcf',
-    'C:\Program Files (x86)\Google\Chrome\Application', 'Max')
+    ChromeProxyExe . ' --profile-directory=Default --app-id=lodlkdfmihgonocnmddehnfgiljnadcf',
+    ChromeWd, 'Max')
 
 ; Firefox Developer Tools - sc004 '3' (en) and 'š' (cz) (is the 3 key)
 CreateSwitchWindowsHotkeys('!sc004', 'N', NotAlt15HotIfGroup(),
     WinTitleFirefoxDevToolsSwitcher, 'FirefoxDevToolsActivateGroup',
-    'C:\Program Files\Mozilla Firefox\firefox.exe', '', '',
-    unset, '', unset, 10, true)
+    FirefoxExe, FirefoxWd, '', unset, '', unset, 10, true)
 
 ; Thesaurus.com - Edge
 #HotIf NotAlt15HotIfGroup()()
@@ -217,30 +207,26 @@ CreateSwitchWindowsHotkeys('!sc004', 'N', NotAlt15HotIfGroup(),
     '^(?:Synonyms & Antonyms - Thesaurus\.com(?: - ' .
         '(?:\d+) Synonyms & Antonyms for [\w-]+| - Synonyms and Antonyms of Words) \| ' .
         'Thesaurus\.com) ' . WinTitleEdgeMain,
-    '"C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe" ' .
-        '--profile-directory=Default --app-id=pmcbkjoagpdhpneecimdejmkegihmiic ' .
+    ; CUR create helper function eg. EdgeProxyCmd(appId, appUrl, profile?) to avoid repeating this everywhere silverqx
+    EdgeProxyExe . ' --profile-directory=Default --app-id=pmcbkjoagpdhpneecimdejmkegihmiic ' .
         '--app-url=https://www.thesaurus.com/',
-    'C:\Program Files (x86)\Microsoft\Edge\Application', 'Max', () => Send('{F11}'))
+    EdgeWd, 'Max', () => Send('{F11}'))
 #HotIf ; NotAlt15HotIf()
 
 ; TypeScript Documentation - Chrome
 CreateSwitchWindowsHotkeys('!sc006', 'N', NotAlt15HotIfGroup(),
     '^TypeScript Documentation - TypeScript: ' . WinTitleChromeMain,
     'TypeScriptDocsActivateGroup',
-    '"C:\Program Files (x86)\Google\Chrome\Application\chrome_proxy.exe" ' .
-        '--profile-directory=Default --app-id=epnipbjiakmdfpldbglcffpholipmpbi',
-    'C:\Program Files (x86)\Google\Chrome\Application',
-    'Max', () => Send('{F11}'), ChromeNewCallbackDelay)
+    ChromeProxyExe . ' --profile-directory=Default --app-id=epnipbjiakmdfpldbglcffpholipmpbi',
+    ChromeWd, 'Max', () => Send('{F11}'), ChromeNewCallbackDelay)
 
 ; Chrome for Developers - Chrome
 CreateSwitchWindowsHotkeys('!sc007', 'N', NotAlt15HotIfGroup(),
     '^Chrome for Developers(?:$|(?: - .+)*(  \|  .+)?(  \|  Chrome for Developers)$) ' .
         WinTitleChromeMain,
     'ChromeForDevelopersActivateGroup',
-    '"C:\Program Files (x86)\Google\Chrome\Application\chrome_proxy.exe" ' .
-        '--profile-directory=Default --app-id=aoeeckacjnficgikkpbofpdcjoohpkld',
-    'C:\Program Files (x86)\Google\Chrome\Application',
-    'Max', () => Send('{F11}'), ChromeNewCallbackDelay)
+    ChromeProxyExe . ' --profile-directory=Default --app-id=aoeeckacjnficgikkpbofpdcjoohpkld',
+    ChromeWd, 'Max', () => Send('{F11}'), ChromeNewCallbackDelay)
 
 MdnNewOrActivateCallback() => Send('^k')
 
@@ -248,7 +234,7 @@ MdnNewOrActivateCallback() => Send('^k')
 CreateSwitchWindowsHotkeys('!sc008', 'N', NotAlt15HotIfGroup(),
     WinTitleMdnPwaChrome, 'MdnDocsActivateGroup',
     'shell:AppsFolder\Chrome._crx_nfmchjfdeggjcknfcaialahihh',
-    'C:\Program Files (x86)\Google\Chrome\Application', 'Max',
+    ChromeWd, 'Max',
     MdnNewOrActivateCallback, ChromeNewCallbackReadyDelay, MdnNewOrActivateCallback, 60)
 
 RunOrActivateMicrosoftTranslator()
@@ -279,10 +265,9 @@ RunOrActivateMicrosoftTranslator()
 
 ; Kindroid - Edge
 ; ^!+k::RunOrActivateIfExist(WinTitleKindroidEdge,
-;     '"C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe" ' .
-;         '--profile-directory=Default --app-id=bifnnlhooalafhamofapphmipeanlkgb ' .
+;     EdgeProxyExe . ' --profile-directory=Default --app-id=bifnnlhooalafhamofapphmipeanlkgb ' .
 ;         '--app-url=https://kindroid.ai/home/',
-;     '', '', () => Send('{F11}'))
+;     EdgeWd, 'Max', () => Send('{F11}'))
 
 ; Microsoft Edge
 <#j::RunOnly(WinTitleEdgeNewTabMain,
@@ -312,12 +297,12 @@ RunOrActivateMicrosoftTranslator()
 ; MDN Web Docs - Chrome
 ; ^!Space::RunOrActivateIfExist('^MDN Web Docs(( - .+){1,2} \| MDN$)? ' . WinTitleChromeMain,
 ;     'shell:AppsFolder\Chrome._crx_nfmchjfdeggjcknfcaialahihh',
-;     'C:\Program Files (x86)\Google\Chrome\Application', 'Max', () => Send('{F11}'),
+;     ChromeWd, 'Max', () => Send('{F11}'),
 ;     MdnActivateCallback)
 ; MDN Web Docs - Edge
 ; ^!Space::RunOrActivateIfExist('^MDN Web Docs(( - .+){1,2} \| MDN$)? ' . WinTitleEdgeMain,
 ;     'shell:AppsFolder\developer.mozilla.org-6546C33F_vy8s4cepe0emg!App',
-;     'C:\Program Files (x86)\Microsoft\Edge\Application', 'Max', () => Send('{F11}'),
+;     EdgeWd, 'Max', () => Send('{F11}'),
 ;     MdnActivateCallback)
 
 ; Send the Play/Pause command to the Last Found Window
@@ -354,15 +339,13 @@ PlayPauseMpcHc() {
 #HotIf ; WinTitleGrokFirefox
 ; Open ChatGpt - Chrome
 ; !Space:: RunOrActivateIfExist('^ChatGPT( - .+)?$ ' . WinTitleChromeMain,
-;     '"C:\Program Files (x86)\Google\Chrome\Application\chrome_proxy.exe" ' .
-;     '--profile-directory=Default --app-id=pjcajilgilmeimpehofbnboikmkhmefb',
-;     'C:\Program Files (x86)\Google\Chrome\Application', 'Max', () => Send('{F11}'))
+;     ChromeProxyExe . ' --profile-directory=Default --app-id=pjcajilgilmeimpehofbnboikmkhmefb',
+;     ChromeWd, 'Max', () => Send('{F11}'))
 ; Open ChatGpt - Edge PWA
 ; !Space:: RunOrActivateIfExist(WinTitleChatGptPwaEdge,
-;     '"C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe" ' .
-;         '--profile-directory=Default --app-id=pjcajilgilmeimpehofbnboikmkhmefb ' .
+;     EdgeProxyExe . ' --profile-directory=Default --app-id=pjcajilgilmeimpehofbnboikmkhmefb ' .
 ;         '--app-url=https://chatgpt.com/c/681ca9b8-f930-8007-a6df-790af5298a12',
-;     'C:\Program Files (x86)\Microsoft\Edge\Application',, () => Send('{F11}'))
+;     EdgeWd, 'Max', () => Send('{F11}'))
 ; Open ChatGpt - Windows Desktop
 ; !Space:: RunOrActivateIfExist(WinTitleChatGpt,
 ;     'shell:AppsFolder\OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0!ChatGPT')
@@ -372,11 +355,11 @@ PlayPauseMpcHc() {
     'shell:AppsFolder\Microsoft.Copilot_8wekyb3d8bbwe!App', '', '',
     () => Send('+{Tab 2}'), () => Send('{Esc}'))
 ; Open Copilot - Edge
-; #!Space::RunOrActivateIfExist('^Copilot Web - Microsoft Copilot: Your AI companion$ ' . WinTitleEdgeMain,
-;     '"C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe" ' .
-;         '--profile-directory=Default --app-id=aioglfahffbnednffnodjbiiojbochai ' .
+; #!Space::RunOrActivateIfExist(
+;     '^Copilot Web - Microsoft Copilot: Your AI companion$ ' . WinTitleEdgeMain,
+;     EdgeProxyExe . ' --profile-directory=Default --app-id=aioglfahffbnednffnodjbiiojbochai ' .
 ;         '--app-url=https://copilot.microsoft.com/chats',
-;     '', '', () => Send('{F11}'))
+;     EdgeWd, 'Max', () => Send('{F11}'))
 
 ; Numpad keys
 ; ---

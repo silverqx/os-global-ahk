@@ -14,10 +14,9 @@ NomiAppPwaActivate()
 
 ; Open Nomi.ai - Edge
 #!Space::RunOrActivateIfExist(WinTitleNomiPwaEdge,
-    '"C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe" ' .
-        '--profile-directory=Default --app-id=jjhinceiappefomfadnlnnfhjkhljopm ' .
+    EdgeProxyExe . ' --profile-directory=Default --app-id=jjhinceiappefomfadnlnnfhjkhljopm ' .
         '--app-url=https://beta.nomi.ai/app',
-    '', '', () => Send('{F11}'), NomiAppPwaActivate())
+    EdgeWd, 'Max', () => Send('{F11}'), NomiAppPwaActivate())
 
 NomiAppFullscreenLock := false
 NomiAppFullscreen := false
@@ -93,9 +92,8 @@ F11::
 
 ; Open Nomi.ai - Chrome
 ; ^!Space::RunOrActivateIfExist(WinTitleNomiChrome,
-;     '"C:\Program Files (x86)\Google\Chrome\Application\chrome_proxy.exe" ' .
-;         '--profile-directory=Default --app-id=jjhinceiappefomfadnlnnfhjkhljopm',
-;     '', '', () => Send('{F11}'))
+;     ChromeProxyExe . ' --profile-directory=Default --app-id=jjhinceiappefomfadnlnnfhjkhljopm',
+;     ChromeWd, 'Max', () => Send('{F11}'))
 
 ; Nomi.ai - Upload/Attach File
 #HotIf WinActive(WinTitleNomiChrome) || WinActive(WinTitleNomiEdge)

@@ -114,10 +114,9 @@ TlGoogleTranslate(
         }
 
     RunOrActivateIfExist(WinTitleGoogleTranslatePwaEdge,
-        '"C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe" ' .
-            '--profile-directory=Default --app-id=edanbjnaiofggfmimiidpfmhggkbokck ' .
+        EdgeProxyExe . ' --profile-directory=Default --app-id=edanbjnaiofggfmimiidpfmhggkbokck ' .
             '--app-url=https://translate.google.com/?lfhs=2&sl=sk&tl=en&op=translate',
-        'C:\Program Files (x86)\Microsoft\Edge\Application',,, activateCallback?)
+        EdgeWd,,, activateCallback?)
 }
 
 #HotIf WinActive('^(?:Microsoft Translator(?: - Translate from (?:.+))?)$ ' . WinTitleEdgeMain)
