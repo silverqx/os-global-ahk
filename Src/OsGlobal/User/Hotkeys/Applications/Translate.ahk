@@ -120,13 +120,15 @@ TlGoogleTranslate(
                 activateCallback := () => Send('^{F11}')
         }
 
+    RunOrActivateGoogleTranslate(activateCallback?)
+}
+
+RunOrActivateGoogleTranslate(activateCallback := unset) =>
     RunOrActivateIfExist(WinTitleGoogleTranslatePwaEdge,
         EdgeProxyExe . ' --profile-directory=Default --app-id=edanbjnaiofggfmimiidpfmhggkbokck ' .
             '--app-url=https://translate.google.com/?lfhs=2&sl=sk&tl=en&op=translate',
         EdgeWd,,, activateCallback?)
-}
 
-#HotIf WinActive('^(?:Microsoft Translator(?: - Translate from (?:.+))?)$ ' . WinTitleEdgeMain)
 #HotIf WinActive(WinTitleMsTranslatorPwaEdge)
 F9::TlAppRestore()
 F10::TlGoogleTranslate(false)
