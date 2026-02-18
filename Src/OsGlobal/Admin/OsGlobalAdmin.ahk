@@ -26,4 +26,5 @@ SetTitleMatchMode('RegEx')
 ; Main section
 ; ------------
 
+#Include Events\Events.ahk
 #Include Hotkeys\Hotkeys.ahk
