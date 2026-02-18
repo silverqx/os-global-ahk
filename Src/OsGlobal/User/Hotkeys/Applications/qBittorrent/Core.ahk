@@ -7,7 +7,7 @@
 QbtAssignVideoCategoryAndSeedTag(closeAction := 'SubMenu', assignForceSeed := false)
 {
     ; Assign to video category
-    Send('{AppsKey}y{Up}{Enter}')
+    Send('{AppsKey}y{Up 2}{Enter}')
     ; Assign seed tag
     Send('{AppsKey}g{Up 2}{Enter}')
 
