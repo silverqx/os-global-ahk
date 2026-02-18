@@ -1,3 +1,5 @@
+#Include <OsGlobal\GlobalVariables>
+
 ; Visual Studio
 ; -------------
 
@@ -25,6 +27,7 @@
     Send('!c')
 
     ; Restore
-    VisualStudioWESkipOptions := false
+    ; Without the timer the Send('^e') in the WEVisualStudioOptions() is reached
+    SetTimer(() => VisualStudioWESkipOptions := false, -500)
 }
 #HotIf ; '(?:Microsoft Visual Studio( Preview)?)$ ahk_exe devenv.exe'
