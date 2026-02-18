@@ -1,5 +1,6 @@
 #Include WithModifier.ahk
 #Include WithoutModifier.ahk
+#Include WithScanCode.ahk
 
 ; Leader key ctrl-g shortcuts
 ; ---------------------------
@@ -23,6 +24,19 @@
         return
 
     userInput := ih.Input
+
+    ; Example usage
+    scanCode := GetScanCode(userInput)
+
+    ; With the scan code (scXYZ) - Leader key ctrl-g related
+    ; Run any .ahk script (eg. TestingHotkeys.ahk), double-click tray icon (or right-click it
+    ; and Open), then View - Key history and script info (Ctrl-K).
+    ; AutoHotkey v2 - documentation - ahk
+    if (scanCode == 'sc002')
+        Ss002()
+    ; Adobe Photoshop 2022
+    else if (scanCode == 'sc003')
+        Ss003()
 
     ; With the ctrl modifier, has to be first
     ; Look appropriate number mappings at https://en.wikipedia.org/wiki/ASCII#Control_code_chart
