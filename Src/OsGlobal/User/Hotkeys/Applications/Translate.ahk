@@ -142,9 +142,11 @@ sc029::TlAppRestore(false)
 F9::TlMicrosoftTranslator()
 F10::TlGoogleTranslate()
 #HotIf ; WinTitleNomiEdge
+
 #HotIf !WinActive(WinTitleComputerOffMain)
 ; Sk - En
 !q::TlGoogleTranslate(true, TlGtDirection.SkToEn)
+#HotIf
 #HotIf !WinActive(WinTitleAhk2DocsEdge) && !WinActive(WinTitleComputerOffMain) &&
        !WinExist(WinTitleUIAViewer)
 ; En - Sk copy to clipboard from 'A' and paste to Google Translate
@@ -154,5 +156,10 @@ F10::TlGoogleTranslate()
 ; En - Sk no copying to clipboard
 !+s::TlGoogleTranslate(true, TlGtDirection.EnToSk)
 #HotIf
+
 ; En - Sk paste from clipboard to Google Translate
 !+e::TlGoogleTranslate(true, TlGtDirection.EnToSk, true, true, true)
+#HotIf !WinActive(WinTitleMsTranslatorPwaEdge)
+; Microsoft Translator - Bing
+!+q::TlMicrosoftTranslator()
+#HotIf
