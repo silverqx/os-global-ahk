@@ -237,19 +237,6 @@ CreateSwitchWindowsHotkeys('!sc008', 'N', NotAlt15HotIfGroup(),
     ChromeWd, 'Max',
     MdnNewOrActivateCallback, ChromeNewCallbackReadyDelay, MdnNewOrActivateCallback, 60)
 
-RunOrActivateMicrosoftTranslator()
-{
-    RunOrActivateIfExist(
-        '^(?:Microsoft Translator(?: - Translate from (?:.+))?)$ ' . WinTitleEdgeMain,
-        '"C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe" ' .
-            '--profile-directory=Default --app-id=eimnmpnhdfihplndggcmmlekjlbcnhfl ' .
-            '--app-url=https://www.bing.com/translator/',
-        'C:\Program Files (x86)\Microsoft\Edge\Application')
-}
-
-; Microsoft Translator - Bing
-!+q::RunOrActivateMicrosoftTranslator()
-
 ; Bugfix/workaround for LButton stuck down during LButton Down - Ctrl Down
 ; ~Control Up::
 ; ~Alt Up::

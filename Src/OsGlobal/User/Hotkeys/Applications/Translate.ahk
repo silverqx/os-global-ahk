@@ -76,8 +76,15 @@ TlMicrosoftTranslator(saveActiveHwnd := true)
     else if(!TlMoveBottomHwnd.Has(hwnd))
         TlMoveBottomHwnd[hwnd] := 'm'
 
-    RunOrActivateMicrosoftTranslator() ; Weird #Include, depends on the ordered❗
+    RunOrActivateMicrosoftTranslator()
 }
+
+RunOrActivateMicrosoftTranslator() =>
+    RunOrActivateIfExist(
+        '^(?:Microsoft Translator(?: - Translate from (?:.+))?)$ ' . WinTitleEdgeMain,
+        EdgeProxyExe . ' --profile-directory=Default --app-id=eimnmpnhdfihplndggcmmlekjlbcnhfl ' .
+            '--app-url=https://www.bing.com/translator/',
+        EdgeWd)
 
 TlGoogleTranslate(
     saveActiveHwnd := true, translationDirection := unset, copyToClipboard := false,
@@ -123,6 +130,7 @@ TlGoogleTranslate(
 F9::TlAppRestore()
 F10::TlGoogleTranslate(false)
 !q::TlGoogleTranslate(false)
+!+q::TlAppRestore(true)
 #HotIf
 
 #HotIf WinActive('^(?:Google Translate)$ ' . WinTitleEdgeMain)
