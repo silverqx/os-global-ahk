@@ -2,6 +2,7 @@
 
 ; Global Fullscreen mode
 ; ----------------------
+; Don't be confused, these are only for F11 hotkey
 
 ; Create a group to target more applications
 ; Doesn't work: PSPad.exe
