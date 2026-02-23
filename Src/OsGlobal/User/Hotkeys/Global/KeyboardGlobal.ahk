@@ -145,15 +145,6 @@ FlowMonkeyWorkspaceDir := A_MyDocuments . '\Code Workspaces'
 !+F7::Run('code.cmd --new-window O:\Code\c\qMedia\TinyORM\TinyORM',
     'O:\Code\c\qMedia\TinyORM\TinyORM', 'Hide')
 
-; qBittorrent
-<#F8::
-{
-    if (WinExist('i)( |^)qBittorrent v\d{1,2}\.\d{1,2}\.\d{1,3}$'))
-        WinActivate()
-    else
-        Run(A_ProgramsCommon . '\qBittorrent\qBittorrent.lnk')
-}
-
 ; Alpha keys
 ; ---
 

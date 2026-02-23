@@ -81,9 +81,9 @@ Sn() =>
 Sp() =>
     Run(A_Programs . '\JetBrains Toolbox\PhpStorm Early Access Program.lnk')
 
-; qMedia
+; qBittorrent
 Sq() =>
-    RunOrActivateIfExist('i)^ *qMedia v\d+\.\d+\.\d+$', A_Programs . '\__my__\qMedia.lnk')
+    RunOrActivateIfExist(WinTitleQBittorrent, A_ProgramsCommon . '\qBittorrent\qBittorrent.lnk')
 
 ; Registry Editor
 Sr() =>
