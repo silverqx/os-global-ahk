@@ -35,7 +35,7 @@ QbtDownloadSequentialAndFirstLast()
 QbtOpenTorrentOptionsModal()
 {
     Send('{AppsKey}o')
-    WinWait('^Torrent Options$ ' . WinTitleQBittorrent)
+    WinWait(WinTitleQbt_TorrentOptions)
 }
 
 ; Limit download speed to the given value

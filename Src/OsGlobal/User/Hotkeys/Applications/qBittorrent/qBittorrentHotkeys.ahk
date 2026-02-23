@@ -1,7 +1,7 @@
 #Include Core.ahk
 
 ; Classic video
-#HotIf WinActive(WinTitleQBittorrent)
+#HotIf WinActive(WinTitleQBittorrentExe)
 QbtAssignCategoryAndDeqDownload()
 {
     ; Assign to video category and seed tag
@@ -54,4 +54,4 @@ F3::Send('{AppsKey}v')
 ^á::QbtSetDownloadSpeedLimit(8192)
 ^í::QbtSetDownloadSpeedLimit(9216)
 ^é::QbtSetDownloadSpeedLimit(10240)
-#HotIf ; WinTitleQBittorrent
+#HotIf ; WinTitleQBittorrentExe
