@@ -43,5 +43,5 @@ QbtSetDownloadSpeedLimit(value)
 {
     ; Open Torrent options modal dialog and wait for it
     QbtOpenTorrentOptionsModal()
-    Send(Format('{Tab 2}{:u}{Enter}', value))
+    Send(Format('{Tab 5}{:u}{Enter}', value))
 }
