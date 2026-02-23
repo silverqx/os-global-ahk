@@ -21,3 +21,9 @@ MsgBox(JoinMapValues(HttpAllowedMethods, ', '))
 MsgBox(JoinMapKeys(HttpAllowedMethods, ', ', false))
 MsgBox(JoinMapValues(HttpAllowedMethods, ', ', false))
 
+
+Hotkey Backup:
+--------------
+
+; qMedia
+RunOrActivateIfExist('i)^ *qMedia v\d+\.\d+\.\d+$', A_Programs . '\__my__\qMedia.lnk')
