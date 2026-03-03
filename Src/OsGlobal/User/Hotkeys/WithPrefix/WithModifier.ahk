@@ -300,10 +300,16 @@ Scv()
         Run(PwshHiddenFile . 'E:\dotfiles\bin\vmp-g.ps1',, 'Hide')
     }
     ; Run
+    ; VM is encrypted, have to figure how to ask password somehow
     else if (userInput = 'r') {
         MsgBox("Starting Gentoo KVM without Administrator privileges doesn't work.`n" .
-            'Use ^<j>v r instead which has Administrator privileges.', 'Gentoo')
+            "Use ^<j>v r instead which has Administrator privileges.`n" .
+            "Even ^<j>v r doesn't work as it's not defined.", 'Gentoo')
     }
+    ; else if (userInput = 'r') {
+    ;     MsgBox('Starting Gentoo KVM', 'Gentoo', 'T1')
+    ;     Run(PwshHiddenFile . 'E:\dotfiles\bin\vmr-g.ps1',, 'Hide')
+    ; }
     ; Suspend
     else if (userInput = 's') {
         MsgBox('Suspending Gentoo KVM', 'Gentoo', 'T1')
@@ -361,6 +367,11 @@ Scw()
     }
     ; Run
     ; VM is encrypted, have to figure how to ask password somehow
+    else if (userInput = 'r') {
+        MsgBox("Starting Windows KVM without Administrator privileges doesn't work.`n" .
+            "Use ^<j>w r instead which has Administrator privileges.`n" .
+            "Even ^<j>w r doesn't work as it's not defined.", 'Windows')
+    }
     ; else if (userInput = 'r') {
     ;     MsgBox('Starting Windows KVM', 'Windows', 'T1')
     ;     Run(PwshHiddenFile . 'E:\dotfiles\bin\vmr-w.ps1',, 'Hide')
