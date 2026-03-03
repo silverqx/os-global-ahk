@@ -327,9 +327,9 @@ PlayPauseMpcHc() {
 ;     'shell:AppsFolder\OpenAI.ChatGPT-Desktop_2p2nqsd0c76g0!ChatGPT')
 
 ; Open Copilot - Windows Desktop
-^!+Space::RunOrActivateIfExist(WinTitleCopilot,
-    'shell:AppsFolder\Microsoft.Copilot_8wekyb3d8bbwe!App', '', '',
-    () => Send('+{Tab 2}'), () => Send('{Esc}'))
+; ^!+Space::RunOrActivateIfExist(WinTitleCopilot,
+;     'shell:AppsFolder\Microsoft.Copilot_8wekyb3d8bbwe!App', '', '',
+;     () => Send('+{Tab 2}'), () => Send('{Esc}'))
 ; Open Copilot - Edge
 ; #!Space::RunOrActivateIfExist(
 ;     '^Copilot Web - Microsoft Copilot: Your AI companion$ ' . WinTitleEdgeMain,
