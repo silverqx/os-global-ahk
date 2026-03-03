@@ -108,8 +108,6 @@ Launch_Mail::RunOrActivateIfExist(WinTitleSpotify,
         '-container 0',
     FirefoxWd, 'Max')
 
-#+F4::RunOrActivateIfExist('^Services$',
-    A_ProgramsCommon . '\Administrative Tools\Services.lnk')
 #+F6::RunOrActivateIfExist('^Google Password Manager$',
     ChromeProxyExe . ' --profile-directory=Default --app-id=kajebgjangihfbkjfejcanhanjmmbcfd',
     ChromeWd, 'Max', () => Send('{F11}'),, ChromeNewCallbackDelay)

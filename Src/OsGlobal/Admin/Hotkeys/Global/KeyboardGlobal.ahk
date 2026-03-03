@@ -34,6 +34,8 @@ TaskSchedulerNewCallback()
     A_AppDataCommon . '\chocolatey\bin\Autoruns.exe', '', 'Max')
 #+F3::RunOrActivateIfExist('^Registry Editor$',
     A_ProgramsCommon . '\Administrative Tools\Registry Editor.lnk')
+#+F4::RunOrActivateIfExist('^Services$',
+    A_ProgramsCommon . '\Administrative Tools\Services.lnk')
 #+F5::RunOrActivateIfExist('^Task Scheduler$',
     A_ProgramsCommon . '\Administrative Tools\Task Scheduler.lnk', '', 'Max',
     TaskSchedulerNewCallback)
