@@ -46,4 +46,13 @@ RButton & WheelRight::Send('^{Home}')
 RButton & WheelLeft::Send('^{End}')
 #HotIf
 
+#HotIf WinActive(WinTitleChromeMain, '',
+                 '^(Google Translate$|^Microsoft Translator(?: - Translate from (?:.+))?)$') ||
+       WinActive(WinTitleEdgeMain,   '',
+                 '^(Google Translate$|^Microsoft Translator(?: - Translate from (?:.+))?$)') ||
+       WinActive(WinTitleFirefoxMain)
+; Show bookmarks bar
+RButton & LButton::Send('^+b')
+#HotIf ; WinTitleChromeMain || WinTitleEdgeMain || WinTitleFirefoxMain
+
 RButton::Send('{RButton}')

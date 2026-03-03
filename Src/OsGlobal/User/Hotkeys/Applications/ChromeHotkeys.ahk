@@ -20,7 +20,6 @@
        WinActive(WinTitleFirefoxMain)
 ; Show bookmarks bar
 ^+sc056::Send('^+b')
-RButton & LButton::Send('^+b')
 #HotIf ; WinTitleChromeMain || WinTitleEdgeMain || WinTitleFirefoxMain
 
 ; Fullscreen by Middle Click
