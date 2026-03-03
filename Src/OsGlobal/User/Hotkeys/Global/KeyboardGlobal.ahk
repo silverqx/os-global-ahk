@@ -367,3 +367,11 @@ sendReloadFlowMonkeyExts(apiPath := '')
 
 #^+F9::KeyHistory()
 #^+F10::ListHotkeys()
+
+; Close this script's own process
+#^+F2::
+{
+    SoundBeep(7300, 70)
+    DetectHiddenWindows(true)
+    ProcessClose(WinGetPID('ahk_id ' . A_ScriptHwnd))
+}

@@ -197,3 +197,11 @@ SelectRectangleMode()
 
 #^+F7::KeyHistory()
 #^+F8::ListHotkeys()
+
+; Close this script's own process
+#^+F3::
+{
+    SoundBeep(7300, 70)
+    DetectHiddenWindows(true)
+    ProcessClose(WinGetPID('ahk_id ' . A_ScriptHwnd))
+}
