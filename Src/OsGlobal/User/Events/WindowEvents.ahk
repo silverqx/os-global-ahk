@@ -115,6 +115,7 @@ GroupAdd('FullscreenGroupOnOpenAlt', WinTitleReplikaEdge)
 GroupAdd('FullscreenGroupOnOpenAlt', WinTitleSpotifyChrome)
 GroupAdd('FullscreenGroupOnOpenAlt', WinTitleVsCodeNoTab)
 GroupAdd('FullscreenGroupOnOpenAlt', WinTitleXPwaChrome)
+; GroupAdd('FullscreenGroupOnOpenAlt', WinTitleChromeMain)
 GroupAdd('FullscreenGroupOnOpenAlt', '^YouTube(?:$| - (?:.+ )?YouTube$) ' . WinTitleChromeMain)
 
 ; These are for Debugging purposes only, to verify titles matching
@@ -139,6 +140,10 @@ FullscreenOnOpenAltMap := WinTitleMap(
         Format(WinTitleFirefoxPwaSuffixRaw, 'Google Gemini'),
         Format(WinTitleFirefoxPwaSuffixRaw, 'Grok'),
     ],
+    ; TODO Verify why this worked with WinTitleXPwaChrome and doesn't work with WinTitleChromeMain silverqx
+    ; WinTitleChromeMain, [
+    ;     '  - Google Sheets$',
+    ; ]
     ; WinTitleVsCodeNoTabSC, [
     ;     WinTitleVsCodeUntitled1SC,
     ; ]
