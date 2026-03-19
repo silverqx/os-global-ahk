@@ -10,7 +10,7 @@ Ss002() =>
     RunOrActivateIfExist(WinTitleAhk2DocsEdge,
         EdgeProxyExe . ' --profile-directory=Default --app-id=fcealjmigcjniemoeofdephofkblhdai ' .
             '--app-url=https://www.autohotkey.com/docs/v2/',
-        EdgeWd, 'Max')
+        EdgeWd, 'Max', () => Send('!s'))
 
 ; Adobe Photoshop 2022
 Ss003() =>
