@@ -94,9 +94,16 @@ Launch_Mail::RunOrActivateIfExist(WinTitleSpotifyChrome,
 ;     ChromeProxyExe . ' --profile-directory=Default --app-id=fmpnliohjhemenmnlpbfagaolkdacoja',
 ;     ChromeWd, 'Max')
 ; Google Gemini - Firefox
-<#F3::RunOrActivateIfExist(WinTitleGeminiPwaFirefox,
-    FirefoxExe . ' -taskbar-tab 359399e4-2db5-49fe-b8b9-ceeabf84cd97 ' .
-        '-new-window https://gemini.google.com/ ' .
+; <#F3::RunOrActivateIfExist(WinTitleGeminiPwaFirefox,
+;     FirefoxExe . ' -taskbar-tab 359399e4-2db5-49fe-b8b9-ceeabf84cd97 ' .
+;         '-new-window https://gemini.google.com/ ' .
+;         Format('-profile "{:s}\Mozilla\Firefox\Profiles\{:s}" ', A_AppData, FirefoxProfileDefault) .
+;         '-container 0',
+;     FirefoxWd, 'Max')
+; ChatGPT - Firefox
+<#F3::RunOrActivateIfExist(WinTitleChatGptPwaFirefox,
+    FirefoxExe . ' -taskbar-tab c6c8d238-d2ff-462f-baaa-e495b8a73cee ' .
+        '-new-window https://chatgpt.com ' .
         Format('-profile "{:s}\Mozilla\Firefox\Profiles\{:s}" ', A_AppData, FirefoxProfileDefault) .
         '-container 0',
     FirefoxWd, 'Max')
