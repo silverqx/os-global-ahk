@@ -26,7 +26,7 @@
 ; Spotify - Play/Pause
 Media_Play_Pause::
 {
-    if WinExist(WinTitleSpotifyExe)
+    if WinExist(WinTitleSpotifyChrome)
         SendPlayPauseCommand()
     else
         Send('{Media_Play_Pause}')
@@ -47,11 +47,15 @@ CreateSwitchWindowsHotkeys('#F7', 'N', '',
     WinTitleDelphi, 'DelphiActivateGroup',
     'C:\Program Files (x86)\Embarcadero\Studio\23.0\bin\bds.exe')
 
-; Spotify
-Launch_Mail::RunOrActivateIfExist(WinTitleSpotify,
-    'shell:AppsFolder\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify', '',
-    'Max')
-; Spotify - Edge PWA (doesn't react to media keys properly, eg. Media_Play_Pause)
+; Spotify - Chrome PWA (properly reacts to Media_Play_Pause key)
+Launch_Mail::RunOrActivateIfExist(WinTitleSpotifyChrome,
+    ChromeProxyExe . ' --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf',
+    ChromeWd, 'Max')
+; Spotify (don't use this as it plays a lot of ads)
+; Launch_Mail::RunOrActivateIfExist(WinTitleSpotify,
+;     'shell:AppsFolder\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify', '',
+;     'Max')
+; Spotify - Edge PWA (properly reacts to Media_Play_Pause key)
 ; Launch_Mail::RunOrActivateIfExist(WinTitleSpotifyEdge,
     ; EdgeProxyExe . ' --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf ' .
     ;     '--app-url=https://open.spotify.com/',
@@ -284,7 +288,7 @@ CreateSwitchWindowsHotkeys('!sc008', 'N', NotAlt15HotIfGroup(),
 ; Send the Play/Pause command to the Last Found Window
 ;
 ; Legend for PostMessage:
-; wParam must be window handle, if not defined the DefWindowProc will it to its parent window
+; wParam must be window handle, if not defined the DefWindowProc will send it to its parent window
 ; lParam must be APPCOMMAND_XYZ
 ; << 16 is used to shift the APPCOMMAND value to the left, so it can be used as lParam
 ; WM_APPCOMMAND                0x0319
@@ -294,7 +298,8 @@ SendPlayPauseCommand()
     PostMessage(0x0319,, 14 << 16)
 }
 
-PlayPauseMpcHc() {
+PlayPauseMpcHc()
+{
     if WinExist(WinTitleMpcHc)
         SendPlayPauseCommand()
 }
