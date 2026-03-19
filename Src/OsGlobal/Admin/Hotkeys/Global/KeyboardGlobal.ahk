@@ -19,7 +19,7 @@
 
 TaskSchedulerNewCallback()
 {
-    Sleep(400)
+    Sleep(1000)
     Send('{Right}{Down 2}')
     Sleep(1800)
     Send('{Tab}')
