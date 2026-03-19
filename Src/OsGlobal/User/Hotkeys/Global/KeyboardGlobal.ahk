@@ -49,6 +49,7 @@ CreateSwitchWindowsHotkeys('#F7', 'N', '',
 
 ; Spotify - Chrome PWA (properly reacts to Media_Play_Pause key)
 Launch_Mail::RunOrActivateIfExist(WinTitleSpotifyChrome,
+    ; TODO create helper function eg. ChromeProxyCmd(appId, appUrl, profile?) to
     ChromeProxyExe . ' --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf',
     ChromeWd, 'Max')
 ; Spotify (don't use this as it plays a lot of ads)
@@ -102,6 +103,7 @@ Launch_Mail::RunOrActivateIfExist(WinTitleSpotifyChrome,
 ;     FirefoxWd, 'Max')
 ; ChatGPT - Firefox
 <#F3::RunOrActivateIfExist(WinTitleChatGptPwaFirefox,
+    ; TODO create helper function for Firefox PWAs to avoid repeating this everywhere silverqx
     FirefoxExe . ' -taskbar-tab c6c8d238-d2ff-462f-baaa-e495b8a73cee ' .
         '-new-window https://chatgpt.com ' .
         Format('-profile "{:s}\Mozilla\Firefox\Profiles\{:s}" ', A_AppData, FirefoxProfileDefault) .
