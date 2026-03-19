@@ -3,7 +3,7 @@
 
 ; With the scan code (scXYZ)
 ; ----------------------
-; Leader key ctrl-g related
+; Leader key Ctrl-g related
 
 ; AutoHotkey v2 - documentation - ahk
 Ss002()

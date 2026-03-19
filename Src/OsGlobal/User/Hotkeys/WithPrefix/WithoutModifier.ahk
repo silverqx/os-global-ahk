@@ -3,7 +3,7 @@
 
 ; Without any modifier
 ; --------------------
-; Leader key ctrl-g related
+; Leader key Ctrl-g related
 
 ; access
 Sa() =>

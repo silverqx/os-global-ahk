@@ -7,7 +7,7 @@
 ; Global Hotkeys
 ; --------------
 
-; Disable printing emoji-s for alt-0-9 🙏
+; Disable printing emoji-s for Alt-0-9 🙏
 !Numpad1::Send('!1')
 !Numpad2::Send('!2')
 !Numpad3::Send('!3')

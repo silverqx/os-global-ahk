@@ -11,7 +11,7 @@
 ; With ctrl modifier
 ; m
 
-; Leader key ctrl-g shortcuts
+; Leader key Ctrl-g shortcuts
 ; ---------------------------
 
 ^g::
@@ -45,7 +45,7 @@
     ; Example usage
     scanCode := GetScanCode(userInput)
 
-    ; With the scan code (scXYZ) - Leader key ctrl-g related
+    ; With the scan code (scXYZ) - Leader key Ctrl-g related
     ; Run any .ahk script (eg. TestingHotkeys.ahk), double-click tray icon (or right-click it
     ; and Open), then View - Key history and script info (Ctrl-K).
     ; AutoHotkey v2 - documentation - ahk

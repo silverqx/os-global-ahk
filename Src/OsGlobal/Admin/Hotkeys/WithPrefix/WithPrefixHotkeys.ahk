@@ -1,7 +1,7 @@
 #Include WithoutModifier.ahk
 
-; Leader key ctrl-¨ shortcuts
-; ---------------------------
+; Leader key Ctrl-Alt-¨ or AltGr-¨ shortcuts
+; ------------------------------------------
 
 ; The ¨ is next to Enter key, it's key with |\ characters
 ^!¨::

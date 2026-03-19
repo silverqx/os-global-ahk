@@ -1,6 +1,6 @@
 ; Without any modifier
 ; --------------------
-; Leader key ctrl-¨ related
+; Leader key Ctrl-Alt-¨ or AltGr-¨ related
 
 ; Environment Variables
 Se()

@@ -3,7 +3,7 @@
 
 ; With the ctrl modifier
 ; ----------------------
-; Leader key ctrl-g related
+; Leader key Ctrl-g related
 
 ; TinyActions vmware (merydeye-tinyactions)
 Sca()
