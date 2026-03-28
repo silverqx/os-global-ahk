@@ -25,6 +25,7 @@ QbtAssignVideoCategoryAndSeedTag(closeAction := 'SubMenu', assignForceSeed := fa
 ; Download in sequential order and first/last pieces first
 QbtDownloadSequentialAndFirstLast()
 {
+    Sleep(60)
     ; Download in sequential order
     Send('{Down 4}{Enter}')
     ; Download first and last pieces first
