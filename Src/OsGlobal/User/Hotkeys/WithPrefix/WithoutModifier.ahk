@@ -75,7 +75,7 @@ Sl() =>
 
 ; Notepad++
 Sn() =>
-    RunOrActivateIfExist(' - Notepad++', A_ProgramsCommon . '\Notepad++.lnk',,, () => Send('{F11}'))
+    RunOrActivateIfExist('(?: - Notepad\+\+)$', A_ProgramsCommon . '\Notepad++.lnk',,, () => Send('{F11}'))
 
 ; PhpStorm
 Sp() =>
