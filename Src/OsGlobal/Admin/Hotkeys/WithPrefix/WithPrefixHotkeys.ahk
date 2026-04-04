@@ -1,11 +1,11 @@
 #Include WithModifier.ahk
 #Include WithoutModifier.ahk
 
-; Leader key Ctrl-Alt-¨ or AltGr-¨ shortcuts
-; ------------------------------------------
+; Leader key Ctrl-é shortcuts
+; ---------------------------
 
-; The ¨ is next to Enter key, it's key with |\ characters
-^!¨::
+; sc00b '0' (en) and 'é' (cz)
+^sc00b::
 {
     ih := InputHook('T.8 L1 M', '{Enter}.{Esc}{Tab}', 'a,c,e,p,r')
     ih.Start()
@@ -13,7 +13,7 @@
 
     ; Send original shortcut on timeout
     if (result = 'Timeout')
-        return Send('^!¨')
+        return Send('^{sc00b}')
 
     ; TODO Ask on the forum how to do this in ahk v2 silverqx
     ; if (result = 'NewInput')
