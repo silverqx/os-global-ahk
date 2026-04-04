@@ -37,11 +37,6 @@ Sd() =>
 ; List all registered hotkeys (w/o they descriptions 🥺)
 ; Sé() => ListHotkeys()
 
-; VMware Workstation
-Sý() =>
-    RunOrActivateIfExist('(?:^| - )VMware Workstation$',
-        A_ProgramFiles . ' (x86)\VMware\VMware Workstation\vmware.exe')
-
 ; Facebook
 Sf() =>
     RunOrActivateIfExist('Facebook(?:$| - .*(?: | Facebook))',
@@ -124,6 +119,11 @@ Sw() =>
 ; Youtube
 Sy() =>
     Run(A_Programs . '\Chrome Apps\YouTube.lnk')
+
+; VMware Workstation
+Sý() =>
+    RunOrActivateIfExist('(?:^| - )VMware Workstation$',
+        A_ProgramFiles . ' (x86)\VMware\VMware Workstation\vmware.exe')
 
 ; Google Drive
 Sž() =>
