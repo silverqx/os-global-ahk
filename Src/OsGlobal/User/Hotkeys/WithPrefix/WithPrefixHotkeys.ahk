@@ -6,10 +6,10 @@
 ; -----------
 ;
 ; Without modifiers
-; c, g, k, m, s
+; e,h,i,j,m,o,x
 ;
 ; With ctrl modifier
-; m
+; c,d,e,f,g,i,j,k,l,n,o,u,x,z
 
 ; Leader key Ctrl-g shortcuts
 ; ---------------------------

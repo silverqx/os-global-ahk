@@ -1,6 +1,15 @@
 #Include WithModifier.ahk
 #Include WithoutModifier.ahk
 
+; Free to use
+; -----------
+;
+; Without modifiers
+; Almost all (only used: e)
+;
+; With ctrl modifier
+; Almost all (only used: a)
+
 ; Leader key Ctrl-é shortcuts
 ; ---------------------------
 
